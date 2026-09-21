@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Precious Odemwingie — IT Support Engineer specializing in Microsoft, cloud, endpoint management, enterprise support and SAP BTP/SSO.">
+  <title>Precious Odemwingie | IT Support Engineer</title>
+  <style>
+    :root{
+      --bg:#07111f;--bg2:#0b1728;--card:#0d1c30;--text:#edf5ff;--muted:#a9b8ca;
+      --line:rgba(255,255,255,.10);--accent:#5dc7ff;--accent2:#8879ff;--max:1160px;
+      --good:#58d68d;--shadow:0 25px 80px rgba(0,0,0,.28);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      background:
+        radial-gradient(circle at 10% 5%,rgba(93,199,255,.12),transparent 30%),
+        radial-gradient(circle at 90% 12%,rgba(136,121,255,.12),transparent 28%),
+        linear-gradient(180deg,var(--bg),#050c16 100%);
+      line-height:1.65;
+    }
+    a{text-decoration:none;color:inherit}
+    .wrap{width:min(92%,var(--max));margin:auto}
+    .nav{position:sticky;top:0;z-index:10;background:rgba(7,17,31,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+    .navin{min-height:72px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-weight:850;letter-spacing:.2px}.brand span{color:var(--accent)}
+    .links{display:flex;gap:24px;color:var(--muted);font-size:14px}.links a:hover{color:#fff}
+    .hero{padding:94px 0 76px}
+    .heroGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid var(--line);border-radius:999px;background:#ffffff06;color:#cad7e8;font-size:13px}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 5px rgba(88,214,141,.08)}
+    h1{font-size:clamp(48px,7.8vw,92px);line-height:.96;letter-spacing:-5px;margin:22px 0}
+    .gradient{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{color:var(--muted);font-size:19px;max-width:760px}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:13px;border:1px solid var(--line);font-weight:750;transition:.2s}
+    .btn:hover{transform:translateY(-2px)}.primary{background:#fff;color:#07111f;border-color:#fff}
+    .heroCard{padding:28px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(13,28,48,.95),rgba(8,20,35,.92));box-shadow:var(--shadow)}
+    .initials{width:94px;height:94px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent2),var(--accent));color:#08111e;font-weight:900;font-size:28px}
+    .heroCard h3{font-size:21px;margin:20px 0 8px}.muted{color:var(--muted)}
+    .stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}.stat{border:1px solid var(--line);padding:16px;border-radius:16px;background:#ffffff04}.stat b{font-size:21px;display:block}.stat span{font-size:12px;color:var(--muted)}
+    section{padding:82px 0}.kicker{color:var(--accent);font-size:12px;font-weight:850;letter-spacing:2px;text-transform:uppercase}
+    .sectionHead{max-width:780px;margin-bottom:32px}.sectionHead h2{font-size:clamp(32px,5vw,52px);line-height:1.04;letter-spacing:-2.4px;margin:8px 0 12px}.sectionHead p{color:var(--muted);margin:0}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card{padding:25px;border:1px solid var(--line);border-radius:22px;background:#ffffff04}
+    .card h3{margin:0 0 8px;font-size:20px}.card p{color:var(--muted);margin:0}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}.tag{padding:7px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:#d4dfed}
+    .timeline{position:relative;margin-left:8px;padding-left:30px;border-left:1px solid var(--line)}.job{position:relative;padding:0 0 34px}.job:before{content:"";position:absolute;left:-37px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(93,199,255,.10)}
+    .jobTop{display:flex;align-items:baseline;justify-content:space-between;gap:18px;flex-wrap:wrap}.jobTop h3{margin:0;font-size:21px}.date{color:var(--accent);font-size:13px;font-weight:800}
+    .company{color:#cad7e7;font-weight:700;margin:2px 0 10px}.job ul{margin:0;padding-left:18px;color:var(--muted)}.job li{margin:7px 0}
+    .projectGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.project{min-height:100%;display:flex;flex-direction:column}.projectBody{flex:1}.projectMeta{color:var(--accent);font-size:11px;font-weight:900;letter-spacing:1.3px}.project h3{font-size:22px;margin:8px 0}
+    .certs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .cert{padding:22px;border:1px solid var(--line);border-radius:20px;background:#ffffff04}.cert strong{display:block;font-size:17px}.cert span{display:block;color:var(--muted);font-size:13px;margin-top:4px}
+    .edu{display:grid;grid-template-columns:1fr 1fr;gap:18px}.eduCard{padding:24px;border:1px solid var(--line);border-radius:22px;background:#ffffff04}.eduCard .year{color:var(--accent);font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:1.2px}
+    .contact{padding:70px 28px;border:1px solid var(--line);border-radius:28px;text-align:center;background:linear-gradient(135deg,rgba(93,199,255,.08),rgba(136,121,255,.08))}
+    .contact h2{font-size:clamp(30px,5vw,50px);letter-spacing:-2px;margin:9px 0 12px}
+    footer{padding:30px 0 48px;color:var(--muted);font-size:13px;text-align:center}
+    @media(max-width:900px){.heroGrid,.grid,.projectGrid,.edu{grid-template-columns:1fr}.certs{grid-template-columns:1fr}.links{display:none}.hero{padding-top:65px}h1{letter-spacing:-3px}}
+  </style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap navin">
+    <a class="brand" href="#top">Precious<span>.</span></a>
+    <div class="links">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
+      <a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap heroGrid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> IT Support Engineer · Ontario, Canada</div>
+      <h1>Enterprise IT.<br><span class="gradient">Cloud-minded.</span></h1>
+      <p class="lead">
+        IT professional with 5+ years of experience providing Tier 1/2 technical support across enterprise desktop,
+        cloud data and Microsoft environments. Focused on reliable support, endpoint management, identity, cloud
+        platforms and practical enterprise technology.
+      </p>
+      <div class="buttons">
+        <a class="btn primary" href="https://www.linkedin.com/in/precious-odemwingie-1b776323a/" target="_blank" rel="noopener">View LinkedIn</a>
+        <a class="btn" href="#experience">View Experience</a>
+      </div>
+    </div>
+    <aside class="heroCard">
+      <div class="initials">PO</div>
+      <h3>IT Support · Microsoft · Cloud · SAP BTP</h3>
+      <p class="muted">Tier 1/2 support, Microsoft 365, Entra ID, Intune, Active Directory, Azure, AWS, PowerShell and SAP BTP/SSO configuration.</p>
+      <div class="stats">
+        <div class="stat"><b>5+</b><span>Years of IT support experience</span></div>
+        <div class="stat"><b>Tier 1/2</b><span>Enterprise support</span></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div class="kicker">Profile</div>
+      <h2>Hands-on support with a cloud and enterprise focus.</h2>
+      <p>
+        I support users and business systems across Microsoft and cloud environments while working with
+        technical teams, vendors and end users to resolve issues efficiently and within SLA expectations.
+        My experience includes endpoint management, identity and access, incident management, device provisioning,
+        Microsoft 365 administration and practical cloud work.
+      </p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <h3>Support & Operations</h3>
+        <p>Incident management, ServiceNow, Zendesk, workstation deployment, diagnostics, remote support, printers, VPN, LAN/Wi-Fi and user training.</p>
+        <div class="tags"><span class="tag">ServiceNow</span><span class="tag">Zendesk</span><span class="tag">SLA</span><span class="tag">Remote Support</span></div>
+      </div>
+      <div class="card">
+        <h3>Identity & Endpoint</h3>
+        <p>Entra ID, Active Directory, ADManager Plus, GPO, MFA, Conditional Access, Intune, endpoint management and account administration.</p>
+        <div class="tags"><span class="tag">Entra ID</span><span class="tag">Intune</span><span class="tag">Active Directory</span><span class="tag">MFA</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div class="kicker">Skills Matrix</div>
+      <h2>Technology I work with.</h2>
+      <p>Core technologies and tools listed in my resume.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Ticketing Systems</h3><p>Zendesk and ServiceNow for ticketing and incident management.</p></div>
+      <div class="card"><h3>Cloud</h3><p>Azure, AWS, Virtual Machines, Resource Groups and IAM.</p></div>
+      <div class="card"><h3>Microsoft Technologies</h3><p>Microsoft 365, Entra ID, Intune, endpoint management and Microsoft Teams.</p></div>
+      <div class="card"><h3>Networking</h3><p>Basic switches, routers, wireless access points and VPN clients.</p></div>
+      <div class="card"><h3>Automation & Scripting</h3><p>Microsoft Power Automate and PowerShell.</p></div>
+      <div class="card"><h3>Hardware</h3><p>Workstation setup, imaging, diagnostics, cable management and hardware refresh.</p></div>
+      <div class="card"><h3>Operating Systems</h3><p>Windows, Linux, Mac OS, Android and iOS.</p></div>
+      <div class="card"><h3>SAP Basis & BTP</h3><p>SAP Basis administration learning, SAP RISE, Fiori, PFCG roles, SSO/SAML, IAS, BTP and Cloud ALM exposure.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div class="kicker">Experience</div>
+      <h2>Professional experience.</h2>
+      <p>Career history and responsibilities from my resume.</p>
+    </div>
+    <div class="timeline">
+      <article class="job">
+        <div class="jobTop"><h3>IT Technician</h3><span class="date">Oct 2024 — Present</span></div>
+        <div class="company">Groupe Touchette</div>
+        <ul>
+          <li>Provide first- and second-level IT support across warehouse and distribution environments.</li>
+          <li>Use ServiceNow to document, track and manage support requests and incidents.</li>
+          <li>Manage Active Directory with ADManager Plus, including user accounts and lockouts.</li>
+          <li>Administer Entra ID accounts, Exchange Online, Teams and endpoint devices.</li>
+          <li>Support Conditional Access and MFA security enhancements in Azure AD/Entra ID.</li>
+          <li>Troubleshoot hardware and software issues; install and configure workstations and applications.</li>
+          <li>Provide remote support with ConnectWise and assist with LAN, VPN and Wi-Fi issues.</li>
+          <li>Provision end-user devices for onboarding and replacement projects and manage IT inventory.</li>
+          <li>Maintain IT documentation and troubleshooting guides; collaborate with technical teams on new technologies.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="jobTop"><h3>IT Support Engineer</h3><span class="date">May 2019 — Dec 2022</span></div>
+        <div class="company">Hideapluxx Limited</div>
+        <ul>
+          <li>Investigated, diagnosed and resolved hardware, software and network incidents, maintaining a 90% SLA resolution rate.</li>
+          <li>Managed incidents through ServiceNow and escalated major incidents to senior teams.</li>
+          <li>Supported SCCM software deployment, patch management and workstation imaging.</li>
+          <li>Supported VPN connectivity, VoIP phone systems and remote-user communication issues.</li>
+          <li>Collaborated with vendors and internal teams to deliver timely incident resolution.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="jobTop"><h3>IT Helpdesk</h3><span class="date">Feb 2016 — Apr 2019</span></div>
+        <div class="company">A & T Travels and Tours</div>
+        <ul>
+          <li>Served as the primary contact for hardware, software and network incidents.</li>
+          <li>Coordinated major-incident investigations and supported rapid restoration of services.</li>
+          <li>Ensured incident logging, categorization and escalation with a continuous-improvement focus.</li>
+          <li>Monitored incident trends and delivered reports to senior management.</li>
+        </ul>
+      </article>
+
+      <article class="job">
+        <div class="jobTop"><h3>EdTech Support Coordinator</h3><span class="date">Jul 2014 — Dec 2015</span></div>
+        <div class="company">Educational Advancement Center</div>
+        <ul>
+          <li>Installed, configured and maintained educational technology systems.</li>
+          <li>Investigated system-performance issues and provided regular reporting to leadership.</li>
+          <li>Supported end users with system training and documentation focused on user satisfaction.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<section id="sap">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div class="kicker">SAP BASIS & BTP</div>
+      <h2>Hands-on SAP enterprise technology experience.</h2>
+      <p>
+        Alongside my core IT support role, I have been building hands-on SAP Basis, SAP RISE and BTP
+        experience through enterprise projects, guided administration work, troubleshooting and structured lab study.
+      </p>
+    </div>
+
+    <div class="projectGrid">
+      <article class="card project">
+        <div class="projectBody">
+          <div class="projectMeta">SAP BASIS · S/4HANA · FIORI</div>
+          <h3>SAP Basis Administration & Security</h3>
+          <p>
+            Hands-on exposure to SAP Basis administration and security activities in the Groupe Touchette
+            environment, including user and role administration, PFCG/Fiori role concepts, SU01,
+            authorization troubleshooting, S_AUTHTRACE/STAUTHTRACE, SM20 security audit review,
+            CCMS/RZ20 monitoring concepts and SAP spool management.
+          </p>
+          <div class="tags">
+            <span class="tag">SAP Basis</span><span class="tag">PFCG</span><span class="tag">SU01</span>
+            <span class="tag">Fiori</span><span class="tag">STAUTHTRACE</span><span class="tag">SM20</span>
+            <span class="tag">RZ20</span><span class="tag">Spool</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card project">
+        <div class="projectBody">
+          <div class="projectMeta">SAP RISE · IDENTITY · SSO</div>
+          <h3>SAP RISE / IAS / Microsoft Entra SSO</h3>
+          <p>
+            Worked on SAML 2.0 authentication flows for SAP Fiori Launchpad using SAP Identity
+            Authentication Service (IAS) as a proxy to Microsoft Entra ID. Tested authentication
+            behavior across environments and investigated identity mapping, provisioning and Fiori
+            authorization issues during RISE-related work.
+          </p>
+          <div class="tags">
+            <span class="tag">SAP RISE</span><span class="tag">IAS</span><span class="tag">SAML 2.0</span>
+            <span class="tag">Entra ID</span><span class="tag">Fiori</span><span class="tag">SSO</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card project">
+        <div class="projectBody">
+          <div class="projectMeta">SAP BTP · CLOUD ALM · INTEGRATION</div>
+          <h3>SAP BTP Platform & Integration Learning</h3>
+          <p>
+            Developing practical BTP knowledge across identity, subaccounts, application integration,
+            SAP Cloud Identity Services, Integration Suite concepts and Cloud ALM monitoring. Also
+            worked through SAP Cloud Connector concepts including subaccount connectivity, Location IDs,
+            virtual hosts, resource mappings and RFC exposure.
+          </p>
+          <div class="tags">
+            <span class="tag">SAP BTP</span><span class="tag">Cloud Connector</span><span class="tag">Cloud ALM</span>
+            <span class="tag">Integration Suite</span><span class="tag">IAS</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="card project">
+        <div class="projectBody">
+          <div class="projectMeta">SAP CI-DS · DATA SERVICES AGENT</div>
+          <h3>SAP Data Services Agent / BTP Integration</h3>
+          <p>
+            Built hands-on implementation knowledge around the SAP Data Services Agent on Windows Server
+            for SAP CI-DS, including agent installation, service configuration, SSL/SECUDIR concepts,
+            Job Server connectivity, SQL Server ODBC connectivity and outbound HTTPS requirements.
+          </p>
+          <div class="tags">
+            <span class="tag">CI-DS</span><span class="tag">Data Services Agent</span><span class="tag">Windows Server</span>
+            <span class="tag">ODBC</span><span class="tag">SSL</span><span class="tag">BTP</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <h3>Current SAP learning focus</h3>
+      <p>
+        SAP Basis administration, SAP security and authorizations, Fiori administration, RISE architecture,
+        SAP BTP identity and integration, SAP Cloud Connector, Cloud ALM, and SAP CI-DS/data integration.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div class="kicker">Projects</div>
+      <h2>Cloud, identity and digital technology projects.</h2>
+      <p>Projects represented in the resume and LinkedIn profile.</p>
+    </div>
+    <div class="projectGrid">
+      <article class="card project">
+        <div class="projectBody">
+          <div class="projectMeta">GROUPE TOUCHETTE · SAP RISE</div>
+          <h3>SAP RISE Migration — SAML SSO via IAS Proxy</h3>
+          <p>Configured SAML 2.0-based single sign-on for SAP Fiori Launchpad using SAP Cloud Identity Authentication Service (IAS) as a proxy to Microsoft Entra ID, then tested and validated SSO across production and development environments and documented the configuration for knowledge transfer.</p>
+          <div class="tags"><span class="tag">SAP RISE</span><span class="tag">SAP IAS</span><span class="tag">SAML 2.0</span><span class="tag">Entra ID</span><span class="tag">SSO</span></div>
+        </div>
+      </article>
+
+      <article class="card project">
+        <div class="projectBody">
+          <div class="projectMeta">AWS CLOUD PROJECT</div>
+          <h3>Static Website on AWS</h3>
+          <p>Architected and deployed a static website using Amazon S3 and CloudFront, with hands-on use of EC2 and RDS. The project included IAM, VPC configuration, SSL/TLS termination and cloud-service integration.</p>
+          <div class="tags"><span class="tag">S3</span><span class="tag">CloudFront</span><span class="tag">EC2</span><span class="tag">RDS</span><span class="tag">IAM</span></div>
+        </div>
+      </article>
+
+      <article class="card project">
+        <div class="projectBody">
+          <div class="projectMeta">ADVANCE ONTARIO · RIPPEN</div>
+          <h3>Digital Archive for Black Canadian Artists</h3>
+          <p>Contributed to a team initiative focused on digitizing and preserving multimedia content from Black Canadian artists. Work included curating, digitizing and cataloging recordings, photographs and videos using WordPress, with attention to accessibility, user engagement and SEO.</p>
+          <div class="tags"><span class="tag">WordPress</span><span class="tag">Digital Archive</span><span class="tag">SEO</span><span class="tag">Accessibility</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div class="kicker">Certifications</div>
+      <h2>Professional certifications.</h2>
+    </div>
+    <div class="certs">
+      <div class="cert"><strong>Microsoft 365 Certified: Fundamentals</strong><span>MS-900</span></div>
+      <div class="cert"><strong>Microsoft Certified: Azure Administrator Associate</strong><span>AZ-104</span></div>
+      <div class="cert"><strong>AWS Certified: Solutions Architect – Associate</strong><span>AWS Solutions Architect</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sectionHead">
+      <div class="kicker">Education</div>
+      <h2>Education.</h2>
+    </div>
+    <div class="edu">
+      <div class="eduCard">
+        <div class="year">Conestoga College · Ontario, Canada</div>
+        <h3>Graduate Certificate in Cloud Data Management</h3>
+        <p class="muted"><strong>Distinction</strong></p>
+      </div>
+      <div class="eduCard">
+        <div class="year">University of Benin</div>
+        <h3>Bachelor of Engineering in Computer Engineering</h3>
+        <p class="muted"><strong>Honors</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div class="kicker">Connect</div>
+      <h2>Let’s talk technology.</h2>
+      <p class="muted">For professional opportunities, IT support and cloud-focused work, connect with me through LinkedIn.</p>
+      <div class="buttons" style="justify-content:center">
+        <a class="btn primary" href="https://www.linkedin.com/in/precious-odemwingie-1b776323a/" target="_blank" rel="noopener">Open LinkedIn Profile</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>© <span id="year"></span> Precious Odemwingie · IT Support Engineer · Microsoft · Cloud · SAP</footer>
+<script>document.getElementById("year").textContent=new Date().getFullYear()</script>
+</body>
+</html>
