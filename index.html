@@ -52,7 +52,7 @@
     .projectGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.project{min-height:100%;display:flex;flex-direction:column}.projectBody{flex:1}.projectMeta{color:var(--accent);font-size:11px;font-weight:900;letter-spacing:1.3px}.project h3{font-size:22px;margin:8px 0}
     .certs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
     .cert{padding:22px;border:1px solid var(--line);border-radius:20px;background:#ffffff04}.cert strong{display:block;font-size:17px}.cert span{display:block;color:var(--muted);font-size:13px;margin-top:4px}
-    .edu{display:grid;grid-template-columns:1fr 1fr;gap:18px}.eduCard{padding:24px;border:1px solid var(--line);border-radius:22px;background:#ffffff04}.eduCard .year{color:var(--accent);font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:1.2px}
+    .edu{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.eduCard{padding:24px;border:1px solid var(--line);border-radius:22px;background:#ffffff04}.eduCard .year{color:var(--accent);font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:1.2px}
     .contact{padding:70px 28px;border:1px solid var(--line);border-radius:28px;text-align:center;background:linear-gradient(135deg,rgba(93,199,255,.08),rgba(136,121,255,.08))}
     .contact h2{font-size:clamp(30px,5vw,50px);letter-spacing:-2px;margin:9px 0 12px}
     footer{padding:30px 0 48px;color:var(--muted);font-size:13px;text-align:center}
@@ -153,54 +153,13 @@
       <p>Career history and responsibilities from my resume.</p>
     </div>
     <div class="timeline">
-      <article class="job">
-        <div class="jobTop"><h3>IT Technician</h3><span class="date">Oct 2024 — Present</span></div>
-        <div class="company">Groupe Touchette</div>
-        <ul>
-          <li>Provide first- and second-level IT support across warehouse and distribution environments.</li>
-          <li>Use ServiceNow to document, track and manage support requests and incidents.</li>
-          <li>Manage Active Directory with ADManager Plus, including user accounts and lockouts.</li>
-          <li>Administer Entra ID accounts, Exchange Online, Teams and endpoint devices.</li>
-          <li>Support Conditional Access and MFA security enhancements in Azure AD/Entra ID.</li>
-          <li>Troubleshoot hardware and software issues; install and configure workstations and applications.</li>
-          <li>Provide remote support with ConnectWise and assist with LAN, VPN and Wi-Fi issues.</li>
-          <li>Provision end-user devices for onboarding and replacement projects and manage IT inventory.</li>
-          <li>Maintain IT documentation and troubleshooting guides; collaborate with technical teams on new technologies.</li>
-        </ul>
-      </article>
+      <article class="job"><h3>IT Technician</h3><div class="company">Groupe Touchette</div></article>
 
-      <article class="job">
-        <div class="jobTop"><h3>IT Support Engineer</h3><span class="date">May 2019 — Dec 2022</span></div>
-        <div class="company">Hideapluxx Limited</div>
-        <ul>
-          <li>Investigated, diagnosed and resolved hardware, software and network incidents, maintaining a 90% SLA resolution rate.</li>
-          <li>Managed incidents through ServiceNow and escalated major incidents to senior teams.</li>
-          <li>Supported SCCM software deployment, patch management and workstation imaging.</li>
-          <li>Supported VPN connectivity, VoIP phone systems and remote-user communication issues.</li>
-          <li>Collaborated with vendors and internal teams to deliver timely incident resolution.</li>
-        </ul>
-      </article>
+      <article class="job"><h3>IT Support Engineer</h3><div class="company">Hideapluxx Limited</div></article>
 
-      <article class="job">
-        <div class="jobTop"><h3>IT Helpdesk</h3><span class="date">Feb 2016 — Apr 2019</span></div>
-        <div class="company">A & T Travels and Tours</div>
-        <ul>
-          <li>Served as the primary contact for hardware, software and network incidents.</li>
-          <li>Coordinated major-incident investigations and supported rapid restoration of services.</li>
-          <li>Ensured incident logging, categorization and escalation with a continuous-improvement focus.</li>
-          <li>Monitored incident trends and delivered reports to senior management.</li>
-        </ul>
-      </article>
+      <article class="job"><h3>IT Helpdesk</h3><div class="company">A & T Travels and Tours</div></article>
 
-      <article class="job">
-        <div class="jobTop"><h3>EdTech Support Coordinator</h3><span class="date">Jul 2014 — Dec 2015</span></div>
-        <div class="company">Educational Advancement Center</div>
-        <ul>
-          <li>Installed, configured and maintained educational technology systems.</li>
-          <li>Investigated system-performance issues and provided regular reporting to leadership.</li>
-          <li>Supported end users with system training and documentation focused on user satisfaction.</li>
-        </ul>
-      </article>
+      <article class="job"><h3>EdTech Support Coordinator</h3><div class="company">Educational Advancement Center</div></article>
     </div>
   </div>
 </section>
@@ -359,6 +318,11 @@
       <div class="eduCard">
         <div class="year">Conestoga College · Ontario, Canada</div>
         <h3>Graduate Certificate in Cloud Data Management</h3>
+        <p class="muted"><strong>Distinction</strong></p>
+      </div>
+      <div class="eduCard">
+        <div class="year">National Open University</div>
+        <h3>Master of Science in Information Technology</h3>
         <p class="muted"><strong>Distinction</strong></p>
       </div>
       <div class="eduCard">
