@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Precious O'Dem — IT Support Engineer focused on enterprise support, Microsoft, cloud, identity and technical operations.">
+<title>Precious O'Dem | IT Support Engineer</title>
+<style>
+:root{
+  --bg:#07111f;--bg2:#0b1728;--card:#0d1c30;--text:#edf5ff;--muted:#a9b8ca;
+  --line:rgba(255,255,255,.10);--accent:#5dc7ff;--accent2:#8879ff;--max:1160px;
+  --good:#58d68d;--shadow:0 25px 80px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:radial-gradient(circle at 10% 5%,rgba(93,199,255,.12),transparent 30%),radial-gradient(circle at 90% 12%,rgba(136,121,255,.12),transparent 28%),linear-gradient(180deg,var(--bg),#050c16 100%);line-height:1.65}
+a{text-decoration:none;color:inherit}.wrap{width:min(92%,var(--max));margin:auto}
+.nav{position:sticky;top:0;z-index:10;background:rgba(7,17,31,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.navin{min-height:72px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:850;letter-spacing:.2px}.brand i{color:var(--accent);font-style:normal}
+.navlinks{display:flex;gap:24px;color:var(--muted);font-size:14px}.navlinks a:hover{color:#fff}
+.hero{padding:94px 0 76px}.heroGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid var(--line);border-radius:999px;background:#ffffff06;color:#cad7e8;font-size:13px}.eyebrow b{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 5px rgba(88,214,141,.08)}
+h1{font-size:clamp(48px,7.8vw,92px);line-height:.96;letter-spacing:-5px;margin:22px 0}
+    .heroBlend{display:inline;font-weight:900}.heroBlend .cloud{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}.poBlend{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:#000000}.accent{color:var(--accent)}
+.lead{color:var(--muted);font-size:19px;max-width:760px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:13px;border:1px solid var(--line);font-weight:750;transition:.2s}.btn:hover{transform:translateY(-2px)}.primary{background:#fff;color:#07111f;border-color:#fff}
+.heroPanel{padding:28px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(13,28,48,.95),rgba(8,20,35,.92));box-shadow:var(--shadow)}
+.monogram{width:94px;height:94px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent2),var(--accent));color:#08111e;font-weight:900;font-size:28px}.heroPanel h2{font-size:21px;margin:20px 0 8px}.muted{color:var(--muted)}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}.quick div{border:1px solid var(--line);padding:16px;border-radius:16px;background:#ffffff04}.quick strong{font-size:21px;display:block}.quick span{font-size:12px;color:var(--muted)}
+section{padding:82px 0}.kicker{color:var(--accent);font-size:12px;font-weight:850;letter-spacing:2px;text-transform:uppercase}.sectionHead{max-width:780px;margin-bottom:32px}.sectionHead h2{font-size:clamp(32px,5vw,52px);line-height:1.04;letter-spacing:-2.4px;margin:8px 0 12px}.sectionHead p{color:var(--muted);margin:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid2,.sapGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card{padding:25px;border:1px solid var(--line);border-radius:22px;background:#ffffff04}.card h3{margin:0 0 8px;font-size:20px}.card p{color:var(--muted);margin:0}
+.evidence{margin-top:15px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:#d4dfed}.evidence span{color:#d7ff3f;font-weight:800}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}.tag{padding:7px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:#d4dfed}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:14px}.matchRow{border:1px solid var(--line);border-radius:18px;padding:20px;background:linear-gradient(140deg,#ffffff04,#ffffff01)}.matchRow strong{display:block;font-size:18px}.matchRow p{margin:5px 0 0;color:var(--muted)}
+.projectGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.project{min-height:100%;display:flex;flex-direction:column}.projectBody{flex:1}.meta{color:var(--accent);font-size:11px;font-weight:900;letter-spacing:1.3px}.project h3{font-size:22px;margin:8px 0}.label{font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#d5dfeb;margin-top:15px}.project p{color:var(--muted);margin:4px 0 0}
+.timeline{position:relative;margin-left:8px;padding-left:30px;border-left:1px solid var(--line)}.job{position:relative;padding:0 0 34px}.job:before{content:"";position:absolute;left:-37px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(93,199,255,.10)}.jobtop{display:flex;align-items:baseline;justify-content:space-between;gap:18px;flex-wrap:wrap}.job h3{margin:0;font-size:21px}.date{color:#d7ff3f;font-size:13px;font-weight:800}.company{color:#cad7e7;font-weight:700;margin:2px 0 10px}.job p{color:var(--muted);margin:6px 0 0}.job ul{margin:0;padding-left:18px;color:var(--muted)}.job li{margin:7px 0}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.skill{border:1px solid var(--line);padding:17px;border-radius:16px}.skill b{display:block}.skill span{font-size:13px;color:var(--muted)}
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.edu .year{color:var(--accent);font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:1.2px}.edu h3{margin:8px 0}
+.contact{padding:70px 28px;border:1px solid var(--line);border-radius:28px;text-align:center;background:linear-gradient(135deg,rgba(93,199,255,.08),rgba(136,121,255,.08))}.contact h2{font-size:clamp(30px,5vw,50px);letter-spacing:-2px;margin:9px 0 12px}
+.architecture{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}.archNode{border:1px solid var(--line);border-radius:16px;padding:15px;background:#ffffff04;text-align:center}.archNode strong{display:block}.archNode span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.archArrow{display:grid;place-items:center;color:var(--accent);font-weight:900}
+.ambassador{position:fixed;right:20px;bottom:20px;z-index:30}.chatBtn{border:0;border-radius:99px;padding:13px 17px;background:var(--accent);color:#061018;font-weight:900;cursor:pointer;box-shadow:0 12px 35px rgba(0,0,0,.3)}.chat{display:none;width:min(380px,calc(100vw - 30px));height:560px;margin-bottom:10px;background:#0a151f;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}.chat.open{display:flex;flex-direction:column}.chatHead{padding:15px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.chatHead strong{display:block}.chatHead small{color:var(--muted)}.close{background:none;border:0;color:var(--muted);font-size:20px;cursor:pointer}.messages{flex:1;overflow:auto;padding:15px}.msg{max-width:88%;padding:10px 12px;border-radius:14px;margin:0 0 10px;font-size:14px;white-space:pre-wrap}.bot{background:#122330;border:1px solid #1e3a4d}.user{margin-left:auto;background:#dff7ff;color:#071018}.starters{padding:0 12px 8px;display:flex;gap:6px;flex-wrap:wrap}.starter{border:1px solid var(--line);background:none;color:#cbd7e1;border-radius:99px;padding:6px 8px;font-size:11px;cursor:pointer}.chatForm{display:flex;border-top:1px solid var(--line);padding:10px;gap:7px}.chatForm input{min-width:0;flex:1;background:#071018;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px}.chatForm button{border:0;border-radius:10px;background:var(--accent);font-weight:900;padding:0 13px}
+footer{padding:30px 0 48px;color:var(--muted);font-size:13px;text-align:center}:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:900px){.heroGrid,.grid3,.grid2,.projectGrid,.match,.edu{grid-template-columns:1fr}.skills{grid-template-columns:repeat(2,1fr)}.architecture{grid-template-columns:1fr 1fr}.navlinks{display:none}.hero{padding-top:65px}h1{letter-spacing:-3px}}
+@media(max-width:520px){.wrap{width:min(94%,var(--max))}.hero{padding-bottom:40px}section{padding:58px 0}.skills{grid-template-columns:1fr 1fr}.contact{padding:30px 20px}.ambassador{right:12px;bottom:12px}.chat{height:520px}.architecture{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Primary navigation">
+<div class="wrap navin">
+<a class="brand" href="#top">Precious<i>.</i></a>
+<div class="navlinks">
+<a href="#match">Role match</a><a href="#sap">SAP</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<main id="top">
+<section class="hero">
+<div class="wrap heroGrid">
+<div>
+<div class="eyebrow"><b></b> IT Support Engineer · Ontario, Canada</div>
+<h1><span class="heroBlend">Enterprise IT. <span class="cloud">Cloud-minded.</span></span></h1>
+<p class="lead">IT professional with 5+ years of experience providing Tier 1/2 technical support across enterprise desktop, cloud data and Microsoft environments. Focused on reliable support, endpoint management, identity, cloud platforms and practical enterprise technology.</p>
+<div class="actions">
+<a class="btn primary" href="resume.pdf" download>Download Resume</a>
+<a class="btn" href="https://www.linkedin.com/in/precious-odemwingie-1b776323a/" target="_blank" rel="noopener">LinkedIn</a>
+<a class="btn" href="mailto:odeprecious10@gmail.com">Email me</a>
+</div>
+</div>
+<aside class="heroPanel" aria-label="Recruiter snapshot">
+<div class="monogram"><span class="poBlend">PO</span></div>
+<h2>IT Support · Microsoft · Cloud · SAP BTP</h2>
+<p class="muted">Tier 1/2 support, Microsoft 365, Entra ID, Intune, Active Directory, Azure, AWS, PowerShell and SAP BTP/SSO configuration.</p>
+<div class="quick">
+<div><strong>5+</strong><span>Years of IT support experience</span></div>
+<div><strong>Tier 1/2</strong><span>Enterprise support</span></div>
+</div>
+</aside>
+</div>
+</section>
+
+<section id="match">
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">Recruiter scan</div><h2>Why this profile matches enterprise IT support.</h2><p>Three capabilities, tied directly to evidence in the resume and public portfolio.</p></div>
+<div class="grid3">
+<article class="card"><h3>Enterprise Support</h3><p>First- and second-level support, incident management, ServiceNow, hardware/software troubleshooting, workstation setup and user training.</p><div class="evidence"><span>Evidence:</span> Groupe Touchette + Hideapluxx</div></article>
+<article class="card"><h3>Microsoft & Identity</h3><p>Microsoft 365, Entra ID, Active Directory, GPO, MFA, Conditional Access, SharePoint and Teams.</p><div class="evidence"><span>Evidence:</span> resume skills matrix + Groupe Touchette</div></article>
+<article class="card"><h3>SAP Enterprise Technology</h3><p>SAP Basis operations, Fiori, PFCG, SU01, SAP security tracing, RISE, IAS/SAML SSO, SAP BTP and integration-focused work.</p><div class="evidence"><span>Evidence:</span> SAP sandbox work + enterprise project activity</div></article>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">Role alignment</div><h2>Capability → evidence.</h2></div>
+<div class="match">
+<div class="matchRow"><strong>Incident & problem management</strong><p>ServiceNow, Zendesk, RCA documentation, incident reporting and a documented 90% SLA resolution rate at Hideapluxx.</p></div>
+<div class="matchRow"><strong>Endpoint & user support</strong><p>Workstation setup, imaging, diagnostics, software installation, remote support, printers and end-user training.</p></div>
+<div class="matchRow"><strong>Identity & access</strong><p>Active Directory, ADManager Plus, GPO, Entra ID, MFA and Conditional Access are listed in the resume.</p></div>
+<div class="matchRow"><strong>Cloud foundation</strong><p>Azure and AWS experience plus AWS Solutions Architect – Associate and Azure Administrator Associate certifications.</p></div>
+</div>
+</div>
+</section>
+
+<section id="sap">
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">SAP enterprise capability</div><h2>SAP work — from Basis administration to BTP integration.</h2><p>A dedicated view of the SAP work and learning currently being built into the professional profile.</p></div>
+
+<div class="sapIntro card">
+<div class="meta">SAP BASIS · RISE · BTP · IDENTITY · INTEGRATION</div>
+<h3>Hands-on SAP capability across the application, identity and cloud layers.</h3>
+<p>Practical work spans SAP Basis administration and security concepts, Fiori/launchpad troubleshooting, S/4HANA and RISE environments, SAP Identity Authentication with Microsoft Entra ID, and SAP Business Technology Platform integration concepts.</p>
+<div class="tags"><span class="tag">SAP Basis</span><span class="tag">S/4HANA</span><span class="tag">RISE</span><span class="tag">Fiori</span><span class="tag">PFCG</span><span class="tag">IAS</span><span class="tag">SAML</span><span class="tag">BTP</span><span class="tag">Cloud Connector</span><span class="tag">CI-DS</span></div>
+</div>
+
+<div class="grid2 sapGrid">
+<article class="card project"><div class="projectBody"><div class="meta">SAP BASIS · ADMINISTRATION</div><h3>Basis Administration & Operations</h3>
+<div class="label">Focus</div><p>Building practical Basis administration capability through a controlled SAP sandbox and production-oriented operational documentation.</p>
+<div class="label">Hands-on areas</div><p>SU01 user administration, PFCG roles and authorizations, Fiori role concepts, spool administration, system monitoring and troubleshooting, CCMS/RZ20 monitoring, Cloud ALM alert concepts and SAP operational checks.</p>
+<div class="label">Security & tracing</div><p>Working with STAUTHTRACE for authorization troubleshooting, SM20 for security audit review, and authorization objects/role analysis including developer access concepts.</p>
+<div class="label">Evidence</div><div class="tags"><span class="tag">SU01</span><span class="tag">PFCG</span><span class="tag">STAUTHTRACE</span><span class="tag">SM20</span><span class="tag">RZ20</span><span class="tag">Spool</span><span class="tag">Cloud ALM</span></div>
+</div></article>
+
+<article class="card project"><div class="projectBody"><div class="meta">SAP SECURITY · IDENTITY</div><h3>Fiori, IAS & Microsoft Entra SSO</h3>
+<div class="label">Problem</div><p>Understand and troubleshoot enterprise authentication flows where Microsoft Entra ID, SAP Identity Authentication and SAP Fiori/launchpad are involved.</p>
+<div class="label">Contribution</div><p>Worked through Entra ID → SAP IAS SAML flows, NameID/user-mail mapping, SSO behavior, password-change-for-SSO settings and Fiori authorization issues such as HTTP 403 responses.</p>
+<div class="label">Systems</div><p>SAP Fiori/FLP, SAP IAS, Microsoft Entra ID and SAML-based enterprise authentication.</p>
+<div class="label">Evidence</div><div class="tags"><span class="tag">IAS</span><span class="tag">SAML</span><span class="tag">Entra ID</span><span class="tag">Fiori</span><span class="tag">SSO</span><span class="tag">Authorization</span></div>
+</div></article>
+
+<article class="card project"><div class="projectBody"><div class="meta">SAP BTP · CLOUD PLATFORM</div><h3>BTP Architecture & Cloud Connector</h3>
+<div class="label">Focus</div><p>Developing practical understanding of SAP BTP as the cloud integration and extension layer around SAP enterprise systems.</p>
+<div class="label">Hands-on areas</div><p>BTP subaccounts, SAP IAS as an identity layer, Identity Provisioning concepts, Cloud Connector installation and configuration, subaccount connectivity, Location IDs, virtual hosts and controlled exposure of on-premise resources.</p>
+<div class="label">Architecture</div><p>Understanding the relationship between Microsoft Entra ID, SAP IAS, SAP BTP services and connected SAP/on-premise resources for SSO, provisioning and integration scenarios.</p>
+<div class="label">Evidence</div><div class="tags"><span class="tag">SAP BTP</span><span class="tag">Cloud Connector</span><span class="tag">IAS</span><span class="tag">IPS</span><span class="tag">Provisioning</span></div>
+</div></article>
+
+<article class="card project"><div class="projectBody"><div class="meta">SAP INTEGRATION · CI-DS</div><h3>SAP Data Services Agent / CI-DS</h3>
+<div class="label">Problem</div><p>Support an SAP Cloud Integration for Data Services scenario connecting BTP/CI-DS with enterprise data sources.</p>
+<div class="label">Contribution</div><p>Worked with the SAP Data Services Agent on Windows Server, service-account configuration, outbound HTTPS requirements, SQL Server ODBC connectivity and Job Server/agent operation.</p>
+<div class="label">Technical areas</div><p>Windows Server, SAP Data Services Agent, CI-DS, SQL Server ODBC Driver 18, agent security directories, Job Server configuration and connectivity troubleshooting.</p>
+<div class="label">Evidence</div><div class="tags"><span class="tag">CI-DS</span><span class="tag">Data Services Agent</span><span class="tag">Windows Server</span><span class="tag">SQL ODBC</span><span class="tag">HTTPS 443</span></div>
+</div></article>
+</div>
+
+<article class="card project" style="margin-top:18px">
+<div class="projectBody">
+<div class="meta">SAP BASIS · AWS · ECC 6.0 EHP8 · MSSQL</div>
+<h3>AWS-hosted SAP ECC 6.0 EHP8 QAS Lab — Installation & System Build</h3>
+<div class="label">Project</div>
+<p>Designed and built a hands-on SAP ECC 6.0 EHP8 environment hosted on AWS, using Microsoft Windows Server 2019 and Microsoft SQL Server 2017. The work covered the infrastructure preparation, database installation, SAP media preparation and SAP installation through Software Provisioning Manager (SWPM).</p>
+<div class="label">Sizing & preparation</div>
+<p>Worked through SAP Quick Sizer concepts using user-based and throughput-based sizing, then prepared the operating-system and storage requirements. The installation checklist covered the ECC Master Guide, S-User/media requirements, SAP kernel, SWPM, SAP Host Agent and database media.</p>
+<div class="label">Database layer</div>
+<p>Installed Microsoft SQL Server 2017 Developer Edition, configured the SQL Server instance and applied the SAP-relevant collation <b>SQL_Latin1_General_CP850_BIN2</b>. The environment used Windows authentication and was prepared as the database layer for the ECC installation.</p>
+<div class="label">SAP installation</div>
+<p>Executed <b>sapinst.exe</b> through SWPM as administrator, selected SAP Business Suite / ERP 6.0 EHP8 (ABAP), configured the SID and master credentials, supplied the SAP kernel and export media, reviewed database/data-file parameters, configured parallel export jobs and completed the installation while monitoring the installation logs.</p>
+<div class="label">SAP architecture</div>
+<div class="architecture">
+<div class="archNode"><strong>Windows Server 2019</strong><span>AWS-hosted OS / infrastructure</span></div>
+<div class="archNode"><strong>MSSQL 2017</strong><span>SAP database instance</span></div>
+<div class="archNode"><strong>PAS</strong><span>Primary Application Server · DIA / UPD / BTC / SPO / IGS</span></div>
+<div class="archNode"><strong>ASCS</strong><span>Message Server + Enqueue Server</span></div>
+</div>
+<div class="label">Instance configuration</div>
+<p>The documented lab used distinct instance numbers for the SAP ECC system, including <b>PAS 55</b> and <b>ASCS 51</b>, while keeping instance-number uniqueness in mind when multiple SAP systems share infrastructure.</p>
+<div class="label">Validation & operational understanding</div>
+<p>Validated the completed installation through the SAP Management Console and documented how PAS, ASCS and the database instance work together. The documentation also covers standard versus distributed installation models, resource isolation, unique SIDs/instance numbers and considerations for running multiple test systems on one host.</p>
+<div class="label">Outcome</div>
+<p>A successfully installed SAP ERP ECC 6.0 ABAP environment and a reusable Basis installation runbook covering sizing, Windows preparation, SQL Server, SWPM parameters, instance configuration and post-installation validation.</p>
+<div class="tags"><span class="tag">AWS</span><span class="tag">SAP ECC 6.0 EHP8</span><span class="tag">QAS</span><span class="tag">Windows Server 2019</span><span class="tag">MSSQL 2017</span><span class="tag">SWPM</span><span class="tag">sapinst</span><span class="tag">PAS</span><span class="tag">ASCS</span><span class="tag">SAP Basis</span></div>
+</div></article>
+
+<div class="sectionHead sapSub"><div class="kicker">SAP environments & concepts</div><h2>What I can speak to in a technical interview.</h2></div>
+<div class="skills sapSkills">
+<div class="skill"><b>Basis</b><span>SU01 · PFCG · roles/authorizations · spool · monitoring · RZ20/CCMS · Cloud ALM</span></div>
+<div class="skill"><b>SAP Security</b><span>Authorization troubleshooting · STAUTHTRACE · SM20 · role comparison · access concepts</span></div>
+<div class="skill"><b>Fiori / S/4HANA</b><span>Fiori Launchpad · catalogs/roles · HTTP 403 troubleshooting · S/4HANA system access flows</span></div>
+<div class="skill"><b>Identity</b><span>Microsoft Entra ID · SAP IAS · SAML · NameID mapping · SSO · provisioning concepts</span></div>
+<div class="skill"><b>BTP</b><span>Subaccounts · IAS · IPS/provisioning · integration architecture · clean-core/RISE concepts</span></div>
+<div class="skill"><b>Connectivity</b><span>SAP Cloud Connector · Location IDs · virtual hosts · on-premise resource exposure</span></div>
+<div class="skill"><b>Data Integration</b><span>CI-DS · Data Services Agent · SQL Server ODBC · Job Server · HTTPS connectivity</span></div>
+<div class="skill"><b>Operational Troubleshooting</b><span>Authentication flows · authorization failures · service startup · connectivity · logs and monitoring</span></div>
+</div>
+</div>
+</section>
+
+<section id="projects">
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">Selected evidence</div><h2>Projects worth a closer look.</h2><p>Ordered for relevance to enterprise IT, cloud and identity-focused roles.</p></div>
+<article class="card project" style="margin-bottom:18px">
+<div class="projectBody">
+<div class="meta">FEATURED SAP PROJECT · AWS · BASIS</div>
+<h3>AWS-hosted SAP ECC 6.0 EHP8 QAS Installation</h3>
+<p>Hands-on installation of SAP ERP ECC 6.0 EHP8 on an AWS-hosted Windows Server 2019 environment with Microsoft SQL Server 2017 as the database. The build used SAP SWPM/sapinst and covered sizing, installation media, kernel setup, SID and instance configuration, PAS/ASCS architecture, database parameters, installation-log monitoring and post-installation validation.</p>
+<div class="tags"><span class="tag">SAP ECC 6.0 EHP8</span><span class="tag">AWS</span><span class="tag">MSSQL</span><span class="tag">SWPM</span><span class="tag">PAS</span><span class="tag">ASCS</span><span class="tag">Windows Server 2019</span></div>
+</div></article>
+<div class="projectGrid">
+<article class="card project">
+<div class="projectBody"><div class="meta">AWS · CLOUD</div><h3>Static Website on AWS</h3>
+<div class="label">Problem</div><p>Deploy a website using AWS cloud services.</p>
+<div class="label">Contribution</div><p>Deployed a static website using Amazon S3 and used EC2, RDS and CloudFront in the project.</p>
+<div class="label">Tools</div><div class="tags"><span class="tag">S3</span><span class="tag">EC2</span><span class="tag">RDS</span><span class="tag">CloudFront</span></div>
+<div class="label">Outcome</div><p>Working cloud-hosted website demonstrating practical AWS service integration.</p></div>
+</article>
+<article class="card project">
+<div class="projectBody"><div class="meta">IT OPERATIONS · INCIDENT MANAGEMENT</div><h3>Enterprise Desktop Support</h3>
+<div class="label">Problem</div><p>Resolve hardware, software and network incidents for end users while maintaining service levels.</p>
+<div class="label">Contribution</div><p>Investigated, diagnosed and resolved incidents, documented RCA artifacts, managed tickets and collaborated with vendors and technical teams.</p>
+<div class="label">Tools</div><div class="tags"><span class="tag">ServiceNow</span><span class="tag">Zendesk</span><span class="tag">Windows</span><span class="tag">Microsoft 365</span></div>
+<div class="label">Outcome</div><p>90% resolution rate within SLAs at Hideapluxx, as stated on the resume.</p></div>
+</article>
+<article class="card project">
+<div class="projectBody"><div class="meta">DIGITAL PRESERVATION · WORDPRESS</div><h3>Digital Archive for Black Canadian Artists</h3>
+<div class="label">Problem</div><p>Support preservation and presentation of multimedia historical content.</p>
+<div class="label">Contribution</div><p>Curated multimedia content, supported WordPress functionality and worked with plugins and themes.</p>
+<div class="label">Tools</div><div class="tags"><span class="tag">WordPress</span><span class="tag">Plugins</span><span class="tag">Themes</span></div>
+<div class="label">Outcome</div><p>Contributed to a digital archive initiative focused on historical preservation.</p></div>
+</article>
+</div>
+</div>
+</section>
+
+<section id="experience">
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">Experience</div><h2>Professional history.</h2></div>
+<div class="timeline">
+<article class="job"><div class="jobtop"><h3>IT Technician</h3><span class="date">Oct 2024 – Present</span></div><div class="company">Groupe Touchette</div><p>First- and second-level user support, ServiceNow, Active Directory, Microsoft 365/Entra ID, MFA/Conditional Access, workstation setup, remote support, printers, incident management, documentation and inventory.</p></article>
+<article class="job"><div class="jobtop"><h3>IT Support Engineer</h3><span class="date">May 2019 – Dec 2022</span></div><div class="company">Hideapluxx Limited</div><p>Hardware, software and network incident investigation, ServiceNow, major-incident escalation, continuous improvement, RCA/KPI reporting and vendor/internal-team collaboration.</p></article>
+<article class="job"><div class="jobtop"><h3>IT Helpdesk</h3><span class="date">Feb 2016 – Apr 2019</span></div><div class="company">A &amp; T Travels and Tours</div><p>Primary incident-management contact, diagnosis and resolution, major-incident coordination, ticket categorization/escalation and reporting.</p></article>
+<article class="job"><div class="jobtop"><h3>EdTech Support Coordinator</h3><span class="date">Jul 2014 – Dec 2015</span></div><div class="company">Educational Advancement Center</div><p>Educational technology installation, configuration and maintenance, performance investigations, reporting, user training and documentation.</p></article>
+</div>
+</div>
+</section>
+
+<section id="skills">
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">Technical profile</div><h2>Tools and technologies.</h2></div>
+<div class="skills">
+<div class="skill"><b>Microsoft</b><span>Microsoft 365 · Entra ID · SharePoint · Teams</span></div>
+<div class="skill"><b>Identity</b><span>Active Directory · GPO · ADManager Plus · MFA · Access Controls</span></div>
+<div class="skill"><b>Cloud</b><span>Azure · AWS · VMs · Resource Groups · IAM</span></div>
+<div class="skill"><b>Support</b><span>ServiceNow · Zendesk · Incident Management · ITIL-based support</span></div>
+<div class="skill"><b>Endpoint & Hardware</b><span>Workstations · Imaging · Diagnostics · Hardware refresh</span></div>
+<div class="skill"><b>SAP</b><span>Basis · S/4HANA · Fiori · PFCG · SU01 · IAS · SAML · BTP</span></div>
+<div class="skill"><b>SAP Integration</b><span>Cloud Connector · CI-DS · Data Services Agent · IPS · ODBC</span></div>
+<div class="skill"><b>Automation</b><span>Power Automate · PowerShell</span></div>
+<div class="skill"><b>Networking</b><span>Basic switches · routers · wireless APs · VPN clients</span></div>
+<div class="skill"><b>Operating Systems</b><span>Windows · Linux · macOS · Android · iOS</span></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">Credentials</div><h2>Certifications.</h2></div>
+<div class="grid3">
+<div class="card"><h3>Microsoft 365 Certified: Fundamentals</h3><p>MS-900</p></div>
+<div class="card"><h3>Microsoft Certified: Azure Administrator Associate</h3><p>AZ-104</p></div>
+<div class="card"><h3>AWS Certified: Solutions Architect – Associate</h3><p>AWS Solutions Architect</p></div>
+</div>
+</div>
+</section>
+
+<section id="education">
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">Education</div><h2>Education.</h2></div>
+<div class="edu">
+<div class="card"><div class="year">Conestoga College · Ontario</div><h3>Graduate Certificate in Cloud Data Management</h3><p class="muted">Distinction</p></div>
+<div class="card"><div class="year">National Open University</div><h3>Master of Science in Information Technology</h3><p class="muted">Distinction</p></div>
+<div class="card"><div class="year">University of Benin</div><h3>Bachelor of Engineering in Computer Engineering</h3><p class="muted">Honors</p></div>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="wrap">
+<div class="contact">
+<div class="kicker">Contact</div><h2>Let's talk technology.</h2>
+<p class="muted">For professional opportunities and technical roles, reach me by email or LinkedIn.</p>
+<div class="actions" style="justify-content:center">
+<a class="btn primary" href="mailto:odeprecious10@gmail.com">odeprecious10@gmail.com</a>
+<a class="btn" href="https://www.linkedin.com/in/precious-odemwingie-1b776323a/" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+
+<div class="ambassador">
+<div class="chat" id="chat" role="dialog" aria-label="Virtual recruiter ambassador">
+<div class="chatHead"><div><strong>Precious — Virtual Ambassador</strong><small>Verified site information only</small></div><button class="close" id="close" aria-label="Close ambassador">×</button></div>
+<div class="messages" id="messages" aria-live="polite"></div>
+<div class="starters">
+<button class="starter">Why fit enterprise IT?</button>
+<button class="starter">Microsoft experience?</button>
+<button class="starter">Cloud projects?</button>
+</div>
+<form class="chatForm" id="chatForm"><input id="chatInput" maxlength="300" aria-label="Ask the ambassador" placeholder="Ask about background, skills or projects…"><button>Ask</button></form>
+</div>
+<button class="chatBtn" id="open">Ask the Ambassador</button>
+</div>
+
+<footer>© <span id="year"></span> Precious O'Dem · Built from verified resume and public portfolio information.</footer>
+
+<script>
+const evidence = {
+  fit: `Precious' resume shows 5+ years of IT experience across desktop and cloud environments. The strongest enterprise-support evidence is first- and second-level support at Groupe Touchette, incident management and ServiceNow, plus a documented 90% resolution rate within SLAs at Hideapluxx. See #match and #experience.`,
+  microsoft: `The resume lists Microsoft 365, Entra ID, SharePoint and Teams. Groupe Touchette experience includes Active Directory, ADManager Plus, Microsoft 365/Entra ID accounts, MFA and Conditional Access. See #skills and #experience.`,
+  cloud: `The profile covers Azure and AWS, including Virtual Machines, Resource Groups and IAM. The AWS project used S3, EC2, RDS and CloudFront. Certifications include Azure Administrator Associate and AWS Solutions Architect – Associate. See #projects and #education.`,
+  sap: `SAP is a major part of the deeper technical profile. The site documents Basis work with SU01, PFCG, authorization troubleshooting, STAUTHTRACE, SM20, RZ20/CCMS, spool and monitoring; Fiori and S/4HANA access troubleshooting; Entra ID → SAP IAS SAML SSO; SAP BTP, IPS/provisioning and Cloud Connector concepts; and CI-DS/Data Services Agent work on Windows Server with SQL ODBC and HTTPS connectivity. See #sap.`,
+  projects: `The strongest documented project evidence is the AWS static website project, plus the Digital Archive for Black Canadian Artists. The resume describes AWS services including S3, EC2, RDS and CloudFront, and WordPress work for the archive. See #projects.`,
+  background: `Precious is an IT support professional with 5+ years of experience. The resume covers enterprise desktop support, incident/problem management, Microsoft technologies, cloud, user management, hardware and automation. See #match, #skills and #experience.`,
+  availability: `I don't have verified information about availability.`,
+  salary: `I don't have verified information about salary expectations.`,
+  location: `The public portfolio identifies Ontario, Canada. I don't have a verified street address and will not provide private contact information.`,
+  education: `The resume lists a Graduate Certificate in Cloud Data Management from Conestoga College (Distinction), an MSc in Information Technology from National Open University (Distinction), and a BEng in Computer Engineering from University of Benin (Honors). See #education.`,
+  unsupported: `I don’t have verified information about that.`
+};
+
+function answer(q){
+ const x=q.toLowerCase();
+ if(/fit|match|why.*role|enterprise/.test(x)) return evidence.fit;
+ if(/microsoft|365|entra|active directory|intune|identity|mfa|conditional/.test(x)) return evidence.microsoft;
+ if(/sap|basis|fiori|pfcg|su01|ias|saml|btp|cloud connector|ci-ds|data services|s4hana|s\/4hana|stauthtrace|sm20|rz20/.test(x)) return evidence.sap;
+ if(/cloud|aws|azure|s3|ec2|rds|cloudfront/.test(x)) return evidence.cloud;
+ if(/project|portfolio|evidence/.test(x)) return evidence.projects;
+ if(/background|experience|career|work/.test(x)) return evidence.background;
+ if(/availability|available|start date/.test(x)) return evidence.availability;
+ if(/salary|pay|compensation/.test(x)) return evidence.salary;
+ if(/address|phone|location|where.*live/.test(x)) return evidence.location;
+ if(/education|degree|master|bachelor|conestoga/.test(x)) return evidence.education;
+ return evidence.unsupported;
+}
+const chat=document.getElementById('chat'),open=document.getElementById('open'),close=document.getElementById('close'),messages=document.getElementById('messages'),form=document.getElementById('chatForm'),input=document.getElementById('chatInput');
+function add(text,who='bot'){const d=document.createElement('div');d.className='msg '+who;d.textContent=text;messages.appendChild(d);messages.scrollTop=messages.scrollHeight}
+function ask(q){add(q,'user');setTimeout(()=>add(answer(q),'bot'),120)}
+open.onclick=()=>{chat.classList.add('open');open.style.display='none';if(!messages.children.length)add(`Hi. I’m the virtual ambassador for Precious’ professional site. I can answer questions about his background, role fit, skills and projects using only verified information on this site. Ask me anything, or choose a starter below.`)}
+close.onclick=()=>{chat.classList.remove('open');open.style.display='block'}
+form.onsubmit=e=>{e.preventDefault();const q=input.value.trim();if(!q)return;ask(q);input.value=''}
+document.querySelectorAll('.starter').forEach(b=>b.onclick=()=>ask(b.textContent));
+document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
