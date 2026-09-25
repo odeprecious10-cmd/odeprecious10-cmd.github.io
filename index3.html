@@ -383,6 +383,7 @@ footer{padding:30px 0 48px;color:var(--muted);font-size:13px;text-align:center}:
 <script>
 (function () {
   "use strict";
+
   var video    = document.getElementById("profileVideo");
   var loader   = document.getElementById("videoLoader");
   var unmute   = document.getElementById("videoUnmute");
@@ -407,26 +408,8 @@ footer{padding:30px 0 48px;color:var(--muted);font-size:13px;text-align:center}:
 
   video.addEventListener("loadeddata", hideLoader);
   video.addEventListener("canplay", hideLoader);
-
-  var p = video.play();
-  if (p && typeof p.catch === "function") p.catch(function(){ hideLoader(); });
-
-  video.addEventListener("volumechange", function(){
-    if (!unmute) return;
-    unmute.hidden = !video.muted;
-  });
-
-  if (unmute) {
-    unmute.addEventListener("click", function(){
-      video.muted = false;
-      video.volume = 1;
-      var pp = video.play();
-      if (pp && typeof pp.catch === "function") pp.catch(function(){});
-      unmute.hidden = true;
-    });
-  }
-
   video.addEventListener("error", showFallback);
+
   var sources = video.querySelectorAll("source");
   var failed = 0;
   sources.forEach(function(s){
@@ -436,23 +419,85 @@ footer{padding:30px 0 48px;color:var(--muted);font-size:13px;text-align:center}:
     });
   });
 
-  if ("IntersectionObserver" in window && !reduceMotion) {
-    var wasPlaying = false;
+  /* ---------------------------------------------------------
+     1. Play when the section scrolls into view (muted)
+     --------------------------------------------------------- */
+  var inView = false;
+  var userGestured = false;
+
+  if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
-        if (entry.isIntersecting) {
-          if (wasPlaying) {
-            var pp = video.play();
-            if (pp && typeof pp.catch === "function") pp.catch(function(){});
-          }
+        inView = entry.isIntersecting;
+        if (inView) {
+          var p = video.play();
+          if (p && typeof p.catch === "function") p.catch(function(){ hideLoader(); });
         } else {
-          wasPlaying = !video.paused;
           video.pause();
         }
       });
-    }, { threshold: 0.25 });
+    }, { threshold: 0.35 });
     io.observe(video);
+  } else {
+    // Fallback for very old browsers — just play muted
+    var p = video.play();
+    if (p && typeof p.catch === "function") p.catch(function(){ hideLoader(); });
   }
+
+  /* ---------------------------------------------------------
+     2. Auto-unmute the FIRST time the user clicks/taps anything
+        on the page. Browsers allow sound after a gesture.
+        We only do this if the video is currently in view, so
+        sound doesn't kick in while they're reading something else.
+     --------------------------------------------------------- */
+  function enableSound() {
+    if (userGestured) return;
+    userGestured = true;
+
+    // Only unmute if the video is on screen and playing
+    if (inView && !video.paused) {
+      video.muted = false;
+      video.volume = 1;
+
+      // Some browsers pause on unmute — resume
+      var pp = video.play();
+      if (pp && typeof pp.catch === "function") pp.catch(function(){});
+    }
+
+    // Clean up listeners — we only need one gesture ever
+    window.removeEventListener("pointerdown", enableSound, true);
+    window.removeEventListener("keydown", enableSound, true);
+    window.removeEventListener("touchstart", enableSound, true);
+
+    if (unmute) unmute.hidden = true;
+  }
+
+  window.addEventListener("pointerdown", enableSound, true);
+  window.addEventListener("keydown", enableSound, true);
+  window.addEventListener("touchstart", enableSound, true);
+
+  /* ---------------------------------------------------------
+     3. Manual mute/unmute button (fallback for people who
+        gesture before the video is in view)
+     --------------------------------------------------------- */
+  if (unmute) {
+    unmute.addEventListener("click", function(e){
+      e.stopPropagation(); // don't trigger the auto-unmute handler twice
+      userGestured = true;
+      video.muted = false;
+      video.volume = 1;
+      var pp = video.play();
+      if (pp && typeof pp.catch === "function") pp.catch(function(){});
+      unmute.hidden = true;
+    });
+  }
+
+  video.addEventListener("volumechange", function(){
+    if (!unmute) return;
+    // Show button whenever muted AND we're in view
+    unmute.hidden = !video.muted || !inView;
+  });
+
 })();
 </script>
 </div>
