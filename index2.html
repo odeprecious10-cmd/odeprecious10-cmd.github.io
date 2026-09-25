@@ -1,1604 +1,345 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Precious Odemwingie — [[TARGET ROLE]]</title>
-<meta name="description" content="Visual resume for Precious Odemwingie — [[TARGET ROLE]]. Projects, evidence, and a virtual ambassador that answers from verified sources only." />
-<meta name="theme-color" content="#0B0F14" />
-
-<!-- Open Graph -->
-<meta property="og:type" content="profile" />
-<meta property="og:title" content="Precious Odemwingie — [[TARGET ROLE]]" />
-<meta property="og:description" content="[[POSITIONING — one sentence]]" />
-<meta property="og:url" content="https://odeprecious10-cmd.github.io/" />
-
-<link rel="canonical" href="https://odeprecious10-cmd.github.io/" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Precious Odemwingie",
-  "email": "mailto:odeprecious10@gmail.com",
-  "url": "https://odeprecious10-cmd.github.io/",
-  "sameAs": [
-    "https://www.linkedin.com/in/precious-odemwingie-1b776323a/",
-    "https://odeprecious10-cmd.github.io/"
-  ],
-  "jobTitle": "[[TARGET ROLE]]"
-}
-</script>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Precious O'Dem — IT Support Engineer focused on enterprise support, Microsoft, cloud, identity and technical operations.">
+<title>Precious O'Dem | IT Support Engineer</title>
 <style>
-/* ============================================================
-   TOKENS
-   ============================================================ */
 :root{
-  --ink:#0B0F14;
-  --surface:#111823;
-  --surface-2:#18212E;
-  --line:#25303F;
-  --line-soft:#1C2634;
-  --text:#E9EEF6;
-  --muted:#93A2B8;
-  --dim:#6B7A8F;
-  --accent:#FF6B3D;
-  --accent-2:#FFA07A;
-  --accent-soft:rgba(255,107,61,.12);
-  --teal:#3DDCB4;
-  --teal-soft:rgba(61,220,180,.12);
-  --radius:16px;
-  --radius-sm:10px;
-  --maxw:1140px;
-  --shadow:0 20px 50px -20px rgba(0,0,0,.75);
-  --font-body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --font-display:"Fraunces",Georgia,"Times New Roman",serif;
-}
-
-/* ============================================================
-   RESET / BASE
-   ============================================================ */
-*,*::before,*::after{box-sizing:border-box;}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
-body{
-  margin:0;
-  background:var(--ink);
-  color:var(--text);
-  font-family:var(--font-body);
-  font-size:16px;
-  line-height:1.62;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-body::before{
-  content:"";
-  position:fixed;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(900px 500px at 12% -8%, rgba(255,107,61,.10), transparent 60%),
-    radial-gradient(800px 480px at 92% 4%, rgba(61,220,180,.07), transparent 60%),
-    linear-gradient(180deg,#0B0F14 0%,#0B0F14 100%);
-}
-img{max-width:100%;display:block;}
-a{color:inherit;}
-h1,h2,h3,h4{line-height:1.15;margin:0;font-weight:700;letter-spacing:-.02em;}
-p{margin:0;}
-ul{margin:0;padding:0;list-style:none;}
-button{font:inherit;color:inherit;}
-
-:focus-visible{
-  outline:2px solid var(--accent);
-  outline-offset:3px;
-  border-radius:4px;
-}
-
-.skip-link{
-  position:absolute;left:-9999px;top:0;z-index:999;
-  background:var(--accent);color:#0B0F14;padding:12px 18px;
-  font-weight:700;border-radius:0 0 10px 0;text-decoration:none;
-}
-.skip-link:focus{left:0;}
-
-.wrap{
-  width:100%;max-width:var(--maxw);
-  margin-inline:auto;padding-inline:clamp(18px,5vw,32px);
-  position:relative;z-index:1;
-}
-
-/* ============================================================
-   PLACEHOLDER HIGHLIGHT (delete this rule + .ph spans later)
-   ============================================================ */
-.ph{
-  color:var(--accent-2);
-  border-bottom:1px dashed rgba(255,107,61,.55);
-  font-style:italic;
-}
-#phBanner{
-  position:sticky;top:0;z-index:80;
-  background:linear-gradient(90deg,#FF6B3D,#FFA07A);
-  color:#12161C;font-size:13px;font-weight:600;
-  padding:8px 18px;text-align:center;
-}
-#phBanner button{
-  background:rgba(0,0,0,.18);border:0;border-radius:999px;
-  padding:2px 10px;margin-left:10px;cursor:pointer;font-weight:700;font-size:12px;
-}
-
-/* ============================================================
-   NAV
-   ============================================================ */
-.nav{
-  position:sticky;top:0;z-index:70;
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
-  background:rgba(11,15,20,.82);
-  border-bottom:1px solid var(--line-soft);
-}
-.nav-inner{
-  display:flex;align-items:center;gap:20px;
-  min-height:62px;
-}
-.brand{
-  font-family:var(--font-display);
-  font-size:17px;font-weight:700;letter-spacing:-.01em;
-  text-decoration:none;white-space:nowrap;
-}
-.brand span{color:var(--accent);}
-.nav-links{display:flex;gap:4px;margin-left:auto;}
-.nav-links a{
-  text-decoration:none;font-size:14px;font-weight:500;color:var(--muted);
-  padding:8px 12px;border-radius:8px;transition:color .16s,background .16s;
-}
-.nav-links a:hover{color:var(--text);background:var(--surface-2);}
-.nav-cta{display:flex;gap:8px;margin-left:8px;}
-
-/* ============================================================
-   BUTTONS
-   ============================================================ */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  padding:11px 18px;border-radius:999px;
-  font-size:14px;font-weight:600;text-decoration:none;
-  border:1px solid transparent;cursor:pointer;
-  transition:transform .14s ease,background .16s,border-color .16s,color .16s;
-  white-space:nowrap;
-}
-.btn:active{transform:translateY(1px);}
-.btn-primary{background:var(--accent);color:#12161C;}
-.btn-primary:hover{background:var(--accent-2);}
-.btn-ghost{background:transparent;border-color:var(--line);color:var(--text);}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
-.btn-sm{padding:9px 15px;font-size:13px;}
-
-/* ============================================================
-   HERO — 60 SECOND SCAN
-   ============================================================ */
-.hero{padding:clamp(44px,7vw,84px) 0 clamp(34px,5vw,56px);}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:9px;
-  font-size:12.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--teal);
-  background:var(--teal-soft);
-  border:1px solid rgba(61,220,180,.25);
-  padding:7px 14px;border-radius:999px;margin-bottom:26px;
-}
-.eyebrow .dot{
-  width:7px;height:7px;border-radius:50%;background:var(--teal);
-  animation:pulse 2.2s ease-in-out infinite;
-}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.35;}}
-
-.hero h1{
-  font-family:var(--font-display);
-  font-size:clamp(40px,8.5vw,74px);
-  font-weight:700;letter-spacing:-.03em;margin-bottom:18px;
-}
-.hero h1 em{font-style:italic;color:var(--accent);}
-
-.positioning{
-  font-size:clamp(17px,2.4vw,21px);
-  line-height:1.5;
-  color:#C6D2E2;
-  max-width:64ch;
-  margin-bottom:28px;
-  font-weight:400;
-}
-
-.cap-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px;}
-.cap-chip{
-  display:inline-flex;align-items:center;gap:9px;
-  padding:10px 16px;border-radius:999px;
-  background:var(--surface);border:1px solid var(--line);
-  font-size:14px;font-weight:600;
-}
-.cap-chip::before{
-  content:"";width:6px;height:6px;border-radius:50%;
-  background:var(--accent);flex:none;
-}
-
-.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;}
-
-/* Proof strip */
-.proof-strip{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1px;
-  background:var(--line-soft);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  overflow:hidden;
-}
-.proof{
-  background:var(--surface);
-  padding:22px 20px;
-}
-.proof b{
-  display:block;
-  font-family:var(--font-display);
-  font-size:clamp(24px,4.5vw,32px);
-  font-weight:700;color:var(--accent);line-height:1.1;margin-bottom:6px;
-}
-.proof span{font-size:13px;color:var(--muted);line-height:1.45;display:block;}
-
-/* ============================================================
-   SECTIONS
-   ============================================================ */
-section{padding:clamp(46px,7vw,80px) 0;scroll-margin-top:80px;}
-.section-head{margin-bottom:36px;max-width:70ch;}
-.section-num{
-  font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:10px;
-}
-.section-head h2{
-  font-family:var(--font-display);
-  font-size:clamp(27px,4.6vw,40px);
-  letter-spacing:-.025em;margin-bottom:12px;
-}
-.section-head p{color:var(--muted);font-size:15.5px;}
-
-/* ============================================================
-   ROLE MATCH
-   ============================================================ */
-.match-list{display:grid;gap:14px;}
-.match-row{
-  display:grid;
-  grid-template-columns:minmax(190px,.85fr) 1.7fr auto;
-  gap:22px;align-items:start;
-  padding:22px 24px;
-  background:var(--surface);
-  border:1px solid var(--line-soft);
-  border-left:3px solid var(--accent);
-  border-radius:var(--radius-sm);
-  transition:background .16s,border-color .16s;
-}
-.match-row:hover{background:var(--surface-2);}
-.match-row h3{font-size:16px;margin-bottom:6px;letter-spacing:-.01em;}
-.match-row .ev{color:#B9C6D6;font-size:14.5px;line-height:1.6;}
-.match-row .ev strong{color:var(--text);font-weight:600;}
-.match-link{
-  font-size:13px;font-weight:600;color:var(--accent);
-  text-decoration:none;white-space:nowrap;padding-top:2px;
-}
-.match-link:hover{text-decoration:underline;}
-
-/* ============================================================
-   PROJECTS
-   ============================================================ */
-.projects{display:grid;gap:20px;}
-.project{
-  background:var(--surface);
-  border:1px solid var(--line-soft);
-  border-radius:var(--radius);
-  padding:clamp(22px,3.6vw,32px);
-  transition:border-color .2s,transform .2s;
-}
-.project:hover{border-color:#33445A;}
-.project-top{
-  display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:6px;
-}
-.project-top h3{font-size:clamp(19px,2.9vw,23px);letter-spacing:-.02em;}
-.project-rank{
-  font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--accent);background:var(--accent-soft);
-  border:1px solid rgba(255,107,61,.28);
-  padding:4px 10px;border-radius:999px;
-}
-.project-role{color:var(--muted);font-size:14px;margin-bottom:22px;}
-
-.pcb{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:20px;}
-.pcb > div{background:var(--surface-2);padding:16px 18px;}
-.pcb dt{
-  font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--dim);margin-bottom:7px;
-}
-.pcb dd{margin:0;font-size:14.5px;line-height:1.55;color:#C3D0E0;}
-.pcb .outcome dd{color:var(--teal);font-weight:600;}
-
-.tools{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px;}
-.tool{
-  font-size:12.5px;font-weight:500;
-  background:var(--surface-2);border:1px solid var(--line);
-  padding:5px 11px;border-radius:6px;color:var(--muted);
-}
-.project-links{display:flex;flex-wrap:wrap;gap:10px;}
-.project-links a{
-  font-size:13.5px;font-weight:600;color:var(--accent);text-decoration:none;
-}
-.project-links a:hover{text-decoration:underline;}
-
-/* ============================================================
-   TIMELINE (experience / leadership / education)
-   ============================================================ */
-.timeline{position:relative;padding-left:26px;}
-.timeline::before{
-  content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;
-  background:linear-gradient(180deg,var(--accent),var(--line) 40%,transparent);
-}
-.tl-item{position:relative;padding-bottom:32px;}
-.tl-item:last-child{padding-bottom:0;}
-.tl-item::before{
-  content:"";position:absolute;left:-26px;top:8px;
-  width:11px;height:11px;border-radius:50%;
-  background:var(--ink);border:2px solid var(--accent);
-}
-.tl-meta{
-  font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--dim);margin-bottom:6px;
-}
-.tl-item h3{font-size:17.5px;margin-bottom:4px;}
-.tl-org{font-size:14.5px;color:var(--accent);font-weight:600;margin-bottom:12px;}
-.tl-item ul{display:grid;gap:8px;}
-.tl-item li{
-  position:relative;padding-left:18px;
-  font-size:14.5px;color:#B9C6D6;line-height:1.6;
-}
-.tl-item li::before{
-  content:"";position:absolute;left:0;top:9px;
-  width:5px;height:5px;border-radius:50%;background:var(--dim);
-}
-
-/* ============================================================
-   SKILLS
-   ============================================================ */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;}
-.skill-group{
-  background:var(--surface);border:1px solid var(--line-soft);
-  border-radius:var(--radius-sm);padding:20px;
-}
-.skill-group h3{
-  font-size:12px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:14px;
-}
-.skill-group ul{display:flex;flex-wrap:wrap;gap:7px;}
-.skill-group li{
-  font-size:13px;color:#C3D0E0;
-  background:var(--surface-2);border:1px solid var(--line);
-  padding:5px 11px;border-radius:6px;
-}
-
-/* ============================================================
-   CONTACT
-   ============================================================ */
-.contact-card{
-  background:linear-gradient(140deg,var(--surface-2),var(--surface));
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:clamp(28px,5vw,52px);
-  text-align:center;
-}
-.contact-card h2{
-  font-family:var(--font-display);
-  font-size:clamp(26px,5vw,40px);letter-spacing:-.025em;margin-bottom:14px;
-}
-.contact-card p{color:var(--muted);max-width:52ch;margin:0 auto 30px;font-size:15.5px;}
-.contact-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
-.contact-meta{
-  margin-top:30px;padding-top:24px;border-top:1px solid var(--line-soft);
-  display:flex;flex-wrap:wrap;gap:22px;justify-content:center;
-  font-size:13.5px;color:var(--dim);
-}
-.contact-meta a{color:var(--muted);text-decoration:none;}
-.contact-meta a:hover{color:var(--accent);}
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-footer{
-  border-top:1px solid var(--line-soft);
-  padding:32px 0 120px;
-  font-size:13px;color:var(--dim);
-  display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
-}
-
-/* ============================================================
-   AMBASSADOR
-   ============================================================ */
-.amb-launch{
-  position:fixed;right:clamp(16px,3vw,28px);bottom:clamp(16px,3vw,28px);
-  z-index:90;
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--accent);color:#12161C;
-  border:0;border-radius:999px;
-  padding:14px 22px;font-weight:700;font-size:14.5px;
-  cursor:pointer;
-  box-shadow:0 14px 34px -10px rgba(255,107,61,.6);
-  transition:transform .16s,background .16s;
-}
-.amb-launch:hover{background:var(--accent-2);transform:translateY(-2px);}
-.amb-launch[hidden]{display:none;}
-.amb-launch .ping{
-  width:8px;height:8px;border-radius:50%;background:#12161C;
-  animation:pulse 2s ease-in-out infinite;
-}
-
-.amb-panel{
-  position:fixed;
-  right:clamp(16px,3vw,28px);bottom:clamp(16px,3vw,28px);
-  z-index:95;
-  width:min(400px,calc(100vw - 32px));
-  height:min(580px,calc(100vh - 48px));
-  background:var(--surface);
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  display:flex;flex-direction:column;
-  overflow:hidden;
-  animation:ambIn .2s ease-out;
-}
-.amb-panel[hidden]{display:none;}
-@keyframes ambIn{from{opacity:0;transform:translateY(12px) scale(.98);}to{opacity:1;transform:none;}}
-
-.amb-head{
-  display:flex;align-items:center;gap:12px;
-  padding:15px 16px;
-  border-bottom:1px solid var(--line-soft);
-  background:var(--surface-2);
-  flex:none;
-}
-.amb-avatar{
-  width:38px;height:38px;border-radius:50%;flex:none;
-  background:linear-gradient(135deg,var(--accent),#FF9A6B);
-  display:grid;place-items:center;
-  font-family:var(--font-display);font-weight:700;color:#12161C;font-size:15px;
-}
-.amb-head-txt{min-width:0;flex:1;}
-.amb-head-txt b{display:block;font-size:14.5px;letter-spacing:-.01em;}
-.amb-head-txt small{display:block;font-size:12px;color:var(--teal);}
-.amb-close{
-  background:transparent;border:1px solid var(--line);border-radius:8px;
-  width:32px;height:32px;cursor:pointer;color:var(--muted);
-  display:grid;place-items:center;font-size:16px;flex:none;
-}
-.amb-close:hover{border-color:var(--accent);color:var(--accent);}
-
-.amb-log{
-  flex:1;overflow-y:auto;padding:18px 16px;
-  display:flex;flex-direction:column;gap:14px;
-  scrollbar-width:thin;scrollbar-color:var(--line) transparent;
-}
-.amb-log::-webkit-scrollbar{width:6px;}
-.amb-log::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px;}
-
-.msg{max-width:88%;font-size:14.5px;line-height:1.58;}
-.msg-bot{
-  align-self:flex-start;
-  background:var(--surface-2);
-  border:1px solid var(--line-soft);
-  border-radius:14px 14px 14px 4px;
-  padding:12px 15px;
-  color:#C9D5E4;
-}
-.msg-user{
-  align-self:flex-end;
-  background:var(--accent);color:#12161C;
-  border-radius:14px 14px 4px 14px;
-  padding:12px 15px;font-weight:500;
-}
-.msg a.jump{
-  display:inline-flex;align-items:center;gap:6px;
-  margin-top:10px;
-  font-size:12.5px;font-weight:700;color:var(--accent);
-  text-decoration:none;
-  background:var(--accent-soft);
-  border:1px solid rgba(255,107,61,.3);
-  padding:5px 11px;border-radius:999px;
-}
-.msg a.jump:hover{background:rgba(255,107,61,.22);}
-
-.starters{display:flex;flex-direction:column;gap:8px;margin-top:4px;}
-.starter{
-  text-align:left;
-  background:transparent;
-  border:1px solid var(--line);
-  border-radius:10px;
-  padding:11px 14px;
-  font-size:13.5px;
-  color:#B9C6D6;
-  cursor:pointer;
-  transition:border-color .16s,color .16s,background .16s;
-}
-.starter:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
-
-.amb-foot{
-  flex:none;border-top:1px solid var(--line-soft);
-  padding:12px 14px;background:var(--surface-2);
-}
-.amb-form{display:flex;gap:9px;}
-.amb-input{
-  flex:1;min-width:0;
-  background:var(--ink);
-  border:1px solid var(--line);
-  border-radius:10px;
-  padding:11px 14px;
-  font:inherit;font-size:14px;color:var(--text);
-}
-.amb-input::placeholder{color:var(--dim);}
-.amb-input:focus{outline:none;border-color:var(--accent);}
-.amb-send{
-  background:var(--accent);color:#12161C;border:0;
-  border-radius:10px;width:44px;flex:none;
-  display:grid;place-items:center;cursor:pointer;font-size:16px;font-weight:700;
-}
-.amb-send:hover{background:var(--accent-2);}
-.amb-send:disabled{opacity:.4;cursor:not-allowed;}
-.amb-note{
-  font-size:11px;color:var(--dim);margin-top:9px;
-  text-align:center;line-height:1.45;
-}
-.typing{display:inline-flex;gap:4px;align-items:center;height:16px;}
-.typing i{
-  width:6px;height:6px;border-radius:50%;background:var(--dim);
-  animation:bounce 1.3s infinite;
-}
-.typing i:nth-child(2){animation-delay:.16s;}
-.typing i:nth-child(3){animation-delay:.32s;}
-@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.4;}30%{transform:translateY(-5px);opacity:1;}}
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width:900px){
-  .nav-links{display:none;}
-  .match-row{grid-template-columns:1fr;gap:10px;}
-  .match-link{padding-top:0;}
-}
-@media (max-width:680px){
-  .proof-strip{grid-template-columns:1fr;}
-  .pcb{grid-template-columns:1fr;}
-  .nav-cta .btn-ghost{display:none;}
-  .hero-actions .btn{flex:1 1 100%;}
-  .amb-panel{
-    right:0;bottom:0;left:0;top:0;
-    width:100%;height:100%;
-    border-radius:0;border:0;
-    max-height:100dvh;
-  }
-  .amb-launch{right:16px;bottom:16px;}
-  footer{padding-bottom:100px;}
-}
-@media (max-width:400px){
-  .hero h1{font-size:38px;}
-  .cap-chip{font-size:13px;padding:9px 13px;}
-}
-
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;}
-  html{scroll-behavior:auto;}
-}
-
-/* ============================================================
-   PRINT — clean light ATS-friendly version
-   ============================================================ */
-@media print{
-  body{background:#fff;color:#111;font-size:11pt;}
-  body::before,#phBanner,.nav,.amb-launch,.amb-panel,.hero-actions,footer{display:none !important;}
-  .wrap{max-width:none;padding:0;}
-  section{padding:14pt 0;page-break-inside:avoid;}
-  .hero{padding-top:0;}
-  .hero h1{font-size:26pt;color:#111;}
-  .positioning,.match-row .ev,.tl-item li,.pcb dd,.skill-group li,.msg-bot{color:#222;}
-  .proof,.match-row,.project,.skill-group,.contact-card,.pcb > div{
-    background:#fff !important;border:1px solid #ccc !important;
-    box-shadow:none !important;color:#111;
-  }
-  .proof b,.tl-org,.section-num,.project-rank,.skill-group h3{color:#B23A16;}
-  .proof-strip,.pcb{background:#ccc;}
-  .project-links a,.match-link{color:#B23A16;}
-  .tool{background:#f2f2f2;color:#333;border-color:#ddd;}
-  a{text-decoration:none;color:#111;}
-  .project:hover{border-color:#ccc;}
-}
+  --bg:#07111f;--bg2:#0b1728;--card:#0d1c30;--text:#edf5ff;--muted:#a9b8ca;
+  --line:rgba(255,255,255,.10);--accent:#5dc7ff;--accent2:#8879ff;--max:1160px;
+  --good:#58d68d;--shadow:0 25px 80px rgba(0,0,0,.28);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:radial-gradient(circle at 10% 5%,rgba(93,199,255,.12),transparent 30%),radial-gradient(circle at 90% 12%,rgba(136,121,255,.12),transparent 28%),linear-gradient(180deg,var(--bg),#050c16 100%);line-height:1.65}
+a{text-decoration:none;color:inherit}.wrap{width:min(92%,var(--max));margin:auto}
+.nav{position:sticky;top:0;z-index:10;background:rgba(7,17,31,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.navin{min-height:72px;display:flex;align-items:center;justify-content:space-between}.brand{font-weight:850;letter-spacing:.2px}.brand i{color:var(--accent);font-style:normal}
+.navlinks{display:flex;gap:24px;color:var(--muted);font-size:14px}.navlinks a:hover{color:#fff}
+.hero{padding:94px 0 76px}.heroGrid{display:grid;grid-template-columns:1.25fr .75fr;gap:60px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid var(--line);border-radius:999px;background:#ffffff06;color:#cad7e8;font-size:13px}.eyebrow b{width:8px;height:8px;border-radius:50%;background:var(--good);box-shadow:0 0 0 5px rgba(88,214,141,.08)}
+h1{font-size:clamp(48px,7.8vw,92px);line-height:.96;letter-spacing:-5px;margin:22px 0}
+    .heroBlend{display:inline;font-weight:900}.heroBlend .cloud{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}.poBlend{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:#000000}.accent{color:var(--accent)}
+.lead{color:var(--muted);font-size:19px;max-width:760px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:13px;border:1px solid var(--line);font-weight:750;transition:.2s}.btn:hover{transform:translateY(-2px)}.primary{background:#fff;color:#07111f;border-color:#fff}
+.heroPanel{padding:28px;border-radius:24px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(13,28,48,.95),rgba(8,20,35,.92));box-shadow:var(--shadow)}
+.monogram{width:94px;height:94px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent2),var(--accent));color:#08111e;font-weight:900;font-size:28px}.heroPanel h2{font-size:21px;margin:20px 0 8px}.muted{color:var(--muted)}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}.quick div{border:1px solid var(--line);padding:16px;border-radius:16px;background:#ffffff04}.quick strong{font-size:21px;display:block}.quick span{font-size:12px;color:var(--muted)}
+section{padding:82px 0}.kicker{color:var(--accent);font-size:12px;font-weight:850;letter-spacing:2px;text-transform:uppercase}.sectionHead{max-width:780px;margin-bottom:32px}.sectionHead h2{font-size:clamp(32px,5vw,52px);line-height:1.04;letter-spacing:-2.4px;margin:8px 0 12px}.sectionHead p{color:var(--muted);margin:0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.grid2,.sapGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card{padding:25px;border:1px solid var(--line);border-radius:22px;background:#ffffff04}.card h3{margin:0 0 8px;font-size:20px}.card p{color:var(--muted);margin:0}
+.evidence{margin-top:15px;padding-top:14px;border-top:1px solid var(--line);font-size:13px;color:#d4dfed}.evidence span{color:#d7ff3f;font-weight:800}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}.tag{padding:7px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:#d4dfed}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:14px}.matchRow{border:1px solid var(--line);border-radius:18px;padding:20px;background:linear-gradient(140deg,#ffffff04,#ffffff01)}.matchRow strong{display:block;font-size:18px}.matchRow p{margin:5px 0 0;color:var(--muted)}
+.projectGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.project{min-height:100%;display:flex;flex-direction:column}.projectBody{flex:1}.meta{color:var(--accent);font-size:11px;font-weight:900;letter-spacing:1.3px}.project h3{font-size:22px;margin:8px 0}.label{font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:#d5dfeb;margin-top:15px}.project p{color:var(--muted);margin:4px 0 0}
+.timeline{position:relative;margin-left:8px;padding-left:30px;border-left:1px solid var(--line)}.job{position:relative;padding:0 0 34px}.job:before{content:"";position:absolute;left:-37px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(93,199,255,.10)}.jobtop{display:flex;align-items:baseline;justify-content:space-between;gap:18px;flex-wrap:wrap}.job h3{margin:0;font-size:21px}.date{color:#d7ff3f;font-size:13px;font-weight:800}.company{color:#cad7e7;font-weight:700;margin:2px 0 10px}.job p{color:var(--muted);margin:6px 0 0}.job ul{margin:0;padding-left:18px;color:var(--muted)}.job li{margin:7px 0}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.skill{border:1px solid var(--line);padding:17px;border-radius:16px}.skill b{display:block}.skill span{font-size:13px;color:var(--muted)}
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.edu .year{color:var(--accent);font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:1.2px}.edu h3{margin:8px 0}
+.contact{padding:70px 28px;border:1px solid var(--line);border-radius:28px;text-align:center;background:linear-gradient(135deg,rgba(93,199,255,.08),rgba(136,121,255,.08))}.contact h2{font-size:clamp(30px,5vw,50px);letter-spacing:-2px;margin:9px 0 12px}
+.architecture{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}.archNode{border:1px solid var(--line);border-radius:16px;padding:15px;background:#ffffff04;text-align:center}.archNode strong{display:block}.archNode span{display:block;color:var(--muted);font-size:12px;margin-top:4px}.archArrow{display:grid;place-items:center;color:var(--accent);font-weight:900}
+.ambassador{position:fixed;right:20px;bottom:20px;z-index:30}.chatBtn{border:0;border-radius:99px;padding:13px 17px;background:var(--accent);color:#061018;font-weight:900;cursor:pointer;box-shadow:0 12px 35px rgba(0,0,0,.3)}.chat{display:none;width:min(380px,calc(100vw - 30px));height:560px;margin-bottom:10px;background:#0a151f;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}.chat.open{display:flex;flex-direction:column}.chatHead{padding:15px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.chatHead strong{display:block}.chatHead small{color:var(--muted)}.close{background:none;border:0;color:var(--muted);font-size:20px;cursor:pointer}.messages{flex:1;overflow:auto;padding:15px}.msg{max-width:88%;padding:10px 12px;border-radius:14px;margin:0 0 10px;font-size:14px;white-space:pre-wrap}.bot{background:#122330;border:1px solid #1e3a4d}.user{margin-left:auto;background:#dff7ff;color:#071018}.starters{padding:0 12px 8px;display:flex;gap:6px;flex-wrap:wrap}.starter{border:1px solid var(--line);background:none;color:#cbd7e1;border-radius:99px;padding:6px 8px;font-size:11px;cursor:pointer}.chatForm{display:flex;border-top:1px solid var(--line);padding:10px;gap:7px}.chatForm input{min-width:0;flex:1;background:#071018;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:10px}.chatForm button{border:0;border-radius:10px;background:var(--accent);font-weight:900;padding:0 13px}
+footer{padding:30px 0 48px;color:var(--muted);font-size:13px;text-align:center}:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:900px){.heroGrid,.grid3,.grid2,.projectGrid,.match,.edu{grid-template-columns:1fr}.skills{grid-template-columns:repeat(2,1fr)}.architecture{grid-template-columns:1fr 1fr}.navlinks{display:none}.hero{padding-top:65px}h1{letter-spacing:-3px}}
+@media(max-width:520px){.wrap{width:min(94%,var(--max))}.hero{padding-bottom:40px}section{padding:58px 0}.skills{grid-template-columns:1fr 1fr}.contact{padding:30px 20px}.ambassador{right:12px;bottom:12px}.chat{height:520px}.architecture{grid-template-columns:1fr}}
 </style>
 </head>
-
 <body>
-<a class="skip-link" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Primary navigation">
+<div class="wrap navin">
+<a class="brand" href="#top">Precious<i>.</i></a>
+<div class="navlinks">
+<a href="#match">Role match</a><a href="#sap">SAP</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
 
-<!-- ============================================================
-     PLACEHOLDER BANNER — remove this block when all [[...]] are filled
-     ============================================================ -->
-<div id="phBanner" role="note">
-  <span id="phCount">Draft</span> — replace every <span class="ph">[[ … ]]</span> slot, then delete this banner.
-  <button type="button" id="phHide">Hide</button>
+<main id="top">
+<section class="hero">
+<div class="wrap heroGrid">
+<div>
+<div class="eyebrow"><b></b> IT Support Engineer · Ontario, Canada</div>
+<h1><span class="heroBlend">Enterprise IT. <span class="cloud">Cloud-minded.</span></span></h1>
+<p class="lead">IT professional with 5+ years of experience providing Tier 1/2 technical support across enterprise desktop, cloud data and Microsoft environments. Focused on reliable support, endpoint management, identity, cloud platforms and practical enterprise technology.</p>
+<div class="actions">
+<a class="btn primary" href="resume.pdf" download>Download Resume</a>
+<a class="btn" href="https://www.linkedin.com/in/precious-odemwingie-1b776323a/" target="_blank" rel="noopener">LinkedIn</a>
+<a class="btn" href="mailto:odeprecious10@gmail.com">Email me</a>
+</div>
+</div>
+<aside class="heroPanel" aria-label="Recruiter snapshot">
+<div class="monogram"><span class="poBlend">PO</span></div>
+<h2>IT Support · Microsoft · Cloud · SAP BTP</h2>
+<p class="muted">Tier 1/2 support, Microsoft 365, Entra ID, Intune, Active Directory, Azure, AWS, PowerShell and SAP BTP/SSO configuration.</p>
+<div class="quick">
+<div><strong>5+</strong><span>Years of IT support experience</span></div>
+<div><strong>Tier 1/2</strong><span>Enterprise support</span></div>
+</div>
+</aside>
+</div>
+</section>
+
+<section id="match">
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">Recruiter scan</div><h2>Why this profile matches enterprise IT support.</h2><p>Three capabilities, tied directly to evidence in the resume and public portfolio.</p></div>
+<div class="grid3">
+<article class="card"><h3>Enterprise Support</h3><p>First- and second-level support, incident management, ServiceNow, hardware/software troubleshooting, workstation setup and user training.</p><div class="evidence"><span>Evidence:</span> Groupe Touchette + Hideapluxx</div></article>
+<article class="card"><h3>Microsoft & Identity</h3><p>Microsoft 365, Entra ID, Active Directory, GPO, MFA, Conditional Access, SharePoint and Teams.</p><div class="evidence"><span>Evidence:</span> resume skills matrix + Groupe Touchette</div></article>
+<article class="card"><h3>SAP Enterprise Technology</h3><p>SAP Basis operations, Fiori, PFCG, SU01, SAP security tracing, RISE, IAS/SAML SSO, SAP BTP and integration-focused work.</p><div class="evidence"><span>Evidence:</span> SAP sandbox work + enterprise project activity</div></article>
+</div>
+</div>
+</section>
+
+<section>
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">Role alignment</div><h2>Capability → evidence.</h2></div>
+<div class="match">
+<div class="matchRow"><strong>Incident & problem management</strong><p>ServiceNow, Zendesk, RCA documentation, incident reporting and a documented 90% SLA resolution rate at Hideapluxx.</p></div>
+<div class="matchRow"><strong>Endpoint & user support</strong><p>Workstation setup, imaging, diagnostics, software installation, remote support, printers and end-user training.</p></div>
+<div class="matchRow"><strong>Identity & access</strong><p>Active Directory, ADManager Plus, GPO, Entra ID, MFA and Conditional Access are listed in the resume.</p></div>
+<div class="matchRow"><strong>Cloud foundation</strong><p>Azure and AWS experience plus AWS Solutions Architect – Associate and Azure Administrator Associate certifications.</p></div>
+</div>
+</div>
+</section>
+
+<section id="sap">
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">SAP enterprise capability</div><h2>SAP work — from Basis administration to BTP integration.</h2><p>A dedicated view of the SAP work and learning currently being built into the professional profile.</p></div>
+
+<div class="sapIntro card">
+<div class="meta">SAP BASIS · RISE · BTP · IDENTITY · INTEGRATION</div>
+<h3>Hands-on SAP capability across the application, identity and cloud layers.</h3>
+<p>Practical work spans SAP Basis administration and security concepts, Fiori/launchpad troubleshooting, S/4HANA and RISE environments, SAP Identity Authentication with Microsoft Entra ID, and SAP Business Technology Platform integration concepts.</p>
+<div class="tags"><span class="tag">SAP Basis</span><span class="tag">S/4HANA</span><span class="tag">RISE</span><span class="tag">Fiori</span><span class="tag">PFCG</span><span class="tag">IAS</span><span class="tag">SAML</span><span class="tag">BTP</span><span class="tag">Cloud Connector</span><span class="tag">CI-DS</span></div>
 </div>
 
-<!-- ============================================================
-     NAV
-     ============================================================ -->
-<header class="nav">
-  <div class="wrap nav-inner">
-    <a class="brand" href="#top">Precious Odemwingie<span>.</span></a>
-    <nav class="nav-links" aria-label="Section navigation">
-      <a href="#match">Role match</a>
-      <a href="#work">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#leadership">Leadership</a>
-      <a href="#skills">Skills</a>
-    </nav>
-    <div class="nav-cta">
-      <button class="btn btn-ghost btn-sm" type="button" data-open-amb>Ask the ambassador</button>
-      <a class="btn btn-primary btn-sm" href="mailto:odeprecious10@gmail.com">Email me</a>
-    </div>
-  </div>
-</header>
+<div class="grid2 sapGrid">
+<article class="card project"><div class="projectBody"><div class="meta">SAP BASIS · ADMINISTRATION</div><h3>Basis Administration & Operations</h3>
+<div class="label">Focus</div><p>Building practical Basis administration capability through a controlled SAP sandbox and production-oriented operational documentation.</p>
+<div class="label">Hands-on areas</div><p>SU01 user administration, PFCG roles and authorizations, Fiori role concepts, spool administration, system monitoring and troubleshooting, CCMS/RZ20 monitoring, Cloud ALM alert concepts and SAP operational checks.</p>
+<div class="label">Security & tracing</div><p>Working with STAUTHTRACE for authorization troubleshooting, SM20 for security audit review, and authorization objects/role analysis including developer access concepts.</p>
+<div class="label">Evidence</div><div class="tags"><span class="tag">SU01</span><span class="tag">PFCG</span><span class="tag">STAUTHTRACE</span><span class="tag">SM20</span><span class="tag">RZ20</span><span class="tag">Spool</span><span class="tag">Cloud ALM</span></div>
+</div></article>
 
-<main id="main">
+<article class="card project"><div class="projectBody"><div class="meta">SAP SECURITY · IDENTITY</div><h3>Fiori, IAS & Microsoft Entra SSO</h3>
+<div class="label">Problem</div><p>Understand and troubleshoot enterprise authentication flows where Microsoft Entra ID, SAP Identity Authentication and SAP Fiori/launchpad are involved.</p>
+<div class="label">Contribution</div><p>Worked through Entra ID → SAP IAS SAML flows, NameID/user-mail mapping, SSO behavior, password-change-for-SSO settings and Fiori authorization issues such as HTTP 403 responses.</p>
+<div class="label">Systems</div><p>SAP Fiori/FLP, SAP IAS, Microsoft Entra ID and SAML-based enterprise authentication.</p>
+<div class="label">Evidence</div><div class="tags"><span class="tag">IAS</span><span class="tag">SAML</span><span class="tag">Entra ID</span><span class="tag">Fiori</span><span class="tag">SSO</span><span class="tag">Authorization</span></div>
+</div></article>
 
-<!-- ============================================================
-     HERO — 60 SECOND SCAN
-     ============================================================ -->
-<section class="hero" id="top"
-  data-kb
-  data-kb-title="Positioning &amp; summary"
-  data-kb-keys="positioning, about, summary, who, introduction, overview, background, profile, role, fit, why, hire"
-  data-kb-summary="Precious Odemwingie is targeting the [[TARGET ROLE]] role. Positioning: [[POSITIONING — one sentence]]. Three capabilities recruiters should remember: [[Capability 1]], [[Capability 2]], [[Capability 3]].">
-  <div class="wrap">
+<article class="card project"><div class="projectBody"><div class="meta">SAP BTP · CLOUD PLATFORM</div><h3>BTP Architecture & Cloud Connector</h3>
+<div class="label">Focus</div><p>Developing practical understanding of SAP BTP as the cloud integration and extension layer around SAP enterprise systems.</p>
+<div class="label">Hands-on areas</div><p>BTP subaccounts, SAP IAS as an identity layer, Identity Provisioning concepts, Cloud Connector installation and configuration, subaccount connectivity, Location IDs, virtual hosts and controlled exposure of on-premise resources.</p>
+<div class="label">Architecture</div><p>Understanding the relationship between Microsoft Entra ID, SAP IAS, SAP BTP services and connected SAP/on-premise resources for SSO, provisioning and integration scenarios.</p>
+<div class="label">Evidence</div><div class="tags"><span class="tag">SAP BTP</span><span class="tag">Cloud Connector</span><span class="tag">IAS</span><span class="tag">IPS</span><span class="tag">Provisioning</span></div>
+</div></article>
 
-    <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Open to <span class="ph">[[TARGET ROLE]]</span></p>
+<article class="card project"><div class="projectBody"><div class="meta">SAP INTEGRATION · CI-DS</div><h3>SAP Data Services Agent / CI-DS</h3>
+<div class="label">Problem</div><p>Support an SAP Cloud Integration for Data Services scenario connecting BTP/CI-DS with enterprise data sources.</p>
+<div class="label">Contribution</div><p>Worked with the SAP Data Services Agent on Windows Server, service-account configuration, outbound HTTPS requirements, SQL Server ODBC connectivity and Job Server/agent operation.</p>
+<div class="label">Technical areas</div><p>Windows Server, SAP Data Services Agent, CI-DS, SQL Server ODBC Driver 18, agent security directories, Job Server configuration and connectivity troubleshooting.</p>
+<div class="label">Evidence</div><div class="tags"><span class="tag">CI-DS</span><span class="tag">Data Services Agent</span><span class="tag">Windows Server</span><span class="tag">SQL ODBC</span><span class="tag">HTTPS 443</span></div>
+</div></article>
+</div>
 
-    <h1>Precious<br /><em>Odemwingie</em></h1>
+<article class="card project" style="margin-top:18px">
+<div class="projectBody">
+<div class="meta">SAP BASIS · AWS · ECC 6.0 EHP8 · MSSQL</div>
+<h3>AWS-hosted SAP ECC 6.0 EHP8 QAS Lab — Installation & System Build</h3>
+<div class="label">Project</div>
+<p>Designed and built a hands-on SAP ECC 6.0 EHP8 environment hosted on AWS, using Microsoft Windows Server 2019 and Microsoft SQL Server 2017. The work covered the infrastructure preparation, database installation, SAP media preparation and SAP installation through Software Provisioning Manager (SWPM).</p>
+<div class="label">Sizing & preparation</div>
+<p>Worked through SAP Quick Sizer concepts using user-based and throughput-based sizing, then prepared the operating-system and storage requirements. The installation checklist covered the ECC Master Guide, S-User/media requirements, SAP kernel, SWPM, SAP Host Agent and database media.</p>
+<div class="label">Database layer</div>
+<p>Installed Microsoft SQL Server 2017 Developer Edition, configured the SQL Server instance and applied the SAP-relevant collation <b>SQL_Latin1_General_CP850_BIN2</b>. The environment used Windows authentication and was prepared as the database layer for the ECC installation.</p>
+<div class="label">SAP installation</div>
+<p>Executed <b>sapinst.exe</b> through SWPM as administrator, selected SAP Business Suite / ERP 6.0 EHP8 (ABAP), configured the SID and master credentials, supplied the SAP kernel and export media, reviewed database/data-file parameters, configured parallel export jobs and completed the installation while monitoring the installation logs.</p>
+<div class="label">SAP architecture</div>
+<div class="architecture">
+<div class="archNode"><strong>Windows Server 2019</strong><span>AWS-hosted OS / infrastructure</span></div>
+<div class="archNode"><strong>MSSQL 2017</strong><span>SAP database instance</span></div>
+<div class="archNode"><strong>PAS</strong><span>Primary Application Server · DIA / UPD / BTC / SPO / IGS</span></div>
+<div class="archNode"><strong>ASCS</strong><span>Message Server + Enqueue Server</span></div>
+</div>
+<div class="label">Instance configuration</div>
+<p>The documented lab used distinct instance numbers for the SAP ECC system, including <b>PAS 55</b> and <b>ASCS 51</b>, while keeping instance-number uniqueness in mind when multiple SAP systems share infrastructure.</p>
+<div class="label">Validation & operational understanding</div>
+<p>Validated the completed installation through the SAP Management Console and documented how PAS, ASCS and the database instance work together. The documentation also covers standard versus distributed installation models, resource isolation, unique SIDs/instance numbers and considerations for running multiple test systems on one host.</p>
+<div class="label">Outcome</div>
+<p>A successfully installed SAP ERP ECC 6.0 ABAP environment and a reusable Basis installation runbook covering sizing, Windows preparation, SQL Server, SWPM parameters, instance configuration and post-installation validation.</p>
+<div class="tags"><span class="tag">AWS</span><span class="tag">SAP ECC 6.0 EHP8</span><span class="tag">QAS</span><span class="tag">Windows Server 2019</span><span class="tag">MSSQL 2017</span><span class="tag">SWPM</span><span class="tag">sapinst</span><span class="tag">PAS</span><span class="tag">ASCS</span><span class="tag">SAP Basis</span></div>
+</div></article>
 
-    <p class="positioning">
-      <span class="ph">[[POSITIONING STATEMENT — one sentence. Formula: I help [who] achieve [outcome] by [how], evidenced by [proof].]]</span>
-    </p>
-
-    <ul class="cap-chips" aria-label="Three capabilities to remember">
-      <li class="cap-chip"><span class="ph">[[Capability 1]]</span></li>
-      <li class="cap-chip"><span class="ph">[[Capability 2]]</span></li>
-      <li class="cap-chip"><span class="ph">[[Capability 3]]</span></li>
-    </ul>
-
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="mailto:odeprecious10@gmail.com?subject=[[TARGET ROLE]]%20opportunity%20for%20Precious">Email me</a>
-      <a class="btn btn-ghost" href="resume.pdf" download>Download resume (PDF)</a>
-      <a class="btn btn-ghost" href="#work">See the evidence</a>
-      <button class="btn btn-ghost" type="button" data-open-amb>Ask a question</button>
-    </div>
-
-    <div class="proof-strip" aria-label="Headline evidence">
-      <div class="proof">
-        <b><span class="ph">[[Proof 1]]</span></b>
-        <span><span class="ph">[[What it means — one short line]]</span></span>
-      </div>
-      <div class="proof">
-        <b><span class="ph">[[Proof 2]]</span></b>
-        <span><span class="ph">[[What it means — one short line]]</span></span>
-      </div>
-      <div class="proof">
-        <b><span class="ph">[[Proof 3]]</span></b>
-        <span><span class="ph">[[What it means — one short line]]</span></span>
-      </div>
-    </div>
-
-  </div>
+<div class="sectionHead sapSub"><div class="kicker">SAP environments & concepts</div><h2>What I can speak to in a technical interview.</h2></div>
+<div class="skills sapSkills">
+<div class="skill"><b>Basis</b><span>SU01 · PFCG · roles/authorizations · spool · monitoring · RZ20/CCMS · Cloud ALM</span></div>
+<div class="skill"><b>SAP Security</b><span>Authorization troubleshooting · STAUTHTRACE · SM20 · role comparison · access concepts</span></div>
+<div class="skill"><b>Fiori / S/4HANA</b><span>Fiori Launchpad · catalogs/roles · HTTP 403 troubleshooting · S/4HANA system access flows</span></div>
+<div class="skill"><b>Identity</b><span>Microsoft Entra ID · SAP IAS · SAML · NameID mapping · SSO · provisioning concepts</span></div>
+<div class="skill"><b>BTP</b><span>Subaccounts · IAS · IPS/provisioning · integration architecture · clean-core/RISE concepts</span></div>
+<div class="skill"><b>Connectivity</b><span>SAP Cloud Connector · Location IDs · virtual hosts · on-premise resource exposure</span></div>
+<div class="skill"><b>Data Integration</b><span>CI-DS · Data Services Agent · SQL Server ODBC · Job Server · HTTPS connectivity</span></div>
+<div class="skill"><b>Operational Troubleshooting</b><span>Authentication flows · authorization failures · service startup · connectivity · logs and monitoring</span></div>
+</div>
+</div>
 </section>
 
-<!-- ============================================================
-     ROLE MATCH
-     ============================================================ -->
-<section id="match"
-  data-kb
-  data-kb-title="Role match"
-  data-kb-keys="match, alignment, requirements, suitability, qualified, fit, why you, relevance, capability, capabilities"
-  data-kb-summary="Role match maps each required capability for [[TARGET ROLE]] directly to evidence. [[Capability 1]] is evidenced by [[Evidence 1]]. [[Capability 2]] is evidenced by [[Evidence 2]]. [[Capability 3]] is evidenced by [[Evidence 3]].">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="section-num">01 — Role match</p>
-      <h2>Capability → evidence</h2>
-      <p>Each line connects something the <span class="ph">[[TARGET ROLE]]</span> role needs to a specific, inspectable proof point.</p>
-    </div>
-
-    <div class="match-list">
-
-      <article class="match-row">
-        <div>
-          <h3><span class="ph">[[Capability 1]]</span></h3>
-        </div>
-        <p class="ev"><span class="ph">[[Evidence — what you actually did, with a number or a named artefact. e.g. "Built and shipped X, used by Y, cutting Z."]]</span></p>
-        <a class="match-link" href="#work">See project →</a>
-      </article>
-
-      <article class="match-row">
-        <div>
-          <h3><span class="ph">[[Capability 2]]</span></h3>
-        </div>
-        <p class="ev"><span class="ph">[[Evidence]]</span></p>
-        <a class="match-link" href="#work">See project →</a>
-      </article>
-
-      <article class="match-row">
-        <div>
-          <h3><span class="ph">[[Capability 3]]</span></h3>
-        </div>
-        <p class="ev"><span class="ph">[[Evidence]]</span></p>
-        <a class="match-link" href="#experience">See experience →</a>
-      </article>
-
-    </div>
-  </div>
+<section id="projects">
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">Selected evidence</div><h2>Projects worth a closer look.</h2><p>Ordered for relevance to enterprise IT, cloud and identity-focused roles.</p></div>
+<article class="card project" style="margin-bottom:18px">
+<div class="projectBody">
+<div class="meta">FEATURED SAP PROJECT · AWS · BASIS</div>
+<h3>AWS-hosted SAP ECC 6.0 EHP8 QAS Installation</h3>
+<p>Hands-on installation of SAP ERP ECC 6.0 EHP8 on an AWS-hosted Windows Server 2019 environment with Microsoft SQL Server 2017 as the database. The build used SAP SWPM/sapinst and covered sizing, installation media, kernel setup, SID and instance configuration, PAS/ASCS architecture, database parameters, installation-log monitoring and post-installation validation.</p>
+<div class="tags"><span class="tag">SAP ECC 6.0 EHP8</span><span class="tag">AWS</span><span class="tag">MSSQL</span><span class="tag">SWPM</span><span class="tag">PAS</span><span class="tag">ASCS</span><span class="tag">Windows Server 2019</span></div>
+</div></article>
+<div class="projectGrid">
+<article class="card project">
+<div class="projectBody"><div class="meta">AWS · CLOUD</div><h3>Static Website on AWS</h3>
+<div class="label">Problem</div><p>Deploy a website using AWS cloud services.</p>
+<div class="label">Contribution</div><p>Deployed a static website using Amazon S3 and used EC2, RDS and CloudFront in the project.</p>
+<div class="label">Tools</div><div class="tags"><span class="tag">S3</span><span class="tag">EC2</span><span class="tag">RDS</span><span class="tag">CloudFront</span></div>
+<div class="label">Outcome</div><p>Working cloud-hosted website demonstrating practical AWS service integration.</p></div>
+</article>
+<article class="card project">
+<div class="projectBody"><div class="meta">IT OPERATIONS · INCIDENT MANAGEMENT</div><h3>Enterprise Desktop Support</h3>
+<div class="label">Problem</div><p>Resolve hardware, software and network incidents for end users while maintaining service levels.</p>
+<div class="label">Contribution</div><p>Investigated, diagnosed and resolved incidents, documented RCA artifacts, managed tickets and collaborated with vendors and technical teams.</p>
+<div class="label">Tools</div><div class="tags"><span class="tag">ServiceNow</span><span class="tag">Zendesk</span><span class="tag">Windows</span><span class="tag">Microsoft 365</span></div>
+<div class="label">Outcome</div><p>90% resolution rate within SLAs at Hideapluxx, as stated on the resume.</p></div>
+</article>
+<article class="card project">
+<div class="projectBody"><div class="meta">DIGITAL PRESERVATION · WORDPRESS</div><h3>Digital Archive for Black Canadian Artists</h3>
+<div class="label">Problem</div><p>Support preservation and presentation of multimedia historical content.</p>
+<div class="label">Contribution</div><p>Curated multimedia content, supported WordPress functionality and worked with plugins and themes.</p>
+<div class="label">Tools</div><div class="tags"><span class="tag">WordPress</span><span class="tag">Plugins</span><span class="tag">Themes</span></div>
+<div class="label">Outcome</div><p>Contributed to a digital archive initiative focused on historical preservation.</p></div>
+</article>
+</div>
+</div>
 </section>
 
-<!-- ============================================================
-     SELECTED PROJECTS
-     ============================================================ -->
-<section id="work"
-  data-kb
-  data-kb-title="Selected projects"
-  data-kb-keys="project, projects, work, portfolio, built, build, case study, shipped, evidence, sample, demo, github, code"
-  data-kb-summary="Selected projects are ordered by relevance to [[TARGET ROLE]]. Project 1: [[PROJECT 1 NAME]] — problem, contribution, tools, outcome: [[OUTCOME]]. Project 2: [[PROJECT 2 NAME]]. Project 3: [[PROJECT 3 NAME]].">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="section-num">02 — Selected projects</p>
-      <h2>Ordered by relevance</h2>
-      <p>Problem, contribution, tools, outcome. Most relevant to <span class="ph">[[TARGET ROLE]]</span> first.</p>
-    </div>
-
-    <div class="projects">
-
-      <!-- PROJECT 1 -->
-      <article class="project">
-        <div class="project-top">
-          <span class="project-rank">Most relevant</span>
-          <h3><span class="ph">[[PROJECT 1 NAME]]</span></h3>
-        </div>
-        <p class="project-role"><span class="ph">[[Your role on it — e.g. Sole developer · 2024]]</span></p>
-
-        <dl class="pcb">
-          <div>
-            <dt>Problem</dt>
-            <dd><span class="ph">[[What was broken, missing, or costly?]]</span></dd>
-          </div>
-          <div>
-            <dt>Contribution</dt>
-            <dd><span class="ph">[[What YOU specifically did — not the team.]]</span></dd>
-          </div>
-          <div>
-            <dt>Tools</dt>
-            <dd><span class="ph">[[Stack / methods actually used.]]</span></dd>
-          </div>
-          <div class="outcome">
-            <dt>Outcome</dt>
-            <dd><span class="ph">[[Measured or observable result.]]</span></dd>
-          </div>
-        </dl>
-
-        <ul class="tools" aria-label="Technologies used">
-          <li class="tool"><span class="ph">[[Tool]]</span></li>
-          <li class="tool"><span class="ph">[[Tool]]</span></li>
-          <li class="tool"><span class="ph">[[Tool]]</span></li>
-        </ul>
-
-        <div class="project-links">
-          <a href="#"><span class="ph">[[Live / repo link]]</span></a>
-        </div>
-      </article>
-
-      <!-- PROJECT 2 -->
-      <article class="project">
-        <div class="project-top">
-          <span class="project-rank">Relevant</span>
-          <h3><span class="ph">[[PROJECT 2 NAME]]</span></h3>
-        </div>
-        <p class="project-role"><span class="ph">[[Your role · year]]</span></p>
-
-        <dl class="pcb">
-          <div>
-            <dt>Problem</dt>
-            <dd><span class="ph">[[…]]</span></dd>
-          </div>
-          <div>
-            <dt>Contribution</dt>
-            <dd><span class="ph">[[…]]</span></dd>
-          </div>
-          <div>
-            <dt>Tools</dt>
-            <dd><span class="ph">[[…]]</span></dd>
-          </div>
-          <div class="outcome">
-            <dt>Outcome</dt>
-            <dd><span class="ph">[[…]]</span></dd>
-          </div>
-        </dl>
-
-        <ul class="tools" aria-label="Technologies used">
-          <li class="tool"><span class="ph">[[Tool]]</span></li>
-          <li class="tool"><span class="ph">[[Tool]]</span></li>
-        </ul>
-
-        <div class="project-links">
-          <a href="#"><span class="ph">[[Live / repo link]]</span></a>
-        </div>
-      </article>
-
-      <!-- PROJECT 3 -->
-      <article class="project">
-        <div class="project-top">
-          <span class="project-rank">Supporting</span>
-          <h3><span class="ph">[[PROJECT 3 NAME]]</span></h3>
-        </div>
-        <p class="project-role"><span class="ph">[[Your role · year]]</span></p>
-
-        <dl class="pcb">
-          <div>
-            <dt>Problem</dt>
-            <dd><span class="ph">[[…]]</span></dd>
-          </div>
-          <div>
-            <dt>Contribution</dt>
-            <dd><span class="ph">[[…]]</span></dd>
-          </div>
-          <div>
-            <dt>Tools</dt>
-            <dd><span class="ph">[[…]]</span></dd>
-          </div>
-          <div class="outcome">
-            <dt>Outcome</dt>
-            <dd><span class="ph">[[…]]</span></dd>
-          </div>
-        </dl>
-
-        <ul class="tools" aria-label="Technologies used">
-          <li class="tool"><span class="ph">[[Tool]]</span></li>
-          <li class="tool"><span class="ph">[[Tool]]</span></li>
-        </ul>
-
-        <div class="project-links">
-          <a href="#"><span class="ph">[[Live / repo link]]</span></a>
-        </div>
-      </article>
-
-    </div>
-  </div>
+<section id="experience">
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">Experience</div><h2>Professional history.</h2></div>
+<div class="timeline">
+<article class="job"><div class="jobtop"><h3>IT Technician</h3><span class="date">Oct 2024 – Present</span></div><div class="company">Groupe Touchette</div><p>First- and second-level user support, ServiceNow, Active Directory, Microsoft 365/Entra ID, MFA/Conditional Access, workstation setup, remote support, printers, incident management, documentation and inventory.</p></article>
+<article class="job"><div class="jobtop"><h3>IT Support Engineer</h3><span class="date">May 2019 – Dec 2022</span></div><div class="company">Hideapluxx Limited</div><p>Hardware, software and network incident investigation, ServiceNow, major-incident escalation, continuous improvement, RCA/KPI reporting and vendor/internal-team collaboration.</p></article>
+<article class="job"><div class="jobtop"><h3>IT Helpdesk</h3><span class="date">Feb 2016 – Apr 2019</span></div><div class="company">A &amp; T Travels and Tours</div><p>Primary incident-management contact, diagnosis and resolution, major-incident coordination, ticket categorization/escalation and reporting.</p></article>
+<article class="job"><div class="jobtop"><h3>EdTech Support Coordinator</h3><span class="date">Jul 2014 – Dec 2015</span></div><div class="company">Educational Advancement Center</div><p>Educational technology installation, configuration and maintenance, performance investigations, reporting, user training and documentation.</p></article>
+</div>
+</div>
 </section>
 
-<!-- ============================================================
-     EXPERIENCE
-     ============================================================ -->
-<section id="experience"
-  data-kb
-  data-kb-title="Experience"
-  data-kb-keys="experience, job, jobs, employment, work history, employer, company, companies, role, roles, position, career, years"
-  data-kb-summary="Experience: [[ROLE]] at [[EMPLOYER]], [[DATES]] — [[one-line scope and impact]]. Earlier: [[ROLE]] at [[EMPLOYER]], [[DATES]].">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="section-num">03 — Experience</p>
-      <h2>Where I've done it</h2>
-      <p>Reverse-chronological. Scope and impact first, duties second.</p>
-    </div>
-
-    <div class="timeline">
-
-      <article class="tl-item">
-        <p class="tl-meta"><span class="ph">[[DATES]]</span> · <span class="ph">[[Location / Remote]]</span></p>
-        <h3><span class="ph">[[Job title]]</span></h3>
-        <p class="tl-org"><span class="ph">[[Employer]]</span></p>
-        <ul>
-          <li><span class="ph">[[Achievement — action + measurable result.]]</span></li>
-          <li><span class="ph">[[Achievement.]]</span></li>
-          <li><span class="ph">[[Achievement.]]</span></li>
-        </ul>
-      </article>
-
-      <article class="tl-item">
-        <p class="tl-meta"><span class="ph">[[DATES]]</span> · <span class="ph">[[Location / Remote]]</span></p>
-        <h3><span class="ph">[[Job title]]</span></h3>
-        <p class="tl-org"><span class="ph">[[Employer]]</span></p>
-        <ul>
-          <li><span class="ph">[[Achievement.]]</span></li>
-          <li><span class="ph">[[Achievement.]]</span></li>
-        </ul>
-      </article>
-
-      <article class="tl-item">
-        <p class="tl-meta"><span class="ph">[[DATES]]</span></p>
-        <h3><span class="ph">[[Job title]]</span></h3>
-        <p class="tl-org"><span class="ph">[[Employer]]</span></p>
-        <ul>
-          <li><span class="ph">[[Achievement.]]</span></li>
-        </ul>
-      </article>
-
-    </div>
-  </div>
+<section id="skills">
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">Technical profile</div><h2>Tools and technologies.</h2></div>
+<div class="skills">
+<div class="skill"><b>Microsoft</b><span>Microsoft 365 · Entra ID · SharePoint · Teams</span></div>
+<div class="skill"><b>Identity</b><span>Active Directory · GPO · ADManager Plus · MFA · Access Controls</span></div>
+<div class="skill"><b>Cloud</b><span>Azure · AWS · VMs · Resource Groups · IAM</span></div>
+<div class="skill"><b>Support</b><span>ServiceNow · Zendesk · Incident Management · ITIL-based support</span></div>
+<div class="skill"><b>Endpoint & Hardware</b><span>Workstations · Imaging · Diagnostics · Hardware refresh</span></div>
+<div class="skill"><b>SAP</b><span>Basis · S/4HANA · Fiori · PFCG · SU01 · IAS · SAML · BTP</span></div>
+<div class="skill"><b>SAP Integration</b><span>Cloud Connector · CI-DS · Data Services Agent · IPS · ODBC</span></div>
+<div class="skill"><b>Automation</b><span>Power Automate · PowerShell</span></div>
+<div class="skill"><b>Networking</b><span>Basic switches · routers · wireless APs · VPN clients</span></div>
+<div class="skill"><b>Operating Systems</b><span>Windows · Linux · macOS · Android · iOS</span></div>
+</div>
+</div>
 </section>
 
-<!-- ============================================================
-     LEADERSHIP
-     ============================================================ -->
-<section id="leadership"
-  data-kb
-  data-kb-title="Leadership"
-  data-kb-keys="leadership, led, lead, leading, mentored, mentoring, managed, managing, team, community, volunteering, initiative, ownership, organized, organised, taught"
-  data-kb-summary="Leadership: [[LEADERSHIP ITEM 1]] — [[what you did and the effect]]. Also [[LEADERSHIP ITEM 2]].">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="section-num">04 — Leadership</p>
-      <h2>Leading without a title</h2>
-      <p>Where I took ownership, unblocked others, or raised the standard.</p>
-    </div>
-
-    <div class="timeline">
-
-      <article class="tl-item">
-        <p class="tl-meta"><span class="ph">[[DATES]]</span></p>
-        <h3><span class="ph">[[Leadership role or initiative]]</span></h3>
-        <p class="tl-org"><span class="ph">[[Organisation / team / community]]</span></p>
-        <ul>
-          <li><span class="ph">[[What you did, who it affected, what changed.]]</span></li>
-          <li><span class="ph">[[Evidence of the effect.]]</span></li>
-        </ul>
-      </article>
-
-      <article class="tl-item">
-        <p class="tl-meta"><span class="ph">[[DATES]]</span></p>
-        <h3><span class="ph">[[Leadership role or initiative]]</span></h3>
-        <p class="tl-org"><span class="ph">[[Organisation / team / community]]</span></p>
-        <ul>
-          <li><span class="ph">[[What changed because of you.]]</span></li>
-        </ul>
-      </article>
-
-    </div>
-  </div>
+<section>
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">Credentials</div><h2>Certifications.</h2></div>
+<div class="grid3">
+<div class="card"><h3>Microsoft 365 Certified: Fundamentals</h3><p>MS-900</p></div>
+<div class="card"><h3>Microsoft Certified: Azure Administrator Associate</h3><p>AZ-104</p></div>
+<div class="card"><h3>AWS Certified: Solutions Architect – Associate</h3><p>AWS Solutions Architect</p></div>
+</div>
+</div>
 </section>
 
-<!-- ============================================================
-     SKILLS
-     ============================================================ -->
-<section id="skills"
-  data-kb
-  data-kb-title="Skills"
-  data-kb-keys="skill, skills, tools, technology, technologies, stack, languages, frameworks, technical, software, proficient, know, expertise"
-  data-kb-summary="Skills: [[GROUP 1]] — [[list]]. [[GROUP 2]] — [[list]]. [[GROUP 3]] — [[list]].">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="section-num">05 — Skills</p>
-      <h2>What I work with</h2>
-      <p>Grouped by how I actually use them, not by buzzword density.</p>
-    </div>
-
-    <div class="skills-grid">
-
-      <div class="skill-group">
-        <h3><span class="ph">[[Group 1 — e.g. Core craft]]</span></h3>
-        <ul>
-          <li><span class="ph">[[Skill]]</span></li>
-          <li><span class="ph">[[Skill]]</span></li>
-          <li><span class="ph">[[Skill]]</span></li>
-        </ul>
-      </div>
-
-      <div class="skill-group">
-        <h3><span class="ph">[[Group 2 — e.g. Tools]]</span></h3>
-        <ul>
-          <li><span class="ph">[[Tool]]</span></li>
-          <li><span class="ph">[[Tool]]</span></li>
-          <li><span class="ph">[[Tool]]</span></li>
-        </ul>
-      </div>
-
-      <div class="skill-group">
-        <h3><span class="ph">[[Group 3 — e.g. Ways of working]]</span></h3>
-        <ul>
-          <li><span class="ph">[[Skill]]</span></li>
-          <li><span class="ph">[[Skill]]</span></li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
+<section id="education">
+<div class="wrap">
+<div class="sectionHead"><div class="kicker">Education</div><h2>Education.</h2></div>
+<div class="edu">
+<div class="card"><div class="year">Conestoga College · Ontario</div><h3>Graduate Certificate in Cloud Data Management</h3><p class="muted">Distinction</p></div>
+<div class="card"><div class="year">National Open University</div><h3>Master of Science in Information Technology</h3><p class="muted">Distinction</p></div>
+<div class="card"><div class="year">University of Benin</div><h3>Bachelor of Engineering in Computer Engineering</h3><p class="muted">Honors</p></div>
+</div>
+</div>
 </section>
 
-<!-- ============================================================
-     EDUCATION
-     ============================================================ -->
-<section id="education"
-  data-kb
-  data-kb-title="Education"
-  data-kb-keys="education, degree, school, university, college, studied, study, qualification, certificate, certified, course, training, bootcamp, gpa"
-  data-kb-summary="Education: [[QUALIFICATION]] from [[INSTITUTION]], [[DATES]]. [[Additional certification if any]].">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="section-num">06 — Education</p>
-      <h2>Foundation</h2>
-    </div>
-
-    <div class="timeline">
-      <article class="tl-item">
-        <p class="tl-meta"><span class="ph">[[DATES]]</span></p>
-        <h3><span class="ph">[[Qualification]]</span></h3>
-        <p class="tl-org"><span class="ph">[[Institution]]</span></p>
-        <ul>
-          <li><span class="ph">[[Relevant detail — focus, project, result.]]</span></li>
-        </ul>
-      </article>
-
-      <article class="tl-item">
-        <p class="tl-meta"><span class="ph">[[DATES]]</span></p>
-        <h3><span class="ph">[[Certification / additional study]]</span></h3>
-        <p class="tl-org"><span class="ph">[[Provider]]</span></p>
-      </article>
-    </div>
-  </div>
+<section id="contact">
+<div class="wrap">
+<div class="contact">
+<div class="kicker">Contact</div><h2>Let's talk technology.</h2>
+<p class="muted">For professional opportunities and technical roles, reach me by email or LinkedIn.</p>
+<div class="actions" style="justify-content:center">
+<a class="btn primary" href="mailto:odeprecious10@gmail.com">odeprecious10@gmail.com</a>
+<a class="btn" href="https://www.linkedin.com/in/precious-odemwingie-1b776323a/" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+</div>
+</div>
 </section>
-
-<!-- ============================================================
-     CONTACT
-     ============================================================ -->
-<section id="contact"
-  data-kb
-  data-kb-title="Contact"
-  data-kb-keys="contact, email, reach, reach out, get in touch, hire, hiring, interview, next step, talk, call, connect, message, apply, opportunity"
-  data-kb-summary="Contact: email odeprecious10@gmail.com. LinkedIn: linkedin.com/in/precious-odemwingie-1b776323a. Portfolio: odeprecious10-cmd.github.io. Phone number and home address are not published.">
-  <div class="wrap">
-    <div class="contact-card">
-      <h2>Let's talk about <span class="ph">[[TARGET ROLE]]</span></h2>
-      <p>Email is the fastest route. I reply to every recruiter message that includes the role and the team.</p>
-
-      <div class="contact-actions">
-        <a class="btn btn-primary" href="mailto:odeprecious10@gmail.com?subject=[[TARGET ROLE]]%20opportunity">Email odeprecious10@gmail.com</a>
-        <a class="btn btn-ghost" href="resume.pdf" download>Download resume (PDF)</a>
-        <a class="btn btn-ghost" href="https://www.linkedin.com/in/precious-odemwingie-1b776323a/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="btn btn-ghost" href="https://odeprecious10-cmd.github.io/" target="_blank" rel="noopener noreferrer">Portfolio</a>
-      </div>
-
-      <div class="contact-meta">
-        <span>Based in <span class="ph">[[City, Country]]</span></span>
-        <span>Working style: <span class="ph">[[Remote / Hybrid / Onsite]]</span></span>
-        <a href="mailto:odeprecious10@gmail.com">odeprecious10@gmail.com</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 </main>
 
-<footer>
-  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;width:100%;">
-    <span>© <span id="year"></span> Precious Odemwingie</span>
-    <span>Ambassador answers only from this page. No chat content is stored or logged.</span>
-  </div>
-</footer>
+<div class="ambassador">
+<div class="chat" id="chat" role="dialog" aria-label="Virtual recruiter ambassador">
+<div class="chatHead"><div><strong>Precious — Virtual Ambassador</strong><small>Verified site information only</small></div><button class="close" id="close" aria-label="Close ambassador">×</button></div>
+<div class="messages" id="messages" aria-live="polite"></div>
+<div class="starters">
+<button class="starter">Why fit enterprise IT?</button>
+<button class="starter">Microsoft experience?</button>
+<button class="starter">Cloud projects?</button>
+</div>
+<form class="chatForm" id="chatForm"><input id="chatInput" maxlength="300" aria-label="Ask the ambassador" placeholder="Ask about background, skills or projects…"><button>Ask</button></form>
+</div>
+<button class="chatBtn" id="open">Ask the Ambassador</button>
+</div>
 
-<!-- ============================================================
-     AMBASSADOR
-     ============================================================ -->
-<button class="amb-launch" id="ambLaunch" type="button" data-open-amb aria-haspopup="dialog" aria-expanded="false" aria-controls="ambPanel">
-  <span class="ping" aria-hidden="true"></span>
-  Ask the ambassador
-</button>
-
-<section class="amb-panel" id="ambPanel" role="dialog" aria-modal="false" aria-labelledby="ambTitle" hidden>
-  <header class="amb-head">
-    <div class="amb-avatar" aria-hidden="true">PO</div>
-    <div class="amb-head-txt">
-      <b id="ambTitle">Precious's Ambassador</b>
-      <small>Answers only from verified sources on this page</small>
-    </div>
-    <button class="amb-close" id="ambClose" type="button" aria-label="Close ambassador">✕</button>
-  </header>
-
-  <div class="amb-log" id="ambLog" role="log" aria-live="polite" aria-atomic="false"></div>
-
-  <div class="amb-foot">
-    <form class="amb-form" id="ambForm" autocomplete="off">
-      <label for="ambInput" class="skip-link">Ask a question</label>
-      <input class="amb-input" id="ambInput" type="text" placeholder="Ask about role fit, projects, impact…" maxlength="400" />
-      <button class="amb-send" id="ambSend" type="submit" aria-label="Send question">→</button>
-    </form>
-    <p class="amb-note">Grounded in this site only · No storage, no logging · Rate limited</p>
-  </div>
-</section>
+<footer>© <span id="year"></span> Precious O'Dem · Built from verified resume and public portfolio information.</footer>
 
 <script>
-(function () {
-  "use strict";
-
-  /* ==========================================================
-     0. HOUSEKEEPING
-     ========================================================== */
-  document.getElementById("year").textContent = new Date().getFullYear();
-
-  // Placeholder banner
-  (function () {
-    var banner = document.getElementById("phBanner");
-    if (!banner) return;
-    var count = document.querySelectorAll(".ph").length;
-    var out = document.getElementById("phCount");
-    if (out) out.textContent = count + " placeholder" + (count === 1 ? "" : "s") + " left";
-    var hide = document.getElementById("phHide");
-    if (hide) hide.addEventListener("click", function () { banner.remove(); });
-  })();
-
-  /* ==========================================================
-     1. KNOWLEDGE BASE
-     ----------------------------------------------------------
-     Built entirely from elements carrying [data-kb] in the DOM.
-     Single source of truth: if you edit the page, the bot
-     automatically knows the new content. Nothing is hardcoded
-     that isn't visible on the page.
-     ========================================================== */
-
-  function clean(str) {
-    return (str || "").replace(/\s+/g, " ").trim();
-  }
-
-  // Remove any leftover [[placeholder]] markers so the bot never
-  // reads unfilled slots aloud as if they were facts.
-  function stripPlaceholders(str) {
-    return clean(str).replace(/\[\[[^\]]*\]\]/g, "").replace(/\s{2,}/g, " ").trim();
-  }
-
-  function firstSentences(text, maxChars) {
-    var t = stripPlaceholders(text);
-    if (t.length <= maxChars) return t;
-    var cut = t.slice(0, maxChars);
-    var lastStop = Math.max(cut.lastIndexOf(". "), cut.lastIndexOf("? "), cut.lastIndexOf("! "));
-    if (lastStop > maxChars * 0.5) return cut.slice(0, lastStop + 1);
-    return cut.replace(/\s+\S*$/, "") + "…";
-  }
-
-  var STOPWORDS = {
-    a:1, an:1, the:1, and:1, or:1, but:1, if:1, then:1, is:1, are:1, was:1, were:1,
-    be:1, been:1, being:1, am:1, do:1, does:1, did:1, have:1, has:1, had:1, having:1,
-    i:1, you:1, he:1, she:1, it:1, we:1, they:1, me:1, him:1, her:1, us:1, them:1,
-    my:1, your:1, his:1, its:1, our:1, their:1, this:1, that:1, these:1, those:1,
-    to:1, of:1, in:1, on:1, at:1, by:1, for:1, with:1, about:1, against:1, between:1,
-    into:1, through:1, during:1, before:1, after:1, above:1, below:1, from:1, up:1,
-    down:1, out:1, off:1, over:1, under:1, again:1, further:1, once:1, here:1, there:1,
-    when:1, where:1, why:1, how:1, all:1, any:1, both:1, each:1, few:1, more:1, most:1,
-    other:1, some:1, such:1, no:1, nor:1, not:1, only:1, own:1, same:1, so:1, than:1,
-    too:1, very:1, can:1, will:1, just:1, should:1, now:1, what:1, which:1, who:1,
-    whom:1, tell:1, give:1, show:1, please:1, know:1, want:1, like:1, get:1, got:1,
-    would:1, could:1, may:1, might:1, must:1, shall:1, also:1, much:1, many:1
-  };
-
-  function tokenize(str) {
-    return clean(str)
-      .toLowerCase()
-      .replace(/[^a-z0-9\s.+#-]/g, " ")
-      .split(/\s+/)
-      .map(function (w) { return w.replace(/^[.-]+|[.-]+$/g, ""); })
-      .filter(function (w) { return w.length > 1 && !STOPWORDS[w]; });
-  }
-
-  function buildKB() {
-    var entries = [];
-    document.querySelectorAll("[data-kb]").forEach(function (el) {
-      if (!el.id) return;
-      var keys = (el.dataset.kbKeys || "")
-        .split(",")
-        .map(function (k) { return clean(k).toLowerCase(); })
-        .filter(Boolean);
-
-      // Expand multi-word keys into their component tokens too
-      var keyTokens = [];
-      keys.forEach(function (k) {
-        keyTokens.push(k);
-        tokenize(k).forEach(function (t) { keyTokens.push(t); });
-      });
-
-      entries.push({
-        id: el.id,
-        title: el.dataset.kbTitle || el.id,
-        href: "#" + el.id,
-        keys: keyTokens,
-        summary: el.dataset.kbSummary
-          ? stripPlaceholders(el.dataset.kbSummary)
-          : firstSentences(el.textContent, 340),
-        text: stripPlaceholders(el.textContent).toLowerCase()
-      });
-    });
-    return entries;
-  }
-
-  var KB = buildKB();
-
-  /* ==========================================================
-     2. PROMPT-INJECTION GUARD
-     ----------------------------------------------------------
-     Refuses attempts to change the bot's rules, reveal hidden
-     instructions, or role-play as something else.
-     ========================================================== */
-  var INJECTION_PATTERNS = [
-    /ignore\s+(all\s+|any\s+|the\s+)?(previous|prior|above|earlier)\s+(instruction|prompt|rule|direction)/i,
-    /disregard\s+(all\s+|any\s+|the\s+)?(previous|prior|above|earlier)/i,
-    /forget\s+(everything|all|your)\s+(you|instruction|rule|prompt)/i,
-    /(reveal|show|print|repeat|output|display)\s+(me\s+)?(your\s+)?(system\s+|hidden\s+|initial\s+|original\s+)?(prompt|instruction|rule|configuration|context)/i,
-    /what\s+(is|are)\s+your\s+(system\s+)?(prompt|instruction|rule)/i,
-    /you\s+are\s+now\s+(a|an|the)\s+/i,
-    /act\s+as\s+(a|an|the)\s+(?!ambassador)/i,
-    /pretend\s+(to\s+be|you\s+are)/i,
-    /roleplay\s+as/i,
-    /jailbreak/i,
-    /dan\s+mode/i,
-    /developer\s+mode/i,
-    /sudo\s+mode/i,
-    /new\s+instruction/i,
-    /override\s+(your\s+)?(rule|instruction|setting)/i,
-    /<\s*script/i,
-    /<\s*\/?\s*(iframe|img|svg|object|embed)/i,
-    /\{\{.*\}\}/,
-    /system\s*:\s*/i
-  ];
-
-  function isInjection(text) {
-    return INJECTION_PATTERNS.some(function (re) { return re.test(text); });
-  }
-
-  /* ==========================================================
-     3. RATE LIMITING
-     ----------------------------------------------------------
-     Client-side courtesy limit. In production, mirror this
-     SERVER-SIDE (IP + session based) — client limits alone are
-     bypassable by anyone with devtools.
-     ========================================================== */
-  var RATE = {
-    maxMessages: 10,      // per window
-    windowMs: 60 * 1000,  // 1 minute
-    minGapMs: 1200,       // no machine-gun sends
-    stamps: [],
-    lastSend: 0
-  };
-
-  function rateCheck() {
-    var now = Date.now();
-
-    if (now - RATE.lastSend < RATE.minGapMs) {
-      return { ok: false, reason: "slow" };
-    }
-
-    RATE.stamps = RATE.stamps.filter(function (t) { return now - t < RATE.windowMs; });
-
-    if (RATE.stamps.length >= RATE.maxMessages) {
-      var wait = Math.ceil((RATE.windowMs - (now - RATE.stamps[0])) / 1000);
-      return { ok: false, reason: "limit", wait: wait };
-    }
-
-    RATE.stamps.push(now);
-    RATE.lastSend = now;
-    return { ok: true };
-  }
-
-  /* ==========================================================
-     4. ANSWERING
-     ----------------------------------------------------------
-     Deterministic, retrieval-based, no external model call.
-     Nothing leaves the browser. Nothing is stored.
-
-     >>> TO WIRE A REAL LLM <<<
-     Replace answer() with a fetch to YOUR OWN server endpoint
-     that (a) holds the API key server-side, (b) injects the same
-     KB text as the only permitted context, (c) enforces rate
-     limits and injection checks server-side, and (d) does not
-     persist the transcript. Keep the fallback string identical.
-     ========================================================== */
-
-  var FALLBACK = "I don't have verified information about that.";
-
-  var META = {
-    identity:
-      "I'm Precious's virtual ambassador. I answer questions about Precious Odemwingie's background, " +
-      "role fit, skills, projects, impact, and leadership — using only verified content published on this page. " +
-      "I won't guess or invent anything.",
-    capability:
-      "I can cover: background and positioning, fit for the target role, specific projects and what they " +
-      "achieved, skills and tools, experience, leadership, education, and how to get in touch. " +
-      "Ask me anything in those areas."
-  };
-
-  function scoreEntry(entry, tokens) {
-    var score = 0;
-    tokens.forEach(function (tok) {
-      // Strong: exact key hit
-      if (entry.keys.indexOf(tok) !== -1) { score += 4; return; }
-      // Partial: key contains token (min length guard)
-      if (tok.length >= 4) {
-        for (var i = 0; i < entry.keys.length; i++) {
-          if (entry.keys[i].indexOf(tok) !== -1 || tok.indexOf(entry.keys[i]) !== -1) {
-            score += 2;
-            break;
-          }
-        }
-      }
-      // Medium: title hit
-      if (entry.title.toLowerCase().indexOf(tok) !== -1) score += 2;
-      // Weak: body hit
-      if (entry.text.indexOf(tok) !== -1) score += 1;
-    });
-    return score;
-  }
-
-  function answer(rawQuery) {
-    var query = clean(rawQuery);
-
-    if (!query) {
-      return { text: "Ask me anything about Precious's background, projects, or fit for the role." };
-    }
-
-    if (isInjection(query)) {
-      return {
-        text:
-          "I can't follow instructions that change how I work. I only answer questions about " +
-          "Precious Odemwingie's verified background — happy to help with those.",
-        link: { href: "#top", label: "Back to overview" }
-      };
-    }
-
-    var lower = query.toLowerCase();
-    var tokens = tokenize(query);
-
-    // Meta questions
-    if (/^(who are you|what are you|what can you do|what do you do|help)\b/.test(lower)) {
-      return { text: META.capability };
-    }
-    if (/\b(are you (a )?(real|human|ai|bot)|is this an ai|chatbot)\b/.test(lower)) {
-      return { text: META.identity };
-    }
-
-    // Out-of-scope hard refusals
-    if (/\b(salary|compensation|pay|package|benefits|visa|sponsorship|notice period|start date|available from|relocat|phone|mobile|number|address|home|age|marital|religion|nationality|passport)\b/.test(lower)) {
-      return {
-        text:
-          FALLBACK + " That information isn't published here. Please contact Precious directly by email " +
-          "for anything not covered on this page.",
-        link: { href: "#contact", label: "Contact details" }
-      };
-    }
-
-    if (!tokens.length) {
-      return { text: FALLBACK };
-    }
-
-    // Rank
-    var scored = KB
-      .map(function (e) { return { entry: e, score: scoreEntry(e, tokens) }; })
-      .sort(function (a, b) { return b.score - a.score; });
-
-    var best = scored[0];
-
-    // Threshold: need real signal, not a single incidental word match
-    if (!best || best.score < 4 || !best.entry.summary) {
-      return {
-        text:
-          FALLBACK +
-          " I only use what's verified on this page. Try asking about role fit, a specific project, " +
-          "skills, experience, or leadership.",
-        link: { href: "#contact", label: "Ask Precious directly" }
-      };
-    }
-
-    // Build response: tight summary + optional runner-up pointer
-    var out = best.entry.summary;
-    var link = { href: best.entry.href, label: "Go to " + best.entry.title };
-
-    var second = scored[1];
-    if (second && second.score >= 6 && second.entry.id !== best.entry.id) {
-      out += " Related: " + second.entry.title + ".";
-    }
-
-    return { text: out, link: link };
-  }
-
-  /* ==========================================================
-     5. CHAT UI
-     ========================================================== */
-  var panel   = document.getElementById("ambPanel");
-  var log     = document.getElementById("ambLog");
-  var form    = document.getElementById("ambForm");
-  var input   = document.getElementById("ambInput");
-  var sendBtn = document.getElementById("ambSend");
-  var closeBtn= document.getElementById("ambClose");
-  var launch  = document.getElementById("ambLaunch");
-
-  var opened = false;
-  var busy = false;
-  var lastFocused = null;
-
-  var STARTERS = [
-    "Why is Precious a fit for this role?",
-    "Walk me through the most relevant project.",
-    "What impact has Precious had?",
-    "What is Precious's leadership experience?"
-  ];
-
-  function el(tag, cls, text) {
-    var n = document.createElement(tag);
-    if (cls) n.className = cls;
-    if (text != null) n.textContent = text; // textContent — never innerHTML
-    return n;
-  }
-
-  function addBot(html) { /* kept for clarity: we never use innerHTML for user data */ }
-
-  function pushUser(text) {
-    log.appendChild(el("div", "msg msg-user", text));
-    scrollDown();
-  }
-
-  function pushBot(result) {
-    var bubble = el("div", "msg msg-bot");
-    bubble.appendChild(document.createTextNode(result.text));
-
-    if (result.link) {
-      var a = document.createElement("a");
-      a.className = "jump";
-      a.href = result.link.href;
-      a.textContent = result.link.label + " →";
-      a.addEventListener("click", function () {
-        if (window.matchMedia("(max-width: 680px)").matches) closePanel();
-      });
-      bubble.appendChild(document.createElement("br"));
-      bubble.appendChild(a);
-    }
-
-    log.appendChild(bubble);
-    scrollDown();
-  }
-
-  function pushTyping() {
-    var wrap = el("div", "msg msg-bot");
-    wrap.id = "ambTyping";
-    var t = el("span", "typing");
-    t.appendChild(el("i"));
-    t.appendChild(el("i"));
-    t.appendChild(el("i"));
-    wrap.appendChild(t);
-    log.appendChild(wrap);
-    scrollDown();
-  }
-
-  function removeTyping() {
-    var t = document.getElementById("ambTyping");
-    if (t) t.remove();
-  }
-
-  function scrollDown() {
-    requestAnimationFrame(function () { log.scrollTop = log.scrollHeight; });
-  }
-
-  function showStarters() {
-    var wrap = el("div", "starters");
-    STARTERS.forEach(function (q) {
-      var b = el("button", "starter", q);
-      b.type = "button";
-      b.addEventListener("click", function () {
-        wrap.remove();
-        handleSend(q);
-      });
-      wrap.appendChild(b);
-    });
-    log.appendChild(wrap);
-    scrollDown();
-  }
-
-  function handleSend(text) {
-    var value = clean(text || input.value);
-    if (!value || busy) return;
-
-    if (isInjection(value)) {
-      pushUser(value);
-      input.value = "";
-      pushBot({
-        text:
-          "I can't follow instructions that change how I work. I only answer questions about " +
-          "Precious Odemwingie's verified background.",
-        link: { href: "#top", label: "Back to overview" }
-      });
-      return;
-    }
-
-    var gate = rateCheck();
-    if (!gate.ok) {
-      pushUser(value);
-      input.value = "";
-      pushBot({
-        text: gate.reason === "slow"
-          ? "One moment — give me a second between questions."
-          : "That's " + RATE.maxMessages + " questions in a minute, which is my limit. Please try again in about " + gate.wait + " seconds, or email Precious directly.",
-        link: gate.reason === "limit" ? { href: "#contact", label: "Contact details" } : null
-      });
-      return;
-    }
-
-    pushUser(value);
-    input.value = "";
-    busy = true;
-    sendBtn.disabled = true;
-    pushTyping();
-
-    // No network call. No logging. Answer computed locally.
-    window.setTimeout(function () {
-      removeTyping();
-      pushBot(answer(value));
-      busy = false;
-      sendBtn.disabled = false;
-      input.focus();
-    }, 340 + Math.random() * 260);
-  }
-
-  function openPanel() {
-    if (opened) return;
-    opened = true;
-    lastFocused = document.activeElement;
-    panel.hidden = false;
-    launch.hidden = true;
-    launch.setAttribute("aria-expanded", "true");
-
-    if (!log.childElementCount) {
-      pushBot({
-        text:
-          "Hi — I'm Precious's virtual ambassador. I answer only from verified content on this page, " +
-          "and I'll say so plainly if something isn't covered. What would you like to know?"
-      });
-      showStarters();
-    }
-    window.setTimeout(function () { input.focus(); }, 60);
-  }
-
-  function closePanel() {
-    if (!opened) return;
-    opened = false;
-    panel.hidden = true;
-    launch.hidden = false;
-    launch.setAttribute("aria-expanded", "false");
-    if (lastFocused && lastFocused.focus) lastFocused.focus();
-  }
-
-  document.querySelectorAll("[data-open-amb]").forEach(function (b) {
-    b.addEventListener("click", openPanel);
-  });
-  closeBtn.addEventListener("click", closePanel);
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    handleSend();
-  });
-
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && opened) closePanel();
-  });
-
-  // Trap focus inside the panel on small screens where it's modal-like
-  panel.addEventListener("keydown", function (e) {
-    if (e.key !== "Tab" || !window.matchMedia("(max-width: 680px)").matches) return;
-    var focusables = panel.querySelectorAll("button, [href], input, [tabindex]:not([tabindex='-1'])");
-    if (!focusables.length) return;
-    var first = focusables[0];
-    var last = focusables[focusables.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  });
-
-  /* ==========================================================
-     6. DEFENSIVE: strip any injected markup on load
-     ========================================================== */
-  // (No-op safeguard — this page renders nothing from user input
-  //  via innerHTML anywhere. Kept as a documented invariant.)
-})();
+const evidence = {
+  fit: `Precious' resume shows 5+ years of IT experience across desktop and cloud environments. The strongest enterprise-support evidence is first- and second-level support at Groupe Touchette, incident management and ServiceNow, plus a documented 90% resolution rate within SLAs at Hideapluxx. See #match and #experience.`,
+  microsoft: `The resume lists Microsoft 365, Entra ID, SharePoint and Teams. Groupe Touchette experience includes Active Directory, ADManager Plus, Microsoft 365/Entra ID accounts, MFA and Conditional Access. See #skills and #experience.`,
+  cloud: `The profile covers Azure and AWS, including Virtual Machines, Resource Groups and IAM. The AWS project used S3, EC2, RDS and CloudFront. Certifications include Azure Administrator Associate and AWS Solutions Architect – Associate. See #projects and #education.`,
+  sap: `SAP is a major part of the deeper technical profile. The site documents Basis work with SU01, PFCG, authorization troubleshooting, STAUTHTRACE, SM20, RZ20/CCMS, spool and monitoring; Fiori and S/4HANA access troubleshooting; Entra ID → SAP IAS SAML SSO; SAP BTP, IPS/provisioning and Cloud Connector concepts; and CI-DS/Data Services Agent work on Windows Server with SQL ODBC and HTTPS connectivity. See #sap.`,
+  projects: `The strongest documented project evidence is the AWS static website project, plus the Digital Archive for Black Canadian Artists. The resume describes AWS services including S3, EC2, RDS and CloudFront, and WordPress work for the archive. See #projects.`,
+  background: `Precious is an IT support professional with 5+ years of experience. The resume covers enterprise desktop support, incident/problem management, Microsoft technologies, cloud, user management, hardware and automation. See #match, #skills and #experience.`,
+  availability: `I don't have verified information about availability.`,
+  salary: `I don't have verified information about salary expectations.`,
+  location: `The public portfolio identifies Ontario, Canada. I don't have a verified street address and will not provide private contact information.`,
+  education: `The resume lists a Graduate Certificate in Cloud Data Management from Conestoga College (Distinction), an MSc in Information Technology from National Open University (Distinction), and a BEng in Computer Engineering from University of Benin (Honors). See #education.`,
+  unsupported: `I don’t have verified information about that.`
+};
+
+function answer(q){
+ const x=q.toLowerCase();
+ if(/fit|match|why.*role|enterprise/.test(x)) return evidence.fit;
+ if(/microsoft|365|entra|active directory|intune|identity|mfa|conditional/.test(x)) return evidence.microsoft;
+ if(/sap|basis|fiori|pfcg|su01|ias|saml|btp|cloud connector|ci-ds|data services|s4hana|s\/4hana|stauthtrace|sm20|rz20/.test(x)) return evidence.sap;
+ if(/cloud|aws|azure|s3|ec2|rds|cloudfront/.test(x)) return evidence.cloud;
+ if(/project|portfolio|evidence/.test(x)) return evidence.projects;
+ if(/background|experience|career|work/.test(x)) return evidence.background;
+ if(/availability|available|start date/.test(x)) return evidence.availability;
+ if(/salary|pay|compensation/.test(x)) return evidence.salary;
+ if(/address|phone|location|where.*live/.test(x)) return evidence.location;
+ if(/education|degree|master|bachelor|conestoga/.test(x)) return evidence.education;
+ return evidence.unsupported;
+}
+const chat=document.getElementById('chat'),open=document.getElementById('open'),close=document.getElementById('close'),messages=document.getElementById('messages'),form=document.getElementById('chatForm'),input=document.getElementById('chatInput');
+function add(text,who='bot'){const d=document.createElement('div');d.className='msg '+who;d.textContent=text;messages.appendChild(d);messages.scrollTop=messages.scrollHeight}
+function ask(q){add(q,'user');setTimeout(()=>add(answer(q),'bot'),120)}
+open.onclick=()=>{chat.classList.add('open');open.style.display='none';if(!messages.children.length)add(`Hi. I’m the virtual ambassador for Precious’ professional site. I can answer questions about his background, role fit, skills and projects using only verified information on this site. Ask me anything, or choose a starter below.`)}
+close.onclick=()=>{chat.classList.remove('open');open.style.display='block'}
+form.onsubmit=e=>{e.preventDefault();const q=input.value.trim();if(!q)return;ask(q);input.value=''}
+document.querySelectorAll('.starter').forEach(b=>b.onclick=()=>ask(b.textContent));
+document.getElementById('year').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
