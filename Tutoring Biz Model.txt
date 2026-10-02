@@ -1,1 +1,111 @@
+Before mapping the exact step-by-step workflow, there is a crucial technical detail to keep in mind regarding ClassIn:
 
+ClassIn's free tier caps classes at **3 students** (4 total participants including the teacher) and **40 minutes per lesson**. Because your model relies on **5 students per class** for **60 minutes**, the free plan will lock out your 4th and 5th students and cut the lesson off mid-way.
+
+**To keep fixed software costs under $40/month while keeping ClassIn:**
+
+* Use **ClassIn's Pay-As-You-Go Credit Top-Up** (a $15–$20 prepaid account balance). This removes the participant/time limits and costs only a few cents per class, letting you use ClassIn without paying a heavy monthly subscription. *(Alternatively, standard Zoom Pro at $15/mo or free Google Meet links work identically inside this map).*
+
+---
+
+### The 30-Enrollment Master Map
+
+```
+[ Parent on Website ] 
+        │
+        ▼
+[ Teachworks Custom Enrollment Form ] ➔ (Enforces 5-student hard cap per class)
+        │
+        ▼
+[ Stripe Automated Checkout ] ➔ ($60/mo recurring autopay subscription)
+        │
+        ▼
+[ Teachworks Student Profile Created Automatically ]
+        │
+        ▼
+[ Automated Confirmation Email ] ➔ (Delivers ClassIn link & Parent Portal login)
+        │
+        ▼
+[ Weekly 60-Min Class ] ➔ (Tutor marks attendance in Teachworks with 1 click)
+
+```
+
+---
+
+### Step-by-Step Operational Workflow
+
+#### 1. Parent Self-Registration (Teachworks Form)
+
+* You embed a **Teachworks Custom Enrollment Form** on your website.
+* The form lists your **6 weekly time slots** (e.g., *Math Level 1 — Tuesdays @ 4:00 PM*).
+* **Hard Roster Cap:** Teachworks is set to cap registration at **5 students per section**. Once 5 parents sign up for a slot, the system automatically closes that class time or switches it to a waitlist.
+
+#### 2. Payment & Autopay Lock ($60/month)
+
+* Within the enrollment form, the parent enters their credit card via **Stripe**.
+* Stripe automatically creates a recurring **$60/month subscription**.
+* If a credit card fails on the 1st of the month, Teachworks auto-sends a billing update link to the parent and flags the profile before the next lesson.
+
+#### 3. Automated ClassIn Delivery
+
+* In Teachworks, you create your 6 recurring weekly calendar events.
+* You paste each class's dedicated **ClassIn Room Link** into the "Location / Video Link" field.
+* **Automated Email/SMS Reminders:** Teachworks sends an automated reminder 24 hours prior to class:
+> *"Hi [Parent Name], [Child Name]'s class is tomorrow at 4:00 PM. Click here to join the ClassIn room: [Link]"*
+
+
+
+#### 4. Teaching & Attendance (1 Minute of Admin)
+
+* The tutor logs into ClassIn and runs the interactive 60-minute session for the 5 students.
+* Immediately after class, the tutor opens the Teachworks dashboard on their phone or laptop, opens the lesson, and checks off attendance (`Attended` or `Absent`).
+* This single action updates student records and automatically calculates tutor payroll hours.
+
+#### 5. Self-Service Makeup Class Engine (Zero Admin Friction)
+
+When a child is sick or misses a class:
+
+1. The parent logs into their **Teachworks Parent Portal** and cancels the upcoming lesson at least 2 hours in advance.
+2. Teachworks automatically grants **1 Makeup Credit** to the student's profile.
+3. The parent uses their portal to browse your other 5 weekly class times, finds a session with an open slot (fewer than 5 kids), and books the makeup session.
+
+* **Result:** You never have to manually reschedule, swap links, or answer late-night attendance texts.
+
+---
+
+### Onboarding Email Template (Set-and-Forget)
+
+**Trigger:** Sent automatically by Teachworks immediately after successful $60 payment.
+
+> **Subject:** Welcome to [Tutoring Company]! [Child Name]'s Class Details
+> Hi [Parent Name],
+> Thank you for enrolling [Child Name]! Your monthly subscription of $60 has been confirmed.
+> **Class Details:**
+> * **Subject:** [Subject Name]
+> * **Time:** [Day of Week]s at [Time]
+> * **Classroom Link:** [Insert ClassIn Link]
+> 
+> 
+> **Getting Started:**
+> 1. Download the ClassIn app on your child's device prior to the first lesson.
+> 2. Click the classroom link 5 minutes before class starts.
+> 3. Log into your **Parent Portal** anytime to check attendance or schedule makeup sessions: [Parent Portal Link]
+> 
+> 
+> We look forward to seeing [Child Name] in class!
+> Best regards,
+> [Your Name / Company]
+
+---
+
+### Monthly Financial Breakdown at 30 Enrollments
+
+* **Gross Revenue (30 kids × $60/mo):** $1,800
+* **Teachworks Base Plan:** ~$25 – $35/mo
+* **Stripe Payment Fees (~2.9% + 30¢):** ~$60/mo
+* **ClassIn Consumption / Video Overhead:** ~$15/mo
+* **Total Software Overhead:** **~$105/month** (~5.8% of revenue)
+* **Net Revenue before Tutor Pay:** **~$1,695/month**
+
+This infrastructure keeps your admin work to **under 1 hour per week** at 30 students while building the exact pipeline needed to scale smoothly up to 200.
+************************************************************************************************************************************************************************
