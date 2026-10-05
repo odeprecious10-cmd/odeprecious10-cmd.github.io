@@ -1,65 +1,10 @@
-Diaspora Tutoring Roadmap.pdf
-PDF
-Create a high-end, conversion-optimized landing page for an elite online tutoring academy called **NovaPoint Academy**. 
-
-Design Aesthetic: Modern, clean, trustworthy, and academic. Use a sophisticated color palette of deep navy blue (#0F172A), crisp white backgrounds, slate gray text, and warm amber/gold accents (#D97706) for call-to-action buttons and trust badges. Use modern sans-serif typography (like 'Plus Jakarta Sans' or 'Inter').
-
-Structure the page with the following sections:
-
-1. Navigation Bar:
-- Left: Logo text reading "NovaPoint Academy" with "Academy" styled in amber gold.
-- Right: A prominent primary button reading "Book a Class" linked to the booking system.
-
-2. Hero Section:
-- Top Badge: "Canada, US, UK & Europe Diaspora Curriculum Hub"
-- Main Headline: "The new Bridge, The modern hub for home-style academic rigor for Global achievers" (Style the word "Global achievers" in amber accent color).
-- Subheadline: Expert-led live academic enrichment designed specifically for diaspora families. Powered by our signature ClassOf5 interactive small-group model.
-- Primary CTA Button: "View Pricing & Enroll" (Links to the pricing section).
-
-3. "The ClassOf5 Experience" Feature Grid (3 Columns):
-- Card 1: "Strict Cap of 5 Students" — No lost voices in oversized classrooms. Every child gets direct interaction, real-time feedback, and personalized attention from expert tutors[cite: 4].
-- Card 2: "ClassIn Interactive Tech" — Powered by advanced virtual classrooms featuring collaborative digital whiteboards, gamified engagement tools, and immersive learning widgets[cite: 1].
-- Card 3: "Total Transparency" — Parents receive detailed weekly progress logs and lesson recordings right after class, eliminating invisible academic lag.
-
-4. Pricing & Investment Section:
-- Section Header: "Simple, Transparent Investment"
-- Pricing Card (Centered, styled with an amber border and a "Most Popular" badge):
-  - Title: "Single Subject Stream"
-  - Subtitle: "Math or English Enrichment"
-  - Price: "$69 CAD / month"[cite: 9]
-  - Feature Checklist (with checkmarks):
-    - 2 Live Classes per week (1 hour each)[cite: 4]
-    - Strict Maximum 5 Students per group[cite: 4]
-    - Access to ClassIn interactive virtual classroom[cite: 1]
-    - 10% makeup class allowance buffer[cite: 4]
-    - Weekly parent progress reports & lesson recordings
-  - Button: "Enroll via Teachworks" (Styled as a high-impact primary button connected to secure scheduling)[cite: 1].
-
-5. Footer:
-- Copyright text: © 2027 NovaPoint Academy. All rights reserved.
-- Trust subtitle: Secure payment processing via Stripe • Managed via Teachworks[cite: 1].
-👍
-
-Done — I created the NovaPoint Academy landing page as a polished, responsive, standalone HTML site.
-Files
-
-Open the NovaPoint Academy landing page
-
-Download the complete landing-page package
-
-The page includes your requested navy/white/amber aesthetic, ClassOf5 feature grid, $69 CAD pricing card, Teachworks enrollment CTA, Stripe/Teachworks trust messaging, responsive mobile styling, and conversion-focused hierarchy.
-
-One important source note: the uploaded roadmap contains an older $60/month pricing scenario, while your landing-page brief explicitly specifies $69 CAD/month. I used the $69 figure from your current brief rather than silently overriding it.
-
-The only item not hardcoded is the actual Teachworks booking URL, since you didn't provide the live link. It's centralized in one BOOKING_URL setting near the bottom of the HTML, so replacing it connects both booking CTAs automatically.
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="NovaPoint Academy delivers expert-led live academic enrichment for diaspora families through the ClassOf5 small-group model." />
-  <title>NovaPoint Academy | ClassOf5 Academic Enrichment</title>
+  <meta name="description" content="NovaPoint Academy delivers expert-led live academic enrichment through the ClassOf5 small-group model." />
+  <title>NovaPoint Academy | NextGen Academic Enrichment</title>
   <style>
     :root {
       --navy: #0F172A;
@@ -111,9 +56,17 @@ The only item not hardcoded is the actual Teachworks booking URL, since you didn
     }
     .nav-inner { min-height: 76px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
     .brand { display:flex; align-items:center; gap:12px; font-family:'Plus Jakarta Sans', sans-serif; font-weight:800; font-size:19px; letter-spacing:-.025em; }
+    .brand-copy { display:flex; flex-direction:column; line-height:1.02; gap:4px; }
+    .brand-name { font-size:19px; font-weight:800; letter-spacing:-.025em; }
+    .brand-tagline { font-size:9px; line-height:1; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:#000; }
     .brand-mark { width:31px; height:31px; display:grid; place-items:center; border-radius:10px; background:var(--navy); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
     .brand-mark::before { content:''; width:12px; height:12px; border:2px solid #fff; border-radius:4px; transform: rotate(45deg); }
     .brand span { color: var(--amber); }
+
+    .nav-right { display:flex; align-items:center; gap:24px; }
+    .nav-links { display:flex; align-items:center; gap:18px; }
+    .nav-links a { font-size:13px; font-weight:700; color:var(--slate); white-space:nowrap; transition:.2s ease; }
+    .nav-links a:hover { color:var(--navy); }
     .nav-cta { padding:12px 19px; border-radius:12px; font-weight:700; background:var(--amber); color:#fff; box-shadow:0 10px 24px rgba(217,119,6,.22); transition:.2s ease; }
     .nav-cta:hover { transform:translateY(-1px); background:var(--amber-dark); }
 
@@ -208,6 +161,8 @@ The only item not hardcoded is the actual Teachworks booking URL, since you didn
       nav { position:static; }
       .nav-inner { min-height:68px; }
       .brand { font-size:16px; }
+      .brand-name { font-size:16px; }
+      .brand-tagline { font-size:8px; letter-spacing:.12em; }
       .brand-mark { width:28px; height:28px; }
       .nav-cta { padding:10px 14px; font-size:13px; }
       .hero { padding:58px 0 68px; }
@@ -227,7 +182,7 @@ The only item not hardcoded is the actual Teachworks booking URL, since you didn
     <div class="container top-strip-inner">
       <span><i class="dot"></i> Live, expert-led enrichment</span>
       <span><i class="dot"></i> ClassOf5 small-group model</span>
-      <span><i class="dot"></i> Built for diaspora families</span>
+      <span><i class="dot"></i> Built for globally connected families</span>
     </div>
   </div>
 
@@ -235,19 +190,30 @@ The only item not hardcoded is the actual Teachworks booking URL, since you didn
     <div class="container nav-inner">
       <a class="brand" href="#top" aria-label="NovaPoint Academy home">
         <span class="brand-mark" aria-hidden="true"></span>
-        NovaPoint <span>Academy</span>
+        <span class="brand-copy">
+          <span class="brand-name">NovaPoint <span>Academy</span></span>
+          <span class="brand-tagline">The New Bridge</span>
+        </span>
       </a>
-      <a class="nav-cta" id="navBookButton" href="#pricing">Book a Class <span aria-hidden="true">↗</span></a>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#experience">Methodology</a>
+          <a href="#experience">Programs</a>
+          <a href="#pricing">Tuition &amp; Plans</a>
+          <a href="#contact">Contact Us</a>
+        </div>
+        <a class="nav-cta" id="navBookButton" href="#pricing">Book a Class <span aria-hidden="true">↗</span></a>
+      </div>
     </div>
   </nav>
 
   <main id="top">
-    <section class="hero">
+    <section class="hero" id="about">
       <div class="container hero-grid">
         <div>
-          <div class="badge">Canada, US, UK &amp; Europe Diaspora Curriculum Hub</div>
-          <h1>The new Bridge, The modern hub for home-style academic rigor for <span class="accent">Global achievers</span></h1>
-          <p class="hero-copy">Expert-led live academic enrichment designed specifically for diaspora families. Powered by our signature ClassOf5 interactive small-group model.</p>
+          <div class="badge">Canada, US, UK &amp; Europe Curriculum hub</div>
+          <h1>The NextGen hub of home-style academic rigor for <span class="accent">Global achievers</span></h1>
+          <p class="hero-copy">Expert-led live academic enrichment designed for globally connected families. Powered by our signature ClassOf5 interactive small-group model.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#pricing">View Pricing &amp; Enroll <span aria-hidden="true">→</span></a>
             <a class="btn btn-secondary" href="#experience">Explore ClassOf5</a>
@@ -299,8 +265,8 @@ The only item not hardcoded is the actual Teachworks booking URL, since you didn
             <div class="icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 8h10M7 12h5"/></svg>
             </div>
-            <h3>ClassIn Interactive Tech</h3>
-            <p>Powered by advanced virtual classrooms featuring collaborative digital whiteboards, gamified engagement tools, and immersive learning widgets.</p>
+            <h3>Interactive Learning Technology</h3>
+            <p>Powered by an advanced virtual classroom featuring collaborative digital whiteboards, gamified engagement tools, and immersive learning widgets.</p>
           </article>
 
           <article class="feature-card">
@@ -333,20 +299,20 @@ The only item not hardcoded is the actual Teachworks booking URL, since you didn
             <div class="check-list" aria-label="Included features">
               <div class="check-item"><b class="check">✓</b><span>2 Live Classes per week (1 hour each)</span></div>
               <div class="check-item"><b class="check">✓</b><span>Strict Maximum 5 Students per group</span></div>
-              <div class="check-item"><b class="check">✓</b><span>Access to ClassIn interactive virtual classroom</span></div>
-              <div class="check-item"><b class="check">✓</b><span>10% makeup class allowance buffer</span></div>
+              <div class="check-item"><b class="check">✓</b><span>Access to interactive virtual classroom</span></div>
+              <div class="check-item"><b class="check">✓</b><span>Make-up classes for mixed-class sessions</span></div>
               <div class="check-item"><b class="check">✓</b><span>Weekly parent progress reports &amp; lesson recordings</span></div>
             </div>
 
             <div class="enroll-box" id="enroll">
               <h4>Ready to get started?</h4>
-              <p>Secure your place through Teachworks and move into scheduling with confidence.</p>
-              <a class="btn btn-primary" id="enrollButton" href="#">Enroll via Teachworks <span aria-hidden="true">→</span></a>
-              <div class="booking-hint" id="bookingHint">Add your live Teachworks booking URL in the page settings.</div>
+              <p>Secure your place and move into scheduling with confidence.</p>
+              <a class="btn btn-primary" id="enrollButton" href="#">Enroll Now <span aria-hidden="true">→</span></a>
+              <div class="booking-hint" id="bookingHint">Secure online enrollment.</div>
             </div>
           </div>
         </div>
-        <p class="note">Secure payment processing via Stripe • Managed via Teachworks</p>
+        <p class="note">Secure payment processing via Stripe • Secure online enrollment</p>
       </div>
     </section>
 
@@ -359,13 +325,18 @@ The only item not hardcoded is the actual Teachworks booking URL, since you didn
     </div>
   </main>
 
-  <footer>
+  <footer id="contact">
     <div class="container footer-inner">
       <div>
         <div class="footer-brand">NovaPoint <span>Academy</span></div>
         <p class="footer-copy">© 2027 NovaPoint Academy. All rights reserved.</p>
       </div>
-      <div class="footer-trust">Secure payment processing via <strong>Stripe</strong> • Managed via <strong>Teachworks</strong></div>
+      <div class="footer-links">
+        <a href="#pricing">Admission</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+      <div class="footer-trust">Secure payment processing via <strong>Stripe</strong> • Secure online enrollment</div>
     </div>
   </footer>
 
@@ -391,13 +362,9 @@ The only item not hardcoded is the actual Teachworks booking URL, since you didn
       enrollButton.addEventListener('click', (event) => {
         event.preventDefault();
         document.getElementById('pricing').scrollIntoView({behavior:'smooth'});
-        bookingHint.textContent = 'Your Teachworks booking link will go here once connected.';
+        bookingHint.textContent = 'Secure online enrollment is ready once your booking link is connected.';
       });
     }
   </script>
 </body>
 </html>
-
-index.htmlHTML
-
-
