@@ -1,0 +1,403 @@
+Diaspora Tutoring Roadmap.pdf
+PDF
+Create a high-end, conversion-optimized landing page for an elite online tutoring academy called **NovaPoint Academy**. 
+
+Design Aesthetic: Modern, clean, trustworthy, and academic. Use a sophisticated color palette of deep navy blue (#0F172A), crisp white backgrounds, slate gray text, and warm amber/gold accents (#D97706) for call-to-action buttons and trust badges. Use modern sans-serif typography (like 'Plus Jakarta Sans' or 'Inter').
+
+Structure the page with the following sections:
+
+1. Navigation Bar:
+- Left: Logo text reading "NovaPoint Academy" with "Academy" styled in amber gold.
+- Right: A prominent primary button reading "Book a Class" linked to the booking system.
+
+2. Hero Section:
+- Top Badge: "Canada, US, UK & Europe Diaspora Curriculum Hub"
+- Main Headline: "The new Bridge, The modern hub for home-style academic rigor for Global achievers" (Style the word "Global achievers" in amber accent color).
+- Subheadline: Expert-led live academic enrichment designed specifically for diaspora families. Powered by our signature ClassOf5 interactive small-group model.
+- Primary CTA Button: "View Pricing & Enroll" (Links to the pricing section).
+
+3. "The ClassOf5 Experience" Feature Grid (3 Columns):
+- Card 1: "Strict Cap of 5 Students" — No lost voices in oversized classrooms. Every child gets direct interaction, real-time feedback, and personalized attention from expert tutors[cite: 4].
+- Card 2: "ClassIn Interactive Tech" — Powered by advanced virtual classrooms featuring collaborative digital whiteboards, gamified engagement tools, and immersive learning widgets[cite: 1].
+- Card 3: "Total Transparency" — Parents receive detailed weekly progress logs and lesson recordings right after class, eliminating invisible academic lag.
+
+4. Pricing & Investment Section:
+- Section Header: "Simple, Transparent Investment"
+- Pricing Card (Centered, styled with an amber border and a "Most Popular" badge):
+  - Title: "Single Subject Stream"
+  - Subtitle: "Math or English Enrichment"
+  - Price: "$69 CAD / month"[cite: 9]
+  - Feature Checklist (with checkmarks):
+    - 2 Live Classes per week (1 hour each)[cite: 4]
+    - Strict Maximum 5 Students per group[cite: 4]
+    - Access to ClassIn interactive virtual classroom[cite: 1]
+    - 10% makeup class allowance buffer[cite: 4]
+    - Weekly parent progress reports & lesson recordings
+  - Button: "Enroll via Teachworks" (Styled as a high-impact primary button connected to secure scheduling)[cite: 1].
+
+5. Footer:
+- Copyright text: © 2027 NovaPoint Academy. All rights reserved.
+- Trust subtitle: Secure payment processing via Stripe • Managed via Teachworks[cite: 1].
+👍
+
+Done — I created the NovaPoint Academy landing page as a polished, responsive, standalone HTML site.
+Files
+
+Open the NovaPoint Academy landing page
+
+Download the complete landing-page package
+
+The page includes your requested navy/white/amber aesthetic, ClassOf5 feature grid, $69 CAD pricing card, Teachworks enrollment CTA, Stripe/Teachworks trust messaging, responsive mobile styling, and conversion-focused hierarchy.
+
+One important source note: the uploaded roadmap contains an older $60/month pricing scenario, while your landing-page brief explicitly specifies $69 CAD/month. I used the $69 figure from your current brief rather than silently overriding it.
+
+The only item not hardcoded is the actual Teachworks booking URL, since you didn't provide the live link. It's centralized in one BOOKING_URL setting near the bottom of the HTML, so replacing it connects both booking CTAs automatically.
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="NovaPoint Academy delivers expert-led live academic enrichment for diaspora families through the ClassOf5 small-group model." />
+  <title>NovaPoint Academy | ClassOf5 Academic Enrichment</title>
+  <style>
+    :root {
+      --navy: #0F172A;
+      --navy-2: #111C32;
+      --slate: #475569;
+      --slate-2: #64748B;
+      --line: #E2E8F0;
+      --bg: #F8FAFC;
+      --white: #FFFFFF;
+      --amber: #D97706;
+      --amber-dark: #B45309;
+      --amber-soft: #FFFBEB;
+      --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--navy);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+
+    .top-strip {
+      background: var(--navy);
+      color: rgba(255,255,255,.84);
+      font-size: 12px;
+      letter-spacing: .02em;
+      padding: 9px 0;
+    }
+    .top-strip-inner { display:flex; justify-content:center; gap:18px; flex-wrap:wrap; }
+    .top-strip span { display:inline-flex; align-items:center; gap:7px; }
+    .dot { width:5px; height:5px; border-radius:50%; background: var(--amber); display:inline-block; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(226,232,240,.85);
+    }
+    .nav-inner { min-height: 76px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:12px; font-family:'Plus Jakarta Sans', sans-serif; font-weight:800; font-size:19px; letter-spacing:-.025em; }
+    .brand-mark { width:31px; height:31px; display:grid; place-items:center; border-radius:10px; background:var(--navy); box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+    .brand-mark::before { content:''; width:12px; height:12px; border:2px solid #fff; border-radius:4px; transform: rotate(45deg); }
+    .brand span { color: var(--amber); }
+    .nav-cta { padding:12px 19px; border-radius:12px; font-weight:700; background:var(--amber); color:#fff; box-shadow:0 10px 24px rgba(217,119,6,.22); transition:.2s ease; }
+    .nav-cta:hover { transform:translateY(-1px); background:var(--amber-dark); }
+
+    .hero { position:relative; overflow:hidden; background:linear-gradient(180deg, #fff 0%, #F8FAFC 100%); padding:82px 0 96px; }
+    .hero::before { content:''; position:absolute; width:620px; height:620px; right:-260px; top:-260px; border-radius:50%; background:radial-gradient(circle, rgba(217,119,6,.12) 0%, rgba(217,119,6,0) 68%); pointer-events:none; }
+    .hero-grid { position:relative; display:grid; grid-template-columns:minmax(0,1.16fr) minmax(300px,.84fr); gap:64px; align-items:center; }
+    .badge { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid #F4D7A3; background:var(--amber-soft); border-radius:999px; color:#92400E; font-size:12px; font-weight:700; letter-spacing:.02em; }
+    .badge::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--amber); box-shadow:0 0 0 4px rgba(217,119,6,.12); }
+    h1 { font-family:'Plus Jakarta Sans', sans-serif; font-size:clamp(44px, 6.2vw, 74px); line-height:1.02; letter-spacing:-.055em; margin:22px 0 24px; max-width:760px; }
+    .accent { color:var(--amber); }
+    .hero-copy { color:var(--slate); font-size:18px; max-width:650px; }
+    .hero-actions { display:flex; align-items:center; gap:14px; margin-top:30px; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:52px; padding:0 20px; border-radius:13px; font-weight:800; border:1px solid transparent; transition:.2s ease; }
+    .btn-primary { background:var(--amber); color:#fff; box-shadow:0 14px 30px rgba(217,119,6,.22); }
+    .btn-primary:hover { transform:translateY(-1px); background:var(--amber-dark); }
+    .btn-secondary { background:#fff; color:var(--navy); border-color:var(--line); }
+    .btn-secondary:hover { border-color:#CBD5E1; transform:translateY(-1px); }
+    .micro-trust { display:flex; gap:18px; flex-wrap:wrap; margin-top:24px; color:var(--slate-2); font-size:13px; }
+    .micro-trust span { display:inline-flex; align-items:center; gap:6px; }
+    .check { width:17px; height:17px; display:inline-grid; place-items:center; border-radius:50%; background:#ECFDF5; color:#047857; font-size:11px; font-weight:900; }
+
+    .hero-card { background:var(--navy); border-radius:28px; padding:26px; color:#fff; box-shadow: 0 28px 70px rgba(15,23,42,.20); position:relative; overflow:hidden; }
+    .hero-card::after { content:''; position:absolute; width:220px; height:220px; right:-90px; bottom:-110px; border-radius:50%; border:1px solid rgba(217,119,6,.3); box-shadow:0 0 0 30px rgba(217,119,6,.05), 0 0 0 60px rgba(217,119,6,.03); }
+    .eyebrow { font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:#CBD5E1; font-weight:800; }
+    .hero-card h3 { font-family:'Plus Jakarta Sans', sans-serif; font-size:31px; line-height:1.12; letter-spacing:-.04em; margin:10px 0 14px; }
+    .hero-card p { color:#CBD5E1; font-size:14px; margin:0 0 22px; }
+    .mini-stats { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid rgba(255,255,255,.10); padding-top:20px; gap:12px; }
+    .mini-stat strong { display:block; font-family:'Plus Jakarta Sans',sans-serif; font-size:28px; letter-spacing:-.04em; }
+    .mini-stat span { font-size:11px; color:#94A3B8; }
+    .floating { margin-top:21px; border-radius:16px; padding:14px 15px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.09); display:flex; align-items:center; justify-content:space-between; gap:12px; position:relative; z-index:2; }
+    .floating-label { font-size:12px; color:#CBD5E1; }
+    .floating-value { font-weight:800; font-size:13px; }
+
+    section { padding:96px 0; }
+    .section-kicker { color:var(--amber); text-transform:uppercase; font-weight:800; letter-spacing:.13em; font-size:11px; margin-bottom:10px; }
+    .section-title { font-family:'Plus Jakarta Sans', sans-serif; font-size:clamp(34px,4.3vw,52px); line-height:1.05; letter-spacing:-.045em; margin:0; }
+    .section-intro { margin:15px 0 0; color:var(--slate); max-width:670px; }
+
+    .feature-section { background:#F8FAFC; }
+    .feature-head { display:flex; align-items:end; justify-content:space-between; gap:24px; margin-bottom:34px; }
+    .feature-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; }
+    .feature-card { background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:28px; box-shadow:0 7px 30px rgba(15,23,42,.04); min-height:280px; }
+    .icon { width:44px; height:44px; display:grid; place-items:center; border-radius:14px; background:var(--amber-soft); border:1px solid #F4D7A3; color:var(--amber); margin-bottom:24px; }
+    .icon svg { width:22px; height:22px; }
+    .feature-card h3 { font-family:'Plus Jakarta Sans',sans-serif; margin:0 0 10px; font-size:20px; letter-spacing:-.03em; }
+    .feature-card p { margin:0; color:var(--slate); font-size:14px; }
+
+    .pricing-section { background:#fff; }
+    .pricing-wrap { max-width:840px; margin:0 auto; text-align:center; }
+    .pricing-card { position:relative; margin-top:34px; padding:36px; border-radius:28px; border:2px solid #E5A549; box-shadow:0 22px 60px rgba(15,23,42,.10); text-align:left; background:linear-gradient(180deg,#fff 0%,#FFFDF9 100%); }
+    .popular { position:absolute; top:-15px; left:50%; transform:translateX(-50%); background:var(--amber); color:#fff; border-radius:999px; padding:7px 13px; font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:.1em; }
+    .pricing-card h3 { font-family:'Plus Jakarta Sans',sans-serif; font-size:26px; letter-spacing:-.04em; margin:0; }
+    .pricing-sub { color:var(--slate); margin:6px 0 18px; font-size:14px; }
+    .price-row { display:flex; align-items:baseline; gap:9px; padding-bottom:22px; border-bottom:1px solid var(--line); }
+    .price { font-family:'Plus Jakarta Sans', sans-serif; font-size:54px; line-height:1; letter-spacing:-.06em; font-weight:800; }
+    .price-unit { color:var(--slate-2); font-size:14px; font-weight:700; }
+    .pricing-body { display:grid; grid-template-columns:1fr .9fr; gap:30px; padding-top:24px; align-items:start; }
+    .check-list { display:grid; gap:13px; }
+    .check-item { display:flex; gap:10px; align-items:flex-start; color:#334155; font-size:14px; }
+    .check-item .check { flex:0 0 auto; margin-top:2px; }
+    .enroll-box { padding:20px; border-radius:18px; background:var(--navy); color:#fff; }
+    .enroll-box h4 { margin:0 0 7px; font-family:'Plus Jakarta Sans',sans-serif; font-size:16px; }
+    .enroll-box p { margin:0 0 15px; color:#CBD5E1; font-size:13px; }
+    .enroll-box .btn { width:100%; }
+    .note { text-align:center; margin:18px 0 0; color:var(--slate-2); font-size:12px; }
+
+    .trust { background:#F8FAFC; padding:26px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .trust-inner { display:flex; justify-content:center; gap:28px; flex-wrap:wrap; color:#64748B; font-size:12px; font-weight:700; }
+    .trust-pill { display:inline-flex; gap:8px; align-items:center; }
+    .shield { color:var(--amber); }
+
+    footer { background:var(--navy); color:#CBD5E1; padding:34px 0 42px; }
+    .footer-inner { display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap; }
+    .footer-brand { color:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; }
+    .footer-brand span { color:var(--amber); }
+    .footer-copy { margin:7px 0 0; font-size:12px; color:#94A3B8; }
+    .footer-trust { text-align:right; font-size:12px; color:#CBD5E1; }
+    .footer-trust strong { color:#fff; }
+
+    .booking-hint { font-size:11px; color:#94A3B8; text-align:center; margin-top:10px; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns:1fr; gap:42px; }
+      .feature-grid { grid-template-columns:1fr; }
+      .feature-card { min-height:0; }
+      .pricing-body { grid-template-columns:1fr; }
+      .footer-trust { text-align:left; }
+    }
+    @media (max-width: 640px) {
+      .container { width:min(100% - 28px,1120px); }
+      .top-strip { font-size:11px; }
+      nav { position:static; }
+      .nav-inner { min-height:68px; }
+      .brand { font-size:16px; }
+      .brand-mark { width:28px; height:28px; }
+      .nav-cta { padding:10px 14px; font-size:13px; }
+      .hero { padding:58px 0 68px; }
+      h1 { font-size:44px; }
+      .hero-copy { font-size:16px; }
+      section { padding:70px 0; }
+      .feature-head { align-items:flex-start; flex-direction:column; }
+      .pricing-card { padding:28px 20px; }
+      .price { font-size:46px; }
+      .hero-card { padding:23px; }
+      .mini-stat strong { font-size:24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-strip">
+    <div class="container top-strip-inner">
+      <span><i class="dot"></i> Live, expert-led enrichment</span>
+      <span><i class="dot"></i> ClassOf5 small-group model</span>
+      <span><i class="dot"></i> Built for diaspora families</span>
+    </div>
+  </div>
+
+  <nav aria-label="Primary navigation">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="NovaPoint Academy home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        NovaPoint <span>Academy</span>
+      </a>
+      <a class="nav-cta" id="navBookButton" href="#pricing">Book a Class <span aria-hidden="true">↗</span></a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Canada, US, UK &amp; Europe Diaspora Curriculum Hub</div>
+          <h1>The new Bridge, The modern hub for home-style academic rigor for <span class="accent">Global achievers</span></h1>
+          <p class="hero-copy">Expert-led live academic enrichment designed specifically for diaspora families. Powered by our signature ClassOf5 interactive small-group model.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#pricing">View Pricing &amp; Enroll <span aria-hidden="true">→</span></a>
+            <a class="btn btn-secondary" href="#experience">Explore ClassOf5</a>
+          </div>
+          <div class="micro-trust">
+            <span><b class="check">✓</b> Maximum 5 students</span>
+            <span><b class="check">✓</b> Weekly parent visibility</span>
+            <span><b class="check">✓</b> Class recordings included</span>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="ClassOf5 model overview">
+          <div class="eyebrow">The ClassOf5 Advantage</div>
+          <h3>Small enough to be personal. Structured enough to be rigorous.</h3>
+          <p>Designed for children who need more than a crowded virtual classroom - and for parents who want to see academic progress clearly.</p>
+          <div class="mini-stats">
+            <div class="mini-stat"><strong>5</strong><span>student cap</span></div>
+            <div class="mini-stat"><strong>2×</strong><span>live classes / week</span></div>
+            <div class="mini-stat"><strong>100%</strong><span>parent visibility</span></div>
+          </div>
+          <div class="floating">
+            <div><div class="floating-label">After every class</div><div class="floating-value">Progress log + recording</div></div>
+            <span class="accent" aria-hidden="true">✓</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="experience" class="feature-section">
+      <div class="container">
+        <div class="feature-head">
+          <div>
+            <div class="section-kicker">The ClassOf5 Experience</div>
+            <h2 class="section-title">A better classroom starts with better structure.</h2>
+          </div>
+          <p class="section-intro">Intentional class size, interactive technology, and visible progress combine to create a learning environment families can trust.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M21 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>Strict Cap of 5 Students</h3>
+            <p>No lost voices in oversized classrooms. Every child gets direct interaction, real-time feedback, and personalized attention from expert tutors.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 8h10M7 12h5"/></svg>
+            </div>
+            <h3>ClassIn Interactive Tech</h3>
+            <p>Powered by advanced virtual classrooms featuring collaborative digital whiteboards, gamified engagement tools, and immersive learning widgets.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 4.8-3.2 8.3-8 9-4.8-.7-8-4.2-8-9V7l8-4z"/><path d="M8.5 12l2.2 2.2 4.8-5"/></svg>
+            </div>
+            <h3>Total Transparency</h3>
+            <p>Parents receive detailed weekly progress logs and lesson recordings right after class, eliminating invisible academic lag.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+      <div class="container pricing-wrap">
+        <div class="section-kicker">Pricing &amp; Investment</div>
+        <h2 class="section-title">Simple, Transparent Investment</h2>
+        <p class="section-intro" style="margin-left:auto;margin-right:auto;">One focused subject stream, built around consistent live instruction and clear parent visibility.</p>
+
+        <div class="pricing-card">
+          <div class="popular">Most Popular</div>
+          <h3>Single Subject Stream</h3>
+          <p class="pricing-sub">Math or English Enrichment</p>
+          <div class="price-row">
+            <div class="price">$69</div>
+            <div class="price-unit">CAD / month</div>
+          </div>
+
+          <div class="pricing-body">
+            <div class="check-list" aria-label="Included features">
+              <div class="check-item"><b class="check">✓</b><span>2 Live Classes per week (1 hour each)</span></div>
+              <div class="check-item"><b class="check">✓</b><span>Strict Maximum 5 Students per group</span></div>
+              <div class="check-item"><b class="check">✓</b><span>Access to ClassIn interactive virtual classroom</span></div>
+              <div class="check-item"><b class="check">✓</b><span>10% makeup class allowance buffer</span></div>
+              <div class="check-item"><b class="check">✓</b><span>Weekly parent progress reports &amp; lesson recordings</span></div>
+            </div>
+
+            <div class="enroll-box" id="enroll">
+              <h4>Ready to get started?</h4>
+              <p>Secure your place through Teachworks and move into scheduling with confidence.</p>
+              <a class="btn btn-primary" id="enrollButton" href="#">Enroll via Teachworks <span aria-hidden="true">→</span></a>
+              <div class="booking-hint" id="bookingHint">Add your live Teachworks booking URL in the page settings.</div>
+            </div>
+          </div>
+        </div>
+        <p class="note">Secure payment processing via Stripe • Managed via Teachworks</p>
+      </div>
+    </section>
+
+    <div class="trust">
+      <div class="container trust-inner">
+        <span class="trust-pill"><span class="shield">◆</span> Small-group learning</span>
+        <span class="trust-pill"><span class="shield">◆</span> Expert-led instruction</span>
+        <span class="trust-pill"><span class="shield">◆</span> Parent visibility after class</span>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-brand">NovaPoint <span>Academy</span></div>
+        <p class="footer-copy">© 2027 NovaPoint Academy. All rights reserved.</p>
+      </div>
+      <div class="footer-trust">Secure payment processing via <strong>Stripe</strong> • Managed via <strong>Teachworks</strong></div>
+    </div>
+  </footer>
+
+  <script>
+    // Replace this with your live Teachworks booking URL before launch.
+    const BOOKING_URL = 'YOUR-TEACHWORKS-BOOKING-LINK';
+    const enrollButton = document.getElementById('enrollButton');
+    const navBookButton = document.getElementById('navBookButton');
+    const bookingHint = document.getElementById('bookingHint');
+    const hasBookingUrl = BOOKING_URL && !BOOKING_URL.includes('YOUR-TEACHWORKS');
+    if (hasBookingUrl) {
+      [enrollButton, navBookButton].forEach((button) => {
+        button.href = BOOKING_URL;
+        button.target = '_blank';
+        button.rel = 'noopener noreferrer';
+      });
+      bookingHint.remove();
+    } else {
+      navBookButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.getElementById('pricing').scrollIntoView({behavior:'smooth'});
+      });
+      enrollButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        document.getElementById('pricing').scrollIntoView({behavior:'smooth'});
+        bookingHint.textContent = 'Your Teachworks booking link will go here once connected.';
+      });
+    }
+  </script>
+</body>
+</html>
+
+index.htmlHTML
+
+
