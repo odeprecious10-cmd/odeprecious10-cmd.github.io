@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="NovaPoint Academy delivers expert-led live academic enrichment through the ClassOf5 small-group model." />
+  <meta name="description" content="NovaPoint Academy delivers expert-led live academic enrichment through its signature ClassOf5 small-group model." />
   <title>NovaPoint Academy | NextGen Academic Enrichment</title>
   <style>
     :root {
@@ -143,37 +143,164 @@
     .footer-brand { color:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; }
     .footer-brand span { color:var(--amber); }
     .footer-copy { margin:7px 0 0; font-size:12px; color:#94A3B8; }
+    .footer-links { display:flex; flex-wrap:wrap; align-items:center; gap:0; }
+    .footer-links a { color:#CBD5E1; text-decoration:none; font-size:12px; font-weight:700; }
+    .footer-links a + a::before { content:'|'; color:#64748B; margin:0 12px; }
+    .footer-links a:hover { color:#fff; }
     .footer-trust { text-align:right; font-size:12px; color:#CBD5E1; }
     .footer-trust strong { color:#fff; }
 
     .booking-hint { font-size:11px; color:#94A3B8; text-align:center; margin-top:10px; }
 
-    @media (max-width: 900px) {
+    /* Premium hero visual */
+    .hero-visual-wrap { position:relative; min-width:0; }
+    .hero-visual-frame { position:relative; overflow:hidden; border-radius:30px; min-height:560px; background:var(--navy); box-shadow:0 30px 80px rgba(15,23,42,.18); border:1px solid rgba(255,255,255,.7); }
+    .hero-visual-frame::before { content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(15,23,42,.02) 45%, rgba(15,23,42,.58) 100%); z-index:1; pointer-events:none; }
+    .hero-visual { display:block; width:100%; height:560px; object-fit:cover; object-position:center top; }
+    .visual-tag { position:absolute; top:18px; left:18px; z-index:3; display:inline-flex; align-items:center; gap:8px; padding:9px 12px; border-radius:999px; background:rgba(255,255,255,.92); color:var(--navy); font-size:11px; font-weight:800; box-shadow:0 10px 24px rgba(15,23,42,.12); }
+    .visual-tag::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--amber); box-shadow:0 0 0 4px rgba(217,119,6,.12); }
+    .visual-card { position:absolute; left:18px; right:18px; bottom:18px; z-index:3; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:16px 18px; border-radius:18px; background:rgba(15,23,42,.88); border:1px solid rgba(255,255,255,.1); backdrop-filter:blur(12px); color:#fff; }
+    .visual-card-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:15px; font-weight:800; letter-spacing:-.02em; }
+    .visual-card-copy { margin-top:3px; color:#CBD5E1; font-size:12px; }
+    .visual-stat { flex:0 0 auto; text-align:center; min-width:68px; padding-left:16px; border-left:1px solid rgba(255,255,255,.12); }
+    .visual-stat strong { display:block; color:#fff; font-family:'Plus Jakarta Sans',sans-serif; font-size:25px; line-height:1; letter-spacing:-.04em; }
+    .visual-stat span { color:#94A3B8; font-size:10px; font-weight:700; }
+
+
+    .hero-stats {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:0;
+      margin-top:14px;
+      background:var(--navy);
+      color:#fff;
+      border:1px solid rgba(15,23,42,.95);
+      border-radius:0 0 22px 22px;
+      overflow:hidden;
+      box-shadow:0 18px 42px rgba(15,23,42,.12);
+    }
+    .hero-stat-item {
+      position:relative;
+      padding:22px 26px 24px;
+      min-height:104px;
+    }
+    .hero-stat-item + .hero-stat-item {
+      border-left:1px solid rgba(255,255,255,.10);
+    }
+    .hero-stat-item::after {
+      content:'';
+      position:absolute;
+      left:26px;
+      right:26px;
+      bottom:0;
+      height:1px;
+      background:linear-gradient(90deg, rgba(217,119,6,.9), rgba(217,119,6,0));
+    }
+    .hero-stat-item strong {
+      display:block;
+      font-family:'Plus Jakarta Sans',sans-serif;
+      font-size:30px;
+      line-height:1;
+      letter-spacing:-.05em;
+      margin-bottom:9px;
+      color:#fff;
+    }
+    .hero-stat-item span {
+      display:block;
+      color:#94A3B8;
+      font-size:11px;
+      line-height:1.35;
+      letter-spacing:.01em;
+    }
+
+    .mobile-toggle { display:none; width:42px; height:42px; border:1px solid var(--line); background:#fff; border-radius:12px; color:var(--navy); align-items:center; justify-content:center; cursor:pointer; }
+    .mobile-toggle svg { width:20px; height:20px; }
+    .mobile-toggle .close-icon { display:none; }
+    .mobile-toggle[aria-expanded="true"] .menu-icon { display:none; }
+    .mobile-toggle[aria-expanded="true"] .close-icon { display:block; }
+
+    @media (max-width: 980px) {
+      .nav-right { gap:14px; }
+      .nav-links { gap:13px; }
+      .nav-links a { font-size:12px; }
       .hero-grid { grid-template-columns:1fr; gap:42px; }
+      .hero-copy { max-width:720px; }
+      .hero-visual-frame { min-height:500px; }
+      .hero-visual { height:500px; }
       .feature-grid { grid-template-columns:1fr; }
       .feature-card { min-height:0; }
       .pricing-body { grid-template-columns:1fr; }
       .footer-trust { text-align:left; }
     }
-    @media (max-width: 640px) {
-      .container { width:min(100% - 28px,1120px); }
-      .top-strip { font-size:11px; }
-      nav { position:static; }
-      .nav-inner { min-height:68px; }
-      .brand { font-size:16px; }
-      .brand-name { font-size:16px; }
-      .brand-tagline { font-size:8px; letter-spacing:.12em; }
-      .brand-mark { width:28px; height:28px; }
-      .nav-cta { padding:10px 14px; font-size:13px; }
-      .hero { padding:58px 0 68px; }
-      h1 { font-size:44px; }
-      .hero-copy { font-size:16px; }
-      section { padding:70px 0; }
-      .feature-head { align-items:flex-start; flex-direction:column; }
-      .pricing-card { padding:28px 20px; }
-      .price { font-size:46px; }
-      .hero-card { padding:23px; }
-      .mini-stat strong { font-size:24px; }
+
+    @media (max-width: 760px) {
+      .top-strip { display:none; }
+      .nav-inner { min-height:70px; position:relative; }
+      .nav-right { margin-left:auto; }
+      .nav-links { display:none; position:absolute; top:calc(100% + 1px); left:0; right:0; padding:14px; background:#fff; border:1px solid var(--line); border-top:0; border-radius:0 0 18px 18px; box-shadow:0 18px 40px rgba(15,23,42,.10); flex-direction:column; align-items:stretch; gap:4px; }
+      .nav-links.open { display:flex; }
+      .nav-links a { display:flex; align-items:center; justify-content:space-between; padding:12px 10px; border-radius:10px; font-size:14px; }
+      .nav-links a:hover { background:#F8FAFC; }
+      .mobile-toggle { display:inline-flex; }
+      .nav-cta { padding:10px 12px; font-size:12px; }
+      .hero { padding:52px 0 62px; }
+      h1 { font-size:clamp(40px, 11vw, 58px); line-height:1.04; }
+      .hero-copy { font-size:16px; line-height:1.55; }
+      .hero-actions { display:grid; grid-template-columns:1fr; }
+      .btn { width:100%; min-height:50px; }
+      .micro-trust { display:grid; grid-template-columns:1fr; gap:10px; }
+      .hero-visual-frame { min-height:420px; border-radius:24px 24px 0 0; }
+      .hero-visual { height:420px; object-position:center top; }
+      .visual-card { left:12px; right:12px; bottom:12px; padding:13px 14px; gap:10px; }
+      .hero-stats { margin-top:0; border-radius:0 0 20px 20px; }
+      .hero-stat-item { padding:18px 16px 20px; min-height:98px; }
+      .hero-stat-item + .hero-stat-item { border-left:1px solid rgba(255,255,255,.10); }
+      .hero-stat-item::after { left:16px; right:16px; }
+      .hero-stat-item strong { font-size:24px; margin-bottom:7px; }
+      .hero-stat-item span { font-size:9px; }
+      .visual-card-copy { font-size:11px; }
+      .visual-stat { min-width:56px; padding-left:10px; }
+      .visual-stat strong { font-size:20px; }
+      section { padding:64px 0; }
+      .section-title { font-size:clamp(34px,9vw,46px); }
+      .feature-head { align-items:flex-start; flex-direction:column; gap:12px; margin-bottom:24px; }
+      .feature-grid { gap:14px; }
+      .feature-card { padding:23px; }
+      .pricing-card { margin-top:28px; padding:28px 18px 20px; border-radius:22px; }
+      .price { font-size:44px; }
+      .price-row { flex-wrap:wrap; }
+      .pricing-body { gap:20px; padding-top:20px; }
+      .enroll-box { padding:18px; }
+      .trust-inner { display:grid; grid-template-columns:1fr; gap:12px; }
+      footer { padding:30px 0 36px; }
+      .footer-inner { display:grid; gap:22px; }
+      .footer-links { display:flex; flex-wrap:wrap; gap:0; }
+      .footer-trust { text-align:left; }
+    }
+
+    @media (max-width: 430px) {
+      .container { width:min(100% - 22px,1120px); }
+      .brand-mark { width:27px; height:27px; border-radius:9px; }
+      .brand-name { font-size:15px; }
+      .brand-tagline { font-size:7px; letter-spacing:.13em; }
+      .nav-cta { display:none; }
+      .hero { padding-top:42px; }
+      .badge { font-size:10px; padding:7px 10px; }
+      h1 { font-size:39px; letter-spacing:-.055em; }
+      .hero-actions { margin-top:24px; }
+      .hero-visual-frame, .hero-visual { height:365px; min-height:365px; }
+      .visual-tag { top:12px; left:12px; font-size:9px; padding:7px 9px; }
+      .hero-stat-item { padding:16px 10px 18px; min-height:90px; }
+      .hero-stat-item strong { font-size:21px; }
+      .hero-stat-item span { font-size:8px; }
+      .hero-stat-item::after { left:10px; right:10px; }
+      .visual-card { flex-direction:column; align-items:flex-start; }
+      .visual-stat { width:100%; border-left:0; border-top:1px solid rgba(255,255,255,.12); padding:9px 0 0; text-align:left; }
+      .visual-stat strong { display:inline; margin-right:5px; }
+      .visual-stat span { font-size:9px; }
+      .pricing-card h3 { font-size:23px; }
+      .price { font-size:40px; }
+      .check-item { font-size:13px; }
     }
   </style>
 </head>
@@ -196,12 +323,16 @@
         </span>
       </a>
       <div class="nav-right">
-        <div class="nav-links">
+        <div class="nav-links" id="primaryLinks">
           <a href="#experience">Methodology</a>
-          <a href="#experience">Programs</a>
+          <a href="#programs">Programs</a>
           <a href="#pricing">Tuition &amp; Plans</a>
           <a href="#contact">Contact Us</a>
         </div>
+        <button class="mobile-toggle" id="mobileToggle" type="button" aria-expanded="false" aria-controls="primaryLinks" aria-label="Open menu">
+          <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
         <a class="nav-cta" id="navBookButton" href="#pricing">Book a Class <span aria-hidden="true">↗</span></a>
       </div>
     </div>
@@ -212,7 +343,7 @@
       <div class="container hero-grid">
         <div>
           <div class="badge">Canada, US, UK &amp; Europe Curriculum hub</div>
-          <h1>The NextGen hub of home-style academic rigor for <span class="accent">Global achievers</span></h1>
+          <h1>The NextGen Hub of Home-Style Academic Rigor for <span class="accent">Global Achiever...</span></h1>
           <p class="hero-copy">Expert-led live academic enrichment designed for globally connected families. Powered by our signature ClassOf5 interactive small-group model.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#pricing">View Pricing &amp; Enroll <span aria-hidden="true">→</span></a>
@@ -225,20 +356,32 @@
           </div>
         </div>
 
-        <aside class="hero-card" aria-label="ClassOf5 model overview">
-          <div class="eyebrow">The ClassOf5 Advantage</div>
-          <h3>Small enough to be personal. Structured enough to be rigorous.</h3>
-          <p>Designed for children who need more than a crowded virtual classroom - and for parents who want to see academic progress clearly.</p>
-          <div class="mini-stats">
-            <div class="mini-stat"><strong>5</strong><span>student cap</span></div>
-            <div class="mini-stat"><strong>2×</strong><span>live classes / week</span></div>
-            <div class="mini-stat"><strong>100%</strong><span>parent visibility</span></div>
+        <div class="hero-visual-wrap">
+          <div class="hero-visual-frame">
+            <img class="hero-visual" src="hero-visual.jpg" alt="Student participating in focused online academic learning from home" loading="eager" />
+            <div class="visual-tag">Live learning • Small groups</div>
+            <div class="visual-card">
+              <div>
+                <div class="visual-card-title">The ClassOf5 Advantage</div>
+                <div class="visual-card-copy">Small enough to be personal. Structured enough to be rigorous.</div>
+              </div>
+            </div>
           </div>
-          <div class="floating">
-            <div><div class="floating-label">After every class</div><div class="floating-value">Progress log + recording</div></div>
-            <span class="accent" aria-hidden="true">✓</span>
+          <div class="hero-stats" aria-label="NovaPoint Academy key numbers">
+            <div class="hero-stat-item">
+              <strong>5</strong>
+              <span>student cap</span>
+            </div>
+            <div class="hero-stat-item">
+              <strong>2×</strong>
+              <span>live classes / week</span>
+            </div>
+            <div class="hero-stat-item">
+              <strong>100%</strong>
+              <span>parent visibility</span>
+            </div>
           </div>
-        </aside>
+        </div>
       </div>
     </section>
 
@@ -252,7 +395,7 @@
           <p class="section-intro">Intentional class size, interactive technology, and visible progress combine to create a learning environment families can trust.</p>
         </div>
 
-        <div class="feature-grid">
+        <div class="feature-grid" id="programs">
           <article class="feature-card">
             <div class="icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M21 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -335,12 +478,31 @@
         <a href="#pricing">Admission</a>
         <a href="#about">About Us</a>
         <a href="#contact">Contact Us</a>
+        <a href="#contact">Join Our Team</a>
       </div>
       <div class="footer-trust">Secure payment processing via <strong>Stripe</strong> • Secure online enrollment</div>
     </div>
   </footer>
 
   <script>
+    const mobileToggle = document.getElementById('mobileToggle');
+    const primaryLinks = document.getElementById('primaryLinks');
+    if (mobileToggle && primaryLinks) {
+      mobileToggle.addEventListener('click', () => {
+        const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+        mobileToggle.setAttribute('aria-expanded', String(!expanded));
+        mobileToggle.setAttribute('aria-label', expanded ? 'Open menu' : 'Close menu');
+        primaryLinks.classList.toggle('open', !expanded);
+      });
+      primaryLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          mobileToggle.setAttribute('aria-label', 'Open menu');
+          primaryLinks.classList.remove('open');
+        });
+      });
+    }
+
     // Replace this with your live Teachworks booking URL before launch.
     const BOOKING_URL = 'YOUR-TEACHWORKS-BOOKING-LINK';
     const enrollButton = document.getElementById('enrollButton');
