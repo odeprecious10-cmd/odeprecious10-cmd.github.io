@@ -204,6 +204,99 @@
 
     .booking-hint { font-size:11px; color:#94A3B8; text-align:center; margin-top:10px; }
 
+    /* Parent-facing impact section after pricing */
+    .impact-section {
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(180deg,#ffffff 0%,#F8FAFC 100%);
+      padding:76px 0 78px;
+      border-top:1px solid var(--line);
+    }
+    .impact-section::before {
+      content:''; position:absolute; width:430px; height:430px; left:-240px; top:-250px; border-radius:50%;
+      background:radial-gradient(circle, rgba(217,119,6,.13) 0%, rgba(217,119,6,0) 70%); pointer-events:none;
+    }
+    .impact-section::after {
+      content:''; position:absolute; width:300px; height:300px; right:-170px; bottom:-210px; border-radius:50%;
+      border:1px solid rgba(217,119,6,.16); box-shadow:0 0 0 24px rgba(217,119,6,.035),0 0 0 48px rgba(217,119,6,.02); pointer-events:none;
+    }
+    .impact-head { position:relative; z-index:1; text-align:center; max-width:860px; margin:0 auto 34px; }
+    .impact-kicker { display:inline-flex; align-items:center; gap:8px; margin-bottom:12px; color:#1D5A93; font-size:11px; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+    .impact-kicker::before,.impact-kicker::after { content:''; width:34px; height:2px; background:var(--amber); border-radius:99px; }
+    .impact-title { font-family:'Plus Jakarta Sans',sans-serif; font-size:clamp(34px,4.4vw,54px); line-height:1.03; letter-spacing:-.045em; margin:0; }
+    .impact-title .impact-accent { color:#2A679C; }
+    .impact-intro { margin:13px auto 0; max-width:690px; color:var(--slate); font-size:16px; line-height:1.6; }
+    .impact-grid { position:relative; z-index:1; display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+    .impact-card {
+      position:relative; overflow:hidden; background:#fff; border:1px solid #E2E8F0; border-radius:22px;
+      padding:24px 20px 22px; text-align:center; box-shadow:0 16px 34px rgba(15,23,42,.06);
+      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    }
+    .impact-card::before { content:''; position:absolute; inset:0 0 auto 0; height:4px; background:linear-gradient(90deg,var(--amber),#FBBF24); }
+    .impact-card:nth-child(2)::before { background:linear-gradient(90deg,#2563EB,#60A5FA); }
+    .impact-card:nth-child(3)::before { background:linear-gradient(90deg,#64748B,#94A3B8); }
+    .impact-card:nth-child(4)::before { background:linear-gradient(90deg,#D97706,#F59E0B); }
+    .impact-card:hover { transform:translateY(-5px); box-shadow:0 22px 45px rgba(15,23,42,.10); border-color:#CBD5E1; }
+    .impact-icon { width:52px; height:52px; display:grid; place-items:center; margin:0 auto 16px; border-radius:16px; background:#FFF7ED; color:var(--amber); border:1px solid #FED7AA; }
+    .impact-card:nth-child(2) .impact-icon { background:#EFF6FF; color:#2563EB; border-color:#BFDBFE; }
+    .impact-card:nth-child(3) .impact-icon { background:#F8FAFC; color:#475569; border-color:#CBD5E1; }
+    .impact-card:nth-child(4) .impact-icon { background:#FFF7ED; color:#D97706; border-color:#FED7AA; }
+    .impact-icon svg { width:24px; height:24px; }
+    .impact-number { font-family:'Plus Jakarta Sans',sans-serif; font-size:40px; line-height:1; letter-spacing:-.055em; font-weight:800; color:var(--navy); }
+    .impact-label { margin-top:8px; color:#475569; font-size:13px; font-weight:700; }
+    .impact-foot { position:relative; z-index:1; margin:28px auto 0; max-width:720px; display:flex; align-items:center; justify-content:center; gap:12px; color:#64748B; font-size:12px; font-weight:700; text-align:center; }
+    .impact-foot::before,.impact-foot::after { content:''; width:44px; height:1px; background:#CBD5E1; flex:0 0 auto; }
+
+    .impact-showcase {
+      position:relative; z-index:1; display:grid; grid-template-columns:minmax(0,1.05fr) minmax(420px,.95fr); gap:26px; align-items:stretch;
+    }
+    .impact-visual {
+      position:relative; overflow:hidden; min-height:470px; border-radius:28px; padding:18px;
+      background:linear-gradient(145deg,#0F172A 0%,#172554 52%,#0F172A 100%);
+      border:1px solid rgba(15,23,42,.12); box-shadow:0 24px 60px rgba(15,23,42,.15);
+      display:flex; align-items:flex-end; justify-content:center;
+    }
+    .impact-visual::before {
+      content:''; position:absolute; width:360px; height:360px; left:-110px; top:-120px; border-radius:50%;
+      background:radial-gradient(circle, rgba(217,119,6,.30) 0%, rgba(217,119,6,0) 70%);
+    }
+    .impact-visual::after {
+      content:''; position:absolute; width:300px; height:300px; right:-110px; bottom:-120px; border-radius:50%;
+      border:1px solid rgba(255,255,255,.14); box-shadow:0 0 0 30px rgba(255,255,255,.03), 0 0 0 60px rgba(217,119,6,.035);
+    }
+    .impact-visual img { position:relative; z-index:1; display:block; width:100%; height:100%; max-height:500px; object-fit:contain; object-position:center bottom; filter:drop-shadow(0 18px 28px rgba(0,0,0,.24)); }
+    .impact-visual-badge { position:absolute; left:20px; top:20px; z-index:2; display:inline-flex; align-items:center; gap:8px; padding:9px 12px; border-radius:999px; background:rgba(255,255,255,.92); color:var(--navy); font-size:11px; font-weight:900; box-shadow:0 10px 24px rgba(15,23,42,.18); }
+    .impact-visual-badge::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--amber); box-shadow:0 0 0 4px rgba(217,119,6,.12); }
+    .impact-metrics { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .impact-card { min-height:205px; display:flex; flex-direction:column; justify-content:center; }
+    .impact-card .impact-label { max-width:180px; margin-left:auto; margin-right:auto; }
+
+    @media (max-width: 980px) {
+      .impact-showcase { grid-template-columns:1fr; }
+      .impact-visual { min-height:430px; }
+      .impact-metrics { grid-template-columns:repeat(4,1fr); }
+      .impact-card { min-height:180px; }
+    }
+    @media (max-width: 760px) {
+      .impact-section { padding:64px 0 66px; }
+      .impact-visual { min-height:340px; padding:10px; border-radius:22px; }
+      .impact-visual-badge { left:14px; top:14px; font-size:10px; }
+      .impact-metrics { grid-template-columns:1fr 1fr; gap:12px; }
+      .impact-card { min-height:150px; padding:18px 12px; border-radius:18px; }
+      .impact-icon { width:46px; height:46px; margin-bottom:12px; }
+      .impact-number { font-size:32px; }
+      .impact-label { font-size:11px; line-height:1.35; }
+      .impact-foot { gap:8px; font-size:11px; }
+      .impact-foot::before,.impact-foot::after { width:24px; }
+    }
+    @media (max-width: 430px) {
+      .impact-metrics { grid-template-columns:1fr; }
+      .impact-card { display:grid; grid-template-columns:52px 1fr; align-items:center; gap:12px; text-align:left; min-height:105px; padding:16px; }
+      .impact-icon { margin:0; }
+      .impact-number { font-size:30px; }
+      .impact-label { margin-top:4px; max-width:none; margin-left:0; margin-right:0; }
+    }
+
     /* Premium hero visual */
     .hero-visual-wrap { position:relative; min-width:0; }
     .hero-visual-frame { position:relative; overflow:hidden; border-radius:30px; min-height:560px; background:var(--navy); box-shadow:0 30px 80px rgba(15,23,42,.18); border:1px solid rgba(255,255,255,.7); }
@@ -537,7 +630,7 @@
             <div class="visual-card">
               <div>
                 <div class="visual-card-title">ClassOf5</div>
-                <div class="visual-card-copy">Small enough to be personal. Structured enough to be rigorous.</div>
+                <div class="visual-card-copy">Focused enough to engage. Structured enough to move forward.</div>
               </div>
             </div>
           </div>
@@ -603,7 +696,7 @@
             <p>Parents receive detailed weekly progress logs and lesson recordings right after class, eliminating invisible academic lag.</p>
           </article>
         </div>
-        <div class="feature-bottom-note">Small enough to be personal. Structured enough to make progress visible.</div>
+        <div class="feature-bottom-note">Focused learning. Active participation. Progress parents can see.</div>
       </div>
     </section>
 
@@ -753,6 +846,48 @@
       </div>
     </section>
 
+
+    <section class="impact-section" aria-labelledby="impactTitle">
+      <div class="container">
+        <div class="impact-head">
+          <div class="impact-kicker">ClassOf5 in action</div>
+          <h2 id="impactTitle" class="impact-title">Built for Families. <span class="impact-accent">Designed for Progress.</span></h2>
+          <p class="impact-intro">A quick look at the ClassOf5 experience — focused instruction, consistent live learning, and progress families can see.</p>
+        </div>
+
+        <div class="impact-showcase">
+          <div class="impact-visual">
+            <div class="impact-visual-badge">Real learning. Real momentum.</div>
+            <img src="classof5-impact.png" alt="ClassOf5 learner studying with academic subjects and global learning cues" loading="lazy" />
+          </div>
+
+          <div class="impact-metrics">
+            <article class="impact-card">
+              <div class="impact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M3.5 19c.6-3.4 2.3-5 4.5-5s3.9 1.6 4.5 5M13.5 18c.4-2.4 1.7-3.6 3.5-3.6 1.6 0 3 1.1 3.5 3.6"/></svg></div>
+              <div><div class="impact-number">5</div><div class="impact-label">student maximum</div></div>
+            </article>
+
+            <article class="impact-card">
+              <div class="impact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M8 21h8M12 19v2M8 9h8M8 12h5"/></svg></div>
+              <div><div class="impact-number">2×</div><div class="impact-label">live classes / week</div></div>
+            </article>
+
+            <article class="impact-card">
+              <div class="impact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><path d="M2.8 19c.5-3.3 2.1-5 5.2-5 2.4 0 4.1 1.3 5 3.7M15.5 6.5a3 3 0 1 1 0 6M17.2 14.4c2.3.2 3.8 1.7 4.2 4.6"/></svg></div>
+              <div><div class="impact-number">70+</div><div class="impact-label">Happy Learners</div></div>
+            </article>
+
+            <article class="impact-card">
+              <div class="impact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 2.8v5.1c0 4.3-2.6 7.7-7 10.1-4.4-2.4-7-5.8-7-10.1V5.8L12 3Z"/><path d="m8.8 11.7 2.1 2.1 4.5-4.5"/></svg></div>
+              <div><div class="impact-number">98%</div><div class="impact-label">Success Rate</div></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="impact-foot">Better focus. Better habits. Better outcomes.</div>
+      </div>
+    </section>
+
     <div class="trust">
       <div class="container trust-inner">
         <span class="trust-pill"><span class="shield">◆</span> Small-group learning</span>
@@ -897,4 +1032,7 @@
   </script>
 </body>
 </html>
+
+index.htmlHTML
+
 
