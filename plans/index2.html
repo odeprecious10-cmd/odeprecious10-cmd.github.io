@@ -324,17 +324,10 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
         <div class="form-grid">
           <div class="field">
             <label for="levelSelect">Learner level / cohort</label>
-            <select id="levelSelect">
-              <option value="alpha">Alpha · Grades 1–2 · ages 6–7 · UK Years 2–3</option>
-              <option value="beta" selected>Beta · Grades 3–4 · ages 8–9 · UK Years 4–5</option>
-              <option value="gamma">Gamma · Grades 5–6 · ages 10–11 · UK Years 6–7</option>
-              <option value="delta">Delta · Grades 7–8 · ages 12–13 · UK Years 8–9</option>
-              <option value="sigma">Sigma · Grades 9–10 · UK Years 10–11</option>
-              <option value="omega">Omega · Grades 11–12 · UK Years 12–13</option>
-            </select>
+            <select id="levelSelect"></select>
           </div>
         </div>
-        <p class="microcopy">UK year groups are approximate equivalents to North American grades; placement should ultimately follow the learner's age, ability and current school level.</p>
+        <p class="microcopy">Cohorts are shown using the local school system and age range. Final placement should follow the learner's age, ability and current school level.</p>
         <div class="timezone-banner" id="timezoneBanner" aria-live="polite">
           <span class="dot"></span><div><strong>Detecting your local time zone and currency…</strong><span>We use the browser time zone, an IP time-zone fallback, and an approximate local-currency lookup.</span></div>
         </div>
@@ -472,7 +465,7 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
     },
     gamma:{
       Math:{
-        standard:pair("Monday + Wednesday · 8:00 PM",1,3,"20:00"),
+        standard:pair("Monday + Wednesday · 6:30 PM",1,3,"18:30"),
         flex:[
           pair("Tuesday + Thursday · 5:00 PM",2,4,"17:00"),
           pair("Monday + Wednesday · 5:00 PM",1,3,"17:00"),
@@ -484,7 +477,7 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
           saturdaySunday()
         ]},
       English:{
-        standard:pair("Tuesday + Thursday · 8:00 PM",2,4,"20:00"),
+        standard:pair("Tuesday + Thursday · 6:30 PM",2,4,"18:30"),
         flex:[
           pair("Monday + Wednesday · 5:00 PM",1,3,"17:00"),
           pair("Tuesday + Thursday · 5:00 PM",2,4,"17:00"),
@@ -496,7 +489,7 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
     },
     delta:{
       Math:{
-        standard:pair("Tuesday + Thursday · 8:00 PM",2,4,"20:00"),
+        standard:pair("Tuesday + Thursday · 6:30 PM",2,4,"18:30"),
         flex:[
           pair("Monday + Wednesday · 5:00 PM",1,3,"17:00"),
           pair("Tuesday + Thursday · 5:00 PM",2,4,"17:00"),
@@ -507,7 +500,7 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
           saturdaySunday()
         ]},
       English:{
-        standard:pair("Monday + Wednesday · 8:00 PM",1,3,"20:00"),
+        standard:pair("Monday + Wednesday · 6:30 PM",1,3,"18:30"),
         flex:[
           pair("Tuesday + Thursday · 5:00 PM",2,4,"17:00"),
           pair("Monday + Wednesday · 5:00 PM",1,3,"17:00"),
@@ -583,7 +576,7 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
     },
     delta:{
       Math:{
-        standard:pair("Monday + Wednesday · 8:00 PM",1,3,"20:00"),
+        standard:pair("Monday + Wednesday · 6:30 PM",1,3,"18:30"),
         flex:[
           pair("Tuesday + Thursday · 6:30 PM",2,4,"18:30"),
           pair("Tuesday + Thursday · 8:00 PM",2,4,"20:00"),
@@ -592,7 +585,7 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
           saturdaySunday()
         ]},
       English:{
-        standard:pair("Tuesday + Thursday · 8:00 PM",2,4,"20:00"),
+        standard:pair("Tuesday + Thursday · 6:30 PM",2,4,"18:30"),
         flex:[
           pair("Monday + Wednesday · 6:30 PM",1,3,"18:30"),
           pair("Tuesday + Thursday · 6:30 PM",2,4,"18:30"),
@@ -682,14 +675,36 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
       ]}
   };
 
-    const levelNames = {
-    alpha:"Alpha · Grades 1–2 / UK Years 2–3",
-    beta:"Beta · Grades 3–4 / UK Years 4–5",
-    gamma:"Gamma · Grades 5–6 / UK Years 6–7",
-    delta:"Delta · Grades 7–8 / UK Years 8–9",
-    sigma:"Sigma · Grades 9–10 / UK Years 10–11",
-    omega:"Omega · Grades 11–12 / UK Years 12–13"
+    const levelNamesNA = {
+    alpha:"Alpha · Grades 1–2 · ages 6–7",
+    beta:"Beta · Grades 3–4 · ages 8–9",
+    gamma:"Gamma · Grades 5–6 · ages 10–11",
+    delta:"Delta · Grades 7–8 · ages 12–13",
+    sigma:"Sigma · Grades 9–10 · ages 14–16",
+    omega:"Omega · Grades 11–12 · ages 16–18"
   };
+  const levelNamesUK = {
+    alpha:"Alpha · UK Years 2–3 · ages 6–7",
+    beta:"Beta · UK Years 4–5 · ages 8–9",
+    gamma:"Gamma · UK Years 6–7 · ages 10–11",
+    delta:"Delta · UK Years 8–9 · ages 12–13",
+    sigma:"Sigma · UK Years 10–11 · ages 14–16",
+    omega:"Omega · UK Years 12–13 · ages 16–18"
+  };
+  function levelDisplayName() {
+    const labels = market()==="uk" ? levelNamesUK : levelNamesNA;
+    return labels[level()] || labels.beta;
+  }
+  function updateLevelOptions() {
+    const select = $("levelSelect");
+    if (!select) return;
+    const prior = select.value || "beta";
+    const labels = market()==="uk" ? levelNamesUK : levelNamesNA;
+    select.innerHTML = Object.entries(labels).map(([value,label]) =>
+      `<option value="${value}">${escapeHtml(label)}</option>`
+    ).join("");
+    select.value = labels[prior] ? prior : "beta";
+  }
   function level() { return $("levelSelect").value; }
   function market() { return detectedMarket; }
   function sourceZone() { return market()==="na" ? "America/Toronto" : "Europe/London"; }
@@ -1010,7 +1025,7 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
     warning.classList.toggle("show",!!message);
     const summaryLines=[
       `Plan: ${plan.title} — ${formatPrice(plan.price)} / month (${localCurrency}; rounded local estimate)`,
-      `Learner level: ${levelNames[level()]}`,
+      `Learner level: ${levelDisplayName()}`,
       `Class times shown in your local time`,
       `Displayed price currency: ${localCurrency}`
     ];
@@ -1105,6 +1120,7 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
       try { new Intl.DateTimeFormat("en",{timeZone:geo.timezone}); ipTimeZone=geo.timezone; } catch(e) { ipTimeZone=null; }
     }
     detectedMarket = inferMarket(geo);
+    updateLevelOptions();
     if(ratesData && ratesData.rates && typeof ratesData.rates==="object") {
       fxRates = {...ratesData.rates, CAD:1};
       fxLastUpdated = ratesData.time_last_update_utc || null;
@@ -1129,6 +1145,7 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
     renderBuilder();
   }
 
+  updateLevelOptions();
   renderPrices();
   renderBuilder();
   detectVisitorSettings();
