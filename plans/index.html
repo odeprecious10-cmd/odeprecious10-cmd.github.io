@@ -42,7 +42,13 @@ h1{font:700 clamp(2rem,5vw,3.25rem)/1.05 var(--display);margin:12px 0 12px;text-
 .facts{display:flex;flex-wrap:wrap;gap:8px 20px;margin:20px 0 0;padding:0;list-style:none;font-size:14px;font-weight:500}
 .facts li::before{content:"\2713";color:var(--accent);margin-right:6px;font-weight:700}
 
-.bar{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:24px}
+.bar{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:24px}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{font:600 13px/1.2 var(--body);padding:11px 8px;background:var(--bg);color:var(--muted);border:0;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.slot[disabled]{opacity:.5;cursor:not-allowed}
+.clash{flex:none;font:600 11px/1 var(--body);padding:4px 7px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
 .bar .note{grid-column:1/-1;margin:0;font-size:13px;color:var(--muted)}
 label{display:block;font:600 12px/1.2 var(--body);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
 select{width:100%;font:500 15px/1.3 var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
@@ -124,41 +130,47 @@ footer a{text-decoration:none;margin-right:16px}
   <section class="hero">
     <div class="eyebrow">Tuition &amp; Plans &middot; Starts Monday 11 January 2027</div>
     <h1>Pick the plan. See your class times in your own clock.</h1>
-    <p class="lede">Every subject meets twice a week for one live hour, with a strict cap of 5 students. Choose Math, English or both, then choose between fixed Standard times and Flex times we open around your family.</p>
+    <p class="lede">Every subject meets twice a week for one live hour, with a strict cap of 5 students. Choose Math, English or both, then choose between Standard, with one published time, and Flex, with a choice of approved weekly windows.</p>
     <ul class="facts"><li>5 student cap</li><li>2 live classes a week per subject</li><li>Prices in CAD per month</li><li>Secure payment by Stripe</li></ul>
 
     <div class="bar">
       <div><label for="grade">Your child's grade</label>
         <select id="grade">
-          <option value="0">Show all grades</option>
           <option value="1">Grades 1&ndash;2</option>
-          <option value="2">Grades 3&ndash;4</option>
+          <option value="2" selected>Grades 3&ndash;4</option>
           <option value="3">Grades 5&ndash;6</option>
           <option value="4">Grades 7&ndash;8</option>
         </select></div>
-      <div><label for="tz">Show times in</label><select id="tz"></select></div>
+      <div><label for="country">Where will your child attend from?</label><select id="country"></select></div>
+      <div id="regionwrap" hidden><label for="region">Your time zone</label><select id="region"></select></div>
+      <div><label id="mklabel">Classes taught on</label>
+        <div class="seg" role="group" aria-labelledby="mklabel">
+          <button type="button" id="mk-uk" data-mk="uk" aria-pressed="false">UK / Europe time</button>
+          <button type="button" id="mk-na" data-mk="na" aria-pressed="false">North America time</button>
+        </div></div>
       <p class="note" id="tznote"></p>
     </div>
   </section>
 
   <section class="sec" aria-labelledby="h-single">
     <h2 id="h-single">One subject</h2>
-    <p>Math or English, one stream. Choose Standard for a published time with 4 to 5 classmates, or Flex for a time that suits you better.</p>
+    <p>Math or English, one stream. Choose Standard for the published time, or Flex to pick the weekly window that suits your family.</p>
     <div class="cards c2" id="cards-single"></div>
     <div class="panel" id="panel-single"></div>
   </section>
 
   <section class="sec" aria-labelledby="h-double">
     <h2 id="h-double">Two subjects: Math and English</h2>
-    <p>Taking both? Pick the combination that fits your week. If one subject's Standard time does not suit you, take it as Flex and keep the other as Standard.</p>
+    <p>Taking both? Pick the combination that fits your week. If one subject's Standard time does not suit you, take it as Flex and keep the other as Standard. Two classes can never overlap, so times that clash with your first choice are greyed out.</p>
     <div class="cards c3" id="cards-double"></div>
     <div class="panel" id="panel-double"></div>
   </section>
 
   <section class="fine" aria-label="Plan rules">
-    <p><b>Standard</b> classes run on a published timetable with up to 5 students. <b>Flex</b> classes run at the unpublished or requested times shown here, with up to 3 students, and open once 2 families have enrolled. We tell you the day the class is confirmed.</p>
+    <p><b>Standard</b> classes run at one published weekly time per grade, with up to 5 students. More Standard times open as classes fill. <b>Flex</b> classes run in approved weekly windows, also with up to 5 students. Every class is 60 minutes, twice a week.</p>
+    <p><b>Flex benefit:</b> Flex families can move one class a month into another active class of the same subject and grade, subject to a free seat.</p>
     <p>Classes keep their London or Toronto clock time all year. Times above are shown for the first week of Term 1 (11 January 2027). When clocks change in March (Ontario on 14 March, UK on 28 March) your local time can move by one hour for a few weeks.</p>
-    <p>Your selection here is a preference. We confirm your section by email after you contact us.</p>
+    <p>Your selection here is a preference. We confirm your section by email after you contact us. High School Math, Chemistry, Physics, Robotics and Coding open by demand: tell us what you need on the contact page.</p>
   </section>
 </main>
 
@@ -170,42 +182,53 @@ footer a{text-decoration:none;margin-right:16px}
 <script>
 (function(){
   var NAMES={math:'Math',eng:'English'};
-  var GRADE_LBL={0:'all grades',1:'Grades 1-2',2:'Grades 3-4',3:'Grades 5-6',4:'Grades 7-8'};
+  var GRADE_LBL={1:'Grades 1-2',2:'Grades 3-4',3:'Grades 5-6',4:'Grades 7-8'};
   var BASE_DAY=11; // Monday 11 January 2027
-  var DAYIDX={Mon:0,Tue:1,Wed:2,Thu:3,Fri:4,Sat:5};
+  var MW=[0,2],TT=[1,3],FS=[4,6];
 
-  // Standard (published) slots. days: weekday offsets from Monday per subject.
-  var STD=[
-    {id:'uk1',mk:'UK / Europe',zone:'Europe/London',city:'London',time:'17:00',g:[1,2,3,4],days:{math:[0,2],eng:[1,3]}},
-    {id:'uk2',mk:'UK / Europe',zone:'Europe/London',city:'London',time:'18:30',g:[1,2,3,4],days:{math:[0,2],eng:[1,3]}},
-    {id:'uk3',mk:'UK / Europe',zone:'Europe/London',city:'London',time:'20:00',g:[3,4],days:{math:[0,2],eng:[1,3]}},
-    {id:'na1',mk:'North America',zone:'America/Toronto',city:'Toronto',time:'18:00',g:[1,2,3],days:{math:[1,3],eng:[0,2]}},
-    {id:'na2',mk:'North America',zone:'America/Toronto',city:'Toronto',time:'20:00',g:[3,4],days:{math:[1,3],eng:[0,2]}},
-    {id:'sat',mk:'Global Saturday',zone:'Europe/London',city:'London',time:'16:00',g:[1,2,3,4],days:{math:[5],eng:[5]}}
-  ];
-  // Flex windows we can open once 2 families enrol.
-  var FLEX=[
-    {id:'fuk1',mk:'UK / Europe',zone:'Europe/London',city:'London',time:'11:00',g:[1,2,3,4],days:{math:[5],eng:[5]}},
-    {id:'fuk2',mk:'UK / Europe',zone:'Europe/London',city:'London',time:'17:00',g:[1,2,3,4],days:{math:[5],eng:[5]}},
-    {id:'fuk3',mk:'UK / Europe',zone:'Europe/London',city:'London',time:'18:30',g:[3,4],days:{math:[5],eng:[5]}},
-    {id:'fna2',mk:'North America',zone:'America/Toronto',city:'Toronto',time:'18:00',g:[1,2,3],days:{math:[5],eng:[5]}},
-    {id:'fna3',mk:'North America',zone:'America/Toronto',city:'Toronto',time:'20:00',g:[3,4],days:{math:[5],eng:[5]}}
-  ];
+  /* Master timetable, per market and cohort (1=Alpha ... 4=Delta).
+     S = Standard launch time (Math). A, B = Flex windows. eng = which window is the English Standard time.
+     W1, W2 = weekend Flex windows (Fri + Sun). */
+  var W=function(d,t){return {d:d,t:t}};
+  var TT_DATA={
+    uk:{zone:'Europe/London',city:'London',label:'UK / Europe',c:{
+      1:{S:W(MW,'17:00'),A:W(MW,'18:30'),B:W(TT,'17:00'),eng:'B'},
+      2:{S:W(MW,'17:00'),A:W(MW,'18:30'),B:W(TT,'17:00'),eng:'B'},
+      3:{S:W(MW,'18:30'),A:W(TT,'18:30'),B:W(MW,'20:00'),eng:'A'},
+      4:{S:W(MW,'20:00'),A:W(TT,'18:30'),B:W(TT,'20:00'),eng:'B'}}},
+    na:{zone:'America/Toronto',city:'Toronto',label:'North America',c:{
+      1:{S:W(MW,'17:00'),A:W(MW,'18:30'),B:W(TT,'17:00'),eng:'B'},
+      2:{S:W(MW,'18:30'),A:W(TT,'18:30'),B:W(MW,'20:00'),eng:'A'},
+      3:{S:W(MW,'20:00'),A:W(TT,'20:00'),B:W(MW,'18:30'),eng:'A'},
+      4:{S:W(TT,'20:00'),A:W(MW,'20:00'),B:W(TT,'18:30'),eng:'A'}}}
+  };
+  var WEEKEND=[W(FS,'17:00'),W(FS,'18:30')];
+
+  function windowsFor(subj,kind){
+    var m=TT_DATA[state.mk],c=m.c[state.grade],out=[];
+    var all=[['S',c.S],['A',c.A],['B',c.B],['W1',WEEKEND[0]],['W2',WEEKEND[1]]];
+    var std=subj==='math'?'S':c.eng;
+    all.forEach(function(x){
+      var isStd=x[0]===std;
+      if((kind==='std')===isStd)out.push({id:x[0],d:x[1].d,t:x[1].t,zone:m.zone,city:m.city});
+    });
+    return out;
+  }
 
   var PLANS={
     single:[
-      {id:'s1',kind:'std',name:'Standard',sub:'1 subject',price:69,tag:'Published times',feat:['Fixed weekly timetable','4 to 5 students per class','2 live classes a week']},
-      {id:'f1',kind:'flex',name:'Flex',sub:'1 subject',price:99,tag:'Your time',feat:['Times opened around your family','Up to 3 students per class','Opens when 2 families enrol']}
+      {id:'s1',kind:'std',name:'Standard',sub:'1 subject',price:69,tag:'Published time',feat:['One published weekly time','Up to 5 students per class','2 live classes a week']},
+      {id:'f1',kind:'flex',name:'Flex',sub:'1 subject',price:99,tag:'More choice',feat:['Pick from approved weekly windows','Up to 5 students per class','One class transfer a month']}
     ],
     double:[
-      {id:'s2',kind:'std',name:'Standard',sub:'2 subjects',price:119,tag:'Published times',feat:['Math and English, both at published times','4 to 5 students per class','4 live classes a week']},
-      {id:'h2',kind:'hybrid',name:'Hybrid',sub:'1 Standard + 1 Flex',price:149,tag:'Best of both',mark:true,feat:['One subject at a published time','One subject at a time that suits you','Keep a family together when one time fails']},
-      {id:'f2',kind:'flex',name:'Flex',sub:'2 subjects',price:169,tag:'Your time',feat:['Math and English at Flex times','Up to 3 students per class','Each class opens at 2 families']}
+      {id:'s2',kind:'std',name:'Standard',sub:'2 subjects',price:119,tag:'Published times',feat:['Math and English at published times','Up to 5 students per class','4 live classes a week']},
+      {id:'h2',kind:'hybrid',name:'Hybrid',sub:'1 Standard + 1 Flex',price:149,tag:'Best of both',mark:true,feat:['One subject at the published time','One subject in the window you choose','Keeps your family together']},
+      {id:'f2',kind:'flex',name:'Flex',sub:'2 subjects',price:169,tag:'More choice',feat:['Math and English in windows you choose','Up to 5 students per class','One class transfer a month']}
     ]
   };
 
   var $=function(id){return document.getElementById(id)};
-  var state={tz:'',grade:0,sel:{},p:{}};
+  var state={tz:'',country:'',grade:2,mk:'na',sel:{},p:{}};
   var cur={single:'s1',double:'s2'};
 
   /* ---------- time conversion ---------- */
@@ -215,48 +238,98 @@ footer a{text-decoration:none;margin-right:16px}
     return Date.UTC(+o.year,+o.month-1,+o.day,+o.hour,+o.minute,+o.second)-utc;
   }
   function wallToUtc(day,hhmm,tz){
-    var h=+hhmm.slice(0,2),m=+hhmm.slice(3);
-    var guess=Date.UTC(2027,0,day,h,m);
-    var r=guess-offsetMs(tz,guess);
-    var o2=offsetMs(tz,r); r=guess-o2; return r;
+    var g=Date.UTC(2027,0,day,+hhmm.slice(0,2),+hhmm.slice(3));
+    var r=g-offsetMs(tz,g);return g-offsetMs(tz,r);
   }
   function fmtTime(ms,tz){return new Intl.DateTimeFormat(undefined,{timeZone:tz,hour:'numeric',minute:'2-digit'}).format(new Date(ms))}
   function fmtDay(ms,tz){return new Intl.DateTimeFormat('en-US',{timeZone:tz,weekday:'short'}).format(new Date(ms))}
   function localHour(ms,tz){return +new Intl.DateTimeFormat('en-GB',{timeZone:tz,hour:'2-digit',hourCycle:'h23'}).format(new Date(ms))}
-  function slotInfo(s,subj,tz){
-    var offs=s.days[subj];
-    var starts=offs.map(function(d){return wallToUtc(BASE_DAY+d,s.time,s.zone)});
-    var days=starts.map(function(ms){return fmtDay(ms,tz)});
-    var st=starts[0],en=st+3600000;
-    var hr=localHour(st,tz), hrEnd=localHour(en-60000,tz);
-    var night=(hr>=22||hr<6||hrEnd<6);
-    var srcT=new Intl.DateTimeFormat(undefined,{timeZone:s.zone,hour:'numeric',minute:'2-digit'}).format(new Date(st));
-    return {days:days.join(' & '),time:fmtTime(st,tz)+' – '+fmtTime(en,tz),night:night,src:'Taught at '+srcT+' '+s.city+' time',single:offs.length===1};
+  function info(w){
+    var starts=w.d.map(function(d){return wallToUtc(BASE_DAY+d,w.t,w.zone)});
+    var st=starts[0],en=st+3600000,tz=state.tz;
+    var hr=localHour(st,tz),hrEnd=localHour(en-60000,tz);
+    return {starts:starts,
+      days:starts.map(function(ms){return fmtDay(ms,tz)}).join(' & '),
+      time:fmtTime(st,tz)+' – '+fmtTime(en,tz),
+      night:(hr>=22||hr<6||hrEnd<6),
+      src:'Taught at '+fmtTime(st,w.zone)+' '+w.city+' time'};
   }
 
-  /* ---------- time zone selector ---------- */
-  var ZONES=[['Africa/Lagos','Lagos'],['Africa/Accra','Accra'],['Africa/Nairobi','Nairobi'],['Africa/Johannesburg','Johannesburg'],['Europe/London','London'],['Europe/Paris','Paris / Berlin'],['Asia/Dubai','Dubai'],['America/Halifax','Halifax'],['America/Toronto','Toronto / New York'],['America/Chicago','Winnipeg / Chicago'],['America/Edmonton','Edmonton / Denver'],['America/Vancouver','Vancouver / Los Angeles'],['Australia/Sydney','Sydney']];
+  /* ---------- countries and time zones ---------- */
+  var COUNTRIES=[
+    ['Nigeria',[['Africa/Lagos','Lagos']]],
+    ['Ghana',[['Africa/Accra','Accra']]],
+    ['Kenya',[['Africa/Nairobi','Nairobi']]],
+    ['South Africa',[['Africa/Johannesburg','Johannesburg']]],
+    ['United Kingdom',[['Europe/London','London']]],
+    ['Ireland',[['Europe/Dublin','Dublin']]],
+    ['France',[['Europe/Paris','Paris']]],
+    ['Germany',[['Europe/Berlin','Berlin']]],
+    ['Netherlands',[['Europe/Amsterdam','Amsterdam']]],
+    ['Spain',[['Europe/Madrid','Madrid']]],
+    ['Italy',[['Europe/Rome','Rome']]],
+    ['United Arab Emirates',[['Asia/Dubai','Dubai']]],
+    ['Canada',[['America/Halifax','Atlantic (Halifax)'],['America/Toronto','Eastern (Toronto, Ottawa)'],['America/Winnipeg','Central (Winnipeg)'],['America/Edmonton','Mountain (Edmonton, Calgary)'],['America/Vancouver','Pacific (Vancouver)'],['America/St_Johns','Newfoundland (St. John\'s)']]],
+    ['United States',[['America/New_York','Eastern (New York)'],['America/Chicago','Central (Chicago)'],['America/Denver','Mountain (Denver)'],['America/Phoenix','Mountain, no clock change (Phoenix)'],['America/Los_Angeles','Pacific (Los Angeles)']]],
+    ['Jamaica',[['America/Jamaica','Kingston']]],
+    ['Trinidad and Tobago',[['America/Port_of_Spain','Port of Spain']]],
+    ['Barbados',[['America/Barbados','Bridgetown']]],
+    ['Australia',[['Australia/Sydney','Sydney, Melbourne'],['Australia/Perth','Perth']]],
+    ['Other country',[]]
+  ];
+  var ALIAS={'America/Montreal':'America/Toronto','America/Detroit':'America/New_York','America/Regina':'America/Winnipeg','Europe/Belfast':'Europe/London','Africa/Abidjan':'Africa/Accra','Australia/Melbourne':'Australia/Sydney'};
   function offLabel(tz){
-    try{var m=offsetMs(tz,Date.UTC(2027,0,11,12))/60000, sgn=m<0?'-':'+', a=Math.abs(m);
-      return 'UTC'+sgn+Math.floor(a/60)+(a%60?':'+('0'+a%60).slice(-2):'');}catch(e){return ''}
+    try{var m=offsetMs(tz,Date.UTC(2027,0,11,12))/60000,a=Math.abs(m);
+      return 'UTC'+(m<0?'-':'+')+Math.floor(a/60)+(a%60?':'+('0'+a%60).slice(-2):'')}catch(e){return ''}
   }
+  function validTz(z){try{new Intl.DateTimeFormat('en-US',{timeZone:z});return true}catch(e){return false}}
   function detectTz(){
-    try{var z=Intl.DateTimeFormat().resolvedOptions().timeZone; if(z){new Intl.DateTimeFormat('en-US',{timeZone:z}); return z}}catch(e){}
-    return 'America/Toronto';
+    try{var z=Intl.DateTimeFormat().resolvedOptions().timeZone;z=ALIAS[z]||z;if(z&&validTz(z))return z}catch(e){}
+    return '';
   }
-  var detected=detectTz();
-  function initTz(){
-    var sel=$('tz'),list=ZONES.slice(),has=list.some(function(z){return z[0]===detected});
-    if(!has) list.unshift([detected,detected.replace(/_/g,' ')]);
-    sel.innerHTML=list.map(function(z){return '<option value="'+z[0]+'">'+z[1]+' ('+offLabel(z[0])+')'+(z[0]===detected?' – detected':'')+'</option>'}).join('');
-    sel.value=detected; state.tz=detected;
-    $('tznote').textContent='We detected your time zone from your device ('+detected.replace(/_/g,' ')+'). Change it if your child will attend from somewhere else.';
+  function countryOf(tz){
+    for(var i=0;i<COUNTRIES.length;i++){var zs=COUNTRIES[i][1];for(var j=0;j<zs.length;j++)if(zs[j][0]===tz)return COUNTRIES[i][0]}
+    return 'Other country';
+  }
+  function zonesOf(country,detected){
+    var c=COUNTRIES.filter(function(x){return x[0]===country})[0];
+    var list=c[1].slice();
+    if(country==='Other country'){
+      var all=[];try{all=Intl.supportedValuesOf('timeZone')}catch(e){}
+      if(!all.length)all=['Pacific/Auckland','Asia/Kolkata','Asia/Singapore','Asia/Tokyo','America/Sao_Paulo','America/Mexico_City'];
+      list=all.map(function(z){return [z,z.replace(/_/g,' ')]});
+    }
+    return list;
+  }
+  function marketFor(tz){return tz.indexOf('America/')===0?'na':'uk'}
+
+  function fillRegion(country,pick){
+    var zs=zonesOf(country),sel=$('region');
+    sel.innerHTML=zs.map(function(z){return '<option value="'+z[0]+'">'+z[1]+' ('+offLabel(z[0])+')</option>'}).join('');
+    $('regionwrap').hidden=zs.length<2;
+    var chosen=pick&&zs.some(function(z){return z[0]===pick})?pick:zs[0][0];
+    sel.value=chosen;state.tz=chosen;
+  }
+  function setMarket(mk){
+    state.mk=mk;
+    ['uk','na'].forEach(function(k){$('mk-'+k).setAttribute('aria-pressed',String(k===mk))});
+  }
+  function initGeo(){
+    var det=detectTz();
+    var cs=$('country');
+    cs.innerHTML=COUNTRIES.map(function(c){return '<option>'+c[0]+'</option>'}).join('');
+    var country=det?countryOf(det):'Canada';
+    cs.value=country;state.country=country;
+    fillRegion(country,det||'America/Toronto');
+    setMarket(marketFor(state.tz));
+    $('tznote').textContent=det
+      ?'We detected your time zone from your device ('+det.replace(/_/g,' ')+'). If your child will attend from somewhere else, change the country.'
+      :'We could not detect your time zone, so we started with Canada. Choose your country to see your local times.';
   }
 
   /* ---------- plan cards ---------- */
   function renderCards(key){
-    var box=$('cards-'+key);
-    box.innerHTML=PLANS[key].map(function(p){
+    $('cards-'+key).innerHTML=PLANS[key].map(function(p){
       return '<button type="button" class="card" data-plan="'+p.id+'" aria-pressed="'+(cur[key]===p.id)+'">'+
         '<span class="tag'+(p.mark?' mark':'')+'">'+p.tag+'</span>'+
         '<span class="nm">'+p.name+' <span style="font-weight:500;color:var(--muted);font-size:15px">&middot; '+p.sub+'</span></span>'+
@@ -267,7 +340,6 @@ footer a{text-decoration:none;margin-right:16px}
   function plan(key){return PLANS[key].filter(function(p){return p.id===cur[key]})[0]}
   function pst(id){return state.p[id]||(state.p[id]={subj:'math',view:'math',std:'math'})}
 
-  /* ---------- panel ---------- */
   function selectHtml(id,label,opts,val){
     return '<div><label for="'+id+'">'+label+'</label><select id="'+id+'">'+opts.map(function(o){return '<option value="'+o[0]+'"'+(o[0]===val?' selected':'')+'>'+o[1]+'</option>'}).join('')+'</select></div>';
   }
@@ -275,22 +347,22 @@ footer a{text-decoration:none;margin-right:16px}
   var KIND=[['std','Standard'],['flex','Flex']];
 
   function renderPanel(key){
-    var p=plan(key),s=pst(p.id),el=$('panel-'+key),ctr='',rule='',title=p.name+' '+p.sub.toLowerCase()+' · $'+p.price+' CAD / month';
+    var p=plan(key),s=pst(p.id),el=$('panel-'+key),ctr='',rule='',title=p.name+' · '+p.sub.toLowerCase()+' · $'+p.price+' CAD / month';
     if(p.id==='s1'||p.id==='f1'){
       ctr=selectHtml(key+'-subj','Subject',SUBJ,s.subj);
-      rule=p.kind==='std'?'Pick your subject to see the published Standard times. Choose the time you prefer.':'Pick your subject to see Flex windows. Flex classes open once 2 families enrol.';
+      rule=p.kind==='std'?'Choose your subject to see its published Standard time.':'Choose your subject, then tap the weekly window you prefer. We confirm your Flex time by email before each 4-week module begins.';
     }else if(p.id==='s2'){
       ctr=selectHtml(key+'-view','Show times for',SUBJ,s.view);
-      rule='Standard includes both Math and English at published times. Switch the menu to see each subject.';
+      rule='Standard includes both Math and English at their published times. Switch the menu to see each subject.';
     }else if(p.id==='h2'){
       ctr=selectHtml(key+'-hm','Math is',KIND,s.std==='math'?'std':'flex')+selectHtml(key+'-he','English is',KIND,s.std==='eng'?'std':'flex');
-      rule='Choose which subject is Standard and which is Flex. The other one switches automatically. Times for each appear below.';
+      rule='Choose which subject is Standard and which is Flex. The other switches automatically. Tap a window for your Flex subject; classes that would clash are greyed out.';
     }else{
-      rule='Both subjects run at Flex windows. Each class opens once 2 families enrol.';
+      rule='Both subjects in the windows you choose. Pick one for each; classes that would clash are greyed out. We confirm your Flex times by email before each 4-week module begins.';
     }
     el.innerHTML='<h3>'+title+'</h3><p class="rule">'+rule+'</p>'+(ctr?'<div class="ctrls">'+ctr+'</div>':'')+
       '<div class="blocks" id="blocks-'+key+'"></div><div class="sum" id="sum-'+key+'"></div><p class="toast" id="toast-'+key+'" role="status"></p>';
-    var bind=function(id,fn){var n=$(id);if(n)n.addEventListener('change',function(){fn(n.value);renderBlocks(key)})};
+    var bind=function(id,fn){var n=$(id);if(n)n.addEventListener('change',function(){Object.keys(state.sel).forEach(function(k){if(k.indexOf(p.id+'|')===0)delete state.sel[k]});fn(n.value);renderBlocks(key)})};
     bind(key+'-subj',function(v){s.subj=v});
     bind(key+'-view',function(v){s.view=v});
     bind(key+'-hm',function(v){s.std=v==='std'?'math':'eng';var o=$(key+'-he');if(o)o.value=v==='std'?'flex':'std'});
@@ -298,73 +370,86 @@ footer a{text-decoration:none;margin-right:16px}
     renderBlocks(key);
   }
 
-  function blocksFor(p){
+  function allBlocks(p){
     var s=pst(p.id);
     if(p.id==='s1')return [{subj:s.subj,kind:'std'}];
     if(p.id==='f1')return [{subj:s.subj,kind:'flex'}];
-    if(p.id==='s2')return [{subj:s.view,kind:'std'}];
+    if(p.id==='s2')return [{subj:'math',kind:'std'},{subj:'eng',kind:'std'}];
     if(p.id==='h2')return [{subj:'math',kind:s.std==='math'?'std':'flex'},{subj:'eng',kind:s.std==='eng'?'std':'flex'}];
     return [{subj:'math',kind:'flex'},{subj:'eng',kind:'flex'}];
   }
+  function shownBlocks(p){
+    var all=allBlocks(p);
+    return p.id==='s2'?all.filter(function(b){return b.subj===pst(p.id).view}):all;
+  }
+  function bkey(p,b){return p.id+'|'+b.subj+'|'+b.kind+'|'+state.mk+'|'+state.grade}
+  function chosen(p,b){
+    var list=windowsFor(b.subj,b.kind),k=bkey(p,b),id=state.sel[k];
+    var hit=list.filter(function(w){return w.id===id})[0];
+    if(!hit&&b.kind==='std')hit=list[0];
+    return hit||null;
+  }
 
   function renderBlocks(key){
-    var p=plan(key),bl=blocksFor(p),box=$('blocks-'+key);
-    box.className='blocks'+(bl.length>1?' two':'');
-    box.innerHTML=bl.map(function(b,i){
-      var list=(b.kind==='std'?STD:FLEX).filter(function(s){return !state.grade||s.g.indexOf(state.grade)>-1});
-      var sk=p.id+'|'+b.subj+'|'+b.kind;
-      var html='<div class="blk"><h4>'+NAMES[b.subj]+' <span class="pill '+(b.kind==='std'?'std':'flx')+'">'+(b.kind==='std'?'Standard':'Flex')+'</span></h4>';
-      if(!list.length){html+='<div class="empty">No '+(b.kind==='std'?'published':'Flex')+' time for '+GRADE_LBL[state.grade]+' yet. Choose another grade view or tell us the time you need.</div>';}
-      else{
-        html+='<ul class="slots">'+list.map(function(s){
-          var info=slotInfo(s,b.subj,state.tz),on=state.sel[sk]===s.id;
-          return '<li><button type="button" class="slot" data-sk="'+sk+'" data-id="'+s.id+'" aria-pressed="'+on+'"><span class="dot"></span><span class="t"><span class="when">'+info.days+' &middot; '+info.time+'</span><span class="src">'+s.mk+' &middot; '+info.src+'</span></span>'+(info.night?'<span class="night">Overnight for you</span>':'')+'</button></li>';
+    var p=plan(key),shown=shownBlocks(p),all=allBlocks(p),box=$('blocks-'+key);
+    box.className='blocks'+(shown.length>1?' two':'');
+    box.innerHTML=shown.map(function(b){
+      // starts taken by the other subject's chosen class
+      var taken={};
+      all.forEach(function(o){if(o.subj===b.subj)return;var w=chosen(p,o);if(w)info(w).starts.forEach(function(ms){taken[ms]=NAMES[o.subj]})});
+      var list=windowsFor(b.subj,b.kind).map(function(w){var i=info(w);var clash='';i.starts.forEach(function(ms){if(taken[ms])clash=taken[ms]});return {w:w,i:i,clash:clash}});
+      list.sort(function(a,c){return (a.i.night?1:0)-(c.i.night?1:0)});
+      var cho=chosen(p,b),k=bkey(p,b);
+      var html='<div class="blk"><h4>'+NAMES[b.subj]+' <span class="pill '+(b.kind==='std'?'std':'flx')+'">'+(b.kind==='std'?'Standard':'Flex')+'</span></h4><ul class="slots">'+
+        list.map(function(x){
+          var on=cho&&cho.id===x.w.id&&!x.clash;
+          return '<li><button type="button" class="slot" data-sk="'+k+'" data-id="'+x.w.id+'" aria-pressed="'+on+'"'+(x.clash?' disabled':'')+'><span class="dot"></span><span class="t"><span class="when">'+x.i.days+' &middot; '+x.i.time+'</span><span class="src">'+TT_DATA[state.mk].label+' &middot; '+x.i.src+'</span></span>'+
+            (x.clash?'<span class="clash">Clashes with '+x.clash+'</span>':(x.i.night?'<span class="night">Overnight for you</span>':''))+'</button></li>';
         }).join('')+'</ul>';
-      }
-      if(b.kind==='flex')html+='<div class="req">Need a different time? Request it when you contact us. A Flex class opens once 2 families have enrolled.</div>';
+      if(b.kind==='flex')html+='<div class="req">Need a completely different time? Ask us about private tutoring.</div>';
       return html+'</div>';
     }).join('');
     renderSummary(key);
   }
 
   function summaryText(key){
-    var p=plan(key),bl=blocksFor(p),lines=[];
-    var subs=p.id==='s2'?'Math + English (Standard)':bl.map(function(b){return NAMES[b.subj]+' ('+(b.kind==='std'?'Standard':'Flex')+')'}).join(' + ');
-    var sel=[];
-    bl.forEach(function(b){
-      var id=state.sel[p.id+'|'+b.subj+'|'+b.kind];
-      if(!id)return;
-      var s=(b.kind==='std'?STD:FLEX).filter(function(x){return x.id===id})[0];
-      if(s){var i=slotInfo(s,b.subj,state.tz);sel.push(NAMES[b.subj]+': '+i.days+' '+i.time)}
-    });
-    return {head:p.name+' '+p.sub+': '+subs, price:'$'+p.price+' CAD / month',
-      copy:'Plan: '+p.name+' ('+p.sub+') - '+subs+' - $'+p.price+' CAD/month. Grade: '+GRADE_LBL[state.grade]+'. Preferred times ('+state.tz.replace(/_/g,' ')+'): '+(sel.length?sel.join('; '):'not chosen yet'),
-      sel:sel};
+    var p=plan(key),all=allBlocks(p),sel=[],missing=false;
+    var subs=all.map(function(b){return NAMES[b.subj]+' ('+(b.kind==='std'?'Standard':'Flex')+')'}).join(' + ');
+    all.forEach(function(b){var w=chosen(p,b);if(w){var i=info(w);sel.push(NAMES[b.subj]+': '+i.days+' '+i.time)}else missing=true});
+    return {head:p.name+' '+p.sub+': '+subs,price:'$'+p.price+' CAD / month',sel:sel,missing:missing,
+      copy:'Plan: '+p.name+' ('+p.sub+') - '+subs+' - $'+p.price+' CAD/month. '+GRADE_LBL[state.grade]+'. Preferred times ('+state.tz.replace(/_/g,' ')+'): '+(sel.length?sel.join('; '):'not chosen yet')};
   }
   function renderSummary(key){
-    var t=summaryText(key),el=$('sum-'+key);
-    el.innerHTML='<div class="txt"><b>'+t.head+'</b><br>'+t.price+' &middot; '+(t.sel.length?'Preferred: '+t.sel.join('; '):'Tap a time above to mark your preference')+'</div>'+
+    var t=summaryText(key);
+    $('sum-'+key).innerHTML='<div class="txt"><b>'+t.head+'</b><br>'+t.price+' &middot; '+(t.sel.length?'Your times: '+t.sel.join('; ')+(t.missing?' (tap a window for the other subject)':''):'Tap a window above to mark your preference')+'</div>'+
       '<div class="acts"><button type="button" class="btn ghost" data-copy="'+key+'">Copy my selection</button><a class="btn" href="https://odeprecious10-cmd.github.io/novapoint/#contact">Continue to contact &rarr;</a></div>';
   }
+  function rerender(){renderBlocks('single');renderBlocks('double')}
 
   /* ---------- events ---------- */
   document.addEventListener('click',function(e){
     var c=e.target.closest('.card');
     if(c){var key=c.parentNode.id.replace('cards-','');cur[key]=c.getAttribute('data-plan');renderCards(key);renderPanel(key);return}
     var sl=e.target.closest('.slot');
-    if(sl){var k=sl.getAttribute('data-sk');state.sel[k]=sl.getAttribute('data-id');
-      var key2=sl.closest('.panel').id.replace('panel-','');renderBlocks(key2);return}
+    if(sl&&!sl.disabled){state.sel[sl.getAttribute('data-sk')]=sl.getAttribute('data-id');renderBlocks(sl.closest('.panel').id.replace('panel-',''));return}
+    var mk=e.target.closest('[data-mk]');
+    if(mk){setMarket(mk.getAttribute('data-mk'));rerender();return}
     var cp=e.target.closest('[data-copy]');
-    if(cp){var key3=cp.getAttribute('data-copy'),txt=summaryText(key3).copy,t=$('toast-'+key3);
+    if(cp){var k3=cp.getAttribute('data-copy'),txt=summaryText(k3).copy,t=$('toast-'+k3);
       var ok=function(){t.textContent='Copied. Paste it into the contact form.'};
       var fail=function(){var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(x){t.textContent='Copy failed. Select this text instead: '+txt}document.body.removeChild(ta)};
       if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok,fail)}else fail();
     }
   });
-  $('grade').addEventListener('change',function(){state.grade=+this.value;renderBlocks('single');renderBlocks('double')});
-  $('tz').addEventListener('change',function(){state.tz=this.value;renderBlocks('single');renderBlocks('double')});
+  $('grade').addEventListener('change',function(){state.grade=+this.value;rerender()});
+  $('country').addEventListener('change',function(){
+    state.country=this.value;fillRegion(this.value);setMarket(marketFor(state.tz));
+    $('tznote').textContent='Showing times for '+state.country+'. Classes are taught on UK or North America clocks, so switch the "Classes taught on" setting if you prefer the other set.';
+    rerender();
+  });
+  $('region').addEventListener('change',function(){state.tz=this.value;setMarket(marketFor(state.tz));rerender()});
 
-  initTz();
+  initGeo();
   ['single','double'].forEach(function(k){renderCards(k);renderPanel(k)});
 })();
 </script>
