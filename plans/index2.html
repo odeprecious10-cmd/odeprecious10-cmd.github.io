@@ -359,7 +359,7 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
       <article><h3>Can my child take Math and English together?</h3><p>Yes. Math and English registration open in parallel for cohorts being launched. The subjects have independent section status, so one can be ready while the other is still forming.</p></article>
       <article><h3>Can Flex families reschedule?</h3><p>Flex includes one schedule transfer per month into another active section of the same subject and cohort, subject to an available seat. It does not create a new one-off lesson. If no seat is available, the normal makeup/alternative process applies.</p></article>
       <article><h3>What if a new class is still forming?</h3><p>NovaPoint will provide a clear activation decision window and an alternative, such as another suitable active time or the applicable refund, rather than leaving families waiting indefinitely.</p></article>
-      <article><h3>Are all subjects twice a week?</h3><p>Most Math, English, Chemistry and Physics streams are planned for two 60-minute sessions each week. Robotics &amp; Coding is one selectable program for Sigma and Omega: the planned stream includes two Robotics sessions plus one Coding session each week.</p></article>
+      <article><h3>Are all subjects twice a week?</h3><p>Most Math, English, Chemistry and Physics streams are planned for two 60-minute sessions each week. Robotics &amp; Coding is one integrated 60-minute class per week. Choose one available session: Friday evening, Saturday morning or Sunday morning.</p></article>
     </div>
   </div>
 </section>
@@ -626,12 +626,12 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
       ]},
     "Robotics & Coding":{
       standard:slot("Friday Robotics 8:00 PM + Saturday Robotics 11:00 AM + Sunday Coding 11:00 AM",
-        [{day:5,time:"20:00"},{day:6,time:"11:00"},{day:0,time:"11:00"}],"2 Robotics + 1 Coding class/week"),
+        [{day:5,time:"20:00"},{day:6,time:"11:00"},{day:0,time:"11:00"}],"1 combined Robotics & Coding class/week"),
       flex:[
         slot("Friday Robotics 6:30 PM + Saturday Robotics 11:00 AM + Sunday Coding 11:00 AM",
-          [{day:5,time:"18:30"},{day:6,time:"11:00"},{day:0,time:"11:00"}],"2 Robotics + 1 Coding class/week"),
+          [{day:5,time:"18:30"},{day:6,time:"11:00"},{day:0,time:"11:00"}],"1 combined Robotics & Coding class/week"),
         slot("Friday Robotics 8:00 PM + Sunday Robotics 11:00 AM + Saturday Coding 11:00 AM",
-          [{day:5,time:"20:00"},{day:0,time:"11:00"},{day:6,time:"11:00"}],"2 Robotics + 1 Coding class/week")
+          [{day:5,time:"20:00"},{day:0,time:"11:00"},{day:6,time:"11:00"}],"1 combined Robotics & Coding class/week")
       ]}
   };
 
@@ -666,12 +666,12 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
       ]},
     "Robotics & Coding":{
       standard:slot("Friday Robotics 8:00 PM + Saturday Robotics 11:00 AM + Sunday Coding 11:00 AM",
-        [{day:5,time:"20:00"},{day:6,time:"11:00"},{day:0,time:"11:00"}],"2 Robotics + 1 Coding class/week"),
+        [{day:5,time:"20:00"},{day:6,time:"11:00"},{day:0,time:"11:00"}],"1 combined Robotics & Coding class/week"),
       flex:[
         slot("Friday Robotics 6:30 PM + Saturday Robotics 11:00 AM + Sunday Coding 11:00 AM",
-          [{day:5,time:"18:30"},{day:6,time:"11:00"},{day:0,time:"11:00"}],"2 Robotics + 1 Coding class/week"),
+          [{day:5,time:"18:30"},{day:6,time:"11:00"},{day:0,time:"11:00"}],"1 combined Robotics & Coding class/week"),
         slot("Friday Robotics 8:00 PM + Sunday Robotics 11:00 AM + Saturday Coding 11:00 AM",
-          [{day:5,time:"20:00"},{day:0,time:"11:00"},{day:6,time:"11:00"}],"2 Robotics + 1 Coding class/week")
+          [{day:5,time:"20:00"},{day:0,time:"11:00"},{day:6,time:"11:00"}],"1 combined Robotics & Coding class/week")
       ]}
   };
 
@@ -714,23 +714,23 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
     const country = String((geo && (geo.country_code || geo.country)) || "").toUpperCase();
     const locale = (navigator.languages && navigator.languages[0]) || navigator.language || "";
 
-    // IMPORTANT: use the browser's configured time zone first. It represents
-    // the clock the visitor sees. VPNs and IP geolocation can point to another
-    // country, so IP data must not override a usable browser time zone.
-    if (browserTz.startsWith("Europe/")) return "uk";
-    if (browserTz.startsWith("America/")) return "na";
-
-    // Only fall back to IP-derived timezone/country when browser timezone
-    // information is missing or generic (e.g. UTC).
-    if (ipTz.startsWith("Europe/")) return "uk";
-    if (ipTz.startsWith("America/")) return "na";
-
     const european = new Set(["GB","IE","FR","DE","ES","IT","NL","BE","PT","AT","FI","GR","LU","SK","SI","EE","LV","LT","CY","MT","HR","PL","CZ","HU","RO","BG","DK","SE"]);
     const northAmerican = new Set(["US","CA","MX","JM","TT","BB","BS","KY","TC","DO","HT","LC","DM","GD","VC","AG","KN","BZ"]);
     const localeLooksEuropean = /(^|-)GB($|-)|(^|-)IE($|-)|(^|-)FR($|-)|(^|-)DE($|-)|(^|-)ES($|-)|(^|-)IT($|-)|(^|-)NL($|-)|(^|-)BE($|-)|(^|-)PT($|-)|(^|-)AT($|-)|(^|-)FI($|-)|(^|-)SE($|-)|(^|-)DK($|-)/i.test(locale);
 
-    if (european.has(country) || localeLooksEuropean) return "uk";
+    // A browser set to a European time zone is a clear UK/Europe signal.
+    if (browserTz.startsWith("Europe/")) return "uk";
+
+    // Prefer explicit IP country data when available. This also lets a UK/European
+    // IP select the UK school-year labels if the device clock is configured elsewhere.
+    if (european.has(country)) return "uk";
     if (northAmerican.has(country)) return "na";
+
+    // Fallback order when country lookup is unavailable.
+    if (ipTz.startsWith("Europe/")) return "uk";
+    if (ipTz.startsWith("America/")) return "na";
+    if (browserTz.startsWith("America/")) return "na";
+    if (localeLooksEuropean) return "uk";
     return "na";
   }
   function targetZone() {
@@ -780,6 +780,15 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
       : ["Math","English"];
   }
   function scheduleFor(subject, mode) {
+    if (subject === "Robotics & Coding") {
+      // The selected class combines Robotics and Coding content in ONE session; the family chooses one of these three times.
+      return [
+        slot("Friday · 8:00 PM", [{day:5,time:"20:00"}], "1 combined session/week"),
+        slot("Saturday · 11:00 AM", [{day:6,time:"11:00"}], "1 combined session/week"),
+        slot("Sunday · 11:00 AM", [{day:0,time:"11:00"}], "1 combined session/week")
+      ];
+    }
+
     let item;
     if (["sigma","omega"].includes(level())) {
       const regionalSenior = market()==="uk" ? seniorSchedulesUK : seniorSchedules;
