@@ -315,7 +315,7 @@ footer a{text-decoration:none;margin-right:16px;color:var(--navy-ink)}
   }
   function validTz(z){try{new Intl.DateTimeFormat('en-US',{timeZone:z});return true}catch(e){return false}}
   function detectTz(){
-    try{var z=Intl.DateTimeFormat().resolvedOptions().timeZone;z=ALIAS[z]||z;if(z&&validTz(z))return z}catch(e){}
+    try{var z=Intl.DateTimeFormat().resolvedOptions().timeZone;z=ALIAS[z]||z;if(z&&validTz(z)&&!/^(UTC|GMT|Etc\/)/.test(z))return z}catch(e){}
     return '';
   }
   function countryOf(tz){
@@ -350,19 +350,54 @@ footer a{text-decoration:none;margin-right:16px;color:var(--navy-ink)}
     state.mk=mk;
     ['uk','na'].forEach(function(k){$('mk-'+k).setAttribute('aria-pressed',String(k===mk))});
   }
-  function initGeo(){
-    var det=detectTz();
-    var cs=$('country');
-    cs.innerHTML=COUNTRIES.map(function(c){return '<option>'+c[0]+'</option>'}).join('');
-    var country=det?countryOf(det):'Canada';
-    cs.value=country;state.country=country;
-    fillRegion(country,det||'America/Toronto');
-    setMarket(marketFor(state.tz));
-    $('tznote').textContent=det
-      ?'We detected your time zone from your device ('+det.replace(/_/g,' ')+'). If your child will attend from somewhere else, change the country.'
-      :'We could not detect your time zone, so we started with Canada. Choose your country to see your local times.';
+  var RC={NG:'Nigeria',GH:'Ghana',KE:'Kenya',ZA:'South Africa',GB:'United Kingdom',IE:'Ireland',FR:'France',DE:'Germany',NL:'Netherlands',ES:'Spain',IT:'Italy',AE:'United Arab Emirates',CA:'Canada',US:'United States',JM:'Jamaica',TT:'Trinidad and Tobago',BB:'Barbados',AU:'Australia'};
+  function localeCountry(){
+    var l=(navigator.languages&&navigator.languages[0])||navigator.language||'';
+    return RC[(l.split('-')[1]||'').toUpperCase()]||'';
   }
-
+  // Apply a detected place. source: 'IP address' or 'device settings'.
+  function applyGeo(country,tz,source){
+    var cs=$('country');cs.value=country;state.country=country;
+    fillRegion(country,tz);
+    setMarket(marketFor(state.tz));
+    setCurrency(CUR_BY_COUNTRY[country]||'USD');
+    var n='';try{n=new Intl.DateTimeFormat('en-US',{timeZone:state.tz,timeZoneName:'long'}).formatToParts(new Date(Date.UTC(2027,0,11,12))).filter(function(p){return p.type==='timeZoneName'})[0].value}catch(e){}
+    $('tznote').textContent='We detected '+country+' from your '+source+'. All times are shown in your local time ('+n+') and prices in '+state.cur+'. Not right? Change the country, time zone or currency above.';
+  }
+  function initGeo(){
+    $('country').innerHTML=COUNTRIES.map(function(c){return '<option>'+c[0]+'</option>'}).join('');
+    var det=detectTz(),lc=localeCountry(),country,tz=det;
+    if(det){
+      country=countryOf(det);
+      // A US clock with a Canadian language setting is almost always Ontario or Quebec.
+      if(country==='United States'&&lc==='Canada'){country='Canada';tz='America/Toronto'}
+      applyGeo(country,tz,'device settings');
+    }else if(lc){
+      applyGeo(lc,null,'language setting');
+    }else{
+      applyGeo('Canada','America/Toronto','default');
+      $('tznote').textContent='We could not detect your location, so we started with Canada. Choose your country to see your local times and prices.';
+    }
+    ipLookup();
+  }
+  // IP-based detection. Runs after the page loads and replaces the device guess unless the visitor already chose.
+  function ipLookup(){
+    var done=false;
+    function use(code,tzid){
+      if(done||state.userPicked)return;
+      var country=RC[(code||'').toUpperCase()]||'Other country';
+      tzid=ALIAS[tzid]||tzid;
+      done=true;applyGeo(country,tzid&&validTz(tzid)?tzid:null,'IP address');
+      ['single','double'].forEach(function(k){renderCards(k);renderPanel(k)});
+    }
+    try{
+      fetch('https://ipwho.is/').then(function(r){return r.json()}).then(function(d){
+        if(d&&d.success!==false&&d.country_code)use(d.country_code,d.timezone&&d.timezone.id);else throw 0;
+      }).catch(function(){
+        fetch('https://ipapi.co/json/').then(function(r){return r.json()}).then(function(d){if(d&&d.country_code)use(d.country_code,d.timezone)}).catch(function(){});
+      });
+    }catch(e){}
+  }
 
   /* ---------- currency ---------- */
   var CUR_BY_COUNTRY={'Nigeria':'NGN','Ghana':'GHS','Kenya':'KES','South Africa':'ZAR','United Kingdom':'GBP','Ireland':'EUR','France':'EUR','Germany':'EUR','Netherlands':'EUR','Spain':'EUR','Italy':'EUR','United Arab Emirates':'AED','Canada':'CAD','United States':'USD','Jamaica':'JMD','Trinidad and Tobago':'TTD','Barbados':'BBD','Australia':'AUD','Other country':'USD'};
@@ -385,7 +420,7 @@ footer a{text-decoration:none;margin-right:16px;color:var(--navy-ink)}
   function initCurrency(){
     var sel=$('currency');
     sel.innerHTML=Object.keys(CUR_NAMES).map(function(c){return '<option value="'+c+'">'+CUR_NAMES[c]+'</option>'}).join('');
-    setCurrency(CUR_BY_COUNTRY[state.country]||'USD');
+    setCurrency(state.cur||'CAD');
     try{
       fetch('https://open.er-api.com/v6/latest/CAD').then(function(r){return r.json()}).then(function(d){
         if(d&&d.rates){Object.keys(CUR_NAMES).forEach(function(c){if(d.rates[c])RATES[c]=d.rates[c]});liveFx=true;refreshPrices()}
@@ -430,7 +465,7 @@ footer a{text-decoration:none;margin-right:16px;color:var(--navy-ink)}
     }
     el.innerHTML='<h3>'+title+'</h3><p class="rule">'+rule+'</p>'+(ctr?'<div class="ctrls">'+ctr+'</div>':'')+
       '<div class="blocks" id="blocks-'+key+'"></div><div class="sum" id="sum-'+key+'"></div><p class="toast" id="toast-'+key+'" role="status"></p>';
-    var bind=function(id,fn){var n=$(id);if(n)n.addEventListener('change',function(){fn(n.value);renderBlocks(key)})};
+    var bind=function(id,fn){var n=$(id);if(n)n.addEventListener('change',function(){Object.keys(state.sel).forEach(function(k){if(k.indexOf(p.id+'|')===0)delete state.sel[k]});fn(n.value);renderBlocks(key)})};
     bind(key+'-subj',function(v){s.subj=v});
     bind(key+'-view',function(v){s.view=v});
     bind(key+'-hm',function(v){s.std=v==='std'?'math':'eng';var o=$(key+'-he');if(o)o.value=v==='std'?'flex':'std'});
@@ -510,7 +545,8 @@ footer a{text-decoration:none;margin-right:16px;color:var(--navy-ink)}
     }
   });
   $('grade').addEventListener('change',function(){state.grade=+this.value;rerender()});
-  $('country').addEventListener('change',function(){
+  ['country','region','currency'].forEach(function(id){$(id).addEventListener('change',function(){state.userPicked=true})});
+  $('country').addEventListener('change',function(){state.userPicked=true;
     state.country=this.value;fillRegion(this.value);setMarket(marketFor(state.tz));setCurrency(CUR_BY_COUNTRY[state.country]||'USD');refreshPrices();
     zoneNote();
     rerender();
@@ -518,7 +554,7 @@ footer a{text-decoration:none;margin-right:16px;color:var(--navy-ink)}
   $('currency').addEventListener('change',function(){setCurrency(this.value);refreshPrices()});
   $('region').addEventListener('change',function(){state.tz=this.value;zoneNote();setMarket(marketFor(state.tz));rerender()});
 
-  initGeo();initCurrency();
+  initCurrency();initGeo();
   ['single','double'].forEach(function(k){renderCards(k);renderPanel(k)});
 })();
 </script>
