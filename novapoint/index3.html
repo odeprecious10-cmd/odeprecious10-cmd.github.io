@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="ClassOf5 Academy offers expert-led online tutoring for primary school, high school, and language learning with focused small-group instruction." />
   <title>ClassOf5 Academy | Online Tutoring &amp; Academic Enrichment</title>
+  <meta name="theme-color" content="#0F172A" />
+  <meta property="og:title" content="ClassOf5 Academy | Small-group online tutoring" />
+  <meta property="og:description" content="Live, expert-led tutoring in groups of five. Weekly parent visibility and class recordings included." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="classof5-academy-film-poster.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
       --navy: #0F172A;
@@ -646,6 +654,56 @@
       .support-callout-copy h3 { font-size:34px; }
       .concern-list { grid-template-columns:1fr; gap:14px; margin-top:22px; }
     }
+
+    /* ---- v4 additions: film, readability, polish ---- */
+    section[id], main[id] { scroll-margin-top:76px; }
+    a:focus-visible, button:focus-visible { outline:3px solid #F59E0B; outline-offset:3px; }
+    .watch-link { display:inline-flex; align-items:center; gap:10px; margin-top:20px; font-size:14px; font-weight:800; color:var(--navy); }
+    .watch-link:hover { color:var(--amber-dark); }
+    .watch-icon { width:30px; height:30px; display:grid; place-items:center; border-radius:50%; background:var(--amber-soft); border:1px solid #F4D7A3; color:var(--amber); }
+    .watch-icon svg { width:14px; height:14px; margin-left:2px; }
+
+    .impact-showcase { grid-template-columns:1fr; gap:24px; }
+    @media (min-width:981px) { .impact-metrics { grid-template-columns:repeat(4,1fr); } .impact-card { min-height:190px; } }
+    .film-frame { position:relative; overflow:hidden; width:100%; max-width:980px; margin:0 auto; padding:14px 14px 0; border-radius:28px; background:linear-gradient(145deg,#0F172A 0%,#172554 52%,#0F172A 100%); border:1px solid rgba(15,23,42,.12); box-shadow:0 24px 60px rgba(15,23,42,.15); }
+    .film-frame::before { content:''; position:absolute; width:360px; height:360px; left:-120px; top:-140px; border-radius:50%; background:radial-gradient(circle, rgba(217,119,6,.28) 0%, rgba(217,119,6,0) 70%); pointer-events:none; }
+    .film-frame::after { content:''; position:absolute; width:300px; height:300px; right:-120px; bottom:-130px; border-radius:50%; border:1px solid rgba(255,255,255,.12); box-shadow:0 0 0 30px rgba(255,255,255,.03), 0 0 0 60px rgba(217,119,6,.035); pointer-events:none; }
+    .film-stage { position:relative; z-index:1; aspect-ratio:16/9; overflow:hidden; border-radius:18px; background:#0B1224; }
+    .film-stage video { display:block; width:100%; height:100%; object-fit:cover; background:#0B1224; }
+    .film-play { position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; border:0; cursor:pointer; color:#fff; background:linear-gradient(180deg, rgba(15,23,42,.10) 30%, rgba(15,23,42,.62) 100%); transition:opacity .25s ease, background .25s ease; }
+    .film-play:hover { background:linear-gradient(180deg, rgba(15,23,42,.04) 30%, rgba(15,23,42,.52) 100%); }
+    .film-play.hidden { opacity:0; pointer-events:none; }
+    .film-play-btn { width:78px; height:78px; display:grid; place-items:center; border-radius:50%; background:var(--amber); box-shadow:0 14px 34px rgba(217,119,6,.38), 0 0 0 10px rgba(217,119,6,.18); transition:transform .2s ease, background .2s ease; }
+    .film-play:hover .film-play-btn { transform:scale(1.06); background:var(--amber-dark); }
+    .film-play-btn svg { width:30px; height:30px; margin-left:4px; }
+    .film-play-label { padding:9px 15px; border-radius:999px; background:rgba(15,23,42,.78); border:1px solid rgba(255,255,255,.14); backdrop-filter:blur(8px); font-size:13px; font-weight:800; }
+    .film-play-label em { font-style:normal; color:#FBBF24; margin-left:6px; }
+    .film-caption { position:relative; z-index:1; display:flex; justify-content:center; flex-wrap:wrap; gap:8px 26px; margin:0; padding:15px 10px 17px; color:#CBD5E1; font-size:12px; font-weight:700; }
+    .film-caption span { display:inline-flex; align-items:center; gap:8px; }
+
+    /* readability: lift the smallest text on plan cards */
+    .plan-eyebrow { font-size:10px; }
+    .plan-badge { font-size:9.5px; padding:5px 9px; }
+    .plan-local-note { font-size:11px; }
+    .plan-description { font-size:13px; }
+    .plan-features li { font-size:12.5px; }
+    .plan-cta { font-size:12.5px; min-height:46px; }
+    .plans-slider-footer { font-size:12px; }
+    .hero-stat-item span { font-size:12px; }
+
+    @media (max-width:760px) {
+      .film-frame { padding:10px 10px 0; border-radius:22px; }
+      .film-stage { border-radius:14px; }
+      .film-play-btn { width:62px; height:62px; box-shadow:0 12px 28px rgba(217,119,6,.36), 0 0 0 8px rgba(217,119,6,.18); }
+      .film-play-btn svg { width:24px; height:24px; }
+      .film-play-label { font-size:12px; padding:8px 13px; }
+        .film-caption { flex-direction:column; align-items:flex-start; gap:7px; padding:13px 8px 15px; font-size:11px; }
+      .plan-description { font-size:13px; }
+      .hero-stat-item span { font-size:10px; }
+    }
+    @media (max-width:430px) { .hero-stat-item span { font-size:9.5px; } }
+    @media (max-width:430px) { .impact-card .impact-label { margin-left:0; margin-right:0; max-width:none; text-align:left; } }
+    @media (prefers-reduced-motion:reduce) { .film-play, .film-play-btn { transition:none; } }
   </style>
 </head>
 <body>
@@ -687,12 +745,13 @@
       <div class="container hero-grid">
         <div>
           <div class="badge">Canada, US, UK &amp; Europe Curriculum hub</div>
-          <h1><span class="hero-heading-line">The NextGen Home-Style</span><span class="hero-heading-line">Academic Rigor for</span><span class="hero-heading-line"><span class="accent">Global Achiever</span></span></h1>
+          <h1><span class="hero-heading-line">The NextGen Home-Style</span><span class="hero-heading-line">Academic Rigor for</span><span class="hero-heading-line"><span class="accent">Global Achievers</span></span></h1>
           <p class="hero-copy">Expert-led live academic enrichment designed for globally connected families. Powered by our signature ClassOf5 interactive small-group model.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#pricing">View Pricing &amp; Enroll <span aria-hidden="true">→</span></a>
             <a class="btn btn-secondary" href="#experience">Explore ClassOf5</a>
           </div>
+          <a class="watch-link" href="#in-action"><span class="watch-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>Class in 10 seconds</a>
           <div class="micro-trust">
             <span><b class="check">✓</b> Maximum 5 students</span>
             <span><b class="check">✓</b> Weekly parent visibility</span>
@@ -960,7 +1019,7 @@
       </div>
     </section>
 
-    <section class="impact-section" aria-labelledby="impactTitle">
+    <section class="impact-section" id="in-action" aria-labelledby="impactTitle">
       <div class="container">
         <div class="impact-head">
           <div class="impact-kicker">ClassOf5 in action</div>
@@ -969,10 +1028,23 @@
         </div>
 
         <div class="impact-showcase">
-          <div class="impact-visual">
-            <div class="impact-visual-badge">Real learning. Real momentum.</div>
-            <img src="classof5-impact.png" alt="ClassOf5 learner studying with academic subjects and global learning cues" loading="lazy" />
-          </div>
+          <figure class="film-frame">
+            <div class="film-stage" id="filmStage">
+              <video id="classFilm" poster="classof5-academy-film-poster.jpg" preload="metadata" playsinline aria-label="A 10-second clip of a live ClassOf5 English lesson with a tutor, a learner and an interactive whiteboard">
+                <source src="classof5-academy-film-1080p.mp4" type="video/mp4" />
+                Your browser does not support embedded video.
+              </video>
+              <button class="film-play" id="filmPlay" type="button" aria-label="Play the ClassOf5 class film">
+                <span class="film-play-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+                <span class="film-play-label" id="filmLabel">Watch a live English class <em>0:10</em></span>
+              </button>
+            </div>
+            <figcaption class="film-caption">
+              <span><i class="dot"></i> Tutor and learner live on camera</span>
+              <span><i class="dot"></i> Interactive whiteboard</span>
+              <span><i class="dot"></i> Small group of five</span>
+            </figcaption>
+          </figure>
 
           <div class="impact-metrics">
             <article class="impact-card">
@@ -1124,6 +1196,32 @@
         }
       });
     }
+
+    // ClassOf5 film: click to play with sound, replay at the end, pause when scrolled away.
+    (function () {
+      const film = document.getElementById('classFilm');
+      const playBtn = document.getElementById('filmPlay');
+      const label = document.getElementById('filmLabel');
+      if (!film || !playBtn) return;
+      playBtn.addEventListener('click', () => {
+        film.controls = true;
+        playBtn.classList.add('hidden');
+        const p = film.play();
+        if (p && p.catch) p.catch(() => { film.controls = true; });
+      });
+      film.addEventListener('ended', () => {
+        film.controls = false;
+        film.currentTime = 0;
+        label.innerHTML = 'Watch again <em>0:10</em>';
+        playBtn.setAttribute('aria-label', 'Replay the ClassOf5 class film');
+        playBtn.classList.remove('hidden');
+      });
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((entries) => {
+          entries.forEach((e) => { if (!e.isIntersecting && !film.paused) film.pause(); });
+        }, { threshold: 0.2 }).observe(film);
+      }
+    })();
   </script>
 </body>
 </html>
