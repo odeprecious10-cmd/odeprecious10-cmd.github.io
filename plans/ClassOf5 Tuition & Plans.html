@@ -1,0 +1,372 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ClassOf5 Tuition & Plans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: sticky site nav, compact hero with a time-zone bar, then two planners.
+   Each planner = selectable plan cards on top, one detail panel below that shows converted class times. */
+:root{
+  --bg:#F4F7F7; --surface:#FFFFFF; --ink:#0E2233; --muted:#56697A; --line:#D5DEE3;
+  --accent:#0B6E5F; --accent-ink:#FFFFFF; --accent-soft:#DDF0EC; --mark:#E7A21B; --mark-ink:#2B1D00; --night:#8A5A00; --night-soft:#FBF0D8;
+  --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --body:'Public Sans','Segoe UI',system-ui,sans-serif;
+  --mono:'DM Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0B1822; --surface:#122533; --ink:#E9F1F4; --muted:#9DB0BE; --line:#26404F;
+  --accent:#3CC4AB; --accent-ink:#04201A; --accent-soft:#143C3A; --mark:#F0B33A; --mark-ink:#2B1D00; --night:#F0B33A; --night-soft:#3A2D10; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1822; --surface:#122533; --ink:#E9F1F4; --muted:#9DB0BE; --line:#26404F;
+  --accent:#3CC4AB; --accent-ink:#04201A; --accent-soft:#143C3A; --mark:#F0B33A; --mark-ink:#2B1D00; --night:#F0B33A; --night-soft:#3A2D10; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--body);padding-inline:16px}
+a{color:inherit}
+.wrap{max-width:1080px;margin-inline:auto}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-16px;padding:12px 16px}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{font:700 15px/1.2 var(--display);text-decoration:none;letter-spacing:.01em}
+.brand small{display:block;font:500 11px/1.3 var(--body);color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.links{display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:14px;font-weight:500}
+.links a{text-decoration:none;color:var(--muted)}
+.links a[aria-current]{color:var(--ink);border-bottom:2px solid var(--accent);padding-bottom:2px}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);font:600 14px/1 var(--body);padding:11px 16px;border-radius:8px;text-decoration:none;border:0;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.links .btn{color:var(--accent-ink)}
+
+.hero{padding-block:48px 24px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+h1{font:700 clamp(2rem,5vw,3.25rem)/1.05 var(--display);margin:12px 0 12px;text-wrap:balance;max-width:20ch}
+.lede{color:var(--muted);max-width:60ch;margin:0}
+.facts{display:flex;flex-wrap:wrap;gap:8px 20px;margin:20px 0 0;padding:0;list-style:none;font-size:14px;font-weight:500}
+.facts li::before{content:"\2713";color:var(--accent);margin-right:6px;font-weight:700}
+
+.bar{display:grid;grid-template-columns:1fr 1fr;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:24px}
+.bar .note{grid-column:1/-1;margin:0;font-size:13px;color:var(--muted)}
+label{display:block;font:600 12px/1.2 var(--body);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+select{width:100%;font:500 15px/1.3 var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+
+.sec{padding-block:40px 8px}
+.sec h2{font:700 clamp(1.5rem,3.2vw,2rem)/1.15 var(--display);margin:0 0 6px;text-wrap:balance}
+.sec>p{color:var(--muted);margin:0 0 20px;max-width:64ch}
+.cards{display:grid;gap:12px}
+.cards.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cards.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{position:relative;text-align:left;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:18px;cursor:pointer;font:inherit;display:flex;flex-direction:column;gap:6px;min-width:0}
+.card[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}
+.card .tag{align-self:flex-start;font:600 11px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent)}
+.card .tag.mark{background:var(--mark);color:var(--mark-ink)}
+.card .nm{font:700 20px/1.2 var(--display)}
+.card .pr{font:700 34px/1.1 var(--display)}
+.card .pr small{font:500 13px/1 var(--body);color:var(--muted)}
+.card .ds{font-size:14px;color:var(--muted)}
+.card ul{margin:6px 0 0;padding-left:18px;font-size:14px}
+.card li{margin-block:2px}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-top:12px;padding:20px}
+.panel h3{font:700 18px/1.3 var(--display);margin:0 0 4px}
+.rule{margin:0 0 16px;font-size:14px;color:var(--muted)}
+.ctrls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:520px;margin-bottom:16px}
+.blocks{display:grid;gap:20px}
+.blocks.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.blk h4{margin:0 0 8px;font:600 14px/1.3 var(--body);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pill{font:600 11px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.pill.std{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.pill.flx{background:var(--mark);color:var(--mark-ink);border-color:transparent}
+.slots{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.slot{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:11px 12px;cursor:pointer;font:inherit}
+.slot[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.dot{flex:none;width:16px;height:16px;border-radius:50%;border:2px solid var(--line);background:var(--surface)}
+.slot[aria-pressed="true"] .dot{border-color:var(--accent);background:var(--accent);box-shadow:inset 0 0 0 3px var(--accent-soft)}
+.slot .t{min-width:0;flex:1}
+.slot .when{font:500 15px/1.3 var(--mono)}
+.slot .src{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.night{flex:none;font:600 11px/1 var(--body);padding:4px 7px;border-radius:99px;background:var(--night-soft);color:var(--night)}
+.empty{font-size:14px;color:var(--muted);border:1px dashed var(--line);border-radius:10px;padding:12px}
+.req{margin-top:12px;font-size:14px;border:1px dashed var(--line);border-radius:10px;padding:12px;color:var(--muted)}
+.sum{margin-top:20px;border-top:1px solid var(--line);padding-top:16px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
+.sum .txt{min-width:0;flex:1 1 320px;font-size:14px}
+.sum .txt b{font-family:var(--display);font-size:16px}
+.sum .acts{display:flex;gap:8px;flex-wrap:wrap}
+.toast{font-size:13px;color:var(--accent);min-height:1.2em;margin:8px 0 0}
+
+.fine{padding-block:32px 48px;font-size:13px;color:var(--muted);max-width:76ch}
+.fine p{margin:0 0 8px}
+footer{border-top:1px solid var(--line);margin-inline:-16px;padding:20px 16px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+footer a{text-decoration:none;margin-right:16px}
+
+@media (max-width:820px){
+  .cards.c3{grid-template-columns:1fr}
+  .blocks.two{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .cards.c2{grid-template-columns:1fr}
+  .bar,.ctrls{grid-template-columns:1fr}
+  .links{gap:12px}
+  .hero{padding-block:32px 16px}
+}
+</style>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="https://odeprecious10-cmd.github.io/novapoint/">ClassOf5<small>Academic Bridge for Black Excellence</small></a>
+  <nav class="links" aria-label="Main">
+    <a href="https://odeprecious10-cmd.github.io/novapoint/">Methodology</a>
+    <a href="https://odeprecious10-cmd.github.io/novapoint/">Programs</a>
+    <a href="#top" aria-current="page">Tuition &amp; Plans</a>
+    <a href="https://odeprecious10-cmd.github.io/novapoint/#contact">Contact Us</a>
+    <a class="btn" href="https://odeprecious10-cmd.github.io/novapoint/#contact">Book a Class &#8599;</a>
+  </nav>
+</div></header>
+
+<main class="wrap" id="top">
+  <section class="hero">
+    <div class="eyebrow">Tuition &amp; Plans &middot; Starts Monday 11 January 2027</div>
+    <h1>Pick the plan. See your class times in your own clock.</h1>
+    <p class="lede">Every subject meets twice a week for one live hour, with a strict cap of 5 students. Choose Math, English or both, then choose between fixed Standard times and Flex times we open around your family.</p>
+    <ul class="facts"><li>5 student cap</li><li>2 live classes a week per subject</li><li>Prices in CAD per month</li><li>Secure payment by Stripe</li></ul>
+
+    <div class="bar">
+      <div><label for="grade">Your child's grade</label>
+        <select id="grade">
+          <option value="0">Show all grades</option>
+          <option value="1">Grades 1&ndash;2</option>
+          <option value="2">Grades 3&ndash;4</option>
+          <option value="3">Grades 5&ndash;6</option>
+          <option value="4">Grades 7&ndash;8</option>
+        </select></div>
+      <div><label for="tz">Show times in</label><select id="tz"></select></div>
+      <p class="note" id="tznote"></p>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-single">
+    <h2 id="h-single">One subject</h2>
+    <p>Math or English, one stream. Choose Standard for a published time with 4 to 5 classmates, or Flex for a time that suits you better.</p>
+    <div class="cards c2" id="cards-single"></div>
+    <div class="panel" id="panel-single"></div>
+  </section>
+
+  <section class="sec" aria-labelledby="h-double">
+    <h2 id="h-double">Two subjects: Math and English</h2>
+    <p>Taking both? Pick the combination that fits your week. If one subject's Standard time does not suit you, take it as Flex and keep the other as Standard.</p>
+    <div class="cards c3" id="cards-double"></div>
+    <div class="panel" id="panel-double"></div>
+  </section>
+
+  <section class="fine" aria-label="Plan rules">
+    <p><b>Standard</b> classes run on a published timetable with up to 5 students. <b>Flex</b> classes run at the unpublished or requested times shown here, with up to 3 students, and open once 2 families have enrolled. We tell you the day the class is confirmed.</p>
+    <p>Classes keep their London or Toronto clock time all year. Times above are shown for the first week of Term 1 (11 January 2027). When clocks change in March (Ontario on 14 March, UK on 28 March) your local time can move by one hour for a few weeks.</p>
+    <p>Your selection here is a preference. We confirm your section by email after you contact us.</p>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <span>&copy; 2027 ClassOf5 Academy. ClassOf5 is an initiative of NovaPoint Global Inc.</span>
+  <span><a href="https://odeprecious10-cmd.github.io/novapoint/#contact">Contact Us</a><a href="https://odeprecious10-cmd.github.io/novapoint/">Home</a></span>
+</div></footer>
+
+<script>
+(function(){
+  var NAMES={math:'Math',eng:'English'};
+  var GRADE_LBL={0:'all grades',1:'Grades 1-2',2:'Grades 3-4',3:'Grades 5-6',4:'Grades 7-8'};
+  var BASE_DAY=11; // Monday 11 January 2027
+  var DAYIDX={Mon:0,Tue:1,Wed:2,Thu:3,Fri:4,Sat:5};
+
+  // Standard (published) slots. days: weekday offsets from Monday per subject.
+  var STD=[
+    {id:'uk1',mk:'UK / Europe',zone:'Europe/London',city:'London',time:'17:00',g:[1,2,3,4],days:{math:[0,2],eng:[1,3]}},
+    {id:'uk2',mk:'UK / Europe',zone:'Europe/London',city:'London',time:'18:30',g:[1,2,3,4],days:{math:[0,2],eng:[1,3]}},
+    {id:'uk3',mk:'UK / Europe',zone:'Europe/London',city:'London',time:'20:00',g:[3,4],days:{math:[0,2],eng:[1,3]}},
+    {id:'na1',mk:'North America',zone:'America/Toronto',city:'Toronto',time:'18:00',g:[1,2,3],days:{math:[1,3],eng:[0,2]}},
+    {id:'na2',mk:'North America',zone:'America/Toronto',city:'Toronto',time:'20:00',g:[3,4],days:{math:[1,3],eng:[0,2]}},
+    {id:'sat',mk:'Global Saturday',zone:'Europe/London',city:'London',time:'16:00',g:[1,2,3,4],days:{math:[5],eng:[5]}}
+  ];
+  // Flex windows we can open once 2 families enrol.
+  var FLEX=[
+    {id:'fuk1',mk:'UK / Europe',zone:'Europe/London',city:'London',time:'11:00',g:[1,2,3,4],days:{math:[5],eng:[5]}},
+    {id:'fuk2',mk:'UK / Europe',zone:'Europe/London',city:'London',time:'17:00',g:[1,2,3,4],days:{math:[5],eng:[5]}},
+    {id:'fuk3',mk:'UK / Europe',zone:'Europe/London',city:'London',time:'18:30',g:[3,4],days:{math:[5],eng:[5]}},
+    {id:'fna2',mk:'North America',zone:'America/Toronto',city:'Toronto',time:'18:00',g:[1,2,3],days:{math:[5],eng:[5]}},
+    {id:'fna3',mk:'North America',zone:'America/Toronto',city:'Toronto',time:'20:00',g:[3,4],days:{math:[5],eng:[5]}}
+  ];
+
+  var PLANS={
+    single:[
+      {id:'s1',kind:'std',name:'Standard',sub:'1 subject',price:69,tag:'Published times',feat:['Fixed weekly timetable','4 to 5 students per class','2 live classes a week']},
+      {id:'f1',kind:'flex',name:'Flex',sub:'1 subject',price:99,tag:'Your time',feat:['Times opened around your family','Up to 3 students per class','Opens when 2 families enrol']}
+    ],
+    double:[
+      {id:'s2',kind:'std',name:'Standard',sub:'2 subjects',price:119,tag:'Published times',feat:['Math and English, both at published times','4 to 5 students per class','4 live classes a week']},
+      {id:'h2',kind:'hybrid',name:'Hybrid',sub:'1 Standard + 1 Flex',price:149,tag:'Best of both',mark:true,feat:['One subject at a published time','One subject at a time that suits you','Keep a family together when one time fails']},
+      {id:'f2',kind:'flex',name:'Flex',sub:'2 subjects',price:169,tag:'Your time',feat:['Math and English at Flex times','Up to 3 students per class','Each class opens at 2 families']}
+    ]
+  };
+
+  var $=function(id){return document.getElementById(id)};
+  var state={tz:'',grade:0,sel:{},p:{}};
+  var cur={single:'s1',double:'s2'};
+
+  /* ---------- time conversion ---------- */
+  function offsetMs(tz,utc){
+    var f=new Intl.DateTimeFormat('en-US',{timeZone:tz,hourCycle:'h23',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    var o={};f.formatToParts(new Date(utc)).forEach(function(p){o[p.type]=p.value});
+    return Date.UTC(+o.year,+o.month-1,+o.day,+o.hour,+o.minute,+o.second)-utc;
+  }
+  function wallToUtc(day,hhmm,tz){
+    var h=+hhmm.slice(0,2),m=+hhmm.slice(3);
+    var guess=Date.UTC(2027,0,day,h,m);
+    var r=guess-offsetMs(tz,guess);
+    var o2=offsetMs(tz,r); r=guess-o2; return r;
+  }
+  function fmtTime(ms,tz){return new Intl.DateTimeFormat(undefined,{timeZone:tz,hour:'numeric',minute:'2-digit'}).format(new Date(ms))}
+  function fmtDay(ms,tz){return new Intl.DateTimeFormat('en-US',{timeZone:tz,weekday:'short'}).format(new Date(ms))}
+  function localHour(ms,tz){return +new Intl.DateTimeFormat('en-GB',{timeZone:tz,hour:'2-digit',hourCycle:'h23'}).format(new Date(ms))}
+  function slotInfo(s,subj,tz){
+    var offs=s.days[subj];
+    var starts=offs.map(function(d){return wallToUtc(BASE_DAY+d,s.time,s.zone)});
+    var days=starts.map(function(ms){return fmtDay(ms,tz)});
+    var st=starts[0],en=st+3600000;
+    var hr=localHour(st,tz), hrEnd=localHour(en-60000,tz);
+    var night=(hr>=22||hr<6||hrEnd<6);
+    var srcT=new Intl.DateTimeFormat(undefined,{timeZone:s.zone,hour:'numeric',minute:'2-digit'}).format(new Date(st));
+    return {days:days.join(' & '),time:fmtTime(st,tz)+' – '+fmtTime(en,tz),night:night,src:'Taught at '+srcT+' '+s.city+' time',single:offs.length===1};
+  }
+
+  /* ---------- time zone selector ---------- */
+  var ZONES=[['Africa/Lagos','Lagos'],['Africa/Accra','Accra'],['Africa/Nairobi','Nairobi'],['Africa/Johannesburg','Johannesburg'],['Europe/London','London'],['Europe/Paris','Paris / Berlin'],['Asia/Dubai','Dubai'],['America/Halifax','Halifax'],['America/Toronto','Toronto / New York'],['America/Chicago','Winnipeg / Chicago'],['America/Edmonton','Edmonton / Denver'],['America/Vancouver','Vancouver / Los Angeles'],['Australia/Sydney','Sydney']];
+  function offLabel(tz){
+    try{var m=offsetMs(tz,Date.UTC(2027,0,11,12))/60000, sgn=m<0?'-':'+', a=Math.abs(m);
+      return 'UTC'+sgn+Math.floor(a/60)+(a%60?':'+('0'+a%60).slice(-2):'');}catch(e){return ''}
+  }
+  function detectTz(){
+    try{var z=Intl.DateTimeFormat().resolvedOptions().timeZone; if(z){new Intl.DateTimeFormat('en-US',{timeZone:z}); return z}}catch(e){}
+    return 'America/Toronto';
+  }
+  var detected=detectTz();
+  function initTz(){
+    var sel=$('tz'),list=ZONES.slice(),has=list.some(function(z){return z[0]===detected});
+    if(!has) list.unshift([detected,detected.replace(/_/g,' ')]);
+    sel.innerHTML=list.map(function(z){return '<option value="'+z[0]+'">'+z[1]+' ('+offLabel(z[0])+')'+(z[0]===detected?' – detected':'')+'</option>'}).join('');
+    sel.value=detected; state.tz=detected;
+    $('tznote').textContent='We detected your time zone from your device ('+detected.replace(/_/g,' ')+'). Change it if your child will attend from somewhere else.';
+  }
+
+  /* ---------- plan cards ---------- */
+  function renderCards(key){
+    var box=$('cards-'+key);
+    box.innerHTML=PLANS[key].map(function(p){
+      return '<button type="button" class="card" data-plan="'+p.id+'" aria-pressed="'+(cur[key]===p.id)+'">'+
+        '<span class="tag'+(p.mark?' mark':'')+'">'+p.tag+'</span>'+
+        '<span class="nm">'+p.name+' <span style="font-weight:500;color:var(--muted);font-size:15px">&middot; '+p.sub+'</span></span>'+
+        '<span class="pr">$'+p.price+' <small>CAD / month</small></span>'+
+        '<ul>'+p.feat.map(function(f){return '<li>'+f+'</li>'}).join('')+'</ul></button>';
+    }).join('');
+  }
+  function plan(key){return PLANS[key].filter(function(p){return p.id===cur[key]})[0]}
+  function pst(id){return state.p[id]||(state.p[id]={subj:'math',view:'math',std:'math'})}
+
+  /* ---------- panel ---------- */
+  function selectHtml(id,label,opts,val){
+    return '<div><label for="'+id+'">'+label+'</label><select id="'+id+'">'+opts.map(function(o){return '<option value="'+o[0]+'"'+(o[0]===val?' selected':'')+'>'+o[1]+'</option>'}).join('')+'</select></div>';
+  }
+  var SUBJ=[['math','Math'],['eng','English']];
+  var KIND=[['std','Standard'],['flex','Flex']];
+
+  function renderPanel(key){
+    var p=plan(key),s=pst(p.id),el=$('panel-'+key),ctr='',rule='',title=p.name+' '+p.sub.toLowerCase()+' · $'+p.price+' CAD / month';
+    if(p.id==='s1'||p.id==='f1'){
+      ctr=selectHtml(key+'-subj','Subject',SUBJ,s.subj);
+      rule=p.kind==='std'?'Pick your subject to see the published Standard times. Choose the time you prefer.':'Pick your subject to see Flex windows. Flex classes open once 2 families enrol.';
+    }else if(p.id==='s2'){
+      ctr=selectHtml(key+'-view','Show times for',SUBJ,s.view);
+      rule='Standard includes both Math and English at published times. Switch the menu to see each subject.';
+    }else if(p.id==='h2'){
+      ctr=selectHtml(key+'-hm','Math is',KIND,s.std==='math'?'std':'flex')+selectHtml(key+'-he','English is',KIND,s.std==='eng'?'std':'flex');
+      rule='Choose which subject is Standard and which is Flex. The other one switches automatically. Times for each appear below.';
+    }else{
+      rule='Both subjects run at Flex windows. Each class opens once 2 families enrol.';
+    }
+    el.innerHTML='<h3>'+title+'</h3><p class="rule">'+rule+'</p>'+(ctr?'<div class="ctrls">'+ctr+'</div>':'')+
+      '<div class="blocks" id="blocks-'+key+'"></div><div class="sum" id="sum-'+key+'"></div><p class="toast" id="toast-'+key+'" role="status"></p>';
+    var bind=function(id,fn){var n=$(id);if(n)n.addEventListener('change',function(){fn(n.value);renderBlocks(key)})};
+    bind(key+'-subj',function(v){s.subj=v});
+    bind(key+'-view',function(v){s.view=v});
+    bind(key+'-hm',function(v){s.std=v==='std'?'math':'eng';var o=$(key+'-he');if(o)o.value=v==='std'?'flex':'std'});
+    bind(key+'-he',function(v){s.std=v==='std'?'eng':'math';var o=$(key+'-hm');if(o)o.value=v==='std'?'flex':'std'});
+    renderBlocks(key);
+  }
+
+  function blocksFor(p){
+    var s=pst(p.id);
+    if(p.id==='s1')return [{subj:s.subj,kind:'std'}];
+    if(p.id==='f1')return [{subj:s.subj,kind:'flex'}];
+    if(p.id==='s2')return [{subj:s.view,kind:'std'}];
+    if(p.id==='h2')return [{subj:'math',kind:s.std==='math'?'std':'flex'},{subj:'eng',kind:s.std==='eng'?'std':'flex'}];
+    return [{subj:'math',kind:'flex'},{subj:'eng',kind:'flex'}];
+  }
+
+  function renderBlocks(key){
+    var p=plan(key),bl=blocksFor(p),box=$('blocks-'+key);
+    box.className='blocks'+(bl.length>1?' two':'');
+    box.innerHTML=bl.map(function(b,i){
+      var list=(b.kind==='std'?STD:FLEX).filter(function(s){return !state.grade||s.g.indexOf(state.grade)>-1});
+      var sk=p.id+'|'+b.subj+'|'+b.kind;
+      var html='<div class="blk"><h4>'+NAMES[b.subj]+' <span class="pill '+(b.kind==='std'?'std':'flx')+'">'+(b.kind==='std'?'Standard':'Flex')+'</span></h4>';
+      if(!list.length){html+='<div class="empty">No '+(b.kind==='std'?'published':'Flex')+' time for '+GRADE_LBL[state.grade]+' yet. Choose another grade view or tell us the time you need.</div>';}
+      else{
+        html+='<ul class="slots">'+list.map(function(s){
+          var info=slotInfo(s,b.subj,state.tz),on=state.sel[sk]===s.id;
+          return '<li><button type="button" class="slot" data-sk="'+sk+'" data-id="'+s.id+'" aria-pressed="'+on+'"><span class="dot"></span><span class="t"><span class="when">'+info.days+' &middot; '+info.time+'</span><span class="src">'+s.mk+' &middot; '+info.src+'</span></span>'+(info.night?'<span class="night">Overnight for you</span>':'')+'</button></li>';
+        }).join('')+'</ul>';
+      }
+      if(b.kind==='flex')html+='<div class="req">Need a different time? Request it when you contact us. A Flex class opens once 2 families have enrolled.</div>';
+      return html+'</div>';
+    }).join('');
+    renderSummary(key);
+  }
+
+  function summaryText(key){
+    var p=plan(key),bl=blocksFor(p),lines=[];
+    var subs=p.id==='s2'?'Math + English (Standard)':bl.map(function(b){return NAMES[b.subj]+' ('+(b.kind==='std'?'Standard':'Flex')+')'}).join(' + ');
+    var sel=[];
+    bl.forEach(function(b){
+      var id=state.sel[p.id+'|'+b.subj+'|'+b.kind];
+      if(!id)return;
+      var s=(b.kind==='std'?STD:FLEX).filter(function(x){return x.id===id})[0];
+      if(s){var i=slotInfo(s,b.subj,state.tz);sel.push(NAMES[b.subj]+': '+i.days+' '+i.time)}
+    });
+    return {head:p.name+' '+p.sub+': '+subs, price:'$'+p.price+' CAD / month',
+      copy:'Plan: '+p.name+' ('+p.sub+') - '+subs+' - $'+p.price+' CAD/month. Grade: '+GRADE_LBL[state.grade]+'. Preferred times ('+state.tz.replace(/_/g,' ')+'): '+(sel.length?sel.join('; '):'not chosen yet'),
+      sel:sel};
+  }
+  function renderSummary(key){
+    var t=summaryText(key),el=$('sum-'+key);
+    el.innerHTML='<div class="txt"><b>'+t.head+'</b><br>'+t.price+' &middot; '+(t.sel.length?'Preferred: '+t.sel.join('; '):'Tap a time above to mark your preference')+'</div>'+
+      '<div class="acts"><button type="button" class="btn ghost" data-copy="'+key+'">Copy my selection</button><a class="btn" href="https://odeprecious10-cmd.github.io/novapoint/#contact">Continue to contact &rarr;</a></div>';
+  }
+
+  /* ---------- events ---------- */
+  document.addEventListener('click',function(e){
+    var c=e.target.closest('.card');
+    if(c){var key=c.parentNode.id.replace('cards-','');cur[key]=c.getAttribute('data-plan');renderCards(key);renderPanel(key);return}
+    var sl=e.target.closest('.slot');
+    if(sl){var k=sl.getAttribute('data-sk');state.sel[k]=sl.getAttribute('data-id');
+      var key2=sl.closest('.panel').id.replace('panel-','');renderBlocks(key2);return}
+    var cp=e.target.closest('[data-copy]');
+    if(cp){var key3=cp.getAttribute('data-copy'),txt=summaryText(key3).copy,t=$('toast-'+key3);
+      var ok=function(){t.textContent='Copied. Paste it into the contact form.'};
+      var fail=function(){var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');ok()}catch(x){t.textContent='Copy failed. Select this text instead: '+txt}document.body.removeChild(ta)};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(ok,fail)}else fail();
+    }
+  });
+  $('grade').addEventListener('change',function(){state.grade=+this.value;renderBlocks('single');renderBlocks('double')});
+  $('tz').addEventListener('change',function(){state.tz=this.value;renderBlocks('single');renderBlocks('double')});
+
+  initTz();
+  ['single','double'].forEach(function(k){renderCards(k);renderPanel(k)});
+})();
+</script>
+
+</body></html>
