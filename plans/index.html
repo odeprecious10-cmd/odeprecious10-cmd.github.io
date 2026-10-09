@@ -283,7 +283,7 @@ footer a{text-decoration:none;margin-right:16px;color:var(--navy-ink)}
       days:starts.map(function(ms){return fmtDay(ms,tz)}).join(' & '),
       time:fmtTime(st,tz)+' – '+fmtTime(en,tz),
       night:(hr>=22||hr<6||hrEnd<6),
-      src:'Taught at '+fmtTime(st,w.zone)+' '+w.city+' time'};
+      src:(fmtTime(st,w.zone)===fmtTime(st,tz)&&fmtDay(st,w.zone)===fmtDay(st,tz))?'':'Class clock: '+fmtTime(st,w.zone)+' '+w.city+' time'};
   }
 
   /* ---------- countries and time zones ---------- */
@@ -338,8 +338,13 @@ footer a{text-decoration:none;margin-right:16px;color:var(--navy-ink)}
     var zs=zonesOf(country),sel=$('region');
     sel.innerHTML=zs.map(function(z){return '<option value="'+z[0]+'">'+z[1]+' ('+offLabel(z[0])+')</option>'}).join('');
     $('regionwrap').hidden=zs.length<2;
-    var chosen=pick&&zs.some(function(z){return z[0]===pick})?pick:zs[0][0];
+    var DEF={'Canada':'America/Toronto','United States':'America/New_York'};
+    var chosen=pick&&zs.some(function(z){return z[0]===pick})?pick:(DEF[country]||zs[0][0]);
     sel.value=chosen;state.tz=chosen;
+  }
+  function zoneNote(){
+    var n='';try{n=new Intl.DateTimeFormat('en-US',{timeZone:state.tz,timeZoneName:'long'}).formatToParts(new Date(Date.UTC(2027,0,11,12))).filter(function(p){return p.type==='timeZoneName'})[0].value}catch(e){}
+    $('tznote').textContent='All times are shown in your local time: '+n+' ('+state.tz.replace(/_/g,' ')+'). Change the time zone above if that is not right.';
   }
   function setMarket(mk){
     state.mk=mk;
@@ -466,7 +471,7 @@ footer a{text-decoration:none;margin-right:16px;color:var(--navy-ink)}
       var html='<div class="blk"><h4>'+NAMES[b.subj]+' <span class="pill '+(b.kind==='std'?'std':'flx')+'">'+(b.kind==='std'?'Standard':'Flex')+'</span></h4><ul class="slots">'+
         list.map(function(x){
           var on=cho&&cho.id===x.w.id&&!x.clash;
-          return '<li><button type="button" class="slot" data-sk="'+k+'" data-id="'+x.w.id+'" aria-pressed="'+on+'"'+(x.clash?' disabled':'')+'><span class="dot"></span><span class="t"><span class="when">'+x.i.days+' &middot; '+x.i.time+'</span><span class="src">'+TT_DATA[state.mk].label+' &middot; '+x.i.src+'</span></span>'+
+          return '<li><button type="button" class="slot" data-sk="'+k+'" data-id="'+x.w.id+'" aria-pressed="'+on+'"'+(x.clash?' disabled':'')+'><span class="dot"></span><span class="t"><span class="when">'+x.i.days+' &middot; '+x.i.time+'</span><span class="src">'+TT_DATA[state.mk].label+' class'+(x.i.src?' &middot; '+x.i.src:'')+'</span></span>'+
             (x.clash?'<span class="clash">Clashes with '+x.clash+'</span>':(x.i.night?'<span class="night">Overnight for you</span>':''))+'</button></li>';
         }).join('')+'</ul>';
       if(b.kind==='flex')html+='<div class="req">Need a completely different time? Ask us about private tutoring.</div>';
@@ -507,11 +512,11 @@ footer a{text-decoration:none;margin-right:16px;color:var(--navy-ink)}
   $('grade').addEventListener('change',function(){state.grade=+this.value;rerender()});
   $('country').addEventListener('change',function(){
     state.country=this.value;fillRegion(this.value);setMarket(marketFor(state.tz));setCurrency(CUR_BY_COUNTRY[state.country]||'USD');refreshPrices();
-    $('tznote').textContent='Showing times for '+state.country+'. Classes are taught on UK or North America clocks, so switch the "Classes taught on" setting if you prefer the other set.';
+    zoneNote();
     rerender();
   });
   $('currency').addEventListener('change',function(){setCurrency(this.value);refreshPrices()});
-  $('region').addEventListener('change',function(){state.tz=this.value;setMarket(marketFor(state.tz));rerender()});
+  $('region').addEventListener('change',function(){state.tz=this.value;zoneNote();setMarket(marketFor(state.tz));rerender()});
 
   initGeo();initCurrency();
   ['single','double'].forEach(function(k){renderCards(k);renderPanel(k)});
