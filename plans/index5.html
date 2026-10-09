@@ -1,0 +1,953 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Explore ClassOf5 Standard, Hybrid and Flex tutoring plans. Choose subjects and see recurring class times converted to your local time zone and currency.">
+<title>Tuition & Plans | ClassOf5 Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
+<style>
+:root{
+  --navy:#101a31;--navy2:#26364f;--brand:#e17800;--brand-dark:#c86b00;--brand-soft:#fff2df;--brand-line:#f1dfc9;
+  --gold:#f4aa22;--ink:#111a2e;--muted:#5b6c7e;--line:#dce5ed;--paper:#f6f8fb;--white:#fff;--good:#0e8a5f;
+  --night-bg:#eef1f4;--night-ink:#4b5a69;
+  --shadow:0 16px 42px rgba(16,26,49,.10);--radius:20px;
+  --display:'Plus Jakarta Sans','Inter',ui-sans-serif,system-ui,sans-serif;
+  --body:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{margin:0;background:#fff;color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;font-variant-numeric:tabular-nums;-webkit-text-size-adjust:100%}
+a{color:inherit}
+button,input,select{font:inherit}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(220,229,237,.9)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:72px;position:relative}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font:800 20px/1.1 var(--display);letter-spacing:-.03em;color:var(--brand)}
+.brand-mark{display:grid;place-items:center;width:34px;height:34px;background:var(--navy);border-radius:10px;box-shadow:0 7px 18px rgba(16,26,49,.18)}
+.brand-mark i{display:block;width:12px;height:12px;border:2px solid #fff;transform:rotate(45deg);border-radius:2px}
+.brand small{display:block;font:italic 600 11.5px/1.3 var(--body);letter-spacing:0;color:var(--navy);margin-top:1px}
+.navlinks{display:flex;align-items:center;gap:26px}
+.navlinks a{text-decoration:none;color:#46596e;font-size:14px;font-weight:600}
+.navlinks a:hover,.navlinks a.active{color:var(--brand)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:13px 22px;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;font-size:15px;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s;min-height:46px}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(225,120,0,.25);background:var(--brand-dark)}
+.btn.secondary{background:#fff;color:var(--navy);border:1px solid var(--line)}
+.btn.secondary:hover{background:var(--paper);box-shadow:none}
+.btn.dark{background:var(--navy)}
+.btn.dark:hover{background:var(--navy2);box-shadow:none}
+.btn.small{padding:9px 15px;min-height:40px;font-size:14px}
+.menu-toggle{display:none;width:46px;height:46px;border:1px solid var(--line);background:#fff;border-radius:12px;color:var(--navy);cursor:pointer;padding:0;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.menu-toggle span{display:block;width:20px;height:2px;background:var(--navy);border-radius:2px;transition:transform .2s,opacity .2s}
+.menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ---------- hero ---------- */
+.hero{background:radial-gradient(circle at 85% 20%,rgba(225,120,0,.13),transparent 32%),linear-gradient(135deg,#f7fafc 0%,#fff5e8 100%);padding:64px 0 96px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;align-items:center;gap:48px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--brand-line);color:var(--brand-dark);border-radius:999px;padding:8px 14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:12px}
+.eyebrow:before{content:"";width:7px;height:7px;background:var(--brand);border-radius:50%}
+h1{font:800 clamp(38px,5.2vw,62px)/1.04 var(--display);letter-spacing:-.045em;color:var(--navy);margin:18px 0}
+h1 span{color:var(--brand)}
+.hero p.lead{font-size:18px;color:#4d6074;max-width:640px;margin:0 0 24px}
+.hero-points{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:24px;color:#3f556b;font-size:14px;font-weight:600}
+.hero-points span:before{content:"\2713";color:var(--good);font-weight:800;margin-right:8px}
+.hero-card{background:var(--navy);color:#fff;padding:28px;border-radius:26px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero-card:after{content:"";position:absolute;width:120px;height:120px;border:1px solid rgba(255,255,255,.15);border-radius:50%;right:-36px;top:-36px}
+.mini-label{font-size:12px;color:#ffd28a;font-weight:700;text-transform:uppercase;letter-spacing:.12em}
+.hero-card h2{font:800 26px/1.2 var(--display);letter-spacing:-.035em;margin:10px 0}
+.hero-card p{font-size:14.5px;color:#d4e0eb;margin:0}
+.hero-stat{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.18);padding-top:14px;margin-top:16px;font-size:14px}
+.hero-stat strong{font:800 22px/1 var(--display);color:#fff}
+
+/* ---------- your details ---------- */
+.start{margin-top:-64px;position:relative;z-index:2}
+.start-card{background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow);padding:22px}
+.start-row{display:grid;grid-template-columns:1.2fr 1fr;gap:18px;align-items:end}
+.field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.field label,.field-label{color:#3d5266;font-size:13px;font-weight:700}
+select{width:100%;min-height:48px;border:1px solid #cfdbe5;border-radius:12px;padding:10px 12px;background:#fff;color:var(--navy);font-size:16px;outline:none}
+select:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(225,120,0,.16)}
+.loc-chip{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--brand-line);background:#fff8ed;border-radius:12px;padding:10px 12px;min-height:48px}
+.loc-chip .txt{min-width:0;font-size:14px;line-height:1.35}
+.loc-chip strong{display:block;color:var(--navy);font-size:14px}
+.loc-chip span.sub{color:var(--muted);font-size:13px}
+.loc-chip button{flex:none;background:#fff;border:1px solid var(--line);color:var(--navy);font-weight:700;font-size:13px;border-radius:999px;padding:8px 14px;cursor:pointer;min-height:38px}
+.loc-panel{display:none;margin-top:16px;border-top:1px solid var(--line);padding-top:16px}
+.loc-panel.open{display:block}
+.loc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:1px solid #cfdbe5;border-radius:12px;overflow:hidden;min-height:48px}
+.seg button{border:0;background:#fff;color:#4b5e73;font-weight:700;font-size:14px;cursor:pointer;padding:10px 8px}
+.seg button+button{border-left:1px solid #cfdbe5}
+.seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.hint{font-size:13px;color:var(--muted);margin:10px 0 0}
+
+/* ---------- sections ---------- */
+section{padding:48px 0}
+.section-head{max-width:740px;margin:0 auto 26px;text-align:center}
+.kicker{color:var(--brand-dark);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.14em}
+h2.section-title{font:800 clamp(28px,3.2vw,40px)/1.12 var(--display);color:var(--navy);letter-spacing:-.04em;margin:9px 0 12px}
+.section-head p{margin:0;color:var(--muted);font-size:16px}
+.plan-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;max-width:860px;margin:0 auto}
+.combo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.plan-card{position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:#fff;box-shadow:0 6px 23px rgba(20,41,68,.04);display:flex;flex-direction:column;min-height:100%;transition:border-color .15s,box-shadow .15s}
+.plan-card.featured{border-color:#f3c78d}
+.plan-card.is-selected{border:2px solid var(--brand);box-shadow:0 14px 36px rgba(225,120,0,.14);padding:23px}
+.ribbon{position:absolute;top:-12px;right:18px;background:var(--brand);color:#fff;border-radius:999px;font-size:11px;font-weight:800;padding:6px 11px;text-transform:uppercase;letter-spacing:.08em}
+.plan-label{color:var(--muted);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.plan-card h3{font:800 22px/1.2 var(--display);margin:7px 0 6px;color:var(--navy);letter-spacing:-.03em}
+.price-line{display:flex;align-items:baseline;gap:6px;margin:8px 0 2px;flex-wrap:wrap}
+.price{font:800 42px/1 var(--display);color:var(--navy);letter-spacing:-.05em}
+.price-line small{font-size:15px;color:var(--muted);font-weight:600}
+.price-sub{font-size:13px;color:var(--muted);min-height:1.3em}
+.save{display:inline-block;align-self:flex-start;margin-top:10px;background:#e8f6f0;color:#0b6e4a;font-size:12.5px;font-weight:700;border-radius:999px;padding:5px 11px}
+.plan-card p.desc{font-size:14.5px;color:var(--muted);margin:14px 0}
+.plan-card ul{list-style:none;margin:6px 0 22px;padding:0;display:grid;gap:9px;font-size:14.5px;color:#364c62}
+.plan-card li:before{content:"\2713";color:var(--good);font-weight:800;margin-right:9px}
+.plan-card .btn{width:100%;margin-top:auto}
+.btn.chosen{background:#fff;color:var(--brand-dark);border:2px solid var(--brand)}
+.btn.chosen:hover{background:#fff8ed;box-shadow:none;transform:none}
+.splitter{display:flex;align-items:center;gap:14px;color:#7f8e9d;font-size:12px;text-transform:uppercase;letter-spacing:.14em;font-weight:800;margin:36px 0 18px}
+.splitter:before,.splitter:after{content:"";height:1px;background:var(--line);flex:1}
+
+/* ---------- builder ---------- */
+.config-section{background:var(--paper)}
+.config-shell{display:grid;grid-template-columns:.62fr 1.38fr;gap:24px;align-items:start}
+.config-side{background:var(--navy);color:#fff;border-radius:22px;padding:26px;position:sticky;top:96px}
+.config-side h3{font:800 24px/1.2 var(--display);margin:6px 0 8px;letter-spacing:-.03em}
+.config-side p{font-size:14px;color:#d0deea;margin:0}
+.selected-price{font:800 38px/1.1 var(--display);letter-spacing:-.05em;margin:12px 0 0}
+.selected-price small{font:600 14px var(--body);letter-spacing:0;color:#c2d4e4}
+.side-bill{font-size:13px;color:#aebfd0;margin-top:2px}
+.side-includes{border-top:1px solid rgba(255,255,255,.2);padding-top:16px;margin-top:20px;font-size:14px;color:#deebf4}
+.side-includes div{margin:8px 0}
+.builder{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 8px 26px rgba(20,41,68,.04)}
+.builder h3{font:800 22px/1.2 var(--display);letter-spacing:-.03em;color:var(--navy);margin:0 0 6px}
+.builder-intro{color:var(--muted);font-size:15px;margin:0 0 20px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.subject-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.subject-panel{border:1px solid var(--line);border-radius:16px;padding:16px;min-width:0}
+.subject-panel>h4{font:800 15px/1.3 var(--display);color:var(--navy);margin:0 0 12px}
+.subject-panel .field{margin-bottom:12px}
+.schedule-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:16px 0 10px;flex-wrap:wrap}
+.schedule-title h4{font-size:14px;color:var(--navy);margin:0}
+.pill{display:inline-block;padding:5px 10px;background:var(--brand-soft);color:#a95a00;font-size:11px;font-weight:800;border-radius:999px;letter-spacing:.04em}
+.pill.std{background:var(--navy);color:#fff}
+.schedule-list{display:grid;gap:9px}
+.time-option{display:block;border:1px solid #dbe4eb;border-radius:14px;padding:13px 14px;cursor:pointer;background:#fff;transition:border-color .15s,background .15s}
+.time-option:hover{border-color:#f0b571}
+.time-option.selected{border:2px solid var(--brand);background:#fff8ed;padding:12px 13px}
+.time-option.unavailable{background:var(--night-bg);border-color:#dfe4e9;opacity:.6;cursor:not-allowed}
+.time-head{display:flex;align-items:flex-start;gap:11px}
+.time-head input{accent-color:var(--brand);margin-top:4px;width:18px;height:18px;flex:none}
+.time-body{flex:1;min-width:0}
+.time-top{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.time-name{font:700 15px/1.3 var(--display);color:var(--navy)}
+.time-local{font-size:15px;font-weight:700;color:#a95a00;margin-top:3px}
+.time-sessions div{font-size:14.5px;font-weight:700;color:#a95a00;line-height:1.6}
+.time-meta{font-size:13px;color:#667789;margin-top:4px}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;border-radius:999px;padding:3px 9px;background:var(--night-bg);color:var(--night-ink)}
+.warning{display:none;background:#fff6e5;border:1px solid #eed8a6;color:#7a591b;padding:12px 14px;border-radius:12px;font-size:14px;margin:14px 0}
+.warning.show{display:block}
+.summary-box{background:#f8fafc;border:1px dashed #b9cbd9;border-radius:14px;padding:16px;margin:20px 0}
+.summary-box h4{margin:0 0 6px;color:var(--navy);font:800 15px var(--display)}
+.summary-box p{font-size:14px;color:#46596c;margin:0;white-space:pre-line}
+.builder-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.microcopy{font-size:13px;color:#6a7b8c;margin:12px 0 0}
+
+/* ---------- faq, cta, footer ---------- */
+.faq{display:grid;gap:10px;max-width:860px;margin:0 auto}
+.faq details{border:1px solid var(--line);border-radius:16px;background:#fff}
+.faq summary{cursor:pointer;list-style:none;padding:16px 50px 16px 18px;font:700 16px/1.4 var(--display);color:var(--navy);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:20px;top:50%;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq p{margin:0;padding:0 18px 18px;font-size:15px;color:var(--muted)}
+.final-cta{background:var(--navy);color:#fff;padding:48px 0}
+.final-cta .inner{display:flex;align-items:center;justify-content:space-between;gap:25px}
+.final-cta h2{font:800 28px/1.2 var(--display);letter-spacing:-.035em;margin:0 0 6px}
+.final-cta p{color:#d2deea;margin:0;font-size:15px}
+.final-cta .btn{background:var(--gold);color:var(--navy);flex:none}
+footer{background:#0d1e32;color:#b8c7d6;padding:26px 0;font-size:13px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center}
+footer strong{color:#fff}
+footer a{color:#cfe7e2;text-decoration:none;margin-left:16px}
+.toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%);background:#142944;color:#fff;padding:12px 18px;border-radius:999px;box-shadow:var(--shadow);font-size:14px;z-index:60;display:none;max-width:90vw;text-align:center}
+.toast.show{display:block}
+
+/* ---------- mobile sticky bar ---------- */
+.mbar{display:none;position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;border-top:1px solid var(--line);box-shadow:0 -10px 30px rgba(16,26,49,.12);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));align-items:center;justify-content:space-between;gap:12px;transform:translateY(110%);transition:transform .25s}
+.mbar.show{transform:none}
+.mbar .t{min-width:0;font-size:13px;color:var(--muted);line-height:1.3}
+.mbar .t strong{display:block;color:var(--navy);font:800 15px/1.2 var(--display);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:28px}
+  .hero-card{max-width:520px}
+  .combo-grid{grid-template-columns:1fr 1fr}
+  .combo-grid .plan-card:last-child{grid-column:1/-1}
+  .config-shell{grid-template-columns:1fr}
+  .config-side{position:static}
+  .mbar{display:flex}
+  body{padding-bottom:76px}
+}
+@media (max-width:760px){
+  .menu-toggle{display:flex}
+  .navlinks{display:none;position:absolute;top:100%;left:-20px;right:-20px;padding:6px 20px 16px;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;box-shadow:0 18px 30px rgba(16,26,49,.1)}
+  .navlinks.open{display:flex}
+  .navlinks a{padding:15px 2px;border-bottom:1px solid var(--line);font-size:17px}
+  .navlinks .btn{margin-top:14px;border:0;color:#fff;padding:14px}
+}
+@media (max-width:650px){
+  .wrap{width:min(100% - 32px,1160px)}
+  .nav{min-height:66px}
+  .brand{font-size:18px}
+  .brand small{font-size:10.5px}
+  .hero{padding:36px 0 84px}
+  .hero p.lead{font-size:16px}
+  section{padding:36px 0}
+  .start-card{padding:16px}
+  .start-row,.loc-grid,.form-grid,.subject-pair,.plan-grid,.combo-grid{grid-template-columns:1fr}
+  .combo-grid .plan-card:last-child{grid-column:auto}
+  .builder{padding:16px}
+  .plan-card{padding:20px}
+  .plan-card.is-selected{padding:19px}
+  .price{font-size:38px}
+  .final-cta .inner,.footer-inner{align-items:flex-start;flex-direction:column}
+  footer a{margin:0 16px 0 0}
+  .builder-actions .btn{flex:1 1 100%}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="./" aria-label="ClassOf5 home">
+      <span class="brand-mark"><i></i></span>
+      <span>ClassOf5<small>Academic Bridge for Black Excellence</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    <nav class="navlinks" id="navLinks" aria-label="Main">
+      <a href="./#methodology">Methodology</a>
+      <a href="./#programs">Programs</a>
+      <a class="active" href="./tuition-plans.html" aria-current="page">Tuition &amp; Plans</a>
+      <a href="./#contact">Contact Us</a>
+      <a class="btn small" href="./#contact">Book a Class &#8599;</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Tuition built around your family</span>
+      <h1>Choose your plan.<br><span>Find your time.</span></h1>
+      <p class="lead">Live, tutor-led small-group learning with clear recurring schedules. Start with our published Standard timetable, choose more times with Flex, or combine both for two subjects.</p>
+      <a class="btn" href="#start">Compare plans &#8595;</a>
+      <div class="hero-points">
+        <span>Maximum 5 students</span>
+        <span>Times in your local clock</span>
+        <span>Prices in your currency</span>
+      </div>
+    </div>
+    <aside class="hero-card">
+      <span class="mini-label">The ClassOf5 promise</span>
+      <h2>Focused classes.<br>More workable schedules.</h2>
+      <p>Every recurring class has a clear time slot, a defined subject and a small group.</p>
+      <div class="hero-stat"><span>Maximum group size</span><strong>5</strong></div>
+      <div class="hero-stat"><span>Live classes / week</span><strong>2&times;</strong></div>
+      <div class="hero-stat"><span>Each live lesson</span><strong>60 min</strong></div>
+    </aside>
+  </div>
+</section>
+
+<div class="start" id="start">
+  <div class="wrap">
+    <div class="start-card">
+      <div class="start-row">
+        <div class="field">
+          <label for="levelSelect">Learner level</label>
+          <select id="levelSelect">
+            <option value="alpha">Alpha &middot; Grades 1&ndash;2 &middot; ages 6&ndash;7</option>
+            <option value="beta" selected>Beta &middot; Grades 3&ndash;4 &middot; ages 8&ndash;9</option>
+            <option value="gamma">Gamma &middot; Grades 5&ndash;6 &middot; ages 10&ndash;11</option>
+            <option value="delta">Delta &middot; Grades 7&ndash;8 &middot; ages 12&ndash;13</option>
+            <option value="sigma">Sigma &middot; Grades 9&ndash;10 &middot; ages 14&ndash;15</option>
+            <option value="omega">Omega &middot; Grades 11&ndash;12 &middot; ages 16&ndash;17</option>
+          </select>
+        </div>
+        <div class="field">
+          <span class="field-label">Your time zone and currency</span>
+          <div class="loc-chip" id="locChip" aria-live="polite">
+            <div class="txt"><strong>Detecting&hellip;</strong><span class="sub">Finding your time zone and currency</span></div>
+            <button type="button" id="locToggle" aria-expanded="false" aria-controls="locPanel">Change</button>
+          </div>
+        </div>
+      </div>
+      <div class="loc-panel" id="locPanel">
+        <div class="loc-grid">
+          <div class="field"><label for="countrySelect">Country</label><select id="countrySelect"></select></div>
+          <div class="field" id="zoneField" hidden><label for="zoneSelect">Time zone</label><select id="zoneSelect"></select></div>
+          <div class="field"><label for="currencySelect">Show prices in</label><select id="currencySelect"></select></div>
+          <div class="field"><span class="field-label" id="mkLabel">Class timetable</span>
+            <div class="seg" role="group" aria-labelledby="mkLabel">
+              <button type="button" data-market="uk" aria-pressed="false">UK / Europe times</button>
+              <button type="button" data-market="na" aria-pressed="false">North America times</button>
+            </div>
+          </div>
+        </div>
+        <p class="hint" id="fxHint"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="plan-section" id="plans">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Start with one subject</span>
+      <h2 class="section-title">Single-subject plans</h2>
+      <p>Choose Math or English for Alpha&ndash;Delta, or Math, Chemistry, Physics or the combined Robotics &amp; Coding class for Sigma and Omega. Standard is the published time. Flex gives you a wider choice of approved recurring times.</p>
+    </div>
+    <div class="plan-grid">
+      <article class="plan-card" data-card="single-standard">
+        <span class="plan-label">Single subject &middot; Standard</span>
+        <h3>Standard Focus</h3>
+        <div class="price-line"><span class="price" data-price-cad="69">$69</span><small>/ month</small></div>
+        <div class="price-sub" data-bill-cad="69">Billed in CAD</div>
+        <p class="desc">Two live 60-minute lessons each week at the published Standard time for your learner's level.</p>
+        <ul>
+          <li>Choose one subject</li>
+          <li>Published recurring time</li>
+          <li>Maximum 5 students per group</li>
+          <li>Parent progress visibility</li>
+        </ul>
+        <button type="button" class="btn dark choose-plan" data-plan="single-standard" data-label="Choose Standard">Choose Standard</button>
+      </article>
+      <article class="plan-card featured" data-card="single-flex">
+        <span class="ribbon">More choice</span>
+        <span class="plan-label">Single subject &middot; Flex</span>
+        <h3>Flex Focus</h3>
+        <div class="price-line"><span class="price" data-price-cad="99">$99</span><small>/ month</small></div>
+        <div class="price-sub" data-bill-cad="99">Billed in CAD</div>
+        <p class="desc">Keep the same subject, but pick from more approved recurring times that may fit your family better.</p>
+        <ul>
+          <li>Choose one subject</li>
+          <li>See all approved Flex times</li>
+          <li>Maximum 5 students per group</li>
+          <li>One class transfer a month, subject to an open seat</li>
+        </ul>
+        <button type="button" class="btn choose-plan" data-plan="single-flex" data-label="Choose Flex">Choose Flex</button>
+      </article>
+    </div>
+
+    <div class="splitter">Two-subject combinations</div>
+    <div class="section-head" style="margin-bottom:24px">
+      <h2 class="section-title">Choose the timetable that fits</h2>
+      <p>Register for two subjects together and save against two single plans. The builder below shows the times for each subject.</p>
+    </div>
+    <div class="combo-grid">
+      <article class="plan-card" data-card="combo-standard">
+        <span class="plan-label">2 subjects &middot; Standard + Standard</span>
+        <h3>Standard Pair</h3>
+        <div class="price-line"><span class="price" data-price-cad="119">$119</span><small>/ month</small></div>
+        <div class="price-sub" data-bill-cad="119">Billed in CAD</div>
+        <span class="save" data-price-cad="119" data-compare-cad="138" data-compare-label="two Standard plans" data-save="1"></span>
+        <p class="desc">Both subjects use their published Standard times.</p>
+        <ul>
+          <li>Choose two different subjects</li>
+          <li>Published Standard times for both</li>
+          <li>Maximum 5 students per group</li>
+        </ul>
+        <button type="button" class="btn dark choose-plan" data-plan="combo-standard" data-label="Choose Standard Pair">Choose Standard Pair</button>
+      </article>
+      <article class="plan-card featured" data-card="hybrid">
+        <span class="ribbon">Balanced choice</span>
+        <span class="plan-label">1 Standard + 1 Flex</span>
+        <h3>Hybrid Pair</h3>
+        <div class="price-line"><span class="price" data-price-cad="149">$149</span><small>/ month</small></div>
+        <div class="price-sub" data-bill-cad="149">Billed in CAD</div>
+        <span class="save" data-price-cad="149" data-compare-cad="168" data-compare-label="Standard + Flex" data-save="1"></span>
+        <p class="desc">One subject runs at the Standard time and the other at a Flex time. You decide which is which.</p>
+        <ul>
+          <li>Choose two different subjects</li>
+          <li>Standard or Flex for each subject</li>
+          <li>Exactly one Standard and one Flex</li>
+          <li>Ideal when one time works and the other does not</li>
+        </ul>
+        <button type="button" class="btn choose-plan" data-plan="hybrid" data-label="Choose Hybrid">Choose Hybrid</button>
+      </article>
+      <article class="plan-card" data-card="combo-flex">
+        <span class="plan-label">2 subjects &middot; Flex + Flex</span>
+        <h3>Flex Pair</h3>
+        <div class="price-line"><span class="price" data-price-cad="169">$169</span><small>/ month</small></div>
+        <div class="price-sub" data-bill-cad="169">Billed in CAD</div>
+        <span class="save" data-price-cad="169" data-compare-cad="198" data-compare-label="two Flex plans" data-save="1"></span>
+        <p class="desc">Both subjects use approved Flex times, with a separate choice for each.</p>
+        <ul>
+          <li>Choose two different subjects</li>
+          <li>See all approved Flex times for both</li>
+          <li>Maximum 5 students per group</li>
+        </ul>
+        <button type="button" class="btn dark choose-plan" data-plan="combo-flex" data-label="Choose Flex Pair">Choose Flex Pair</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="config-section" id="plan-builder">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Personalize your timetable</span>
+      <h2 class="section-title">Choose your subjects and see your times</h2>
+      <p>Pick a subject, then tap the recurring time that suits you. Every time is shown in your local clock.</p>
+    </div>
+    <div class="config-shell">
+      <aside class="config-side">
+        <span class="mini-label" id="sideEyebrow">Selected plan</span>
+        <h3 id="sideTitle">Standard Focus</h3>
+        <div class="selected-price" id="sidePrice">$69 <small>/ month</small></div>
+        <div class="side-bill" id="sideBill"></div>
+        <p id="sideDescription" style="margin-top:12px">One subject at the published Standard time.</p>
+        <div class="side-includes">
+          <div>&#10003; Recurring, scheduled live classes</div>
+          <div>&#10003; Small groups of up to 5</div>
+          <div>&#10003; Times in your local clock</div>
+          <div>&#10003; Schedules built for your learner's level</div>
+        </div>
+      </aside>
+      <div class="builder">
+        <h3 id="builderTitle">Standard Focus</h3>
+        <p class="builder-intro" id="builderIntro"></p>
+        <div id="dynamicSubjects"></div>
+        <div class="warning" id="formWarning" role="alert"></div>
+        <div class="summary-box" id="summaryBox">
+          <h4>Your selection</h4>
+          <p id="selectionSummary">Choose a plan and review the available timetable.</p>
+        </div>
+        <div class="builder-actions">
+          <button type="button" class="btn" id="copySummary">Copy plan details</button>
+          <a class="btn secondary" href="./#contact" id="contactLink">Continue to Contact Us &#8599;</a>
+        </div>
+        <p class="microcopy">No payment is taken on this page. Copy your plan and time choices, then contact NovaPoint to confirm availability and enrollment. Plans are billed in Canadian dollars.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Before you enroll</span>
+      <h2 class="section-title">How Standard and Flex work</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>When does a Standard section open?</summary><p>We start with the published time and open more Standard sections as parent demand supports them. A full section closes to new registrations, and the next time is chosen from the strongest demand.</p></details>
+      <details><summary>What does Flex mean?</summary><p>Flex offers more approved recurring time windows. It is not unlimited custom scheduling: families choose from the times shown, which lets us match schedules while keeping classes small and consistent.</p></details>
+      <details><summary>Can my child take Math and English together?</summary><p>Yes. Math and English registration open in parallel for cohorts being launched. Each subject has its own section status, so one can be ready while the other is still forming. Two classes never overlap.</p></details>
+      <details><summary>Can Flex families reschedule?</summary><p>Flex includes one schedule transfer per month into another active section of the same subject and level, subject to an available seat. It does not create a new one-off lesson. If no seat is available, the normal makeup process applies.</p></details>
+      <details><summary>What if a class is still forming?</summary><p>NovaPoint will give you a clear decision date and an alternative, such as another suitable active time or the applicable refund, rather than leaving you waiting.</p></details>
+      <details><summary>Are all subjects twice a week?</summary><p>Math, English, Chemistry and Physics run two 60-minute live classes a week. Robotics &amp; Coding is one combined live class each week for Sigma and Omega. You choose exactly one of three weekly time slots.</p></details>
+      <details><summary>Why is the price shown in my currency?</summary><p>We show an estimate in your local currency, rounded up to the next whole number, so you can compare easily. Plans are priced and billed in Canadian dollars, so your bank's exchange rate applies when you pay.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap inner">
+    <div><h2>Ready to find your child's class?</h2><p>Choose a plan, copy your subject and time preferences, then contact our team to confirm the next available cohort.</p></div>
+    <a class="btn" href="#plan-builder">Build your timetable &#8595;</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div><strong>ClassOf5 Academy</strong> &middot; An educational initiative of NovaPoint Global Inc.</div>
+    <div><a href="./#programs">Programs</a><a href="./#contact">Contact</a><a href="./">Main site</a></div>
+  </div>
+</footer>
+
+<div class="mbar" id="mbar" aria-live="polite">
+  <div class="t"><strong id="mbarTitle">Standard Focus</strong><span id="mbarPrice"></span></div>
+  <a class="btn small" href="#summaryBox">Review &amp; continue</a>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+
+  /* =========================================================
+     PLANS (prices are CAD per month)
+     ========================================================= */
+  const plans = {
+    "single-standard": {title:"Standard Focus", price:69, eyebrow:"Single subject · Standard", description:"One subject at the published Standard time.", type:"single", mode:"standard"},
+    "single-flex": {title:"Flex Focus", price:99, eyebrow:"Single subject · Flex", description:"One subject with a wider choice of approved recurring times.", type:"single", mode:"flex"},
+    "combo-standard": {title:"Standard Pair", price:119, eyebrow:"Two subjects · Standard + Standard", description:"Two subjects, each at its published Standard time.", type:"combo", mode:"standard"},
+    "hybrid": {title:"Hybrid Pair", price:149, eyebrow:"Two subjects · Standard + Flex", description:"One subject at the Standard time and the other at a Flex time.", type:"hybrid"},
+    "combo-flex": {title:"Flex Pair", price:169, eyebrow:"Two subjects · Flex + Flex", description:"Two subjects, each with a choice of approved Flex times.", type:"combo", mode:"flex"}
+  };
+  const intros = {
+    "single-standard":"Choose the subject. Its published Standard time is shown below.",
+    "single-flex":"Choose the subject, then tap one of the approved Flex times.",
+    "combo-standard":"Choose two different subjects. Each shows its published Standard time.",
+    "hybrid":"Choose two different subjects, then decide which is Standard and which is Flex. Tap a time for the Flex subject.",
+    "combo-flex":"Choose two different subjects and tap a Flex time for each. Subject 2 times that clash with Subject 1 are greyed out."
+  };
+
+  /* =========================================================
+     TIMETABLES (from the master timetable)
+     day: 0 = Sunday ... 6 = Saturday
+     ========================================================= */
+  const slot = (sessions, frequency="2x/week") => ({sessions, frequency});
+  const pair = (dayA, dayB, time) => slot([{day:dayA,time},{day:dayB,time}]);
+  const MW = (t) => pair(1,3,t), TT = (t) => pair(2,4,t), FS = (t) => pair(5,0,t), SS = () => pair(6,0,"11:00");
+
+  const k8NA = {
+    alpha:{
+      Math:{standard:MW("17:00"), flex:[TT("17:00"),MW("18:30"),TT("18:30"),SS(),FS("17:00")]},
+      English:{standard:TT("17:00"), flex:[MW("17:00"),MW("18:30"),TT("18:30"),SS(),FS("17:00")]}},
+    beta:{
+      Math:{standard:MW("18:30"), flex:[TT("17:00"),MW("17:00"),TT("18:30"),MW("20:00"),TT("20:00"),FS("17:00"),FS("18:30"),SS()]},
+      English:{standard:TT("18:30"), flex:[MW("17:00"),TT("17:00"),MW("20:00"),TT("20:00"),MW("18:30"),FS("17:00"),SS()]}},
+    gamma:{
+      Math:{standard:MW("18:30"), flex:[TT("17:00"),MW("17:00"),TT("18:30"),MW("20:00"),TT("20:00"),FS("18:30"),FS("20:00"),SS()]},
+      English:{standard:TT("18:30"), flex:[MW("17:00"),TT("17:00"),MW("18:30"),MW("20:00"),TT("20:00"),FS("18:30"),SS()]}},
+    delta:{
+      Math:{standard:TT("18:30"), flex:[MW("17:00"),TT("17:00"),MW("18:30"),MW("20:00"),TT("20:00"),FS("20:00"),SS()]},
+      English:{standard:MW("18:30"), flex:[TT("17:00"),MW("17:00"),TT("18:30"),MW("20:00"),TT("20:00"),FS("20:00"),SS()]}}
+  };
+  const k8UK = {
+    alpha:{
+      Math:{standard:MW("17:00"), flex:[TT("18:30"),MW("18:30"),TT("17:00"),SS(),FS("17:00")]},
+      English:{standard:TT("17:00"), flex:[MW("18:30"),TT("18:30"),MW("17:00"),SS(),FS("17:00")]}},
+    beta:{
+      Math:{standard:MW("17:00"), flex:[TT("18:30"),MW("18:30"),TT("17:00"),SS(),FS("17:00")]},
+      English:{standard:TT("17:00"), flex:[MW("18:30"),TT("18:30"),MW("17:00"),SS(),FS("17:00")]}},
+    gamma:{
+      Math:{standard:MW("18:30"), flex:[TT("20:00"),MW("20:00"),TT("18:30"),FS("18:30"),SS()]},
+      English:{standard:TT("18:30"), flex:[MW("20:00"),TT("20:00"),MW("18:30"),FS("18:30"),SS()]}},
+    delta:{
+      Math:{standard:MW("18:30"), flex:[TT("18:30"),MW("20:00"),TT("20:00"),FS("20:00"),SS()]},
+      English:{standard:TT("18:30"), flex:[MW("18:30"),MW("20:00"),TT("20:00"),FS("20:00"),SS()]}}
+  };
+  // Robotics & Coding is one combined live class each week. The parent picks exactly one of three slots.
+  const RC_NOTE = "1 combined Robotics & Coding class/week";
+  const rcSlot = (day, time) => slot([{day,time}], RC_NOTE);
+  const rcFri = rcSlot(5,"20:00"), rcSat = rcSlot(6,"11:00"), rcSun = rcSlot(0,"11:00");
+  const senior = {
+    Math:{standard:MW("18:30"), flex:[TT("17:00"),MW("17:00"),TT("20:00"),MW("20:00"),SS()]},
+    Chemistry:{standard:TT("18:30"), flex:[MW("17:00"),TT("17:00"),MW("20:00"),TT("20:00"),SS()]},
+    Physics:{standard:MW("20:00"), flex:[MW("17:00"),TT("17:00"),TT("18:30"),TT("20:00"),SS()]},
+    "Robotics & Coding":{standard:rcSat, flex:[rcFri,rcSat,rcSun], keepStd:true}
+  };
+  const LEVELS = {
+    alpha:{name:"Alpha",na:"Grades 1–2",uk:"UK Years 2–3",ages:"ages 6–7"},
+    beta:{name:"Beta",na:"Grades 3–4",uk:"UK Years 4–5",ages:"ages 8–9"},
+    gamma:{name:"Gamma",na:"Grades 5–6",uk:"UK Years 6–7",ages:"ages 10–11"},
+    delta:{name:"Delta",na:"Grades 7–8",uk:"UK Years 8–9",ages:"ages 12–13"},
+    sigma:{name:"Sigma",na:"Grades 9–10",uk:"UK Years 10–11",ages:"ages 14–15"},
+    omega:{name:"Omega",na:"Grades 11–12",uk:"UK Years 12–13",ages:"ages 16–17"}
+  };
+  // North American visitors see grades and ages; UK and Europe visitors see UK Years and ages.
+  const levelName = (k) => { const l=LEVELS[k]; return `${l.name} · ${geo.market==="uk"?l.uk:l.na} · ${l.ages}`; };
+  function renderLevelOptions(){
+    const sel=$("levelSelect"), cur=sel.value||"beta";
+    sel.innerHTML=Object.keys(LEVELS).map(k=>`<option value="${k}"${k===cur?" selected":""}>${escapeHtml(levelName(k))}</option>`).join("");
+  }
+
+  /* =========================================================
+     LOCATION, TIME ZONE AND CURRENCY
+     ========================================================= */
+  const COUNTRIES = [
+    ["Canada",[["America/Halifax","Atlantic (Halifax)"],["America/Toronto","Eastern (Toronto, Ottawa)"],["America/Winnipeg","Central (Winnipeg)"],["America/Edmonton","Mountain (Edmonton, Calgary)"],["America/Vancouver","Pacific (Vancouver)"],["America/St_Johns","Newfoundland (St. John's)"]],"CA","CAD"],
+    ["United States",[["America/New_York","Eastern (New York)"],["America/Chicago","Central (Chicago)"],["America/Denver","Mountain (Denver)"],["America/Phoenix","Mountain, no clock change (Phoenix)"],["America/Los_Angeles","Pacific (Los Angeles)"]],"US","USD"],
+    ["United Kingdom",[["Europe/London","London"]],"GB","GBP"],
+    ["Ireland",[["Europe/Dublin","Dublin"]],"IE","EUR"],
+    ["France",[["Europe/Paris","Paris"]],"FR","EUR"],
+    ["Germany",[["Europe/Berlin","Berlin"]],"DE","EUR"],
+    ["Netherlands",[["Europe/Amsterdam","Amsterdam"]],"NL","EUR"],
+    ["Belgium",[["Europe/Brussels","Brussels"]],"BE","EUR"],
+    ["Spain",[["Europe/Madrid","Madrid"]],"ES","EUR"],
+    ["Italy",[["Europe/Rome","Rome"]],"IT","EUR"],
+    ["Other Europe",[],"","EUR"],
+    ["Somewhere else",[],"","CAD"]
+  ];
+  const TZ_ALIAS = {"America/Montreal":"America/Toronto","America/Detroit":"America/New_York","America/Regina":"America/Winnipeg","Europe/Belfast":"Europe/London","Africa/Abidjan":"Africa/Accra","Australia/Melbourne":"Australia/Sydney","Asia/Calcutta":"Asia/Kolkata"};
+  const CUR_NAMES = {CAD:"Canadian dollar (CAD)",USD:"US dollar (USD)",GBP:"British pound (GBP)",EUR:"Euro (EUR)"};
+  // Indicative fallback rates per 1 CAD, used only until a live rate loads. Refresh these before launch.
+  const fxRates = {CAD:1,USD:0.701,GBP:0.52,EUR:0.60};
+  const geo = {country:"Canada", tz:"America/Toronto", currency:"CAD", market:"na", userPicked:false, fxLive:false, source:"default"};
+
+  const validTz = (z) => { try { new Intl.DateTimeFormat("en-US",{timeZone:z}); return true; } catch(e) { return false; } };
+  const offsetAt = (tz, ms) => {
+    const o={}; new Intl.DateTimeFormat("en-US",{timeZone:tz,hourCycle:"h23",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit"})
+      .formatToParts(new Date(ms)).forEach(p=>{o[p.type]=p.value;});
+    return (Date.UTC(+o.year,+o.month-1,+o.day,+o.hour,+o.minute,+o.second)-ms)/60000;
+  };
+  const sameClock = (a,b) => [Date.UTC(2027,0,11,12),Date.UTC(2027,6,11,12)].every(ms=>offsetAt(a,ms)===offsetAt(b,ms));
+  const countryRow = (name) => COUNTRIES.find(c=>c[0]===name) || COUNTRIES[COUNTRIES.length-1];
+  const OTHER = (c) => c==='Other Europe'||c==='Somewhere else';
+  function countryOfTz(tz){ const c=COUNTRIES.find(c=>c[1].some(z=>z[0]===tz)); return c?c[0]:(tz.indexOf("Europe/")===0?"Other Europe":"Somewhere else"); }
+  function countryOfCode(code){ const c=COUNTRIES.find(c=>c[2]&&c[2]===String(code||"").toUpperCase()); return c?c[0]:"Somewhere else"; }
+  function localeRegion(){ const l=(navigator.languages&&navigator.languages[0])||navigator.language||""; return (l.split("-")[1]||"").toUpperCase(); }
+  function browserTz(){
+    try { let z=Intl.DateTimeFormat().resolvedOptions().timeZone; z=TZ_ALIAS[z]||z; if(z&&validTz(z)&&!/^(UTC|GMT|Etc\/)/.test(z)) return z; } catch(e){}
+    return "";
+  }
+  const marketOf = (tz) => tz.indexOf("America/")===0 ? "na" : "uk";
+  const sourceZone = () => geo.market==="na" ? "America/Toronto" : "Europe/London";
+  const sourceCity = () => geo.market==="na" ? "Toronto" : "London";
+  const cityOf = (tz) => tz.split("/").pop().replace(/_/g," ");
+  const tzLongName = (tz) => { try { return new Intl.DateTimeFormat("en-US",{timeZone:tz,timeZoneName:"long"}).formatToParts(new Date(Date.UTC(2027,0,11,12))).find(p=>p.type==="timeZoneName").value; } catch(e){ return tz; } };
+
+  function zonesFor(country){
+    const c=countryRow(country);
+    if(OTHER(c[0])){
+      let all=[]; try { all=Intl.supportedValuesOf("timeZone"); } catch(e){}
+      if(!all.length) all=["Europe/Stockholm","Europe/Zurich","Europe/Warsaw","Europe/Lisbon","Europe/Athens","America/Mexico_City"];
+      if(c[0]==="Other Europe") all=all.filter(z=>z.indexOf("Europe/")===0);
+      return all.map(z=>[z,z.replace(/_/g," ")]);
+    }
+    return c[1].slice();
+  }
+  function fillZones(country, prefer){
+    let zs=zonesFor(country);
+    let chosen=null;
+    if(prefer){
+      chosen=(zs.find(z=>z[0]===prefer)||[])[0] || (zs.find(z=>sameClock(z[0],prefer))||[])[0] || null;
+      if(!chosen && validTz(prefer)){ zs=[[prefer,cityOf(prefer)+" (your device)"]].concat(zs); chosen=prefer; }
+    }
+    if(!chosen){ const def={Canada:"America/Toronto","United States":"America/New_York"}[country]; chosen=(zs.find(z=>z[0]===def)||zs[0]||[])[0]||"America/Toronto"; }
+    const sel=$("zoneSelect");
+    sel.innerHTML=zs.map(z=>`<option value="${z[0]}">${escapeHtml(z[1])}</option>`).join("");
+    sel.value=chosen; $("zoneField").hidden=zs.length<2; geo.tz=chosen;
+  }
+  function setMarketButtons(){ renderLevelOptions(); document.querySelectorAll("[data-market]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.market===geo.market))); }
+  function updateChip(){
+    const src={ip:"IP address","device":"device settings","language":"language setting","default":"default"}[geo.source]||"device settings";
+    $("locChip").querySelector(".txt").innerHTML=`<strong>${escapeHtml(geo.country)} · ${escapeHtml(tzLongName(geo.tz))}</strong><span class="sub">Prices in ${escapeHtml(geo.currency)} · ${geo.market==="na"?"North America":"UK / Europe"} timetable${geo.userPicked?"":" · detected from your "+src}</span>`;
+    $("fxHint").textContent = geo.currency==="CAD" ? "All prices are in Canadian dollars."
+      : `Prices in ${geo.currency} are estimates from Canadian dollars at ${geo.fxLive?"today's":"an indicative"} rate, rounded up to the next whole number. You are billed in CAD.`;
+  }
+  function applyGeo(country, tz, source, keepCurrency){
+    geo.country=country; $("countrySelect").value=country;
+    fillZones(country, tz);
+    geo.market=marketOf(geo.tz);
+    if(!keepCurrency){ geo.currency=countryRow(country)[3]; }
+    if(!fxRates[geo.currency]) geo.currency="CAD";
+    $("currencySelect").value=geo.currency;
+    geo.source=source||geo.source; setMarketButtons(); updateChip(); refresh(true);
+  }
+  function initGeo(){
+    $("countrySelect").innerHTML=COUNTRIES.map(c=>`<option>${c[0]}</option>`).join("");
+    $("currencySelect").innerHTML=Object.keys(CUR_NAMES).map(c=>`<option value="${c}">${CUR_NAMES[c]}</option>`).join("");
+    const tz=browserTz(), region=localeRegion();
+    if(tz){
+      let country=countryOfTz(tz);
+      if(country==="United States" && region==="CA") country="Canada";
+      applyGeo(country, tz, "device");
+    } else if(region && !OTHER(countryOfCode(region))){
+      applyGeo(countryOfCode(region), null, "language");
+    } else { applyGeo("Canada","America/Toronto","default"); }
+    ipLookup(tz);
+  }
+  // IP lookup refines the country (for example Ontario on a New York clock). The device clock
+  // is kept for times unless it is missing, and a VPN country with a different clock is ignored.
+  function ipLookup(deviceTz){
+    let done=false;
+    const use=(code,tzid)=>{
+      if(done||geo.userPicked) return;
+      tzid=TZ_ALIAS[tzid]||tzid;
+      const country=countryOfCode(code);
+      if(deviceTz){
+        const ok = OTHER(country) ? (tzid&&validTz(tzid)&&sameClock(tzid,deviceTz)) : zonesFor(country).some(z=>sameClock(z[0],deviceTz));
+        if(!ok) return;
+        done=true; applyGeo(country, deviceTz, "ip");
+      } else {
+        done=true; applyGeo(country, tzid&&validTz(tzid)?tzid:null, "ip");
+      }
+    };
+    const fromIpapi=()=>fetch("https://ipapi.co/json/",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json();}).then(d=>{if(d&&d.country_code)use(d.country_code,d.timezone);});
+    const fromIpwho=()=>fetch("https://ipwho.is/",{cache:"no-store"}).then(r=>r.json()).then(d=>{if(d&&d.success!==false&&d.country_code)use(d.country_code,d.timezone&&d.timezone.id);});
+    try { fromIpapi().catch(()=>fromIpwho().catch(()=>{})); } catch(e){}
+  }
+  function loadRates(){
+    try {
+      fetch("https://open.er-api.com/v6/latest/CAD",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json();}).then(d=>{
+        if(d&&d.result==="success"&&d.rates){ Object.keys(CUR_NAMES).forEach(c=>{if(d.rates[c])fxRates[c]=d.rates[c];}); fxRates.CAD=1; geo.fxLive=true; updateChip(); renderPrices(); renderBuilder(); }
+      }).catch(()=>{});
+    } catch(e){}
+  }
+
+  /* ---------- prices ---------- */
+  function moneyLocal(cad){
+    if(geo.currency==="CAD") return "$"+cad;
+    const v=Math.ceil(cad*(fxRates[geo.currency]||1));
+    try { return new Intl.NumberFormat(undefined,{style:"currency",currency:geo.currency,currencyDisplay:"narrowSymbol",minimumFractionDigits:0,maximumFractionDigits:0}).format(v); }
+    catch(e){ return v.toLocaleString()+" "+geo.currency; }
+  }
+  const priceText = (cad) => (geo.currency==="CAD" ? "" : "≈ ") + moneyLocal(cad);
+  const billText = (cad) => geo.currency==="CAD" ? "Billed in Canadian dollars" : `Billed as $${cad} CAD`;
+  const localValue = (cad) => geo.currency==="CAD" ? cad : Math.ceil(cad*(fxRates[geo.currency]||1));
+  const fmtValue = (v) => { if(geo.currency==="CAD") return "$"+v; try { return new Intl.NumberFormat(undefined,{style:"currency",currency:geo.currency,currencyDisplay:"narrowSymbol",minimumFractionDigits:0,maximumFractionDigits:0}).format(v); } catch(e){ return v.toLocaleString()+" "+geo.currency; } };
+  function renderPrices(){
+    document.querySelectorAll("[data-price-cad]:not([data-save])").forEach(el=>{el.textContent=priceText(+el.dataset.priceCad);});
+    document.querySelectorAll("[data-bill-cad]").forEach(el=>{el.textContent=billText(+el.dataset.billCad);});
+    document.querySelectorAll("[data-save]").forEach(el=>{
+      const save=localValue(+el.dataset.compareCad)-localValue(+el.dataset.priceCad);
+      el.textContent=`Save ${fmtValue(save)} a month vs ${el.dataset.compareLabel}`;
+    });
+  }
+
+  /* =========================================================
+     TIME CONVERSION
+     ========================================================= */
+  const LAUNCH = new Date(Date.UTC(2027,0,11,12)); // Monday 11 January 2027
+  function zonedParts(date, tz){
+    const o={}; new Intl.DateTimeFormat("en-CA",{timeZone:tz,year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"})
+      .formatToParts(date).forEach(p=>{if(p.type!=="literal")o[p.type]=p.value;});
+    return {year:+o.year,month:+o.month,day:+o.day,hour:+o.hour,minute:+o.minute};
+  }
+  function wallTimeToUTC(y,m,d,hour,minute,tz){
+    const desired=Date.UTC(y,m-1,d,hour,minute,0); let guess=desired;
+    for(let i=0;i<5;i++){
+      const p=zonedParts(new Date(guess),tz);
+      const diff=desired-Date.UTC(p.year,p.month-1,p.day,p.hour,p.minute,0);
+      guess+=diff; if(Math.abs(diff)<1000) break;
+    }
+    return new Date(guess);
+  }
+  // Times are shown for the first term week (11 Jan 2027), or the next week once term has started.
+  function nextOccurrence(dayIndex, hhmm, tz){
+    const now=new Date(), from=now<LAUNCH?LAUNCH:now;
+    const p=zonedParts(from,tz);
+    const cur=new Date(Date.UTC(p.year,p.month-1,p.day)).getUTCDay();
+    let cal=new Date(Date.UTC(p.year,p.month-1,p.day+((dayIndex-cur+7)%7)));
+    const [hh,mm]=hhmm.split(":").map(Number);
+    let start=wallTimeToUTC(cal.getUTCFullYear(),cal.getUTCMonth()+1,cal.getUTCDate(),hh,mm,tz);
+    if(start.getTime()<=from.getTime()+60000){
+      cal=new Date(Date.UTC(cal.getUTCFullYear(),cal.getUTCMonth(),cal.getUTCDate()+7));
+      start=wallTimeToUTC(cal.getUTCFullYear(),cal.getUTCMonth()+1,cal.getUTCDate(),hh,mm,tz);
+    }
+    return start;
+  }
+  const clock = (date,tz) => new Intl.DateTimeFormat(navigator.language||"en-CA",{timeZone:tz,hour:"numeric",minute:"2-digit",hour12:true}).format(date).replace(/\s+/g," ");
+  const dayName = (date,tz) => new Intl.DateTimeFormat("en-US",{timeZone:tz,weekday:"short"}).format(date);
+  const hourOf = (date,tz) => +new Intl.DateTimeFormat("en-GB",{timeZone:tz,hour:"2-digit",hourCycle:"h23"}).format(date);
+
+  function showSlot(s){
+    const tz=geo.tz, src=sourceZone();
+    const rows=s.sessions.map(se=>{
+      const start=nextOccurrence(se.day,se.time,src), end=new Date(start.getTime()+3600000);
+      return {label:se.label, day:dayName(start,tz), range:`${clock(start,tz)}–${clock(end,tz)}`,
+              sday:dayName(start,src), srange:`${clock(start,src)}–${clock(end,src)}`, hr:hourOf(start,tz), hrEnd:hourOf(new Date(end.getTime()-60000),tz)};
+    });
+    const same=rows.every(r=>r.range===rows[0].range);
+    const night=rows.some(r=>r.hr>=22||r.hr<6||r.hrEnd<6);
+    const differs=rows.some(r=>r.range!==r.srange||r.day!==r.sday);
+    const multi=!same||rows.some(r=>r.label);
+    return {rows,same,multi,night,differs,
+      days:rows.map(r=>r.day).join(" + "), range:rows[0].range,
+      srcText: same ? `${rows.map(r=>r.sday).join(" + ")} ${rows[0].srange}` : rows.map(r=>`${r.sday} ${r.srange}`).join(" · "),
+      frequency:s.frequency, weekend:s.sessions.some(x=>x.day===6||x.day===0)};
+  }
+  const keyOf = (s) => s.sessions.map(x=>x.day+"@"+x.time).join("|");
+  const overlap = (a,b) => a.sessions.some(x=>b.sessions.some(y=>x.day===y.day&&x.time===y.time));
+
+  /* =========================================================
+     SCHEDULE LOOKUP, STATE AND SELECTION
+     ========================================================= */
+  const isSenior = () => ["sigma","omega"].includes($("levelSelect").value);
+  const subjectsForLevel = () => isSenior() ? ["Math","Chemistry","Physics","Robotics & Coding"] : ["Math","English"];
+  function itemFor(subject){
+    if(isSenior()) return senior[subject];
+    const t=geo.market==="uk"?k8UK:k8NA;
+    return (t[$("levelSelect").value]||t.beta)[subject];
+  }
+  function scheduleFor(subject, mode){
+    const item=itemFor(subject); if(!item) return [];
+    if(mode==="standard") return [item.standard];
+    const seen=new Set(item.keepStd?[]:[keyOf(item.standard)]);
+    // Flex lists never repeat a time or include the subject's own Standard time (Robotics & Coding offers all three slots).
+    const list=item.flex.filter(s=>{const k=keyOf(s); if(seen.has(k)) return false; seen.add(k); return true;});
+    // Friendlier hours first for this visitor; the master order is kept within each group.
+    return list.map((s,i)=>({s,i,n:showSlot(s).night})).sort((a,b)=>(a.n-b.n)||(a.i-b.i)).map(x=>x.s);
+  }
+
+  let currentPlan="single-standard";
+  const subjects={a:"Math", b:"English"};
+  const modes={a:"standard", b:"flex"};
+  const picks={single:null,a:null,b:null};
+  let lastSummary="", toastTimer=null;
+  const escapeHtml = (str) => String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const planData = () => plans[currentPlan];
+  const modeOf = (k) => planData().type==="hybrid" ? modes[k] : (planData().mode||"standard");
+
+  function ensureSubjects(){
+    const subs=subjectsForLevel();
+    if(!subs.includes(subjects.a)) subjects.a=subs[0];
+    if(!subs.includes(subjects.b)||subjects.b===subjects.a) subjects.b=subs.find(s=>s!==subjects.a)||subs[0];
+  }
+  function pickFor(key, subject, mode, other){
+    const list=scheduleFor(subject,mode);
+    const ok=(s)=>!(other&&overlap(s,other));
+    return list.find(s=>keyOf(s)===picks[key]&&ok(s)) || list.find(ok) || list[0] || null;
+  }
+  function resolved(){
+    const p=planData();
+    if(p.type==="single") return {single:pickFor("single",subjects.a,p.mode,null)};
+    const a=pickFor("a",subjects.a,modeOf("a"),null);
+    const b=pickFor("b",subjects.b,modeOf("b"),a);
+    return {a,b};
+  }
+
+  /* =========================================================
+     RENDERING
+     ========================================================= */
+  const optionHtml=(v,l,cur)=>`<option value="${escapeHtml(v)}"${v===cur?" selected":""}>${escapeHtml(l)}</option>`;
+  const subjectSelect=(id,key,label)=>`<div class="field"><label for="${id}">${label}</label><select id="${id}" data-subject="${key}">${subjectsForLevel().map(s=>optionHtml(s,s,key==="single"?subjects.a:subjects[key])).join("")}</select></div>`;
+  const modeSelect=(id,key,label)=>`<div class="field"><label for="${id}">${label}</label><select id="${id}" data-mode="${key}">${optionHtml("standard","Standard",modes[key])+optionHtml("flex","Flex",modes[key])}</select></div>`;
+
+  function slotGroup(key, subject, mode, title, sel, other){
+    const list=scheduleFor(subject,mode);
+    if(!list.length) return `<div class="warning show">No timetable is set up for ${escapeHtml(subject)} yet. Please contact NovaPoint.</div>`;
+    const selKey=sel?keyOf(sel):"";
+    return `<div class="schedule-title"><h4>${escapeHtml(title)}</h4><span class="pill ${mode==="standard"?"std":""}">${mode==="standard"?"STANDARD TIME":"FLEX TIMES"}</span></div>
+    <div class="schedule-list">${list.map((s,i)=>{
+      const info=showSlot(s), k=keyOf(s);
+      const clash=!!(other&&overlap(s,other));
+      const on=k===selKey&&!clash;
+      const times=info.multi
+        ? `<div class="time-sessions">${info.rows.map(r=>`<div>${escapeHtml(r.day)} · ${escapeHtml(r.range)}${r.label?` <span style="font-weight:600;color:#667789">(${r.label})</span>`:""}</div>`).join("")}</div>`
+        : `<div class="time-local">${escapeHtml(info.range)}</div>`;
+      const tags=[info.weekend&&!info.multi?'<span class="tag">Weekend</span>':"", info.night?'<span class="tag">Overnight for you</span>':"", clash?'<span class="tag">Clashes with Subject 1</span>':""].join("");
+      return `<label class="time-option${on?" selected":""}${clash?" unavailable":""}">
+        <div class="time-head">
+          <input type="radio" name="slot-${key}" data-slot-field="${key}" value="${escapeHtml(k)}"${on?" checked":""}${clash?' disabled aria-disabled="true"':""}>
+          <div class="time-body">
+            <div class="time-top"><div class="time-name">${escapeHtml(info.multi?"Weekly class times":info.days)}</div><div>${tags}</div></div>
+            ${times}
+            <div class="time-meta">${escapeHtml(info.frequency)}${info.differs?` · Class clock: ${escapeHtml(info.srcText)} ${sourceCity()} time`:""}</div>
+          </div>
+        </div>
+      </label>`;
+    }).join("")}</div>`;
+  }
+
+  function renderBuilder(){
+    ensureSubjects();
+    const p=planData(), r=resolved();
+    $("sideTitle").textContent=p.title; $("sideEyebrow").textContent=p.eyebrow;
+    $("sidePrice").innerHTML=`${escapeHtml(priceText(p.price))} <small>/ month</small>`;
+    $("sideBill").textContent=billText(p.price);
+    $("sideDescription").textContent=p.description;
+    $("builderTitle").textContent=p.title; $("builderIntro").textContent=intros[currentPlan];
+    $("mbarTitle").textContent=p.title; $("mbarPrice").textContent=`${priceText(p.price)} / month`;
+    let body="";
+    if(p.type==="single"){
+      body=`<div class="form-grid">${subjectSelect("subjectSingle","single","Subject")}</div>${slotGroup("single",subjects.a,p.mode,p.mode==="flex"?"Choose a Flex time":"Your Standard time",r.single,null)}`;
+    } else {
+      const mA=p.type==="hybrid"?modes.a:p.mode, mB=p.type==="hybrid"?modes.b:p.mode;
+      body=`<div class="subject-pair">
+        <div class="subject-panel"><h4>Subject 1</h4>${subjectSelect("subjectA","a","Subject")}${p.type==="hybrid"?modeSelect("modeA","a","This subject is"):""}${slotGroup("a",subjects.a,mA,subjects.a,r.a,null)}</div>
+        <div class="subject-panel"><h4>Subject 2</h4>${subjectSelect("subjectB","b","Subject")}${p.type==="hybrid"?modeSelect("modeB","b","This subject is"):""}${slotGroup("b",subjects.b,mB,subjects.b,r.b,r.a)}</div>
+      </div>`;
+    }
+    const active=document.activeElement&&document.activeElement.id;
+    $("dynamicSubjects").innerHTML=body;
+    if(active){ const el=$(active); if(el&&$("dynamicSubjects").contains(el)) el.focus({preventScroll:true}); }
+
+    // warnings
+    let msg="";
+    if(p.type!=="single"){
+      if(subjects.a===subjects.b) msg="Please choose two different subjects.";
+      else if(r.a&&r.b&&overlap(r.a,r.b)) msg="These two classes meet at the same time. Choose a different time for one of them.";
+    }
+    $("formWarning").textContent=msg; $("formWarning").classList.toggle("show",!!msg);
+
+    // summary text
+    const chosen=p.type==="single"?[{subject:subjects.a,mode:p.mode,slot:r.single}]:[{subject:subjects.a,mode:modeOf("a"),slot:r.a},{subject:subjects.b,mode:modeOf("b"),slot:r.b}];
+    const lines=[
+      `Plan: ${p.title} · $${p.price} CAD / month${geo.currency==="CAD"?"":` (shown to parent as ${priceText(p.price)})`}`,
+      `Learner level: ${levelName($("levelSelect").value)}`,
+      `Location: ${geo.country} · times shown in ${tzLongName(geo.tz)} (${geo.tz.replace(/_/g," ")})`,
+      `Timetable: ${geo.market==="na"?"North America":"UK / Europe"}`
+    ];
+    chosen.forEach(x=>{
+      if(!x.slot) return;
+      const i=showSlot(x.slot);
+      const t=i.multi?i.rows.map(rw=>`${rw.day} ${rw.range}${rw.label?" ("+rw.label+")":""}`).join(" · "):`${i.days} ${i.range}`;
+      lines.push(`${x.subject} (${x.mode==="standard"?"Standard":"Flex"}): ${t}; ${i.frequency}.`);
+    });
+    if(msg) lines.push("Needs attention: "+msg);
+    lastSummary=lines.join("\n"); $("selectionSummary").textContent=lastSummary;
+
+    // plan card states
+    document.querySelectorAll("[data-card]").forEach(c=>c.classList.toggle("is-selected",c.dataset.card===currentPlan));
+    document.querySelectorAll(".choose-plan").forEach(b=>{const on=b.dataset.plan===currentPlan;b.classList.toggle("chosen",on);b.textContent=on?"Selected ✓":b.dataset.label;b.setAttribute("aria-pressed",String(on));});
+  }
+  function refresh(resetPicks){
+    if(resetPicks){picks.single=picks.a=picks.b=null;}
+    renderPrices(); renderBuilder();
+  }
+
+  /* =========================================================
+     EVENTS
+     ========================================================= */
+  function showToast(msg){ const t=$("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove("show"),3500); }
+  document.querySelectorAll(".choose-plan").forEach(b=>b.addEventListener("click",()=>{
+    currentPlan=b.dataset.plan; renderBuilder(); $("plan-builder").scrollIntoView({behavior:"smooth",block:"start"});
+  }));
+  $("levelSelect").addEventListener("change",()=>{ const s=subjectsForLevel(); subjects.a=s[0]; subjects.b=s[1]||s[0]; picks.single=picks.a=picks.b=null; renderBuilder(); });
+  $("dynamicSubjects").addEventListener("change",(e)=>{
+    const t=e.target;
+    if(t.matches("[data-subject]")){ subjects[t.dataset.subject==="single"?"a":t.dataset.subject]=t.value; picks[t.dataset.subject]=null; if(t.dataset.subject==="single") picks.a=null; }
+    else if(t.matches("[data-mode]")){
+      const k=t.dataset.mode; modes[k]=t.value;
+      if(currentPlan==="hybrid"&&modes.a===modes.b) modes[k==="a"?"b":"a"]=t.value==="standard"?"flex":"standard";
+      picks.a=picks.b=null;
+    } else if(t.matches("[data-slot-field]")){ picks[t.dataset.slotField]=t.value; }
+    renderBuilder();
+  });
+  // location panel
+  $("locToggle").addEventListener("click",()=>{ const open=$("locPanel").classList.toggle("open"); $("locToggle").setAttribute("aria-expanded",String(open)); $("locToggle").textContent=open?"Done":"Change"; });
+  $("countrySelect").addEventListener("change",function(){ geo.userPicked=true; applyGeo(this.value,null,"device"); });
+  $("zoneSelect").addEventListener("change",function(){ geo.userPicked=true; geo.tz=this.value; geo.market=marketOf(geo.tz); setMarketButtons(); updateChip(); refresh(true); });
+  $("currencySelect").addEventListener("change",function(){ geo.userPicked=true; geo.currency=this.value; updateChip(); renderPrices(); renderBuilder(); });
+  document.querySelectorAll("[data-market]").forEach(b=>b.addEventListener("click",()=>{ geo.userPicked=true; geo.market=b.dataset.market; setMarketButtons(); updateChip(); refresh(true); }));
+  // copy and contact
+  $("copySummary").addEventListener("click",async()=>{
+    const ok=()=>showToast("Plan details copied. Paste them into your message to NovaPoint.");
+    try{ await navigator.clipboard.writeText(lastSummary); ok(); }
+    catch(e){ const ta=document.createElement("textarea"); ta.value=lastSummary; document.body.appendChild(ta); ta.select(); let done=false; try{done=document.execCommand("copy");}catch(x){} ta.remove(); done?ok():showToast("Please select and copy the details from the summary box."); }
+  });
+  $("contactLink").addEventListener("click",()=>{ try{sessionStorage.setItem("classof5_selected_plan",lastSummary);}catch(e){} });
+  // menu
+  const setMenu=(open)=>{ $("navLinks").classList.toggle("open",open); $("menuToggle").setAttribute("aria-expanded",String(open)); $("menuToggle").setAttribute("aria-label",open?"Close menu":"Open menu"); };
+  $("menuToggle").addEventListener("click",()=>setMenu(!$("navLinks").classList.contains("open")));
+  $("navLinks").querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>setMenu(false)));
+  document.addEventListener("keydown",(e)=>{ if(e.key==="Escape") setMenu(false); });
+  // mobile bar: show once the plans are reached, hide while the summary is on screen
+  if("IntersectionObserver" in window){
+    let inPlans=false, inSummary=false;
+    const upd=()=>$("mbar").classList.toggle("show",inPlans&&!inSummary);
+    new IntersectionObserver(es=>{inPlans=es[0].isIntersecting||es[0].boundingClientRect.top<0;upd();},{threshold:0}).observe($("plans"));
+    new IntersectionObserver(es=>{inSummary=es[0].isIntersecting;upd();},{threshold:.3}).observe($("summaryBox"));
+  }
+
+  initGeo();
+  loadRates();
+})();
+</script>
+</body>
+</html>
