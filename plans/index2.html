@@ -402,8 +402,7 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
   let currentPlan = "single-standard";
   let ipTimeZone = null;
   let browserTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || null;
-  // Avoid briefly showing the North America grid to a UK/European visitor while
-  // the IP lookup is still loading.
+  // Select the initial grid from the browser clock; IP is only a fallback.
   let detectedMarket = (browserTimeZone && browserTimeZone.startsWith("Europe/")) ? "uk" : "na";
   let localCurrency = "CAD";
   let fxRates = {CAD:1};
@@ -699,18 +698,24 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:13px}
     const ipTz = String((geo && geo.timezone) || ipTimeZone || "");
     const country = String((geo && (geo.country_code || geo.country)) || "").toUpperCase();
     const locale = (navigator.languages && navigator.languages[0]) || navigator.language || "";
+
+    // IMPORTANT: use the browser's configured time zone first. It represents
+    // the clock the visitor sees. VPNs and IP geolocation can point to another
+    // country, so IP data must not override a usable browser time zone.
+    if (browserTz.startsWith("Europe/")) return "uk";
+    if (browserTz.startsWith("America/")) return "na";
+
+    // Only fall back to IP-derived timezone/country when browser timezone
+    // information is missing or generic (e.g. UTC).
+    if (ipTz.startsWith("Europe/")) return "uk";
+    if (ipTz.startsWith("America/")) return "na";
+
     const european = new Set(["GB","IE","FR","DE","ES","IT","NL","BE","PT","AT","FI","GR","LU","SK","SI","EE","LV","LT","CY","MT","HR","PL","CZ","HU","RO","BG","DK","SE"]);
     const northAmerican = new Set(["US","CA","MX","JM","TT","BB","BS","KY","TC","DO","HT","LC","DM","GD","VC","AG","KN","BZ"]);
     const localeLooksEuropean = /(^|-)GB($|-)|(^|-)IE($|-)|(^|-)FR($|-)|(^|-)DE($|-)|(^|-)ES($|-)|(^|-)IT($|-)|(^|-)NL($|-)|(^|-)BE($|-)|(^|-)PT($|-)|(^|-)AT($|-)|(^|-)FI($|-)|(^|-)SE($|-)|(^|-)DK($|-)/i.test(locale);
 
-    // User requested an OR rule: either source identifying Europe is enough
-    // to select the UK/Europe timetable.
-    if (browserTz.startsWith("Europe/") || ipTz.startsWith("Europe/") ||
-        european.has(country) || localeLooksEuropean) return "uk";
-
-    if (browserTz.startsWith("America/") || ipTz.startsWith("America/") ||
-        northAmerican.has(country)) return "na";
-
+    if (european.has(country) || localeLooksEuropean) return "uk";
+    if (northAmerican.has(country)) return "na";
     return "na";
   }
   function targetZone() {
