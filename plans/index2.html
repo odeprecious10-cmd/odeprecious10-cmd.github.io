@@ -611,13 +611,31 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:16px}
   const countryRow = (name) => COUNTRIES.find(c=>c[0]===name) || COUNTRIES[COUNTRIES.length-1];
   const OTHER = (c) => c==='Other Europe'||c==='Somewhere else';
   function countryOfTz(tz){ const c=COUNTRIES.find(c=>c[1].some(z=>z[0]===tz)); return c?c[0]:(tz.indexOf("Europe/")===0?"Other Europe":"Somewhere else"); }
-  function countryOfCode(code){ const c=COUNTRIES.find(c=>c[2]&&c[2]===String(code||"").toUpperCase()); return c?c[0]:"Somewhere else"; }
+  function countryOfCode(code){
+    code=String(code||"").toUpperCase();
+    const c=COUNTRIES.find(c=>c[2]&&c[2]===code);
+    if(c) return c[0];
+    const euroArea = new Set(["AT","CY","EE","FI","GR","HR","LT","LU","LV","MT","PT","SI","SK"]);
+    if(euroArea.has(code)) return "Other Europe";
+    return "Somewhere else";
+  }
   function localeRegion(){ const l=(navigator.languages&&navigator.languages[0])||navigator.language||""; return (l.split("-")[1]||"").toUpperCase(); }
   function browserTz(){
     try { let z=Intl.DateTimeFormat().resolvedOptions().timeZone; z=TZ_ALIAS[z]||z; if(z&&validTz(z)&&!/^(UTC|GMT|Etc\/)/.test(z)) return z; } catch(e){}
     return "";
   }
   const marketOf = (tz) => tz.indexOf("America/")===0 ? "na" : "uk";
+  const EUROPEAN_MARKET_COUNTRIES = new Set([
+    "United Kingdom","Ireland","France","Germany","Netherlands","Belgium","Spain","Italy","Other Europe"
+  ]);
+  const NORTH_AMERICAN_MARKET_COUNTRIES = new Set(["Canada","United States"]);
+  function marketForCountry(country, tz){
+    if(EUROPEAN_MARKET_COUNTRIES.has(country)) return "uk";
+    if(NORTH_AMERICAN_MARKET_COUNTRIES.has(country)) return "na";
+    if(tz && tz.startsWith("Europe/")) return "uk";
+    if(tz && tz.startsWith("America/")) return "na";
+    return "na";
+  }
   const sourceZone = () => geo.market==="na" ? "America/Toronto" : "Europe/London";
   const sourceCity = () => geo.market==="na" ? "Toronto" : "London";
   const cityOf = (tz) => tz.split("/").pop().replace(/_/g," ");
@@ -655,7 +673,9 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:16px}
   function applyGeo(country, tz, source, keepCurrency){
     geo.country=country; $("countrySelect").value=country;
     fillZones(country, tz);
-    geo.market=marketOf(geo.tz);
+    // Country/IP selects the curriculum and display currency. The zone selector
+    // independently controls the visitor's local wall-clock time.
+    geo.market=marketForCountry(country, geo.tz);
     updateLevelOptions();
     if(!keepCurrency){ geo.currency=countryRow(country)[3]; }
     if(!fxRates[geo.currency]) geo.currency="CAD";
@@ -683,16 +703,39 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:16px}
       if(done||geo.userPicked) return;
       tzid=TZ_ALIAS[tzid]||tzid;
       const country=countryOfCode(code);
-      if(deviceTz){
-        const ok = OTHER(country) ? (tzid&&validTz(tzid)&&sameClock(tzid,deviceTz)) : zonesFor(country).some(z=>sameClock(z[0],deviceTz));
-        if(!ok) return;
-        done=true; applyGeo(country, deviceTz, "ip");
-      } else {
-        done=true; applyGeo(country, tzid&&validTz(tzid)?tzid:null, "ip");
+      if(country==="Somewhere else" && tzid && tzid.startsWith("Europe/")) {
+        // Unknown European IP country: use the European curriculum and EUR display.
+        // This fallback does not attempt to infer unsupported local currencies.
       }
+      // Use the browser timezone for displayed class times when available.
+      // If the browser exposes no usable zone, fall back to the IP timezone.
+      const localTz=(deviceTz&&validTz(deviceTz)) ? deviceTz : ((tzid&&validTz(tzid))?tzid:null);
+      done=true;
+      applyGeo(country, localTz, "ip");
     };
-    const fromIpapi=()=>fetch("https://ipapi.co/json/",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json();}).then(d=>{if(d&&d.country_code)use(d.country_code,d.timezone);});
-    const fromIpwho=()=>fetch("https://ipwho.is/",{cache:"no-store"}).then(r=>r.json()).then(d=>{if(d&&d.success!==false&&d.country_code)use(d.country_code,d.timezone&&d.timezone.id);});
+    const fromIpapi=()=>fetch("https://ipapi.co/json/",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json();}).then(d=>{
+      if(d&&d.country_code) {
+        const code=String(d.country_code).toUpperCase();
+        // ipapi may return a country in Europe without an explicit country option.
+        if(!COUNTRIES.some(c=>c[2]===code) && String(d.continent_code||"").toUpperCase()==="EU") {
+          done=true;
+          const localTz=(deviceTz&&validTz(deviceTz))?deviceTz:((d.timezone&&validTz(d.timezone))?d.timezone:null);
+          applyGeo("Other Europe", localTz, "ip");
+        } else use(code,d.timezone);
+      }
+    });
+    const fromIpwho=()=>fetch("https://ipwho.is/",{cache:"no-store"}).then(r=>r.json()).then(d=>{
+      if(d&&d.success!==false&&d.country_code) {
+        const code=String(d.country_code).toUpperCase();
+        const continent=String((d.continent_code)||(d.continent)||"").toUpperCase();
+        if(!COUNTRIES.some(c=>c[2]===code) && (continent==="EU"||continent.includes("EUROPE"))) {
+          done=true;
+          const zone=(d.timezone&&d.timezone.id)||"";
+          const localTz=(deviceTz&&validTz(deviceTz))?deviceTz:((zone&&validTz(zone))?zone:null);
+          applyGeo("Other Europe", localTz, "ip");
+        } else use(code,d.timezone&&d.timezone.id);
+      }
+    });
     try { fromIpapi().catch(()=>fromIpwho().catch(()=>{})); } catch(e){}
   }
   function loadRates(){
