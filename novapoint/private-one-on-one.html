@@ -293,7 +293,9 @@
         <ul class="enq-points"><li><b aria-hidden="true">✓</b> Takes about a minute</li><li><b aria-hidden="true">✓</b> No commitment to enquire</li><li><b aria-hidden="true">✓</b> We discuss options and pricing with you</li></ul></div>
       <form class="enq-form" id="enqForm" novalidate>
         <div class="enq-row"><label for="fName">Parent or guardian name<input id="fName" name="name" type="text" autocomplete="name" placeholder="Your name" /></label>
-          <label for="fContact">Email or phone<input id="fContact" name="contact" type="text" autocomplete="email" placeholder="How should we reach you?" /></label></div>
+          <label for="fLearner">Learner's name<input id="fLearner" name="learner" type="text" autocomplete="off" placeholder="Your learner's first name" /></label></div>
+        <div class="enq-row"><label for="fEmail">Email<input id="fEmail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" /></label>
+          <label for="fPhone">Phone number<input id="fPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. +1 416 555 0123" /></label></div>
         <div class="enq-row"><label for="fRegion">Where are you based?<select id="fRegion" name="region"><option value="">Select</option><option value="na">North America</option><option value="uk">UK &amp; Europe</option><option value="other">Somewhere else</option></select><span class="enq-hint" id="fRegionHint" aria-live="polite"></span></label>
           <label for="fLevel">Learner's level<select id="fLevel" name="level"><option value="">Select</option></select></label></div>
         <div class="enq-row"><label for="fSubject">Subject<select id="fSubject" name="subject"><option value="">Select</option><option>Mathematics</option><option>English</option><option>Chemistry</option><option>Physics</option><option>Robotics &amp; Coding</option><option>French</option><option>Yoruba</option><option>Igbo</option><option>More than one / not sure</option></select></label>
@@ -508,7 +510,7 @@
         e.preventDefault();
         const lines = ['Hello ClassOf5 Academy,', '', 'I would like to enquire about Private 1-On-1 tutoring.', ''];
         const add = (k, val) => { if (val) lines.push(k + ': ' + val); };
-        add('Parent/guardian', v('fName')); add('Contact', v('fContact')); add('Location', (document.getElementById('fRegion').selectedOptions[0]||{}).textContent && document.getElementById('fRegion').value ? document.getElementById('fRegion').selectedOptions[0].textContent + (window.__c5Country ? ' (' + window.__c5Country + ')' : '') : '');
+        add('Parent/guardian', v('fName')); add('Learner', v('fLearner')); add('Email', v('fEmail')); add('Phone', v('fPhone')); add('Location', (document.getElementById('fRegion').selectedOptions[0]||{}).textContent && document.getElementById('fRegion').value ? document.getElementById('fRegion').selectedOptions[0].textContent + (window.__c5Country ? ' (' + window.__c5Country + ')' : '') : '');
         add("Learner's level", (document.getElementById('fLevel').selectedOptions[0]||{}).textContent && document.getElementById('fLevel').value ? document.getElementById('fLevel').selectedOptions[0].textContent : ''); add('Subject', v('fSubject')); add('Plan', v('fPlan')); (function () {
           const focus = (document.getElementById('fPlan').value || '').indexOf('Focus') === 0, rows = [];
           for (let i = 1; i <= (focus ? 2 : 1); i++) {
