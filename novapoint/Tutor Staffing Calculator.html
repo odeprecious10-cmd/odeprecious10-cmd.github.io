@@ -246,9 +246,9 @@ footer{margin-top:22px;font-size:12px;color:var(--muted);max-width:80ch}
     t+='<tr class="tot"><td>All packages</td><td>'+T.c+'</td><td>'+T.seats+'</td><td>'+T.classes+'</td><td>'+f1(T.hours)+'</td><td>'+f1(pooled)+'</td></tr>';
     $('tbl').innerHTML=t;
     // pods table
-    var pt='<tr><th>Pod</th><th>Children</th><th>Sections</th><th>Hours a week</th><th>Tutors needed</th><th>Have</th><th>Hire</th><th>Sections each</th></tr>';
-    PODS.forEach(function(pd,i){pt+='<tr><td>'+pd.name+' <span style="color:var(--muted)">'+pd.grades+'</span></td><td>'+podC[i]+'</td><td>'+podS[i]+'</td><td>'+f1(podRaw[i])+'</td><td>'+podN[i]+'</td><td>'+s.nows[i]+'</td><td style="font-weight:700;color:'+(podN[i]>s.nows[i]?'var(--neg)':'var(--good)')+'">'+(podN[i]>s.nows[i]?'+'+(podN[i]-s.nows[i]):(s.nows[i]>podN[i]?'spare '+(s.nows[i]-podN[i]):'ok'))+'</td><td>'+(podN[i]?f1(podS[i]/podN[i]):'–')+'</td></tr>'});
-    pt+='<tr class="tot"><td>All pods</td><td>'+T.c+'</td><td>'+T.classes+'</td><td>'+f1(T.hours)+'</td><td>'+need+'</td><td>'+s.now+'</td><td style="font-weight:800">'+(function(){var h=0;podN.forEach(function(n,i){h+=Math.max(0,n-s.nows[i])});return h?'+'+h:'0'})()+'</td><td>'+(need?f1(T.classes/need):'–')+'</td></tr>';
+    var pt='<tr><th>Pod</th><th>Children</th><th>Sections</th><th>Hours a week</th><th>Tutors needed</th><th>Have</th><th>Hire</th><th>Sections each</th><th>Hours each</th></tr>';
+    PODS.forEach(function(pd,i){pt+='<tr><td>'+pd.name+' <span style="color:var(--muted)">'+pd.grades+'</span></td><td>'+podC[i]+'</td><td>'+podS[i]+'</td><td>'+f1(podRaw[i])+'</td><td>'+podN[i]+'</td><td>'+s.nows[i]+'</td><td style="font-weight:700;color:'+(podN[i]>s.nows[i]?'var(--neg)':'var(--good)')+'">'+(podN[i]>s.nows[i]?'+'+(podN[i]-s.nows[i]):(s.nows[i]>podN[i]?'spare '+(s.nows[i]-podN[i]):'ok'))+'</td><td>'+(podN[i]?f1(podS[i]/podN[i]):'–')+'</td><td style="font-weight:700">'+(podN[i]?f1(podRaw[i]/podN[i]):'–')+'</td></tr>'});
+    pt+='<tr class="tot"><td>All pods</td><td>'+T.c+'</td><td>'+T.classes+'</td><td>'+f1(T.hours)+'</td><td>'+need+'</td><td>'+s.now+'</td><td style="font-weight:800">'+(function(){var h=0;podN.forEach(function(n,i){h+=Math.max(0,n-s.nows[i])});return h?'+'+h:'0'})()+'</td><td>'+(need?f1(T.classes/need):'–')+'</td><td>'+(need?f1(T.hours/need):'–')+'</td></tr>';
     $('podt').innerHTML=pt;
     var pn=$('podnote'), extra=need-Math.ceil(pooled-1e-9);
     if(T.hours){
