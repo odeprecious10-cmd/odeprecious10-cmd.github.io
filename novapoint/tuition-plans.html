@@ -895,7 +895,9 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:16px}
       frequency:s.frequency, weekend:s.sessions.some(x=>x.day===6||x.day===0)};
   }
   const keyOf = (s) => s.sessions.map(x=>x.day+"@"+x.time).join("|");
-  const sameDay = (a,b) => a.sessions.some(x=>b.sessions.some(y=>x.day===y.day));
+  const tmin = (t) => { const [h,m]=t.split(":").map(Number); return h*60+m; };
+  // Same subject: classes may share a Sunday (e.g. Fri+Sun and Sat+Sun) only if their times are well apart; any other shared day clashes.
+  const sameDay = (a,b) => a.sessions.some(x=>b.sessions.some(y=>x.day===y.day&&(x.day!==0||Math.abs(tmin(x.time)-tmin(y.time))<150)));
   const overlap = (a,b) => a.sessions.some(x=>b.sessions.some(y=>x.day===y.day&&x.time===y.time));
 
   /* =========================================================
@@ -977,7 +979,10 @@ footer a{color:#cfe7e2;text-decoration:none;margin-left:16px}
   const modeSelect=(id,key,label)=>`<div class="field"><label for="${id}">${label}</label><select id="${id}" data-mode="${key}">${optionHtml("standard","Standard",modes[key])+optionHtml("flex","Flex",modes[key])}</select></div>`;
 
   function slotGroup(key, subject, mode, title, sel, other, second){
-    const list=scheduleFor(subject,mode,altStd(key,subject));
+    const full=scheduleFor(subject,mode,altStd(key,subject));
+    const isClash=(s)=>!!(other&&(second?sameDay(s,other):overlap(s,other)));
+    const vis=full.filter(s=>!isClash(s));
+    const list=vis.length?vis:full;
     if(!list.length) return `<div class="warning show">No timetable is set up for ${escapeHtml(subject)} yet. Please contact NovaPoint.</div>`;
     const selKey=sel?keyOf(sel):"";
     return `<div class="schedule-title"><h4>${escapeHtml(title)}</h4><span class="pill ${mode==="standard"?"std":""}">${subject==="Robotics & Coding"?"SELECT ONE SESSION":(mode==="standard"?(altStd(key,subject)?"SECOND CLASS · STANDARD TIME":"STANDARD TIME"):"FLEX TIMES")}</span></div>
