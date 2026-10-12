@@ -1,0 +1,323 @@
+<title>ClassOf5 Package Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+/* Layout: package picker and assumptions on the left, a month-end P&L on the right; stacks on phones. Navy, amber and slate follow the ClassOf5 site. */
+:root{
+  --bg:#F8FAFC; --card:#FFFFFF; --ink:#0F172A; --slate:#475569; --muted:#64748B; --line:#E2E8F0;
+  --amber:#D97706; --amber-soft:#FFFBEB; --amber-line:#F4D7A3; --navy:#0F172A;
+  --cost:#CBD5E1; --keep:#D97706; --good:#0E8A5F; --warn:#B45309; --warn-bg:#FFF7ED; --neg:#B42318;
+  --display:'Plus Jakarta Sans','Inter',system-ui,sans-serif; --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B1220; --card:#111A2E; --ink:#E6ECF5; --slate:#B6C2D4; --muted:#8FA0B8; --line:#233048;
+  --amber:#F59E0B; --amber-soft:#2A2110; --amber-line:#5A4318; --navy:#050A14;
+  --cost:#33425C; --keep:#F59E0B; --good:#34D399; --warn:#FBBF24; --warn-bg:#2A2110; --neg:#F97066; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1220; --card:#111A2E; --ink:#E6ECF5; --slate:#B6C2D4; --muted:#8FA0B8; --line:#233048;
+  --amber:#F59E0B; --amber-soft:#2A2110; --amber-line:#5A4318; --navy:#050A14;
+  --cost:#33425C; --keep:#F59E0B; --good:#34D399; --warn:#FBBF24; --warn-bg:#2A2110; --neg:#F97066; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;font-variant-numeric:tabular-nums;padding-inline:16px;padding-block:0 48px}
+.wrap{max-width:1120px;margin:0 auto}
+header{padding-block:28px 22px}
+.kick{color:var(--amber);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+h1{font:800 clamp(30px,5vw,46px)/1.05 var(--display);letter-spacing:-.045em;margin:8px 0 10px;text-wrap:balance}
+header p{margin:0;max-width:64ch;color:var(--slate)}
+.grid{display:grid;grid-template-columns:minmax(0,350px) minmax(0,1fr);gap:20px;align-items:start}
+@media(max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.inputs{position:sticky;top:12px;display:grid;gap:18px}
+@media(max-width:860px){.inputs{position:static}}
+h2{font:800 15px/1.2 var(--display);letter-spacing:-.02em;margin:0 0 2px}
+.f{display:grid;gap:6px}
+.f label{font-size:12px;font-weight:700;color:var(--slate);display:flex;justify-content:space-between;gap:10px}
+.f label b{color:var(--ink);font-weight:700}
+input[type=range]{width:100%;accent-color:var(--amber)}
+input[type=number],select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+.pick select{font-weight:700;font-size:15px;padding:12px;border-color:var(--amber);border-width:2px}
+.hint{font-size:12px;color:var(--muted);margin:0}
+.chk{display:flex;gap:10px;align-items:center;font-size:13px;font-weight:600;color:var(--slate)}
+.chk input{accent-color:var(--amber);width:18px;height:18px}
+.hero{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:20px}
+@media(max-width:640px){.hero{grid-template-columns:minmax(0,1fr)}}
+.big{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.big.main{background:var(--navy);color:#fff;border-color:var(--navy)}
+.big small{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.big.main small{color:#FBBF24}
+.big strong{display:block;font:800 clamp(26px,4vw,34px)/1.1 var(--display);letter-spacing:-.04em;margin-top:6px}
+.big span{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.big.main span{color:#CBD5E1}
+.neg{color:var(--neg)}
+.big.main strong.neg{color:#FCA5A5}
+.pkgline{display:flex;flex-wrap:wrap;gap:6px 14px;margin:2px 0 12px;font-size:13px;color:var(--slate)}
+.pkgline b{color:var(--ink)}
+.pl{display:grid;gap:0;margin-top:12px}
+.row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) auto;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)}
+.row .nm{font-size:13px;color:var(--slate);min-width:0}
+.row .nm small{display:block;font-size:11px;color:var(--muted)}
+.row .bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.row .bar i{display:block;height:100%;background:var(--cost);border-radius:99px}
+.row .amt{font-size:13px;font-weight:600;text-align:right;min-width:78px}
+.row.sub{background:var(--amber-soft);border-radius:10px;border-bottom:0;padding:10px 12px;margin-block:4px}
+.row.sub .nm{color:var(--ink);font-weight:700}
+.row.sub .bar i{background:var(--keep)}
+.row.sub .amt{font-weight:800}
+@media(max-width:520px){.row{grid-template-columns:minmax(0,1fr) auto}.row .bar{display:none}}
+.sec{margin-top:20px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:460px}
+th,td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+td.cur,tr.cur td{background:var(--amber-soft);font-weight:800;color:var(--ink)}
+.note{margin-top:14px;padding:12px 14px;border-radius:12px;font-size:13px;background:var(--amber-soft);border:1px solid var(--amber-line);color:var(--ink)}
+.note.warn{background:var(--warn-bg)}
+.note b{font-weight:700}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+@media(max-width:520px){.two{grid-template-columns:minmax(0,1fr)}}
+.mini{border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.mini small{display:block;font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.mini strong{font:800 20px/1.2 var(--display);letter-spacing:-.03em}
+.mini span{display:block;font-size:12px;color:var(--muted)}
+.mini.bad strong{color:var(--warn)}
+ul.as{margin:10px 0 0;padding-left:18px;color:var(--slate);font-size:13px}
+ul.as li{margin:4px 0}
+footer{margin-top:22px;font-size:12px;color:var(--muted);max-width:80ch}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="kick">ClassOf5 Academy · Package economics</div>
+  <h1>What is left after operating costs</h1>
+  <p>Pick a package, set how many learners you have, and see the month's profit and loss. It covers every group plan and Private 1-On-1. Everything is in CAD and before the founder's own pay.</p>
+</header>
+
+<div class="grid">
+  <aside class="panel inputs" aria-label="Assumptions">
+    <div class="f pick">
+      <label for="pkg">Package</label>
+      <select id="pkg"></select>
+      <p class="hint" id="pkgDesc"></p>
+    </div>
+    <div class="f"><label for="n">Paying learners (children) <b id="nV">100</b></label><input id="n" type="range" min="5" max="300" step="5" value="100"><p class="hint" id="nH"></p></div>
+    <div class="f" id="fPrice"><label for="price">Price per learner (CA$ a month)</label><input id="price" type="number" min="1" step="1" value="69"><p class="hint" id="priceH"></p></div>
+    <div class="f" id="fFill"><label for="fill">Average learners per class <b id="fillV">4.5</b></label><input id="fill" type="range" min="2" max="5" step="0.5" value="4.5"><p class="hint">Classes hold at most 5. Fewer learners per class means more tutor hours for the same fees.</p></div>
+    <div class="f" id="fRate"><label for="rate">Tutor pay per class hour <b id="rateV">CA$14.00</b></label><input id="rate" type="range" min="14" max="32" step="0.1" value="14"><p class="hint" id="rateH"></p></div>
+    <div class="f" id="fMix"><label for="mix">On Focus (2 a week) <b id="mixV">50%</b></label><input id="mix" type="range" min="0" max="100" step="5" value="50"><p class="hint" id="mixH"></p></div>
+    <div class="f" id="fShare"><label for="share">Tutor share of fees <b id="shareV">55%</b></label><input id="share" type="range" min="45" max="70" step="1" value="55"><p class="hint">Your side keeps the rest.</p></div>
+    <div class="f"><label for="dom">Cards from Canada or the US <b id="domV">70%</b></label><input id="dom" type="range" min="0" max="100" step="5" value="70"><p class="hint">Other cards pay a higher Stripe fee (5.7%).</p></div>
+    <div class="f"><label for="care">Part-time support person</label>
+      <select id="care"><option value="0">None</option><option value="8">8 hours a week</option><option value="15" selected>15 hours a week</option></select><p class="hint">Costed at CA$20 an hour.</p></div>
+    <label class="chk"><input id="books" type="checkbox" checked> Bookkeeper, 5 hours a week</label>
+    <div class="f"><label for="draw">Founder takes <b id="drawV">60%</b> of what is left</label><input id="draw" type="range" min="0" max="100" step="5" value="60"></div>
+  </aside>
+
+  <main class="out">
+    <section class="hero" aria-live="polite">
+      <div class="big main"><small>Left before tax</small><strong id="hPre">–</strong><span id="hPreSub"></span></div>
+      <div class="big"><small>After tax (11.2%)</small><strong id="hPost">–</strong><span id="hPostSub"></span></div>
+      <div class="big"><small>Founder draw</small><strong id="hDraw">–</strong><span id="hDrawSub"></span></div>
+    </section>
+
+    <section class="panel">
+      <h2 id="plTitle">Month by month</h2>
+      <div class="pkgline" id="pkgline"></div>
+      <div class="pl" id="pl"></div>
+      <div class="two">
+        <div class="mini" id="mLearner"><small>Left per learner</small><strong>–</strong><span></span></div>
+        <div class="mini" id="mWage"><small>Tutor pay per taught hour</small><strong>–</strong><span></span></div>
+        <div class="mini" id="mBreak"><small>Learners to break even</small><strong>–</strong><span></span></div>
+        <div class="mini" id="mLoad"><small>Teaching load</small><strong>–</strong><span></span></div>
+      </div>
+      <div class="note warn" id="wage" hidden></div>
+    </section>
+
+    <section class="panel sec">
+      <h2>All packages at <span id="cmpN">100</span> learners</h2>
+      <p class="hint" style="margin-bottom:8px">Each package at its usual class size and your other settings. The one you picked is highlighted.</p>
+      <div class="scroll"><table id="cmp"></table></div>
+    </section>
+
+    <section class="panel sec">
+      <h2>What changes the answer</h2>
+      <p class="hint" style="margin-bottom:8px" id="sensH"></p>
+      <div class="scroll"><table id="sens"></table></div>
+      <ul class="as">
+        <li>Every learner pays every month. Refunds, free trials, drop-outs and discounts will lower the figures.</li>
+        <li>Negative numbers mean the package loses money at that size once support staff and the reserve are counted.</li>
+      </ul>
+    </section>
+
+    <section class="panel sec">
+      <h2>How this is calculated</h2>
+      <ul class="as">
+        <li><b>Group tutors:</b> paid per class hour, plus 10% extra hours for make-up classes. One tutor covers up to 18 teaching hours a week. A two-subject plan puts each learner in two classes.</li>
+        <li><b>Private tutors:</b> a share of every fee, with one tutor covering up to 18 taught hours a week.</li>
+        <li><b>Stripe:</b> 2.9% + CA$0.30 on domestic cards, 5.7% + CA$0.30 on international cards, plus 0.5% for failed payments.</li>
+        <li><b>Lessonspace:</b> cheapest plan for the month's room hours at US$1 = CA$1.4262. Group rooms with more than 3 learners also pay an extra US$0.25 per person per hour.</li>
+        <li><b>TutorBird:</b> US$16.95 plus US$4.95 for each tutor and staff member.</li>
+        <li><b>Marketing:</b> nothing under 50 learners, then CA$100 rising to CA$500 a month. <b>Reserve:</b> CA$150 rising with size.</li>
+        <li><b>Tax:</b> a flat 11.2% placeholder on what is left. An accountant sets the real figure, including HST and instalments.</li>
+      </ul>
+    </section>
+  </main>
+</div>
+<footer>A planning model, not a forecast or financial advice. Prices and platform costs were taken from earlier research and should be checked again before launch. Tutor employment status and minimum wage need an Ontario employment professional.</footer>
+</div>
+
+<script>
+(function(){
+  var FX=1.4262, TAX=.112, DOMR=.029, INTL=.057, FEE=.30, LEAK=.005, MINW=17.95, WM=52/12;
+  var LS=[[9,10,1.95],[29,30,1.80],[99,100,1.20],[199,200,.95]];
+  var PKGS=[
+    {id:'std',grp:'Small group',kind:'g',name:'Standard Focus · 1 subject',price:69,seats:1,classes:2,fill:4.5,desc:'Two live 60-minute lessons a week in one subject, at the published time. Up to 5 learners a class.'},
+    {id:'flex',grp:'Small group',kind:'g',name:'Flex Focus · 1 subject',price:99,seats:1,classes:2,fill:3,desc:'The same two lessons a week with more approved times. Flex classes usually start with 2 to 3 learners.'},
+    {id:'stdpair',grp:'Small group',kind:'g',name:'Standard Pair · 2 subjects',price:119,seats:2,classes:2,fill:4.5,desc:'Two subjects at published Standard times. Each learner sits in two classes, four lessons a week.'},
+    {id:'hybrid',grp:'Small group',kind:'g',name:'Hybrid Pair · 1 Standard + 1 Flex',price:149,seats:2,classes:2,fill:3.5,desc:'One subject at the Standard time and one at a Flex time. Four lessons a week.'},
+    {id:'flexpair',grp:'Small group',kind:'g',name:'Flex Pair · 2 Flex subjects',price:169,seats:2,classes:2,fill:3,desc:'Both subjects at approved Flex times. Four lessons a week.'},
+    {id:'pe',grp:'Private 1-On-1',kind:'p',name:'Private Essential · 1 session a week',price:149,sess:1,desc:'One learner, one tutor, one live 60-minute session a week.'},
+    {id:'pf',grp:'Private 1-On-1',kind:'p',name:'Private Focus · 2 sessions a week',price:269,sess:2,desc:'One learner, one tutor, two live 60-minute sessions a week.'},
+    {id:'pm',grp:'Private 1-On-1',kind:'p',name:'Private 1-On-1 · Essential + Focus mix',price:0,sess:0,desc:'A blend of Essential at CA$149 and Focus at CA$269. Set the blend with the slider.'}
+  ];
+  var $=function(i){return document.getElementById(i)};
+  var cad=function(x){var s=Math.abs(Math.round(x)).toLocaleString('en-CA');return (x<0&&Math.round(x)!==0?'−':'')+'CA$'+s};
+  var byId=function(id){return PKGS.filter(function(p){return p.id===id})[0]};
+  function lsUsd(h){var b=1e9;LS.forEach(function(p){b=Math.min(b,p[0]+Math.max(0,h-p[1])*p[2])});return b}
+  function common(o,gross,tutorCost,roomHours,surUsd,weeklyTutorHrs){
+    var n=o.n, p=o.dom*DOMR+(1-o.dom)*INTL;
+    var stripe=gross*p+FEE*n, leak=LEAK*gross;
+    var ls=(lsUsd(roomHours)+surUsd)*FX;
+    var tutors=Math.max(1,Math.ceil(weeklyTutorHrs/18)), staff=(o.care>0?1:0)+(o.books?1:0);
+    var tb=(16.95+4.95*(tutors+staff))*FX;
+    var mkt=n<50?0:Math.min(500,100+(n-50)), res=150+Math.max(0,n-25)*350/975;
+    var pool=gross-stripe-leak-tutorCost-ls-tb-mkt-res;
+    var care=o.care*20*WM, bk=o.books?5*20*WM:0, pre=pool-care-bk, tax=Math.max(0,pre)*TAX;
+    return {gross:gross,stripe:stripe,leak:leak,tutor:tutorCost,ls:ls,tb:tb,mkt:mkt,res:res,pool:pool,care:care,bk:bk,pre:pre,tax:tax,post:pre-tax,tutors:tutors,roomHours:roomHours,n:n};
+  }
+  function calcGroup(o,pk){
+    var seats=o.n*pk.seats, groups=Math.max(1,Math.ceil(seats/o.fill));
+    var reg=groups*pk.classes*WM, mk=reg*.10, paid=reg+mk;
+    var rate=o.fill+1>4?(o.fill+1)*.25:0;
+    var r=common(o,o.n*o.price,paid*o.rate,paid,rate*reg,groups*pk.classes*1.1);
+    r.groups=groups; r.paidHours=paid; r.weeklyClasses=groups*pk.classes; r.hourly=o.rate; return r;
+  }
+  function calcPrivate(o,pk){
+    var ne=0,nf=0,pe=149,pf=269;
+    if(pk.id==='pe'){ne=o.n;pe=o.price}
+    else if(pk.id==='pf'){nf=o.n;pf=o.price}
+    else{ne=Math.round(o.n*(100-o.mix)/100);nf=o.n-ne}
+    var gross=ne*pe+nf*pf, weekly=ne+2*nf, taught=weekly*WM;
+    var r=common(o,gross,o.share*gross,taught*1.1,0,weekly);
+    r.ne=ne;r.nf=nf;r.taughtHours=taught;r.weekly=weekly;
+    var h=[]; if(ne)h.push(pe*o.share/WM); if(nf)h.push(pf*o.share/(2*WM));
+    r.hourly=Math.min.apply(null,h); r.hE=ne?pe*o.share/WM:null; r.hF=nf?pf*o.share/(2*WM):null; return r;
+  }
+  function calc(o,pk){return pk.kind==='g'?calcGroup(o,pk):calcPrivate(o,pk)}
+  function state(){var pk=byId($('pkg').value);return {pk:pk,o:{n:+$('n').value,price:+$('price').value||0,fill:+$('fill').value,rate:+$('rate').value,mix:+$('mix').value,share:+$('share').value/100,dom:+$('dom').value/100,care:+$('care').value,books:$('books').checked},draw:+$('draw').value/100}}
+  function row(nm,sub,amt,gross,cls){
+    var w=Math.max(0,Math.min(100,Math.abs(amt)/gross*100));
+    return '<div class="row '+(cls||'')+'"><div class="nm">'+nm+(sub?'<small>'+sub+'</small>':'')+'</div><div class="bar"><i style="width:'+w.toFixed(1)+'%"></i></div><div class="amt'+(amt<0&&cls==='sub'?' neg':'')+'">'+cad(amt)+'</div></div>';
+  }
+  function setPackage(keepN){
+    var pk=byId($('pkg').value);
+    $('pkgDesc').textContent=pk.desc;
+    var g=pk.kind==='g';
+    $('fFill').hidden=!g; $('fRate').hidden=!g; $('fShare').hidden=g; $('fMix').hidden=pk.id!=='pm'; $('fPrice').hidden=pk.id==='pm';
+    if(pk.id!=='pm'){$('price').value=pk.price}
+    $('priceH').textContent='Listed price on your site. Change it to test a different price.';
+    if(g){$('fill').value=pk.fill}
+  }
+  function render(){
+    var s=state(), pk=s.pk, o=s.o, r=calc(o,pk), g=pk.kind==='g';
+    $('nV').textContent=o.n; $('fillV').textContent=o.fill.toFixed(1); $('rateV').textContent='CA$'+o.rate.toFixed(2); $('rateH').textContent='A tutor teaching 18 hours a week earns CA$'+(o.rate*36).toFixed(0)+' every two weeks, about ₦'+Math.round(o.rate*36*900/1000)+',000 at ₦900 per CA$1.';
+    $('mixV').textContent=o.mix+'%'; $('shareV').textContent=Math.round(o.share*100)+'%'; $('domV').textContent=Math.round(o.dom*100)+'%'; $('drawV').textContent=Math.round(s.draw*100)+'%';
+    if(pk.id==='pm'){var ne=Math.round(o.n*(100-o.mix)/100);$('mixH').textContent=ne+' on Essential at CA$149 and '+(o.n-ne)+' on Focus at CA$269.'}
+    var seats=g?o.n*pk.seats:o.n;
+    $('nH').textContent=g?(pk.seats===2?o.n+' children = '+seats+' class enrolments (a Maths class and an English class each), paid as one monthly fee.':o.n+' children = '+seats+' class enrolments, one monthly payment each.'):(o.n+' children = '+o.n+' private learners, one tutor and one payment each.');
+    var neg=r.pre<0;
+    $('hPre').textContent=cad(r.pre); $('hPre').className=neg?'neg':''; $('hPreSub').textContent=cad(r.pre*12)+' a year';
+    $('hPost').textContent=cad(r.post); $('hPostSub').textContent=cad(r.post*12)+' a year';
+    var draw=Math.max(0,r.post)*s.draw; $('hDraw').textContent=cad(draw); $('hDrawSub').textContent=cad(Math.max(0,r.post)-draw)+' stays in the business';
+    $('plTitle').textContent=pk.name;
+    var gross=Math.max(1,r.gross), h='';
+    if(g){
+      $('pkgline').innerHTML='<span><b>'+o.n+'</b> children, <b>'+seats+'</b> enrolments</span><span><b>'+r.groups+'</b> classes of about '+o.fill.toFixed(1)+'</span><span><b>'+r.weeklyClasses+'</b> classes a week</span><span><b>'+r.tutors+'</b> tutors</span>';
+      h+=row('Revenue',o.n+' learners × CA$'+o.price,r.gross,gross,'sub');
+      h+=row('Tutors',Math.round(r.paidHours)+' paid hours at CA$'+o.rate.toFixed(2)+', incl. make-ups',-r.tutor,gross);
+    }else{
+      $('pkgline').innerHTML='<span><b>'+r.weekly+'</b> private sessions a week</span><span><b>'+r.tutors+'</b> tutors</span>'+(pk.id==='pm'?'<span><b>'+r.ne+'</b> Essential, <b>'+r.nf+'</b> Focus</span>':'');
+      h+=row('Revenue',pk.id==='pm'?r.ne+' × 149 + '+r.nf+' × 269':o.n+' learners × CA$'+o.price,r.gross,gross,'sub');
+      h+=row('Tutors',Math.round(o.share*100)+'% of fees, '+Math.round(r.taughtHours)+' taught hours',-r.tutor,gross);
+    }
+    h+=row('Stripe fees','',-r.stripe,gross);
+    h+=row('Failed payments and leakage','0.5% of revenue',-r.leak,gross);
+    h+=row('Lessonspace','cheapest plan for '+Math.round(r.roomHours)+' room hours',-r.ls,gross);
+    h+=row('TutorBird','',-r.tb,gross);
+    h+=row('Marketing','',-r.mkt,gross);
+    h+=row('Cash reserve','',-r.res,gross);
+    h+=row('Left to pay people','',r.pool,gross,'sub');
+    h+=row('Support person',o.care?o.care+' hours a week at CA$20':'not hired',-r.care,gross);
+    h+=row('Bookkeeper',o.books?'5 hours a week':'not hired',-r.bk,gross);
+    h+=row('Left before tax','',r.pre,gross,'sub');
+    h+=row('Tax',r.pre>0?'11.2% placeholder':'none while there is nothing left',-r.tax,gross);
+    h+=row('Left after tax','',r.post,gross,'sub');
+    $('pl').innerHTML=h;
+    // minis
+    var per=r.pre/o.n, ml=$('mLearner'); ml.querySelector('strong').textContent=cad(per); ml.querySelector('strong').style.color=per<0?'var(--neg)':'';
+    ml.querySelector('span').textContent='of CA$'+(r.gross/o.n).toFixed(0)+' paid, before tax';
+    var mw=$('mWage'), low=r.hourly<MINW; mw.className='mini'+(low?' bad':'');
+    mw.querySelector('strong').textContent='CA$'+r.hourly.toFixed(2);
+    mw.querySelector('span').textContent=(low?'Below':'Above')+' the CA$'+MINW.toFixed(2)+' Ontario minimum wage'+(!g&&pk.id==='pm'?' (lower of the two plans)':'')+'. 18 hours a week is CA$'+Math.round(r.hourly*36)+' every two weeks.';
+    var be=null; for(var k=5;k<=400;k+=1){var t=Object.assign({},o,{n:k}); if(calc(t,pk).pre>=0){be=k;break}}
+    var mb=$('mBreak'); mb.querySelector('strong').textContent=be?be:'over 400'; mb.querySelector('span').textContent=be?'with the support set on the left':'at these settings';
+    var mo=$('mLoad'); mo.querySelector('strong').textContent=r.tutors+(r.tutors===1?' tutor':' tutors');
+    mo.querySelector('span').textContent=g?(r.weeklyClasses+' classes a week, '+Math.round(r.paidHours/WM)+' tutor hours a week'):(r.weekly+' sessions a week, up to 18 hours per tutor');
+    var w=$('wage');
+    if(low){
+      w.hidden=false;
+      var need=g?'':(pk.id==='pe'?Math.ceil(MINW/(o.price/WM)*100):Math.ceil(MINW/((pk.id==='pf'?o.price:269)/(2*WM))*100));
+      w.innerHTML=g?'<b>Note on the tutor rate.</b> CA$'+o.rate.toFixed(2)+' an hour is below the CA$'+MINW.toFixed(2)+' Ontario minimum wage cited in your plan. That test is for employees in Ontario. Tutors who are independent contractors based outside Canada are treated differently, so confirm the setup with an employment adviser.'
+        :'<b>Check the split.</b> At '+Math.round(o.share*100)+'%, the lowest-paid private tutors earn CA$'+r.hourly.toFixed(2)+' for each taught hour. That test is for employees in Ontario. Contractors based outside Canada are treated differently, so confirm with an employment adviser. A share of about '+need+'% or more keeps them above it.';
+    }else w.hidden=true;
+    // compare all
+    var rows=PKGS.map(function(p){
+      var oo=Object.assign({},o,{price:(p.id===pk.id?o.price:p.price),fill:(p.id===pk.id?o.fill:p.fill)});
+      var x=calc(oo,p); return {p:p,x:x};
+    }).sort(function(a,b){return b.x.pre-a.x.pre});
+    $('cmpN').textContent=o.n;
+    var t='<tr><th>Package</th><th>Revenue</th><th>Left before tax</th><th>Per learner</th></tr>';
+    rows.forEach(function(q){
+      t+='<tr class="'+(q.p.id===pk.id?'cur':'')+'"><td>'+q.p.name+'</td><td>'+cad(q.x.gross)+'</td><td'+(q.x.pre<0?' class="neg"':'')+'>'+cad(q.x.pre)+'</td><td'+(q.x.pre<0?' class="neg"':'')+'>'+cad(q.x.pre/o.n)+'</td></tr>';
+    });
+    $('cmp').innerHTML=t;
+    // sensitivity
+    var cols=[25,50,100,150,250], rowsDef, label;
+    if(g){rowsDef=[2,3,4,5]; label=function(v){return v+' learners per class'}; $('sensH').textContent='Left before tax each month for '+pk.name+', by class size and number of learners.'}
+    else{rowsDef=[50,55,60,65]; label=function(v){return 'Tutors '+v+'%'}; $('sensH').textContent='Left before tax each month for '+pk.name+', by tutor share and number of learners.'}
+    var st='<tr><th>'+(g?'Class size':'Tutor share')+'</th>'+cols.map(function(c){return '<th>'+c+' learners</th>'}).join('')+'</tr>';
+    rowsDef.forEach(function(v){
+      st+='<tr><td>'+label(v)+'</td>';
+      cols.forEach(function(c){
+        var oo=Object.assign({},o,{n:c}); if(g)oo.fill=v; else oo.share=v/100;
+        var x=calc(oo,pk), cur=(c===o.n)&&(g?Math.abs(v-o.fill)<.01:Math.abs(v/100-o.share)<.005);
+        st+='<td class="'+(cur?'cur ':'')+(x.pre<0?'neg':'')+'">'+cad(x.pre)+'</td>';
+      });
+      st+='</tr>';
+    });
+    $('sens').innerHTML=st;
+  }
+  // build dropdown
+  var SHORT={std:'Standard Focus',flex:'Flex Focus',stdpair:'Standard Pair',hybrid:'Hybrid Pair',flexpair:'Flex Pair',pe:'Private Essential',pf:'Private Focus',pm:'Private mix'};
+  var html='', cur='';
+  PKGS.forEach(function(p){
+    if(p.grp!==cur){ if(cur)html+='</optgroup>'; html+='<optgroup label="'+p.grp+'">'; cur=p.grp; }
+    html+='<option value="'+p.id+'">'+(SHORT[p.id]||p.name)+(p.price?' · CA$'+p.price:'')+'</option>';
+  });
+  $('pkg').innerHTML=html+'</optgroup>';
+  $('pkg').addEventListener('change',function(){setPackage();render()});
+  ['n','price','fill','rate','mix','share','dom','care','books','draw'].forEach(function(i){$(i).addEventListener('input',render);$(i).addEventListener('change',render)});
+  setPackage(); render();
+})();
+</script>

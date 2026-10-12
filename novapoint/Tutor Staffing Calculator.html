@@ -1,0 +1,311 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Tutor Staffing Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+/* Layout: team settings and package cards on the left, results on the right; stacks on phones. Navy, amber and slate follow the ClassOf5 site. */
+:root{
+  --bg:#F8FAFC; --card:#FFFFFF; --ink:#0F172A; --slate:#475569; --muted:#64748B; --line:#E2E8F0;
+  --amber:#D97706; --amber-soft:#FFFBEB; --amber-line:#F4D7A3; --navy:#0F172A;
+  --good:#0E8A5F; --good-bg:#ECFDF5; --warn:#B45309; --warn-bg:#FFF7ED; --neg:#B42318; --neg-bg:#FEF3F2;
+  --display:'Plus Jakarta Sans','Inter',system-ui,sans-serif; --body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B1220; --card:#111A2E; --ink:#E6ECF5; --slate:#B6C2D4; --muted:#8FA0B8; --line:#233048;
+  --amber:#F59E0B; --amber-soft:#2A2110; --amber-line:#5A4318; --navy:#050A14;
+  --good:#34D399; --good-bg:#0F2A22; --warn:#FBBF24; --warn-bg:#2A2110; --neg:#F97066; --neg-bg:#2E1715; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0B1220; --card:#111A2E; --ink:#E6ECF5; --slate:#B6C2D4; --muted:#8FA0B8; --line:#233048;
+  --amber:#F59E0B; --amber-soft:#2A2110; --amber-line:#5A4318; --navy:#050A14;
+  --good:#34D399; --good-bg:#0F2A22; --warn:#FBBF24; --warn-bg:#2A2110; --neg:#F97066; --neg-bg:#2E1715; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;font-variant-numeric:tabular-nums;padding-inline:16px;padding-block:0 48px}
+.wrap{max-width:1120px;margin:0 auto}
+header{padding-block:28px 22px}
+.kick{color:var(--amber);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+h1{font:800 clamp(30px,5vw,46px)/1.05 var(--display);letter-spacing:-.045em;margin:8px 0 10px;text-wrap:balance}
+header p{margin:0;max-width:64ch;color:var(--slate)}
+.grid{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:20px;align-items:start}
+@media(max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px}
+.left{display:grid;gap:20px}
+h2{font:800 15px/1.2 var(--display);letter-spacing:-.02em;margin:0 0 2px}
+.f{display:grid;gap:6px;margin-top:14px}
+.f label{font-size:12px;font-weight:700;color:var(--slate);display:flex;justify-content:space-between;gap:10px}
+.f label b{color:var(--ink);font-weight:700}
+input[type=range]{width:100%;accent-color:var(--amber)}
+input[type=number]{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
+.hint{font-size:12px;color:var(--muted);margin:0}
+.pk{border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;gap:10px}
+.pk+.pk{margin-top:10px}
+.pk h3{margin:0;font:800 14px/1.2 var(--display);letter-spacing:-.02em;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.pk h3 small{font:600 12px var(--body);color:var(--muted);letter-spacing:0}
+.pk .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pk label{font-size:11px;font-weight:700;color:var(--slate);display:grid;gap:4px;letter-spacing:.04em;text-transform:uppercase}
+.pk .calc{font-size:12px;color:var(--slate);margin:0;padding-top:8px;border-top:1px dashed var(--line)}
+.pk .calc b{color:var(--ink)}
+.hero{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:20px}
+@media(max-width:560px){.hero{grid-template-columns:minmax(0,1fr)}}
+.big{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.big.main{background:var(--navy);color:#fff;border-color:var(--navy)}
+.big small{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.big.main small{color:#FBBF24}
+.big strong{display:block;font:800 clamp(26px,4vw,34px)/1.1 var(--display);letter-spacing:-.04em;margin-top:6px}
+.big span{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+.big.main span{color:#CBD5E1}
+.sec{margin-top:20px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:520px}
+th,td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+tr.tot td{font-weight:800;background:var(--amber-soft);border-bottom:0}
+.status{margin-top:14px;padding:12px 14px;border-radius:12px;font-size:13px;border:1px solid var(--line)}
+.status.ok{background:var(--good-bg);border-color:transparent}
+.status.short{background:var(--neg-bg);border-color:transparent}
+.status.tight{background:var(--warn-bg);border-color:transparent}
+.status b{font-weight:700}
+.steps{display:grid;gap:10px;margin:12px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;font-size:13px;color:var(--slate)}
+.steps li:before{content:counter(s);display:grid;place-items:center;width:28px;height:28px;border-radius:9px;background:var(--amber-soft);border:1px solid var(--amber-line);color:var(--amber);font-weight:800;font-size:12px}
+.steps b{color:var(--ink)}
+.ex{margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--amber-soft);border:1px solid var(--amber-line);font-size:13px}
+ul.as{margin:10px 0 0;padding-left:18px;color:var(--slate);font-size:13px}
+ul.as li{margin:4px 0}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.mini-l{font-size:11px!important;font-weight:700;color:var(--slate);display:grid!important;gap:4px;letter-spacing:.04em;text-transform:uppercase;justify-content:stretch!important}
+.pod{border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.pod+.pod{margin-top:10px}
+.pod h3{margin:0 0 8px;font:800 13px/1.2 var(--display);letter-spacing:-.02em;display:flex;justify-content:space-between;gap:8px}
+.pod h3 small{font:600 12px var(--body);color:var(--muted)}
+.pod .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pod label{font-size:11px;font-weight:700;color:var(--slate);display:grid;gap:4px;letter-spacing:.04em;text-transform:uppercase}
+footer{margin-top:22px;font-size:12px;color:var(--muted);max-width:80ch}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="kick">ClassOf5 Academy · Team planning</div>
+  <h1>How many tutors do we need?</h1>
+  <p>Enter how many children are on each package and how they spread across grades. The page opens a new section whenever one is full, adds up the teaching hours in each pod, then works out how many tutors you need. Tutors are grouped in three pods: a Grades 1 to 4 tutor teaches Alpha and Beta, Grades 5 to 8 go together, and Grades 9 to 12 go together. The numbers shown start as an example mix of 100 children, so replace them with yours.</p>
+</header>
+
+<div class="grid">
+  <div class="left">
+    <section class="panel" aria-label="Team settings">
+      <h2>Team settings</h2>
+      <div class="f"><label>Tutor schedule <b>Mon–Sat · 3 slots a day</b></label><p class="hint" id="capH"></p></div>
+      <div class="f"><label for="mk">Make-up classes <b id="mkV">10%</b></label><input id="mk" type="range" min="0" max="25" step="5" value="10"><p class="hint">Extra group hours for missed classes. Private sessions are not padded.</p></div>
+      <div class="f"><label for="buf">Spare tutors for sickness and cover <b id="bufV">0%</b></label><input id="buf" type="range" min="0" max="30" step="5" value="0"><p class="hint">10 to 15% is a safer plan.</p></div>
+      <div class="f"><label>Tutors on the team now, by pod</label><div class="three"><label class="mini-l">Pod 1<input id="now0" type="number" min="0" step="1" value="2"></label><label class="mini-l">Pod 2<input id="now1" type="number" min="0" step="1" value="1"></label><label class="mini-l">Pod 3<input id="now2" type="number" min="0" step="1" value="1"></label></div><p class="hint">Pod 1 is Grades 1–4, Pod 2 is Grades 5–8, Pod 3 is Grades 9–12.</p></div>
+    </section>
+    <section class="panel" aria-label="Children on each package">
+      <h2>Children on each package</h2>
+      <p class="hint">One child pays once a month. Pair plans put each child in two sections. A section holds at most the number you set, and a new section opens when it is full.</p>
+      <div id="pkgs" style="margin-top:12px"></div>
+    </section>
+    <section class="panel" aria-label="Children by grade">
+      <h2>Children by grade</h2>
+      <p class="hint">Type the number of students in each grade group. The page works out the percentages for you. Sections are counted band by band, and tutors inside each pod, because a tutor never crosses into another pod.</p>
+      <div id="bands" style="margin-top:12px"></div>
+      <p class="hint" id="bandTot" style="margin-top:10px"></p>
+    </section>
+  </div>
+
+  <main class="out">
+    <section class="hero" aria-live="polite">
+      <div class="big main"><small>Tutors needed</small><strong id="hT">–</strong><span id="hTs"></span></div>
+      <div class="big"><small>Teaching hours a week</small><strong id="hH">–</strong><span id="hHs"></span></div>
+      <div class="big"><small>Children and enrolments</small><strong id="hC">–</strong><span id="hCs"></span></div>
+      <div class="big"><small>Children per tutor</small><strong id="hP">–</strong><span id="hPs"></span></div>
+    </section>
+
+    <section class="panel">
+      <h2>Tutor pods</h2>
+      <p class="hint" style="margin-bottom:8px">Each pod is a group of tutors who can teach any grade in it. Hours are added across the pod's two bands, then rounded up to whole tutors. Each tutor holds at least one section, which is 2 hours a week.</p>
+      <div class="scroll"><table id="podt"></table></div>
+      <div class="status" id="podnote" hidden></div>
+    </section>
+
+    <section class="panel sec">
+      <h2>Package by package</h2>
+      <div class="scroll" style="margin-top:8px"><table id="tbl"></table></div>
+      <div class="status" id="status" hidden></div>
+    </section>
+
+    <section class="panel sec">
+      <h2>One tutor carries about</h2>
+      <p class="hint" style="margin-bottom:8px">At the teaching hours and class sizes you set. Use it as a quick rule when you do not want to fill in the cards.</p>
+      <div class="scroll"><table id="rule"></table></div>
+    </section>
+
+    <section class="panel sec">
+      <h2>Room left on the current team</h2>
+      <div id="room"></div>
+    </section>
+
+    <section class="panel sec">
+      <h2>How the number is worked out</h2>
+      <ol class="steps">
+        <li><span><b>Children to grade bands.</b> Your shares split each package's children across the six bands.</span></li>
+        <li><span><b>Enrolments to sections.</b> In each band, divide enrolments by the section maximum and round up. A sixth child in a band of five opens a second section. A pair plan puts each child in two sections.</span></li>
+        <li><span><b>Sections to hours.</b> Each section meets twice a week for 60 minutes. Add the make-up allowance. Private sessions are 1 hour each.</span></li>
+        <li><span><b>Bands to pods.</b> Alpha and Beta (Grades 1 to 4) share tutors, Grades 5 to 8 share tutors, and Grades 9 to 12 share tutors.</span></li>
+        <li><span><b>Hours to tutors.</b> A tutor teaches Mon to Sat, 3 sections a day at most, so 18 hours a week. Every tutor holds at least one section, 2 hours a week. In each pod, divide hours by 18 and round up.</span></li>
+        
+      </ol>
+      <div class="ex" id="ex"></div>
+      <ul class="as">
+        <li>Section size moves the answer most. Spreading learners across six bands makes sections smaller than the maximum of 5, and every small section needs a full tutor hour.</li><li>Subjects are not split. In practice a Maths section and an English section cannot be merged, so real section counts can be a little higher.</li>
+        <li>A Maths tutor cannot cover an English section, so check tutors per subject within each pod before you hire.</li>
+        <li>Tutors cost about CA$7 a month each in TutorBird. The package calculator adds the costs.</li>
+      </ul>
+    </section>
+  </main>
+</div>
+<footer>A planning aid, not a promise of availability. Check tutor employment status, screening and minimum wage with an Ontario employment professional.</footer>
+</div>
+
+<script>
+(function(){
+  var PK=[
+    {id:'std',name:'Standard Focus',tag:'1 subject · CA$69',kind:'g',seats:1,cls:2,fill:5,n:40},
+    {id:'flex',name:'Flex Focus',tag:'1 subject · CA$99',kind:'g',seats:1,cls:2,fill:3,n:15},
+    {id:'stdpair',name:'Standard Pair',tag:'2 subjects · CA$119',kind:'g',seats:2,cls:2,fill:5,n:15},
+    {id:'hybrid',name:'Hybrid Pair',tag:'1 Standard + 1 Flex · CA$149',kind:'g',seats:2,cls:2,fill:4,n:8},
+    {id:'flexpair',name:'Flex Pair',tag:'2 Flex subjects · CA$169',kind:'g',seats:2,cls:2,fill:3,n:4},
+    {id:'pe',name:'Private Essential',tag:'1 session a week · CA$149',kind:'p',sess:1,n:10},
+    {id:'pf',name:'Private Focus',tag:'2 sessions a week · CA$269',kind:'p',sess:2,n:8}
+  ];
+  var BANDS=[
+    {id:'b0',name:'Grades 1–2',sub:'Alpha',pod:0,pct:10},{id:'b1',name:'Grades 3–4',sub:'Beta',pod:0,pct:15},
+    {id:'b2',name:'Grades 5–6',sub:'',pod:1,pct:35},{id:'b3',name:'Grades 7–8',sub:'',pod:1,pct:30},
+    {id:'b4',name:'Grades 9–10',sub:'',pod:2,pct:5},{id:'b5',name:'Grades 11–12',sub:'',pod:2,pct:5}
+  ];
+  var PODS=[{name:'Pod 1',grades:'Grades 1–4',note:'Alpha + Beta'},{name:'Pod 2',grades:'Grades 5–8',note:''},{name:'Pod 3',grades:'Grades 9–12',note:''}];
+  var WM=52/12;
+  var $=function(i){return document.getElementById(i)};
+  var f1=function(x){return (Math.round(x*10)/10).toLocaleString('en-CA',{minimumFractionDigits:1,maximumFractionDigits:1})};
+  var f0=function(x){return Math.round(x).toLocaleString('en-CA')};
+  $('pkgs').innerHTML=PK.map(function(p){
+    var fill=p.kind==='g'?'<label>Max per section<input id="f_'+p.id+'" type="number" min="2" max="5" step="1" value="'+p.fill+'"></label>':'<label>Tutors per child<input type="number" value="1" disabled></label>';
+    return '<div class="pk"><h3>'+p.name+'<small>'+p.tag+'</small></h3><div class="two"><label>Children<input id="c_'+p.id+'" type="number" min="0" step="1" value="'+p.n+'"></label>'+fill+'</div><p class="calc" id="k_'+p.id+'"></p></div>';
+  }).join('');
+  $('bands').innerHTML=PODS.map(function(pd,i){
+    return '<div class="pod"><h3>'+pd.name+'<small>'+pd.grades+(pd.note?' · '+pd.note:'')+' · <span id="gpod'+i+'"></span></small></h3><div class="two">'+BANDS.filter(function(b){return b.pod===i}).map(function(b){return '<label>'+b.name+(b.sub?' ('+b.sub+')':'')+' <span id="gp_'+b.id+'" style="color:var(--amber);letter-spacing:0;text-transform:none"></span><input id="g_'+b.id+'" type="number" min="0" step="1" value="'+b.pct+'"></label>'}).join('')+'</div></div>';
+  }).join('');
+  function settings(){var days=6;return {days:days,cap:days*3,mk:+$('mk').value/100,buf:+$('buf').value/100,nows:[0,1,2].map(function(i){return Math.max(0,Math.floor(+$('now'+i).value||0))}),now:[0,1,2].reduce(function(a,i){return a+Math.max(0,Math.floor(+$('now'+i).value||0))},0)}}
+  function alloc(n,share){
+    var raw=share.map(function(x){return n*x}), b=raw.map(Math.floor), r=n-b.reduce(function(a,c){return a+c},0);
+    raw.map(function(v,i){return i}).sort(function(i,j){return (raw[j]-b[j])-(raw[i]-b[i])}).slice(0,r).forEach(function(i){b[i]++});
+    return b;
+  }
+  function per(p,s,share){
+    var c=Math.max(0,Math.floor(+$('c_'+p.id).value||0)), mx=p.kind==='g'?Math.min(5,Math.max(2,+$('f_'+p.id).value||p.fill)):0, r={p:p,c:c,fill:mx};
+    var cb=alloc(c,share); r.cb=cb;
+    if(p.kind==='g'){
+      r.secb=cb.map(function(x){return x?Math.ceil(x*p.seats/mx):0});
+      r.hb=r.secb.map(function(x){return x*p.cls*(1+s.mk)});
+      r.seats=c*p.seats;
+    }else{ r.secb=cb.map(function(){return 0}); r.hb=cb.map(function(x){return x*p.sess}); r.seats=c; }
+    r.classes=r.secb.reduce(function(a,b){return a+b},0);
+    r.hours=r.hb.reduce(function(a,b){return a+b},0);
+    r.tut=r.hours*(1+s.buf)/s.cap; return r;
+  }
+  function render(){
+    var s=settings();
+    $('capH').textContent='A section is one hour, twice a week: Mon and Wed, Tue and Thu, or Fri and Sat. A tutor teaches up to 3 sections a day (5 to 9pm with breaks), so 18 hours a week at most, about '+f1(s.cap/(2*(1+s.mk)))+' sections with make-ups. A tutor who holds one section teaches 2 hours a week, and can add more on the other day pairs, for example Beta.';
+    $('mkV').textContent=Math.round(s.mk*100)+'%'; $('bufV').textContent=Math.round(s.buf*100)+'%';
+    var raw=BANDS.map(function(b){return Math.max(0,+$('g_'+b.id).value||0)}), rsum=raw.reduce(function(a,b){return a+b},0);
+    var share=raw.map(function(v){return rsum>0?v/rsum:1/6});
+    var pkgKids=PK.reduce(function(t,p){return t+Math.max(0,Math.floor(+$('c_'+p.id).value||0))},0);
+    BANDS.forEach(function(b,i){$('gp_'+b.id).textContent='· '+Math.round(share[i]*100)+'%'});
+    [0,1,2].forEach(function(k){var t=0;BANDS.forEach(function(b,i){if(b.pod===k)t+=share[i]});$('gpod'+k).textContent=f0(raw.reduce(function(a,v,i){return a+(BANDS[i].pod===k?v:0)},0))+' students · '+Math.round(t*100)+'%'});
+    $('bandTot').innerHTML='Total <b style="color:var(--ink)">'+f0(rsum)+' students</b> by grade.'+(rsum!==pkgKids?' The package cards above add up to <b style="color:var(--ink)">'+f0(pkgKids)+' children</b>, so the page uses your grade numbers only to work out the percentages and applies them to the package children.':' This matches the package cards.');
+    var rs=PK.map(function(p){return per(p,s,share)});
+    var T={c:0,seats:0,classes:0,hours:0}; rs.forEach(function(r){T.c+=r.c;T.seats+=r.seats;T.classes+=r.classes;T.hours+=r.hours});
+    var podRaw=[0,0,0],podC=[0,0,0],podS=[0,0,0];
+    rs.forEach(function(r){BANDS.forEach(function(b,i){podRaw[b.pod]+=r.hb[i];podC[b.pod]+=r.cb[i];podS[b.pod]+=r.secb[i]})});
+    var podH=podRaw.map(function(h){return h*(1+s.buf)});
+    var podN=podH.map(function(h,i){return h>0?Math.min(podS[i]||1,Math.max(1,Math.ceil(h/s.cap-1e-9))):0});
+    var pooled=T.hours*(1+s.buf)/s.cap;
+    var need=podN.reduce(function(a,b){return a+b},0);
+    $('hT').textContent=need; $('hTs').textContent=need?podN.join(' + ')+' across the three pods ('+f1(pooled)+' if everyone could teach every grade)':'Add children to see a result';
+    $('hH').textContent=f0(T.hours); $('hHs').textContent=T.classes+' group sections a week plus private sessions';
+    $('hC').textContent=T.c+' · '+T.seats; $('hCs').textContent=T.c+' children, '+T.seats+' enrolments';
+    $('hP').textContent=need?f1(T.c/need):'–'; $('hPs').textContent=need?f1(T.seats/need)+' enrolments per tutor':'';
+    rs.forEach(function(r){
+      var el=$('k_'+r.p.id);
+      el.innerHTML=r.c?(r.p.kind==='g'?'<b>'+r.seats+'</b> enrolments in <b>'+r.classes+'</b> sections (about '+f1(r.seats/r.classes)+' each) · <b>'+f1(r.hours)+'</b> hours a week':'<b>'+r.c*r.p.sess+'</b> sessions a week · <b>'+f1(r.hours)+'</b> hours'):'No children on this package.';
+    });
+    var t='<tr><th>Package</th><th>Children</th><th>Enrolments</th><th>Sections</th><th>Hours a week</th><th>Tutors of work</th></tr>';
+    rs.forEach(function(r){
+      t+='<tr><td>'+r.p.name+'</td><td>'+r.c+'</td><td>'+r.seats+'</td><td>'+(r.p.kind==='g'?r.classes:'–')+'</td><td>'+f1(r.hours)+'</td><td>'+f1(r.tut)+'</td></tr>';
+    });
+    t+='<tr class="tot"><td>All packages</td><td>'+T.c+'</td><td>'+T.seats+'</td><td>'+T.classes+'</td><td>'+f1(T.hours)+'</td><td>'+f1(pooled)+'</td></tr>';
+    $('tbl').innerHTML=t;
+    // pods table
+    var pt='<tr><th>Pod</th><th>Children</th><th>Sections</th><th>Hours a week</th><th>Tutors needed</th><th>Have</th><th>Hire</th><th>Sections each</th></tr>';
+    PODS.forEach(function(pd,i){pt+='<tr><td>'+pd.name+' <span style="color:var(--muted)">'+pd.grades+'</span></td><td>'+podC[i]+'</td><td>'+podS[i]+'</td><td>'+f1(podRaw[i])+'</td><td>'+podN[i]+'</td><td>'+s.nows[i]+'</td><td style="font-weight:700;color:'+(podN[i]>s.nows[i]?'var(--neg)':'var(--good)')+'">'+(podN[i]>s.nows[i]?'+'+(podN[i]-s.nows[i]):(s.nows[i]>podN[i]?'spare '+(s.nows[i]-podN[i]):'ok'))+'</td><td>'+(podN[i]?f1(podS[i]/podN[i]):'–')+'</td></tr>'});
+    pt+='<tr class="tot"><td>All pods</td><td>'+T.c+'</td><td>'+T.classes+'</td><td>'+f1(T.hours)+'</td><td>'+need+'</td><td>'+s.now+'</td><td style="font-weight:800">'+(function(){var h=0;podN.forEach(function(n,i){h+=Math.max(0,n-s.nows[i])});return h?'+'+h:'0'})()+'</td><td>'+(need?f1(T.classes/need):'–')+'</td></tr>';
+    $('podt').innerHTML=pt;
+    var pn=$('podnote'), extra=need-Math.ceil(pooled-1e-9);
+    if(T.hours){
+      pn.hidden=false; pn.className='status '+(extra>0?'tight':'ok');
+      var thin=[];PODS.forEach(function(pd,i){if(podN[i]&&podRaw[i]/podN[i]<4)thin.push(pd.name+' ('+f1(podRaw[i]/podN[i])+' h)')});
+      pn.innerHTML=(extra>0?'<b>Pods add '+extra+' tutor'+(extra>1?'s':'')+'.</b> The part-filled tutor in each pod cannot help another pod.':'<b>No extra cost from pods.</b> They round up to the same team size as one shared pool.')+(thin.length?'<br>Light loads, under 4 hours a week each: '+thin.join(', ')+'. Hire these tutors only as sections open.':'');
+    }else pn.hidden=true;
+    // status vs current team
+    var st=$('status'); st.hidden=false;
+    var capNow=s.now*s.cap, needH=T.hours*(1+s.buf), spare=capNow-needH;
+    var hires=[],tight=[],spares=[];
+    PODS.forEach(function(pd,i){
+      var d=podN[i]-s.nows[i], capP=s.nows[i]*s.cap, u=capP>0?podH[i]/capP:(podH[i]>0?9:0);
+      if(d>0)hires.push('<b>'+pd.name+' ('+pd.grades+')</b>: hire '+d+' ('+f1(podH[i])+' hours a week, '+s.nows[i]+' tutor'+(s.nows[i]===1?' covers ':'s cover ')+f0(capP)+')');
+      else if(u>.85&&podH[i]>0)tight.push(pd.name+' ('+Math.round(u*100)+'% booked)');
+      else if(d<0)spares.push(pd.name+' has '+(-d)+' spare');
+    });
+    var totHire=0;podN.forEach(function(n,i){totHire+=Math.max(0,n-s.nows[i])});
+    if(!T.hours){st.hidden=true}
+    else if(hires.length){st.className='status short';st.innerHTML='<b>Short of tutors. Hire '+totHire+' in total.</b><br>'+hires.join('<br>')+(spares.length?'<br>'+spares.join(', ')+'. A spare tutor cannot move to another pod.':'')}
+    else if(tight.length){st.className='status tight';st.innerHTML='<b>Covered, but tight:</b> '+tight.join(', ')+'. Start recruiting there before the next enrolments land.'+(spares.length?'<br>'+spares.join(', ')+'.':'')}
+    else{st.className='status ok';st.innerHTML='<b>Covered.</b> Every pod has enough tutors.'+(spares.length?' '+spares.join(', ')+'.':'')}
+    // rule of thumb table
+    var q='<tr><th>Package</th><th>Children per tutor</th><th>Enrolments per tutor</th></tr>';
+    PK.forEach(function(p){
+      var r=rs.filter(function(x){return x.p.id===p.id})[0];
+      var hpc=p.kind==='g'?p.seats*p.cls*(1+s.mk)/(r.fill||p.fill):p.sess; hpc*=(1+s.buf);
+      var kids=s.cap/hpc, seats=p.kind==='g'?kids*p.seats:kids;
+      q+='<tr><td>'+p.name+(p.kind==='g'?' <span style="color:var(--muted)">with full sections of '+(r.fill||p.fill)+'</span>':'')+'</td><td>'+f1(kids)+'</td><td>'+f1(seats)+'</td></tr>';
+    });
+    $('rule').innerHTML=q;
+    // room left
+    var rm='';
+    if(s.now<=0){rm='<p class="hint" style="margin-top:8px">Enter the number of tutors on the team to see room for more children.</p>'}
+    else if(spare<=0){rm='<p class="hint" style="margin-top:8px">No spare hours. The current team is full at this mix.</p>'}
+    else{
+      rm='<p class="hint" style="margin:8px 0">'+s.now+' tutors have <b style="color:var(--ink)">'+f1(spare)+'</b> spare teaching hours a week. If they all went to one package, the team could add about:</p><div class="scroll"><table style="min-width:360px"><tr><th>Package</th><th>More children</th></tr>';
+      PK.forEach(function(p){
+        var r=rs.filter(function(x){return x.p.id===p.id})[0];
+        var hpc=(p.kind==='g'?p.seats*p.cls*(1+s.mk)/(r.fill||p.fill):p.sess)*(1+s.buf);
+        rm+='<tr><td>'+p.name+'</td><td>'+Math.floor(spare/hpc)+'</td></tr>';
+      });
+      rm+='</table></div><p class="hint" style="margin-top:8px">Counts assume every new section is full and sits in a pod with a free tutor. In practice children only fit where a section has an open seat at a time that works.</p>';
+    }
+    $('room').innerHTML=rm;
+    // worked example
+    var ex=rs.filter(function(r){return r.c>0})[0];
+    if(ex){
+      var bi=0;ex.cb.forEach(function(x,i){if(x>ex.cb[bi])bi=i});
+      $('ex').innerHTML=ex.p.kind==='g'
+        ?'<b>Example, '+ex.p.name+':</b> '+ex.c+' children'+(ex.p.seats===2?' × 2 subjects':'')+' = '+ex.seats+' enrolments, spread over six grade bands. The biggest band, '+BANDS[bi].name+', has '+ex.cb[bi]+' children, which takes '+ex.secb[bi]+' section'+(ex.secb[bi]>1?'s':'')+' at '+ex.fill+' per section. All bands together need '+ex.classes+' sections × 2 hours × '+(1+s.mk).toFixed(2)+' = '+f1(ex.hours)+' hours a week.'
+        :'<b>Example, '+ex.p.name+':</b> '+ex.c+' children × '+ex.p.sess+' session'+(ex.p.sess>1?'s':'')+' = '+f1(ex.hours)+' hours a week.';
+    }else $('ex').textContent='Add children to a package to see a worked example.';
+  }
+  document.addEventListener('input',function(e){ if(e.target && (e.target.tagName==='INPUT')) render(); });
+  render();
+})();
+</script>
+
+</body></html>
