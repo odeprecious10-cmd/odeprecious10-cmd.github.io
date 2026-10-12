@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Flex Settings | ClassOf5 Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
+<style>
+:root{
+  --navy:#101a31;--navy2:#26364f;--brand:#e17800;--brand-dark:#c86b00;--brand-soft:#fff2df;--brand-line:#f1dfc9;
+  --gold:#f4aa22;--ink:#111a2e;--muted:#5b6c7e;--line:#dce5ed;--paper:#f6f8fb;--white:#fff;--good:#0e8a5f;--warn:#a85a00;
+  --shadow:0 16px 42px rgba(16,26,49,.10);--radius:20px;
+  --display:'Plus Jakarta Sans','Inter',ui-sans-serif,system-ui,sans-serif;
+  --body:'Inter',ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-text-size-adjust:100%}
+button,input,select{font:inherit}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.wrap{width:min(1100px,calc(100% - 32px));margin:auto}
+.strip{background:var(--navy);color:#fff;font-size:13px;font-weight:600;padding:8px 0}
+.strip .wrap{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--gold);margin-right:7px}
+.bar{background:#fff;border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap}
+.bar a.brand{display:flex;align-items:center;gap:12px;text-decoration:none;font-family:var(--display);font-weight:800;color:var(--navy);font-size:18px}
+.bar a.brand img{height:40px;width:auto}
+.bar a.back{color:var(--brand-dark);font-weight:700;text-decoration:none;font-size:15px}
+.bar a.back:hover{text-decoration:underline}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,4vw,38px);line-height:1.15;margin:34px 0 8px;color:var(--navy)}
+h2{font-family:var(--display);font-weight:800;font-size:20px;margin:0 0 4px;color:var(--navy)}
+.lead{color:var(--muted);margin:0 0 22px;max-width:760px}
+.how{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.how ol{margin:8px 0 0;padding-left:22px}
+.how li{margin:4px 0}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.ctrl{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:6px;min-width:220px;flex:1}
+.field label{font-size:13px;font-weight:700;color:var(--navy2)}
+select{border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff;color:var(--ink);width:100%}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.seg button{border:0;background:#fff;padding:11px 18px;font-weight:700;color:var(--navy2);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--navy);color:#fff}
+.zone{font-size:13px;color:var(--muted);margin:12px 0 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 14px;box-shadow:var(--shadow)}
+.card .head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.count{font-size:13px;font-weight:700;color:var(--good)}
+.count.few{color:var(--warn)}
+.mini{display:flex;gap:8px}
+.btn{border:1px solid var(--line);background:#fff;color:var(--navy);border-radius:999px;padding:7px 13px;font-weight:700;font-size:13px;cursor:pointer}
+.btn:hover{background:var(--paper)}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff;font-size:15px;padding:12px 22px}
+.btn.primary:hover{background:var(--brand-dark)}
+.std{display:flex;gap:10px;align-items:center;background:var(--brand-soft);border:1px solid var(--brand-line);border-radius:12px;padding:10px 12px;margin-bottom:8px;font-size:14px}
+.std b{display:block}
+.tag{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:999px;padding:3px 9px;white-space:nowrap}
+.opt{display:flex;gap:11px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px;cursor:pointer;background:#fff}
+.opt:hover{border-color:#c4d0dc}
+.opt.on{background:#fffaf2;border-color:var(--brand)}
+.opt input{width:20px;height:20px;accent-color:var(--brand);flex:none}
+.opt .t{font-weight:700;font-size:15px}
+.opt .r{color:#9a5200;font-weight:700;font-size:14px}
+.opt .w{margin-left:auto;font-size:11px;font-weight:700;color:#667789;background:#eef1f4;border-radius:999px;padding:2px 9px}
+.msg{font-size:14px;margin:8px 0 0}
+.msg.warn{color:var(--warn);font-weight:600}
+.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:6px}
+.file{font-size:14px}
+.out{margin-top:14px}
+pre{background:var(--navy);color:#e8eef6;border-radius:14px;padding:14px;overflow:auto;font-size:12.5px;max-height:260px;margin:10px 0 0}
+.note{color:var(--muted);font-size:14px;margin:10px 0 0}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--navy);color:#fff;border-radius:12px;padding:12px 18px;font-weight:600;box-shadow:var(--shadow);display:none;z-index:9;max-width:calc(100% - 32px)}
+.toast.show{display:block}
+@media(max-width:560px){.opt{flex-wrap:wrap}.opt .w{margin-left:31px}.seg button{padding:10px 12px}}
+</style>
+</head>
+<body>
+<div class="strip"><div class="wrap"><span><i class="dot"></i>Admin page</span><span><i class="dot"></i>Not linked from the public site</span></div></div>
+<div class="bar"><div class="wrap">
+  <a class="brand" href="index.html"><img src="classof5-logo-home.png" alt="" onerror="this.style.display='none'"><span>ClassOf5 · Flex settings</span></a>
+  <a class="back" href="tuition-plans.html">View Tuition &amp; Plans &rarr;</a>
+</div></div>
+
+<main class="wrap">
+  <h1>Flex settings</h1>
+  <p class="lead">Choose which Flex times parents can pick on the Tuition &amp; Plans page. Open a few at launch, then open more as sections fill. Standard times are always open.</p>
+
+  <section class="how" aria-label="How this works">
+    <h2>How to publish a change</h2>
+    <ol>
+      <li>Tick the Flex times to open for each subject, for each level and market.</li>
+      <li>Press <b>Download flex-settings.json</b>.</li>
+      <li>In your GitHub repository, upload that file next to <b>tuition-plans.html</b>, replacing the old one. The Tuition &amp; Plans page uses it within a minute or two.</li>
+    </ol>
+    <p class="note">This page never changes the live site by itself. If <b>flex-settings.json</b> is missing, every Flex time shows. A subject with none ticked also shows every time, so a parent is never left without a choice.</p>
+  </section>
+
+  <section class="panel" aria-label="Choose market and level">
+    <div class="ctrl">
+      <div class="field" style="flex:none;min-width:0">
+        <label id="mkLabel">Market</label>
+        <div class="seg" role="group" aria-labelledby="mkLabel">
+          <button type="button" id="mkNA" aria-pressed="true">North America</button>
+          <button type="button" id="mkUK" aria-pressed="false">UK &amp; Europe</button>
+        </div>
+      </div>
+      <div class="field">
+        <label for="level">Learner level</label>
+        <select id="level"></select>
+      </div>
+    </div>
+    <p class="zone" id="zone"></p>
+  </section>
+
+  <div class="cards" id="cards"></div>
+
+  <section class="panel" style="margin-top:18px" aria-label="Save settings">
+    <h2>Save your settings</h2>
+    <p class="note" style="margin-top:0" id="summary"></p>
+    <div class="actions">
+      <button class="btn primary" type="button" id="dl">Download flex-settings.json</button>
+      <button class="btn" type="button" id="show">Show the file</button>
+      <button class="btn" type="button" id="reset">Open every time again</button>
+      <label class="file">Load an existing file: <input type="file" id="load" accept=".json,application/json"></label>
+    </div>
+    <div class="out" id="out"></div>
+  </section>
+</main>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="schedule-data.js"></script>
+<script>
+(function(){
+  "use strict";
+  const D=window.NP_SCHEDULE;
+  const $=(i)=>document.getElementById(i);
+  const esc=(s)=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const DAYS=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  const keyOf=(s)=>s.sessions.map(x=>x.day+"@"+x.time).join("|");
+  const clk=(t)=>{const [h,m]=t.split(":").map(Number);const ap=h>=12?"pm":"am";const f=(x)=>(x%12||12)+(m?":"+String(m).padStart(2,"0"):":00");return f(h)+" "+ap};
+  const range=(t)=>{const [h,m]=t.split(":").map(Number);const e=((h*60+m+60)/60)%24;const eh=Math.floor(e),em=Math.round((e-eh)*60);const a=clk(t),b=clk(String(eh).padStart(2,"0")+":"+String(em).padStart(2,"0"));return a+" – "+b};
+  const label=(s)=>s.sessions.map(x=>DAYS[x.day]).join(" + ");
+
+  const LEVELS=[
+    ["alpha","Alpha · Grades 1–2"],["beta","Beta · Grades 3–4"],["gamma","Gamma · Grades 5–6"],
+    ["delta","Delta · Grades 7–8"],["senior","Sigma and Omega · Grades 9–12"]
+  ];
+  let market="na", level="alpha";
+  let open={};            // "market|level|subject" -> [keys] (only stored when not everything is open)
+  const DRAFT="classof5-flex-settings-draft";
+
+  function table(){
+    if(level==="senior") return market==="uk"?D.seniorUK:D.seniorNA;
+    const t=market==="uk"?D.k8UK:D.k8NA; return t[level];
+  }
+  function flexList(item){
+    const seen=new Set([keyOf(item.standard)]),out=[];
+    item.flex.forEach(s=>{const k=keyOf(s);if(!seen.has(k)){seen.add(k);out.push(s)}});
+    return out;
+  }
+  const ok=(sub)=>market+"|"+level+"|"+sub;
+  const isOpen=(sub,k)=>{const l=open[ok(sub)];return !Array.isArray(l)||l.includes(k)};
+
+  function setOpen(sub,keys,all){
+    // all = full list of Flex keys for this subject; store nothing when everything is open
+    const chosen=all.filter(k=>keys.includes(k));
+    if(chosen.length===all.length) delete open[ok(sub)]; else open[ok(sub)]=chosen;
+    persist();
+  }
+  function persist(){try{localStorage.setItem(DRAFT,JSON.stringify(open))}catch(e){}}
+  function toast(m){const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("show"),3500)}
+
+  function render(){
+    $("mkNA").setAttribute("aria-pressed",String(market==="na"));
+    $("mkUK").setAttribute("aria-pressed",String(market==="uk"));
+    $("zone").textContent=market==="uk"
+      ? "Times below are London time. The Tuition & Plans page converts them to each parent's own time zone."
+      : "Times below are Toronto (Eastern) time. The Tuition & Plans page converts them to each parent's own time zone.";
+    const t=table(),subs=Object.keys(t);
+    $("cards").innerHTML=subs.map(sub=>{
+      const item=t[sub],list=flexList(item),all=list.map(keyOf),n=all.filter(k=>isOpen(sub,k)).length;
+      const few=n===0;
+      return '<section class="card" data-sub="'+esc(sub)+'" aria-label="'+esc(sub)+'">'+
+        '<div class="head"><div><h2>'+esc(sub)+'</h2><div class="count'+(few?' few':'')+'" id="cnt_'+esc(sub)+'">'+(few?'None ticked, so all '+all.length+' show':(n+' of '+all.length+' Flex times open'))+'</div></div>'+
+        '<div class="mini"><button class="btn" type="button" data-all="'+esc(sub)+'">Open all</button><button class="btn" type="button" data-none="'+esc(sub)+'">Close all</button></div></div>'+
+        '<div class="std"><span class="tag">Standard</span><div><b>'+esc(label(item.standard))+' · '+esc(range(item.standard.sessions[0].time))+'</b>Always open</div></div>'+
+        list.map((s,i)=>{const k=all[i],on=isOpen(sub,k),we=s.sessions.some(x=>x.day===6||x.day===0);
+          return '<label class="opt'+(on?' on':'')+'"><input type="checkbox" data-sub="'+esc(sub)+'" data-key="'+esc(k)+'"'+(on?' checked':'')+'><span><span class="t">'+esc(label(s))+'</span><br><span class="r">'+esc(range(s.sessions[0].time))+'</span></span>'+(we?'<span class="w">Weekend</span>':'')+'</label>'}).join('')+
+        '</section>';
+    }).join('');
+    summary();
+  }
+  function summary(){
+    const keys=Object.keys(open);
+    $("summary").textContent=keys.length
+      ? keys.length+" subject setting"+(keys.length>1?"s":"")+" restricted across all levels and markets. Everything else shows all Flex times."
+      : "Nothing is restricted yet. Every Flex time shows on the Tuition & Plans page.";
+  }
+  function file(){
+    const o={}; Object.keys(open).sort().forEach(k=>{o[k]=open[k]});
+    return JSON.stringify({updated:new Date().toISOString().slice(0,10),open:o},null,2)+"\n";
+  }
+
+  $("cards").addEventListener("change",(e)=>{
+    const c=e.target; if(!c.dataset.key) return;
+    const sub=c.dataset.sub,item=table()[sub],all=flexList(item).map(keyOf);
+    const cur=all.filter(k=>isOpen(sub,k)); const keys=c.checked?cur.concat(c.dataset.key):cur.filter(k=>k!==c.dataset.key);
+    setOpen(sub,keys,all); render();
+    const f=document.querySelector('input[data-sub="'+sub+'"][data-key="'+c.dataset.key+'"]'); if(f) f.focus();
+  });
+  $("cards").addEventListener("click",(e)=>{
+    const b=e.target.closest("button"); if(!b) return;
+    const sub=b.dataset.all||b.dataset.none; if(!sub) return;
+    const all=flexList(table()[sub]).map(keyOf);
+    if(b.dataset.all) setOpen(sub,all,all); else setOpen(sub,[],all);
+    render();
+  });
+  $("mkNA").addEventListener("click",()=>{market="na";render()});
+  $("mkUK").addEventListener("click",()=>{market="uk";render()});
+  $("level").innerHTML=LEVELS.map(l=>'<option value="'+l[0]+'">'+esc(l[1])+'</option>').join("");
+  $("level").addEventListener("change",()=>{level=$("level").value;render()});
+  $("dl").addEventListener("click",()=>{
+    const blob=new Blob([file()],{type:"application/json"}),a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);a.download="flex-settings.json";document.body.appendChild(a);a.click();
+    setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500);
+    toast("Downloaded. Upload flex-settings.json to GitHub next to tuition-plans.html.");
+  });
+  $("show").addEventListener("click",()=>{$("out").innerHTML="<pre id=\"pre\"></pre>";$("pre").textContent=file()});
+  $("reset").addEventListener("click",()=>{open={};persist();render();toast("Every Flex time is open again.")});
+  function adopt(j){
+    if(j&&j.open&&typeof j.open==="object"){open={};Object.keys(j.open).forEach(k=>{if(Array.isArray(j.open[k]))open[k]=j.open[k]});persist();render();return true}
+    return false;
+  }
+  $("load").addEventListener("change",(e)=>{
+    const f=e.target.files[0]; if(!f) return;
+    const r=new FileReader();
+    r.onload=()=>{try{toast(adopt(JSON.parse(r.result))?"Loaded your file.":"That file has no settings in it.")}catch(x){toast("That file could not be read.")}};
+    r.readAsText(f);
+  });
+
+  // start from the live file if there is one, otherwise from the last draft in this browser
+  render();
+  let started=false;
+  try{
+    fetch("flex-settings.json?v="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(j=>{if(j&&adopt(j))started=true}).catch(()=>{}).then(()=>{
+      if(!started){try{const d=JSON.parse(localStorage.getItem(DRAFT)||"null");if(d&&typeof d==="object"){open=d;render()}}catch(e){}}
+    });
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
